@@ -170,7 +170,7 @@
             this.nud_MinimumOriginSpacing.Size = new System.Drawing.Size(49, 20);
             this.nud_MinimumOriginSpacing.TabIndex = 15;
             this.nud_MinimumOriginSpacing.Value = new decimal(new int[] {
-            15,
+            50,
             0,
             0,
             0});
@@ -193,7 +193,7 @@
             this.nud_TerritoryRadiusBound1.Size = new System.Drawing.Size(49, 20);
             this.nud_TerritoryRadiusBound1.TabIndex = 13;
             this.nud_TerritoryRadiusBound1.Value = new decimal(new int[] {
-            200,
+            150,
             0,
             0,
             0});
@@ -216,7 +216,7 @@
             this.nud_TerritoryRadiusBound2.Size = new System.Drawing.Size(49, 20);
             this.nud_TerritoryRadiusBound2.TabIndex = 12;
             this.nud_TerritoryRadiusBound2.Value = new decimal(new int[] {
-            200,
+            250,
             0,
             0,
             0});

@@ -27,8 +27,8 @@ namespace ContinentMapCreator
         static SolidBrush OCEAN_COLOUR = new SolidBrush(Color.FromArgb(0, 128, 192));
         static SolidBrush LOCATION_COLOUR = new SolidBrush(Color.FromArgb(0, 0, 0));
         static SolidBrush BORDER_COLOUR = new SolidBrush(Color.FromArgb(0, 64, 0));
-        static float BORDER_THICKNESS = 3.0F;
-        static float BORDER_OFFSET = 1.5F;
+        static float BORDER_THICKNESS = 2.0F;
+        static float BORDER_OFFSET = 1.0F;
 
         // Generation args
         bool allowPainting = false;
@@ -176,7 +176,7 @@ namespace ContinentMapCreator
                     }
                     // If two TerritoryOrigins are close enough for those Territories to contain this point, mark it a border if it is equidstant from both Origins
                     else if (distancesToOrigins[secondClosestOriginIndex] <= Territories[secondClosestOriginIndex].MaxRadius && 
-                        Math.Abs(distancesToOrigins[closestOriginIndex] - distancesToOrigins[secondClosestOriginIndex]) <= 1)
+                        distancesToOrigins[closestOriginIndex] == distancesToOrigins[secondClosestOriginIndex])
                     {
                         PointsOnBorder[numBorderPoints] = thisPixel;
                         numBorderPoints++;
