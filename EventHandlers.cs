@@ -99,7 +99,7 @@ namespace ContinentMapCreator
         private void btn_FontColourSelector_Click(object sender, EventArgs e)
         {
             clrd_ColourSelector.ShowDialog();
-            BORDER_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
+            NAME_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
             UpdateDisplay();
         }
 

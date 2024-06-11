@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_SettingsBackground = new System.Windows.Forms.Panel();
+            this.btn_FontColourSelector = new System.Windows.Forms.Button();
             this.btn_BorderColourSelector = new System.Windows.Forms.Button();
             this.btn_LandColourSelector = new System.Windows.Forms.Button();
             this.btn_OceanColourSelector = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
             this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
             this.clrd_ColourSelector = new System.Windows.Forms.ColorDialog();
-            this.btn_FontColourSelector = new System.Windows.Forms.Button();
             this.pnl_SettingsBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
@@ -86,6 +86,19 @@
             this.pnl_SettingsBackground.Name = "pnl_SettingsBackground";
             this.pnl_SettingsBackground.Size = new System.Drawing.Size(250, 862);
             this.pnl_SettingsBackground.TabIndex = 0;
+            // 
+            // btn_FontColourSelector
+            // 
+            this.btn_FontColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_FontColourSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_FontColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FontColourSelector.Location = new System.Drawing.Point(68, 773);
+            this.btn_FontColourSelector.Name = "btn_FontColourSelector";
+            this.btn_FontColourSelector.Size = new System.Drawing.Size(164, 30);
+            this.btn_FontColourSelector.TabIndex = 17;
+            this.btn_FontColourSelector.Text = "Select Font Colour";
+            this.btn_FontColourSelector.UseVisualStyleBackColor = false;
+            this.btn_FontColourSelector.Click += new System.EventHandler(this.btn_FontColourSelector_Click);
             // 
             // btn_BorderColourSelector
             // 
@@ -359,21 +372,8 @@
             // 
             // clrd_ColourSelector
             // 
-            this.clrd_ColourSelector.AllowFullOpen = false;
-            this.clrd_ColourSelector.ShowHelp = true;
-            // 
-            // btn_FontColourSelector
-            // 
-            this.btn_FontColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_FontColourSelector.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_FontColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FontColourSelector.Location = new System.Drawing.Point(68, 773);
-            this.btn_FontColourSelector.Name = "btn_FontColourSelector";
-            this.btn_FontColourSelector.Size = new System.Drawing.Size(164, 30);
-            this.btn_FontColourSelector.TabIndex = 17;
-            this.btn_FontColourSelector.Text = "Select Font Colour";
-            this.btn_FontColourSelector.UseVisualStyleBackColor = false;
-            this.btn_FontColourSelector.Click += new System.EventHandler(this.btn_FontColourSelector_Click);
+            this.clrd_ColourSelector.AnyColor = true;
+            this.clrd_ColourSelector.SolidColorOnly = true;
             // 
             // form_Window
             // 
