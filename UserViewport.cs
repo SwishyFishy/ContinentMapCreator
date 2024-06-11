@@ -23,10 +23,10 @@ namespace ContinentMapCreator
         // Aesthetic Settings
         static bool ROUGH_BORDERS = true;
         static Font DISPLAY_FONT = new Font("Carlito", 12, FontStyle.Bold);
-        static SolidBrush LAND_COLOUR = new SolidBrush(Color.Bisque);
-        static SolidBrush OCEAN_COLOUR = new SolidBrush(Color.Blue);
-        static SolidBrush NAME_COLOUR = new SolidBrush(Color.Black);
-        static SolidBrush BORDER_COLOUR = new SolidBrush(Color.Black);
+        static SolidBrush LAND_COLOUR = new SolidBrush(Color.FromArgb(128, 128, 64));
+        static SolidBrush OCEAN_COLOUR = new SolidBrush(Color.FromArgb(0, 0, 160));
+        static SolidBrush NAME_COLOUR = new SolidBrush(Color.FromArgb(0, 0, 0));
+        static SolidBrush BORDER_COLOUR = new SolidBrush(Color.FromArgb(0, 0, 0));
         static float BORDER_THICKNESS = 3.0F;
         static float BORDER_OFFSET = 1.5F;
 
