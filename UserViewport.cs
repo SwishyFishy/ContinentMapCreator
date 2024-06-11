@@ -22,7 +22,13 @@ namespace ContinentMapCreator
 
         // Aesthetic Settings
         static bool ROUGH_BORDERS = true;
-        static Font DISPLAY_FONT = new Font("Carlito", 12);
+        static Font DISPLAY_FONT = new Font("Carlito", 12, FontStyle.Bold);
+        static Brush LAND_COLOUR = Brushes.Bisque;
+        static Brush OCEAN_COLOUR = Brushes.Blue;
+        static Brush NAME_COLOUR = Brushes.Black;
+        static Brush BORDER_COLOUR = Brushes.Black;
+        static float BORDER_THICKNESS = 3.0F;
+        static float BORDER_OFFSET = 1.5F;
 
         // Generation args
         bool allowPainting = false;
@@ -55,6 +61,9 @@ namespace ContinentMapCreator
             // ROUGH_BORDERS based on chb_CleanBorders
             ROUGH_BORDERS = chb_CleanBorders.Checked ? false : true;
             DISPLAY_FONT = fntd_FontSelector.Font;
+
+            // BORDER_OFFSET based on BORDER_THICKNESS
+            BORDER_OFFSET = BORDER_THICKNESS / 2.0F;
 
             // Redraw map
             if (!lbl_NewWindowPrompt.Visible)
@@ -187,39 +196,40 @@ namespace ContinentMapCreator
         // Draw the screen
         private void Draw(PaintEventArgs e)
         {
-            // Create pens
-            Pen blackPen = new Pen(Brushes.Black);
-            blackPen.Width = 3.0F;
+            Pen borderPen = new Pen(BORDER_COLOUR, BORDER_THICKNESS);
+            float xOffset;
+            float yOffset;
 
             // Draw Ocean
-            e.Graphics.FillRectangle(Brushes.Blue, 0, 0, pnl_MapBackground.Width, pnl_MapBackground.Height);
+            e.Graphics.FillRectangle(OCEAN_COLOUR, 0, 0, pnl_MapBackground.Width, pnl_MapBackground.Height);
 
             // Draw Territories
             for (int i = 0; i < NUM_TERRITORIES; i++)
             {
-                e.Graphics.FillEllipse(Brushes.Bisque, 
-                    Territories[i].Origin.X - Territories[i].MaxRadius,
-                    Territories[i].Origin.Y - Territories[i].MaxRadius,
-                    2 * Territories[i].MaxRadius,
-                    2 * Territories[i].MaxRadius);
+                xOffset = Territories[i].Origin.X - Territories[i].MaxRadius;
+                yOffset = Territories[i].Origin.Y - Territories[i].MaxRadius;
+                e.Graphics.FillEllipse(LAND_COLOUR, xOffset, yOffset, 2 * Territories[i].MaxRadius, 2 * Territories[i].MaxRadius);
             }
 
-            // Draw Territory Origins
+            // Draw TerritoryOrigins and Territory names
             for (int i = 0; i < NUM_TERRITORIES; i++)
             {
-                e.Graphics.DrawRectangle(blackPen, Territories[i].Origin.X - 15, Territories[i].Origin.Y - 15, 30, 30);
-                e.Graphics.DrawString(i.ToString(), DISPLAY_FONT, Brushes.Black, Territories[i].Origin.X - 10, Territories[i].Origin.Y - 10);
+                xOffset = Territories[i].Origin.X - BORDER_OFFSET;
+                yOffset = Territories[i].Origin.Y - BORDER_OFFSET;
+                e.Graphics.DrawRectangle(borderPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
+                e.Graphics.DrawString(i.ToString(), DISPLAY_FONT, NAME_COLOUR, Territories[i].Origin.X, Territories[i].Origin.Y);
             }
 
             // Draw Borders
             for (int i = 0; i < TerritoryBorders.Length; i++)
             {
                 Random rnd = new Random();
-                e.Graphics.DrawRectangle(blackPen, TerritoryBorders[i].X + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0), 
-                    TerritoryBorders[i].Y + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0), 1, 1);
+                xOffset = TerritoryBorders[i].X + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0) - BORDER_OFFSET;
+                yOffset = TerritoryBorders[i].Y + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0) - BORDER_OFFSET;
+                e.Graphics.DrawRectangle(borderPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
             }
 
-            blackPen.Dispose();
+            borderPen.Dispose();
         }
     }
 }

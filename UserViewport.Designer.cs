@@ -30,29 +30,29 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_SettingsBackground = new System.Windows.Forms.Panel();
-            this.lbl_TerritoryRadius = new System.Windows.Forms.Label();
+            this.btn_FontSelector = new System.Windows.Forms.Button();
+            this.nud_MinimumOriginSpacing = new System.Windows.Forms.NumericUpDown();
             this.nud_TerritoryRadiusBound1 = new System.Windows.Forms.NumericUpDown();
             this.nud_TerritoryRadiusBound2 = new System.Windows.Forms.NumericUpDown();
-            this.lbl_TerritoryCount = new System.Windows.Forms.Label();
             this.nud_TerritoryCountBound2 = new System.Windows.Forms.NumericUpDown();
             this.nud_TerritoryCountBound1 = new System.Windows.Forms.NumericUpDown();
             this.chb_CleanBorders = new System.Windows.Forms.CheckBox();
             this.btn_Generate = new System.Windows.Forms.Button();
             this.lbl_Header = new System.Windows.Forms.Label();
+            this.lbl_TerritoryRadius = new System.Windows.Forms.Label();
+            this.lbl_OriginSpacing = new System.Windows.Forms.Label();
+            this.lbl_TerritoryCount = new System.Windows.Forms.Label();
             this.pnl_MapBackground = new System.Windows.Forms.Panel();
             this.lbl_NewWindowPrompt = new System.Windows.Forms.Label();
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
-            this.lbl_OriginSpacing = new System.Windows.Forms.Label();
-            this.nud_MinimumOriginSpacing = new System.Windows.Forms.NumericUpDown();
             this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
-            this.btn_FontSelector = new System.Windows.Forms.Button();
             this.pnl_SettingsBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound1)).BeginInit();
             this.pnl_MapBackground.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_SettingsBackground
@@ -78,15 +78,41 @@
             this.pnl_SettingsBackground.Size = new System.Drawing.Size(250, 862);
             this.pnl_SettingsBackground.TabIndex = 0;
             // 
-            // lbl_TerritoryRadius
+            // btn_FontSelector
             // 
-            this.lbl_TerritoryRadius.AutoSize = true;
-            this.lbl_TerritoryRadius.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryRadius.Location = new System.Drawing.Point(14, 54);
-            this.lbl_TerritoryRadius.Name = "lbl_TerritoryRadius";
-            this.lbl_TerritoryRadius.Size = new System.Drawing.Size(168, 19);
-            this.lbl_TerritoryRadius.TabIndex = 7;
-            this.lbl_TerritoryRadius.Text = "Territory Radius (Range)";
+            this.btn_FontSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_FontSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FontSelector.Location = new System.Drawing.Point(18, 773);
+            this.btn_FontSelector.Name = "btn_FontSelector";
+            this.btn_FontSelector.Size = new System.Drawing.Size(120, 30);
+            this.btn_FontSelector.TabIndex = 16;
+            this.btn_FontSelector.Text = "Select Font";
+            this.btn_FontSelector.UseVisualStyleBackColor = false;
+            this.btn_FontSelector.Click += new System.EventHandler(this.btn_FontSelector_Click);
+            // 
+            // nud_MinimumOriginSpacing
+            // 
+            this.nud_MinimumOriginSpacing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nud_MinimumOriginSpacing.Location = new System.Drawing.Point(174, 160);
+            this.nud_MinimumOriginSpacing.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nud_MinimumOriginSpacing.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.nud_MinimumOriginSpacing.Name = "nud_MinimumOriginSpacing";
+            this.nud_MinimumOriginSpacing.Size = new System.Drawing.Size(49, 20);
+            this.nud_MinimumOriginSpacing.TabIndex = 15;
+            this.nud_MinimumOriginSpacing.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
             // 
             // nud_TerritoryRadiusBound1
             // 
@@ -133,16 +159,6 @@
             0,
             0,
             0});
-            // 
-            // lbl_TerritoryCount
-            // 
-            this.lbl_TerritoryCount.AutoSize = true;
-            this.lbl_TerritoryCount.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryCount.Location = new System.Drawing.Point(14, 108);
-            this.lbl_TerritoryCount.Name = "lbl_TerritoryCount";
-            this.lbl_TerritoryCount.Size = new System.Drawing.Size(209, 19);
-            this.lbl_TerritoryCount.TabIndex = 11;
-            this.lbl_TerritoryCount.Text = "Number Of Territories (Range)";
             // 
             // nud_TerritoryCountBound2
             // 
@@ -231,6 +247,36 @@
             this.lbl_Header.TabIndex = 0;
             this.lbl_Header.Text = "Continent Mapper";
             // 
+            // lbl_TerritoryRadius
+            // 
+            this.lbl_TerritoryRadius.AutoSize = true;
+            this.lbl_TerritoryRadius.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TerritoryRadius.Location = new System.Drawing.Point(14, 54);
+            this.lbl_TerritoryRadius.Name = "lbl_TerritoryRadius";
+            this.lbl_TerritoryRadius.Size = new System.Drawing.Size(168, 19);
+            this.lbl_TerritoryRadius.TabIndex = 7;
+            this.lbl_TerritoryRadius.Text = "Territory Radius (Range)";
+            // 
+            // lbl_OriginSpacing
+            // 
+            this.lbl_OriginSpacing.AutoSize = true;
+            this.lbl_OriginSpacing.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_OriginSpacing.Location = new System.Drawing.Point(14, 160);
+            this.lbl_OriginSpacing.Name = "lbl_OriginSpacing";
+            this.lbl_OriginSpacing.Size = new System.Drawing.Size(192, 19);
+            this.lbl_OriginSpacing.TabIndex = 14;
+            this.lbl_OriginSpacing.Text = "Minimum Origin Separation";
+            // 
+            // lbl_TerritoryCount
+            // 
+            this.lbl_TerritoryCount.AutoSize = true;
+            this.lbl_TerritoryCount.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TerritoryCount.Location = new System.Drawing.Point(14, 108);
+            this.lbl_TerritoryCount.Name = "lbl_TerritoryCount";
+            this.lbl_TerritoryCount.Size = new System.Drawing.Size(209, 19);
+            this.lbl_TerritoryCount.TabIndex = 11;
+            this.lbl_TerritoryCount.Text = "Number Of Territories (Range)";
+            // 
             // pnl_MapBackground
             // 
             this.pnl_MapBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -262,54 +308,9 @@
             this.tip_SettingsDetails.InitialDelay = 0;
             this.tip_SettingsDetails.ReshowDelay = 100;
             // 
-            // lbl_OriginSpacing
-            // 
-            this.lbl_OriginSpacing.AutoSize = true;
-            this.lbl_OriginSpacing.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OriginSpacing.Location = new System.Drawing.Point(14, 160);
-            this.lbl_OriginSpacing.Name = "lbl_OriginSpacing";
-            this.lbl_OriginSpacing.Size = new System.Drawing.Size(192, 19);
-            this.lbl_OriginSpacing.TabIndex = 14;
-            this.lbl_OriginSpacing.Text = "Minimum Origin Separation";
-            // 
-            // nud_MinimumOriginSpacing
-            // 
-            this.nud_MinimumOriginSpacing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_MinimumOriginSpacing.Location = new System.Drawing.Point(174, 160);
-            this.nud_MinimumOriginSpacing.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.nud_MinimumOriginSpacing.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.nud_MinimumOriginSpacing.Name = "nud_MinimumOriginSpacing";
-            this.nud_MinimumOriginSpacing.Size = new System.Drawing.Size(49, 20);
-            this.nud_MinimumOriginSpacing.TabIndex = 15;
-            this.nud_MinimumOriginSpacing.Value = new decimal(new int[] {
-            15,
-            0,
-            0,
-            0});
-            // 
             // fntd_FontSelector
             // 
             this.fntd_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // btn_FontSelector
-            // 
-            this.btn_FontSelector.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FontSelector.Location = new System.Drawing.Point(18, 773);
-            this.btn_FontSelector.Name = "btn_FontSelector";
-            this.btn_FontSelector.Size = new System.Drawing.Size(120, 30);
-            this.btn_FontSelector.TabIndex = 16;
-            this.btn_FontSelector.Text = "Select Font";
-            this.btn_FontSelector.UseVisualStyleBackColor = false;
-            this.btn_FontSelector.Click += new System.EventHandler(this.btn_FontSelector_Click);
             // 
             // form_Window
             // 
@@ -325,13 +326,13 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_MapBackground_Paint);
             this.pnl_SettingsBackground.ResumeLayout(false);
             this.pnl_SettingsBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound1)).EndInit();
             this.pnl_MapBackground.ResumeLayout(false);
             this.pnl_MapBackground.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).EndInit();
             this.ResumeLayout(false);
 
         }
