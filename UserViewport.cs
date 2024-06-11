@@ -231,10 +231,5 @@ namespace ContinentMapCreator
 
             borderPen.Dispose();
         }
-
-        private void btn_FontSelector_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
