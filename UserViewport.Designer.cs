@@ -46,6 +46,7 @@
             this.lbl_NewWindowPrompt = new System.Windows.Forms.Label();
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
             this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
+            this.clrd_ColourSelector = new System.Windows.Forms.ColorDialog();
             this.pnl_SettingsBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
@@ -312,6 +313,11 @@
             // 
             this.fntd_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
+            // clrd_ColourSelector
+            // 
+            this.clrd_ColourSelector.AllowFullOpen = false;
+            this.clrd_ColourSelector.ShowHelp = true;
+            // 
             // form_Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,6 +362,7 @@
         private System.Windows.Forms.Label lbl_OriginSpacing;
         private System.Windows.Forms.FontDialog fntd_FontSelector;
         private System.Windows.Forms.Button btn_FontSelector;
+        private System.Windows.Forms.ColorDialog clrd_ColourSelector;
     }
 }
 
