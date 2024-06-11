@@ -24,9 +24,9 @@ namespace ContinentMapCreator
         static bool ROUGH_BORDERS = true;
         static Font DISPLAY_FONT = new Font("Carlito", 12, FontStyle.Bold);
         static SolidBrush LAND_COLOUR = new SolidBrush(Color.FromArgb(128, 128, 64));
-        static SolidBrush OCEAN_COLOUR = new SolidBrush(Color.FromArgb(0, 0, 160));
-        static SolidBrush NAME_COLOUR = new SolidBrush(Color.FromArgb(0, 0, 0));
-        static SolidBrush BORDER_COLOUR = new SolidBrush(Color.FromArgb(0, 0, 0));
+        static SolidBrush OCEAN_COLOUR = new SolidBrush(Color.FromArgb(0, 128, 192));
+        static SolidBrush LOCATION_COLOUR = new SolidBrush(Color.FromArgb(0, 0, 0));
+        static SolidBrush BORDER_COLOUR = new SolidBrush(Color.FromArgb(0, 64, 0));
         static float BORDER_THICKNESS = 3.0F;
         static float BORDER_OFFSET = 1.5F;
 
@@ -87,10 +87,8 @@ namespace ContinentMapCreator
             // Pick random points for territory origins
             Random rnd = new Random();
             NUM_TERRITORIES = rnd.Next(MIN_NUM_TERRITORIES, MAX_NUM_TERRITORIES + 1);
-            Territories = new Territory[NUM_TERRITORIES];
             int radius = rnd.Next(MIN_TERRITORY_RADIUS, MAX_TERRITORY_RADIUS);
-
-            // TODO: Use MIN_ORIGIN_SPACING
+            Territories = new Territory[NUM_TERRITORIES];
 
             for (int i = 0; i < NUM_TERRITORIES; i++)
             {
@@ -169,8 +167,7 @@ namespace ContinentMapCreator
                         continue;
                     }
                     // If only one TerritoryOrigin is close enough for that Territory to contain this point, make it a border if it is on the edge
-                    else if (
-                        distancesToOrigins[closestOriginIndex] == Territories[closestOriginIndex].MaxRadius && 
+                    else if (distancesToOrigins[closestOriginIndex] == Territories[closestOriginIndex].MaxRadius && 
                         distancesToOrigins[secondClosestOriginIndex] > Territories[secondClosestOriginIndex].MaxRadius)
                     {
                         PointsOnBorder[numBorderPoints] = thisPixel;
@@ -179,7 +176,7 @@ namespace ContinentMapCreator
                     }
                     // If two TerritoryOrigins are close enough for those Territories to contain this point, mark it a border if it is equidstant from both Origins
                     else if (distancesToOrigins[secondClosestOriginIndex] <= Territories[secondClosestOriginIndex].MaxRadius && 
-                        distancesToOrigins[closestOriginIndex] == distancesToOrigins[secondClosestOriginIndex])
+                        Math.Abs(distancesToOrigins[closestOriginIndex] - distancesToOrigins[secondClosestOriginIndex]) <= 1)
                     {
                         PointsOnBorder[numBorderPoints] = thisPixel;
                         numBorderPoints++;
@@ -196,6 +193,7 @@ namespace ContinentMapCreator
         private void Draw(PaintEventArgs e)
         {
             Pen borderPen = new Pen(BORDER_COLOUR, BORDER_THICKNESS);
+            Pen locationPen = new Pen(LOCATION_COLOUR, BORDER_THICKNESS);
             float xOffset;
             float yOffset;
 
@@ -225,11 +223,12 @@ namespace ContinentMapCreator
             {
                 xOffset = Territories[i].Origin.X - BORDER_OFFSET;
                 yOffset = Territories[i].Origin.Y - BORDER_OFFSET;
-                e.Graphics.DrawRectangle(borderPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
-                e.Graphics.DrawString(i.ToString(), DISPLAY_FONT, NAME_COLOUR, Territories[i].Origin.X, Territories[i].Origin.Y);
+                e.Graphics.DrawRectangle(locationPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
+                e.Graphics.DrawString(i.ToString(), DISPLAY_FONT, LOCATION_COLOUR, Territories[i].Origin.X, Territories[i].Origin.Y);
             }
 
             borderPen.Dispose();
+            locationPen.Dispose();
         }
     }
 }

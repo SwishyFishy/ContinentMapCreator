@@ -95,11 +95,11 @@ namespace ContinentMapCreator
         }
 
         // btn_FontColourSelector
-        // Click        -> Open clrd_ColourSelector and set NAME_COLOUR then redraw
+        // Click        -> Open clrd_ColourSelector and set LOCATION_COLOUR then redraw
         private void btn_FontColourSelector_Click(object sender, EventArgs e)
         {
             clrd_ColourSelector.ShowDialog();
-            NAME_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
+            LOCATION_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
             UpdateDisplay();
         }
 
