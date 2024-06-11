@@ -13,12 +13,15 @@ namespace ContinentMapCreator
         const double MAP_WIDTH_PROPORTION = (double)1 - SETTINGS_WIDTH_PROPORTION;
 
         // Map Creation Settings
-        static bool ROUGH_BORDERS = true;
         static int MIN_NUM_TERRITORIES = 12;
         static int MAX_NUM_TERRITORIES = 18;
         static int NUM_TERRITORIES = 16;
         static int MIN_TERRITORY_RADIUS = 200;
         static int MAX_TERRITORY_RADIUS = 200;
+        static int MIN_ORIGIN_SPACING = 5;
+
+        // Aesthetic Settings
+        static bool ROUGH_BORDERS = true;
 
         // Generation args
         bool allowPainting = false;
@@ -53,15 +56,19 @@ namespace ContinentMapCreator
             pnl_MapBackground.Location = new Point(pnl_SettingsBackground.Width, 0);
 
             // Add Tooltips
-            tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Indicates the high and low bounds of 1/2 the maximum allowed distance across a territory");
-            tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Indicates the high and low bounds of the range of number of territories");
-            tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Indicates whether borders should be drawn cleanly or roughly");
+            tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Bounds 1/2 the maximum allowed distance across a territory.");
+            tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Bounds the number of territories.");
+            tip_SettingsDetails.SetToolTip(lbl_OriginSpacing, "Minimum distance between territory origin points. High values may affect performance.\n" +
+                "Low values may affect border clarity.");
+
+            tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly");
 
             // Add Controls
             pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound1);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound2);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound1);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound2);
+            pnl_SettingsBackground.Controls.Add(nud_MinimumOriginSpacing);
 
             pnl_SettingsBackground.Controls.Add(chb_CleanBorders);
             pnl_SettingsBackground.Controls.Add(btn_Generate);
@@ -75,7 +82,7 @@ namespace ContinentMapCreator
         // Click        -> Generate new map
         private void btn_Generate_Click(object sender, EventArgs e)
         {
-            lbl_NewWindowPrompt.Visible = false; 
+            lbl_NewWindowPrompt.Visible = false;
             foreach (Control control in pnl_SettingsBackground.Controls)
             {
                 control.Enabled = false;
@@ -121,6 +128,9 @@ namespace ContinentMapCreator
             // MIN_NUM_TERRITORIES & MAX_NUM_TERRITORIES based on nud_TerritoryCountBound1 & nud_TerritoryCountBound2
             MIN_NUM_TERRITORIES = Math.Min((int)nud_TerritoryCountBound1.Value, (int)nud_TerritoryCountBound2.Value);
             MAX_NUM_TERRITORIES = Math.Max((int)nud_TerritoryCountBound1.Value, (int)nud_TerritoryCountBound2.Value);
+
+            // MIN_ORIGIN_SPACING based on nud_MinimumOriginSpacing
+            MIN_ORIGIN_SPACING = (int)nud_MinimumOriginSpacing.Value;
         }
         private void UpdateDisplaySettings()
         {
@@ -151,6 +161,9 @@ namespace ContinentMapCreator
             Random rnd = new Random();
             NUM_TERRITORIES = rnd.Next(MIN_NUM_TERRITORIES, MAX_NUM_TERRITORIES + 1);
             Territories = new Territory[NUM_TERRITORIES];
+            int radius = rnd.Next(MIN_TERRITORY_RADIUS, MAX_TERRITORY_RADIUS);
+
+            // TODO: Use MIN_ORIGIN_SPACING
 
             for (int i = 0; i < NUM_TERRITORIES; i++)
             {
@@ -161,7 +174,7 @@ namespace ContinentMapCreator
                 int maxY = pnl_MapBackground.Height;
 
                 Point origin = new Point(rnd.Next(minX, maxX), rnd.Next(minY, maxY));
-                Territories[i] = new Territory(origin, rnd.Next(MIN_TERRITORY_RADIUS, MAX_TERRITORY_RADIUS), rnd.Next(MIN_TERRITORY_RADIUS, MAX_TERRITORY_RADIUS));
+                Territories[i] = new Territory(origin, radius);
             }
         }
 
@@ -180,50 +193,48 @@ namespace ContinentMapCreator
                     // -1 indicates that the point is too far away from that TerritoryOrigin to be inside it
                     // As the loop progresses, track which indices in distancesToOrigins are those of the closest and second-closest territories
                     Point thisPixel = new Point(x, y);
-                    int[] distancesToFoci = new int[NUM_TERRITORIES];
-                    int closestFociIndex = -1;
-                    int secondClosestFociIndex = -1;
+                    int[] distancesToOrigins = new int[NUM_TERRITORIES];
+                    int closestOriginIndex = -1;
+                    int secondClosestOriginIndex = -1;
+
+                    // Populate the distancesToOrigins array
                     for (int i = 0; i < NUM_TERRITORIES; i++)
                     {
-                        distancesToFoci[i] = Territories[i].SumDistanceToFoci(thisPixel);
+                        distancesToOrigins[i] = Territories[i].OriginToPoint(thisPixel);
 
                         // Track two closest territories
-                        if (closestFociIndex == -1)
+                        if (closestOriginIndex == -1)
                         {
-                            closestFociIndex = i;
+                            closestOriginIndex = i;
                         }
-                        else if (distancesToFoci[closestFociIndex] > distancesToFoci[i])
+                        else if (distancesToOrigins[closestOriginIndex] > distancesToOrigins[i])
                         {
-                            secondClosestFociIndex = closestFociIndex;
-                            closestFociIndex = i;
+                            secondClosestOriginIndex = closestOriginIndex;
+                            closestOriginIndex = i;
                         }
-                        else if (secondClosestFociIndex == -1)
+                        else if (secondClosestOriginIndex == -1 || distancesToOrigins[secondClosestOriginIndex] > distancesToOrigins[i])
                         {
-                            secondClosestFociIndex = i;
-                        }
-                        else if (distancesToFoci[secondClosestFociIndex] > distancesToFoci[i])
-                        {
-                            secondClosestFociIndex = i;
+                            secondClosestOriginIndex = i;
                         }
                     }
 
-                    // If no TerritoryFoci are close enough for that Territory to contain this point, continue
-                    if (distancesToFoci[closestFociIndex] > Territories[closestFociIndex].DistanceFociToBorder)
+                    // If no TerritoryOrigins are close enough for that Territory to contain this point, continue
+                    if (distancesToOrigins[closestOriginIndex] > Territories[closestOriginIndex].MaxRadius)
                     {
                         continue;
                     }
-                    // If only one TerritoryFoci are close enough for that Territory to contain this point, make it a border if it is on the edge
-                    else if (distancesToFoci[secondClosestFociIndex] > Territories[secondClosestFociIndex].DistanceFociToBorder &&
-                        distancesToFoci[closestFociIndex] == Territories[closestFociIndex].DistanceFociToBorder)
+                    // If only one TerritoryOrigin is close enough for that Territory to contain this point, make it a border if it is on the edge
+                    else if (
+                        distancesToOrigins[closestOriginIndex] == Territories[closestOriginIndex].MaxRadius && 
+                        distancesToOrigins[secondClosestOriginIndex] > Territories[secondClosestOriginIndex].MaxRadius)
                     {
                         PointsOnBorder[numBorderPoints] = thisPixel;
                         numBorderPoints++;
-                        Territories[closestFociIndex].IsCoastal = true;
+                        Territories[closestOriginIndex].IsCoastal = true;
                     }
-                    // If two TerritoryFoci are close enough for that Territory to contain this point and neither can contain the other's Origin
-                    // make it a border if it is equidistant from both Territories' outermost bounds
-                    else if (Territories[closestFociIndex].DistanceFociToBorder - distancesToFoci[closestFociIndex] ==
-                        Territories[secondClosestFociIndex].DistanceFociToBorder - distancesToFoci[secondClosestFociIndex])
+                    // If two TerritoryOrigins are close enough for those Territories to contain this point, mark it a border if it is equidstant from both Origins
+                    else if (distancesToOrigins[secondClosestOriginIndex] <= Territories[secondClosestOriginIndex].MaxRadius && 
+                        distancesToOrigins[closestOriginIndex] == distancesToOrigins[secondClosestOriginIndex])
                     {
                         PointsOnBorder[numBorderPoints] = thisPixel;
                         numBorderPoints++;
@@ -250,22 +261,11 @@ namespace ContinentMapCreator
             // Draw Territories
             for (int i = 0; i < NUM_TERRITORIES; i++)
             {
-                if (Territories[i].MajorAxisIsX)
-                {
-                    e.Graphics.FillEllipse(Brushes.Bisque,
-                      Territories[i].Origin.X - Territories[i].MajorRadius,
-                      Territories[i].Origin.Y - Territories[i].MinorRadius,
-                      2 * Territories[i].MajorRadius,
-                      2 * Territories[i].MinorRadius);
-                }
-                else
-                {
-                    e.Graphics.FillEllipse(Brushes.Bisque,
-                      Territories[i].Origin.X - Territories[i].MinorRadius,
-                      Territories[i].Origin.Y - Territories[i].MajorRadius,
-                      2 * Territories[i].MinorRadius,
-                      2 * Territories[i].MajorRadius);
-                }
+                e.Graphics.FillEllipse(Brushes.Bisque, 
+                    Territories[i].Origin.X - Territories[i].MaxRadius,
+                    Territories[i].Origin.Y - Territories[i].MaxRadius,
+                    2 * Territories[i].MaxRadius,
+                    2 * Territories[i].MaxRadius);
             }
 
             // Draw Territory Origins

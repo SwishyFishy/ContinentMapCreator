@@ -42,12 +42,15 @@
             this.pnl_MapBackground = new System.Windows.Forms.Panel();
             this.lbl_NewWindowPrompt = new System.Windows.Forms.Label();
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
+            this.lbl_OriginSpacing = new System.Windows.Forms.Label();
+            this.nud_MinimumOriginSpacing = new System.Windows.Forms.NumericUpDown();
             this.pnl_SettingsBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound1)).BeginInit();
             this.pnl_MapBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_SettingsBackground
@@ -55,6 +58,8 @@
             this.pnl_SettingsBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_SettingsBackground.BackColor = System.Drawing.Color.Aquamarine;
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_OriginSpacing);
+            this.pnl_SettingsBackground.Controls.Add(this.nud_MinimumOriginSpacing);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryRadius);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound1);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound2);
@@ -254,6 +259,34 @@
             this.tip_SettingsDetails.InitialDelay = 0;
             this.tip_SettingsDetails.ReshowDelay = 100;
             // 
+            // lbl_OriginSpacing
+            // 
+            this.lbl_OriginSpacing.AutoSize = true;
+            this.lbl_OriginSpacing.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_OriginSpacing.Location = new System.Drawing.Point(14, 147);
+            this.lbl_OriginSpacing.Name = "lbl_OriginSpacing";
+            this.lbl_OriginSpacing.Size = new System.Drawing.Size(192, 19);
+            this.lbl_OriginSpacing.TabIndex = 14;
+            this.lbl_OriginSpacing.Text = "Minimum Origin Separation";
+            // 
+            // nud_MinimumOriginSpacing
+            // 
+            this.nud_MinimumOriginSpacing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nud_MinimumOriginSpacing.Location = new System.Drawing.Point(170, 150);
+            this.nud_MinimumOriginSpacing.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.nud_MinimumOriginSpacing.Name = "nud_MinimumOriginSpacing";
+            this.nud_MinimumOriginSpacing.Size = new System.Drawing.Size(49, 20);
+            this.nud_MinimumOriginSpacing.TabIndex = 15;
+            this.nud_MinimumOriginSpacing.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
             // form_Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +307,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound1)).EndInit();
             this.pnl_MapBackground.ResumeLayout(false);
             this.pnl_MapBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -293,6 +327,8 @@
         private System.Windows.Forms.ToolTip tip_SettingsDetails;
         private System.Windows.Forms.NumericUpDown nud_TerritoryRadiusBound1;
         private System.Windows.Forms.NumericUpDown nud_TerritoryRadiusBound2;
+        private System.Windows.Forms.NumericUpDown nud_MinimumOriginSpacing;
+        private System.Windows.Forms.Label lbl_OriginSpacing;
     }
 }
 
