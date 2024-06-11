@@ -4,8 +4,7 @@ using System.Drawing;
 namespace ContinentMapCreator
 {
     public class Territory
-    {
-
+    { 
         // Properties
         //public int MaxRadiusX { get; set; }
         //public int MaxRadiusY { get; set; }
