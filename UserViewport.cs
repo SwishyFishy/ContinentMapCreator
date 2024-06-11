@@ -22,6 +22,7 @@ namespace ContinentMapCreator
 
         // Aesthetic Settings
         static bool ROUGH_BORDERS = true;
+        static Font DISPLAY_FONT = new Font("Carlito", 12);
 
         // Generation args
         bool allowPainting = false;
@@ -58,8 +59,7 @@ namespace ContinentMapCreator
             // Add Tooltips
             tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Bounds 1/2 the maximum allowed distance across a territory.");
             tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Bounds the number of territories.");
-            tip_SettingsDetails.SetToolTip(lbl_OriginSpacing, "Minimum distance between territory origin points. High values may affect performance.\n" +
-                "Low values may affect border clarity.");
+            tip_SettingsDetails.SetToolTip(lbl_OriginSpacing, "Minimum distance between territory origin points. Higher values generate more uniform maps");
 
             tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly");
 
@@ -136,6 +136,7 @@ namespace ContinentMapCreator
         {
             // ROUGH_BORDERS based on chb_CleanBorders
             ROUGH_BORDERS = chb_CleanBorders.Checked ? false : true;
+            DISPLAY_FONT = fntd_FontSelector.Font;
 
             // Redraw map
             if (!lbl_NewWindowPrompt.Visible)
@@ -173,7 +174,25 @@ namespace ContinentMapCreator
                 int minY = 0;
                 int maxY = pnl_MapBackground.Height;
 
-                Point origin = new Point(rnd.Next(minX, maxX), rnd.Next(minY, maxY));
+                // Generate random (x, y) coordinates for this origin that are sufficiently distanced from all others
+                Point origin = new Point();
+                bool spacingVerified = false;
+                while (!spacingVerified)
+                {
+                    spacingVerified = true;
+                    origin = new Point(rnd.Next(minX, maxX), rnd.Next(minY, maxY));
+                    
+                    // Check that origin is sufficiently distant from all others
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (Territories[j].OriginToPoint(origin) < MIN_ORIGIN_SPACING)
+                        {
+                            spacingVerified = false;
+                        }
+                    }
+                }
+
+                // Add a new Territory at the generated origin
                 Territories[i] = new Territory(origin, radius);
             }
         }
@@ -272,7 +291,7 @@ namespace ContinentMapCreator
             for (int i = 0; i < NUM_TERRITORIES; i++)
             {
                 e.Graphics.DrawRectangle(blackPen, Territories[i].Origin.X - 15, Territories[i].Origin.Y - 15, 30, 30);
-                e.Graphics.DrawString(i.ToString(), new Font("Arial", 15), Brushes.Black, Territories[i].Origin.X - 10, Territories[i].Origin.Y - 10);
+                e.Graphics.DrawString(i.ToString(), DISPLAY_FONT, Brushes.Black, Territories[i].Origin.X - 10, Territories[i].Origin.Y - 10);
             }
 
             // Draw Borders

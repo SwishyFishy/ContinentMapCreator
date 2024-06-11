@@ -44,6 +44,7 @@
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
             this.lbl_OriginSpacing = new System.Windows.Forms.Label();
             this.nud_MinimumOriginSpacing = new System.Windows.Forms.NumericUpDown();
+            this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
             this.pnl_SettingsBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound2)).BeginInit();
@@ -58,17 +59,17 @@
             this.pnl_SettingsBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_SettingsBackground.BackColor = System.Drawing.Color.Aquamarine;
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_OriginSpacing);
             this.pnl_SettingsBackground.Controls.Add(this.nud_MinimumOriginSpacing);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryRadius);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound1);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound2);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryCount);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryCountBound2);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryCountBound1);
             this.pnl_SettingsBackground.Controls.Add(this.chb_CleanBorders);
             this.pnl_SettingsBackground.Controls.Add(this.btn_Generate);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_Header);
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryRadius);
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_OriginSpacing);
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryCount);
             this.pnl_SettingsBackground.Location = new System.Drawing.Point(0, 0);
             this.pnl_SettingsBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_SettingsBackground.Name = "pnl_SettingsBackground";
@@ -79,7 +80,7 @@
             // 
             this.lbl_TerritoryRadius.AutoSize = true;
             this.lbl_TerritoryRadius.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryRadius.Location = new System.Drawing.Point(15, 42);
+            this.lbl_TerritoryRadius.Location = new System.Drawing.Point(14, 54);
             this.lbl_TerritoryRadius.Name = "lbl_TerritoryRadius";
             this.lbl_TerritoryRadius.Size = new System.Drawing.Size(168, 19);
             this.lbl_TerritoryRadius.TabIndex = 7;
@@ -88,7 +89,7 @@
             // nud_TerritoryRadiusBound1
             // 
             this.nud_TerritoryRadiusBound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_TerritoryRadiusBound1.Location = new System.Drawing.Point(170, 44);
+            this.nud_TerritoryRadiusBound1.Location = new System.Drawing.Point(174, 54);
             this.nud_TerritoryRadiusBound1.Maximum = new decimal(new int[] {
             400,
             0,
@@ -111,7 +112,7 @@
             // nud_TerritoryRadiusBound2
             // 
             this.nud_TerritoryRadiusBound2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_TerritoryRadiusBound2.Location = new System.Drawing.Point(170, 70);
+            this.nud_TerritoryRadiusBound2.Location = new System.Drawing.Point(174, 80);
             this.nud_TerritoryRadiusBound2.Maximum = new decimal(new int[] {
             400,
             0,
@@ -135,7 +136,7 @@
             // 
             this.lbl_TerritoryCount.AutoSize = true;
             this.lbl_TerritoryCount.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryCount.Location = new System.Drawing.Point(14, 96);
+            this.lbl_TerritoryCount.Location = new System.Drawing.Point(14, 108);
             this.lbl_TerritoryCount.Name = "lbl_TerritoryCount";
             this.lbl_TerritoryCount.Size = new System.Drawing.Size(209, 19);
             this.lbl_TerritoryCount.TabIndex = 11;
@@ -144,7 +145,7 @@
             // nud_TerritoryCountBound2
             // 
             this.nud_TerritoryCountBound2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_TerritoryCountBound2.Location = new System.Drawing.Point(170, 124);
+            this.nud_TerritoryCountBound2.Location = new System.Drawing.Point(174, 134);
             this.nud_TerritoryCountBound2.Maximum = new decimal(new int[] {
             32,
             0,
@@ -156,7 +157,7 @@
             0,
             0});
             this.nud_TerritoryCountBound2.Name = "nud_TerritoryCountBound2";
-            this.nud_TerritoryCountBound2.Size = new System.Drawing.Size(50, 20);
+            this.nud_TerritoryCountBound2.Size = new System.Drawing.Size(49, 20);
             this.nud_TerritoryCountBound2.TabIndex = 10;
             this.nud_TerritoryCountBound2.Value = new decimal(new int[] {
             22,
@@ -167,7 +168,7 @@
             // nud_TerritoryCountBound1
             // 
             this.nud_TerritoryCountBound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_TerritoryCountBound1.Location = new System.Drawing.Point(170, 98);
+            this.nud_TerritoryCountBound1.Location = new System.Drawing.Point(174, 108);
             this.nud_TerritoryCountBound1.Maximum = new decimal(new int[] {
             32,
             0,
@@ -179,7 +180,7 @@
             0,
             0});
             this.nud_TerritoryCountBound1.Name = "nud_TerritoryCountBound1";
-            this.nud_TerritoryCountBound1.Size = new System.Drawing.Size(50, 20);
+            this.nud_TerritoryCountBound1.Size = new System.Drawing.Size(49, 20);
             this.nud_TerritoryCountBound1.TabIndex = 9;
             this.nud_TerritoryCountBound1.Value = new decimal(new int[] {
             18,
@@ -263,7 +264,7 @@
             // 
             this.lbl_OriginSpacing.AutoSize = true;
             this.lbl_OriginSpacing.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OriginSpacing.Location = new System.Drawing.Point(14, 147);
+            this.lbl_OriginSpacing.Location = new System.Drawing.Point(14, 160);
             this.lbl_OriginSpacing.Name = "lbl_OriginSpacing";
             this.lbl_OriginSpacing.Size = new System.Drawing.Size(192, 19);
             this.lbl_OriginSpacing.TabIndex = 14;
@@ -272,7 +273,12 @@
             // nud_MinimumOriginSpacing
             // 
             this.nud_MinimumOriginSpacing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_MinimumOriginSpacing.Location = new System.Drawing.Point(170, 150);
+            this.nud_MinimumOriginSpacing.Location = new System.Drawing.Point(174, 160);
+            this.nud_MinimumOriginSpacing.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.nud_MinimumOriginSpacing.Minimum = new decimal(new int[] {
             5,
             0,
@@ -282,10 +288,14 @@
             this.nud_MinimumOriginSpacing.Size = new System.Drawing.Size(49, 20);
             this.nud_MinimumOriginSpacing.TabIndex = 15;
             this.nud_MinimumOriginSpacing.Value = new decimal(new int[] {
-            5,
+            15,
             0,
             0,
             0});
+            // 
+            // fntd_FontSelector
+            // 
+            this.fntd_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // form_Window
             // 
@@ -329,6 +339,7 @@
         private System.Windows.Forms.NumericUpDown nud_TerritoryRadiusBound2;
         private System.Windows.Forms.NumericUpDown nud_MinimumOriginSpacing;
         private System.Windows.Forms.Label lbl_OriginSpacing;
+        private System.Windows.Forms.FontDialog fntd_FontSelector;
     }
 }
 
