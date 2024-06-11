@@ -106,6 +106,14 @@ namespace ContinentMapCreator
             UpdateDisplaySettings();
         }
 
+        // btn_FontSelector
+        // Click        -> Select font then redraw
+        private void btn_FontSelector_Click(object sender, EventArgs e)
+        {
+            fntd_FontSelector.ShowDialog();
+            UpdateDisplaySettings();
+        }
+
         // pnl_MapBackground
         // Paint        -> Call Draw() method to redraw screen when refreshed
         // DoubleClick  -> Regenerate new territory origins

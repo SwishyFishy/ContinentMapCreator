@@ -45,6 +45,7 @@
             this.lbl_OriginSpacing = new System.Windows.Forms.Label();
             this.nud_MinimumOriginSpacing = new System.Windows.Forms.NumericUpDown();
             this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
+            this.btn_FontSelector = new System.Windows.Forms.Button();
             this.pnl_SettingsBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound2)).BeginInit();
@@ -59,6 +60,7 @@
             this.pnl_SettingsBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_SettingsBackground.BackColor = System.Drawing.Color.Aquamarine;
+            this.pnl_SettingsBackground.Controls.Add(this.btn_FontSelector);
             this.pnl_SettingsBackground.Controls.Add(this.nud_MinimumOriginSpacing);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound1);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound2);
@@ -195,7 +197,7 @@
             this.chb_CleanBorders.Checked = true;
             this.chb_CleanBorders.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chb_CleanBorders.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_CleanBorders.Location = new System.Drawing.Point(19, 780);
+            this.chb_CleanBorders.Location = new System.Drawing.Point(18, 744);
             this.chb_CleanBorders.Name = "chb_CleanBorders";
             this.chb_CleanBorders.Size = new System.Drawing.Size(120, 23);
             this.chb_CleanBorders.TabIndex = 8;
@@ -297,6 +299,18 @@
             // 
             this.fntd_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
+            // btn_FontSelector
+            // 
+            this.btn_FontSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FontSelector.Location = new System.Drawing.Point(18, 773);
+            this.btn_FontSelector.Name = "btn_FontSelector";
+            this.btn_FontSelector.Size = new System.Drawing.Size(120, 30);
+            this.btn_FontSelector.TabIndex = 16;
+            this.btn_FontSelector.Text = "Select Font";
+            this.btn_FontSelector.UseVisualStyleBackColor = false;
+            this.btn_FontSelector.Click += new System.EventHandler(this.btn_FontSelector_Click);
+            // 
             // form_Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +354,7 @@
         private System.Windows.Forms.NumericUpDown nud_MinimumOriginSpacing;
         private System.Windows.Forms.Label lbl_OriginSpacing;
         private System.Windows.Forms.FontDialog fntd_FontSelector;
+        private System.Windows.Forms.Button btn_FontSelector;
     }
 }
 
