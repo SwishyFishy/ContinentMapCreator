@@ -35,96 +35,6 @@ namespace ContinentMapCreator
             InitializeComponent();
         }
 
-        // Event Handlers
-        // form_Window
-        // Load         -> Set window proportions and load initial assets
-        private void form_Window_Load(object sender, EventArgs e)
-        {
-            // Set window size
-            Size windowSize = new Size(WINDOW_WIDTH, WINDOW_HEIGHT);
-            this.Size = windowSize;
-            this.MaximumSize = windowSize;
-            this.MinimumSize = windowSize;
-            this.Location = new Point(75, 75);
-
-            // Set interior panel sizes
-            pnl_SettingsBackground.Width = (int)(SETTINGS_WIDTH_PROPORTION * this.ClientSize.Width);
-            pnl_SettingsBackground.Height = this.ClientSize.Height;
-            pnl_SettingsBackground.Location = new Point(0, 0);
-
-            pnl_MapBackground.Width = (int)(MAP_WIDTH_PROPORTION * this.ClientSize.Width);
-            pnl_MapBackground.Height = this.ClientSize.Height;
-            pnl_MapBackground.Location = new Point(pnl_SettingsBackground.Width, 0);
-
-            // Add Tooltips
-            tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Bounds 1/2 the maximum allowed distance across a territory.");
-            tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Bounds the number of territories.");
-            tip_SettingsDetails.SetToolTip(lbl_OriginSpacing, "Minimum distance between territory origin points. Higher values generate more uniform maps");
-
-            tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly");
-
-            // Add Controls
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound1);
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound2);
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound1);
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound2);
-            pnl_SettingsBackground.Controls.Add(nud_MinimumOriginSpacing);
-
-            pnl_SettingsBackground.Controls.Add(chb_CleanBorders);
-            pnl_SettingsBackground.Controls.Add(btn_Generate);
-
-            // Set control defaults
-            UpdateDisplaySettings();
-            btn_Generate.Enabled = true;
-        }
-
-        // btn_Generate
-        // Click        -> Generate new map
-        private void btn_Generate_Click(object sender, EventArgs e)
-        {
-            lbl_NewWindowPrompt.Visible = false;
-            foreach (Control control in pnl_SettingsBackground.Controls)
-            {
-                control.Enabled = false;
-            }
-            UpdateGenerationSettings();
-            GenerateTerritoryOrigins();
-            GenerateTerritoryBorders();
-            allowPainting = true;
-            Refresh();
-            allowPainting = false; 
-            foreach (Control control in pnl_SettingsBackground.Controls)
-            {
-                control.Enabled = true;
-            }
-        }
-
-        // chb_CleanBorders
-        // Check        -> Redraw
-        private void chb_CleanBorders_CheckChanged(object sender, EventArgs e)
-        {
-            UpdateDisplaySettings();
-        }
-
-        // btn_FontSelector
-        // Click        -> Select font then redraw
-        private void btn_FontSelector_Click(object sender, EventArgs e)
-        {
-            fntd_FontSelector.ShowDialog();
-            UpdateDisplaySettings();
-        }
-
-        // pnl_MapBackground
-        // Paint        -> Call Draw() method to redraw screen when refreshed
-        // DoubleClick  -> Regenerate new territory origins
-        private void pnl_MapBackground_Paint(object sender, PaintEventArgs e)
-        {
-            if (allowPainting)
-            {
-                Draw(e);
-            }
-        }
-
         // Methods
         // Update the map generation settings based on user input
         private void UpdateGenerationSettings()
@@ -273,7 +183,6 @@ namespace ContinentMapCreator
             TerritoryBorders = new Point[numBorderPoints];
             Array.Copy(PointsOnBorder, TerritoryBorders, numBorderPoints);
         }
-
 
         // Draw the screen
         private void Draw(PaintEventArgs e)
