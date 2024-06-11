@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_SettingsBackground = new System.Windows.Forms.Panel();
+            this.btn_BorderColourSelector = new System.Windows.Forms.Button();
+            this.btn_LandColourSelector = new System.Windows.Forms.Button();
+            this.btn_OceanColourSelector = new System.Windows.Forms.Button();
             this.btn_FontSelector = new System.Windows.Forms.Button();
             this.nud_MinimumOriginSpacing = new System.Windows.Forms.NumericUpDown();
             this.nud_TerritoryRadiusBound1 = new System.Windows.Forms.NumericUpDown();
@@ -47,9 +50,7 @@
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
             this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
             this.clrd_ColourSelector = new System.Windows.Forms.ColorDialog();
-            this.btn_OceanColourSelector = new System.Windows.Forms.Button();
-            this.btn_LandColourSelector = new System.Windows.Forms.Button();
-            this.btn_BorderColourSelector = new System.Windows.Forms.Button();
+            this.btn_FontColourSelector = new System.Windows.Forms.Button();
             this.pnl_SettingsBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
@@ -64,6 +65,7 @@
             this.pnl_SettingsBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_SettingsBackground.BackColor = System.Drawing.Color.Aquamarine;
+            this.pnl_SettingsBackground.Controls.Add(this.btn_FontColourSelector);
             this.pnl_SettingsBackground.Controls.Add(this.btn_BorderColourSelector);
             this.pnl_SettingsBackground.Controls.Add(this.btn_LandColourSelector);
             this.pnl_SettingsBackground.Controls.Add(this.btn_OceanColourSelector);
@@ -84,6 +86,42 @@
             this.pnl_SettingsBackground.Name = "pnl_SettingsBackground";
             this.pnl_SettingsBackground.Size = new System.Drawing.Size(250, 862);
             this.pnl_SettingsBackground.TabIndex = 0;
+            // 
+            // btn_BorderColourSelector
+            // 
+            this.btn_BorderColourSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_BorderColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_BorderColourSelector.Location = new System.Drawing.Point(18, 737);
+            this.btn_BorderColourSelector.Name = "btn_BorderColourSelector";
+            this.btn_BorderColourSelector.Size = new System.Drawing.Size(164, 30);
+            this.btn_BorderColourSelector.TabIndex = 19;
+            this.btn_BorderColourSelector.Text = "Select Border Colour";
+            this.btn_BorderColourSelector.UseVisualStyleBackColor = false;
+            this.btn_BorderColourSelector.Click += new System.EventHandler(this.btn_BorderColourSelector_Click);
+            // 
+            // btn_LandColourSelector
+            // 
+            this.btn_LandColourSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_LandColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_LandColourSelector.Location = new System.Drawing.Point(18, 701);
+            this.btn_LandColourSelector.Name = "btn_LandColourSelector";
+            this.btn_LandColourSelector.Size = new System.Drawing.Size(164, 30);
+            this.btn_LandColourSelector.TabIndex = 18;
+            this.btn_LandColourSelector.Text = "Select Territory Colour";
+            this.btn_LandColourSelector.UseVisualStyleBackColor = false;
+            this.btn_LandColourSelector.Click += new System.EventHandler(this.btn_LandColourSelector_Click);
+            // 
+            // btn_OceanColourSelector
+            // 
+            this.btn_OceanColourSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_OceanColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_OceanColourSelector.Location = new System.Drawing.Point(18, 665);
+            this.btn_OceanColourSelector.Name = "btn_OceanColourSelector";
+            this.btn_OceanColourSelector.Size = new System.Drawing.Size(164, 30);
+            this.btn_OceanColourSelector.TabIndex = 17;
+            this.btn_OceanColourSelector.Text = "Select Ocean Colour";
+            this.btn_OceanColourSelector.UseVisualStyleBackColor = false;
+            this.btn_OceanColourSelector.Click += new System.EventHandler(this.btn_OceanColourSelector_Click);
             // 
             // btn_FontSelector
             // 
@@ -324,38 +362,18 @@
             this.clrd_ColourSelector.AllowFullOpen = false;
             this.clrd_ColourSelector.ShowHelp = true;
             // 
-            // btn_OceanColourSelector
+            // btn_FontColourSelector
             // 
-            this.btn_OceanColourSelector.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_OceanColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_OceanColourSelector.Location = new System.Drawing.Point(18, 665);
-            this.btn_OceanColourSelector.Name = "btn_OceanColourSelector";
-            this.btn_OceanColourSelector.Size = new System.Drawing.Size(164, 30);
-            this.btn_OceanColourSelector.TabIndex = 17;
-            this.btn_OceanColourSelector.Text = "Select Ocean Colour";
-            this.btn_OceanColourSelector.UseVisualStyleBackColor = false;
-            // 
-            // btn_LandColourSelector
-            // 
-            this.btn_LandColourSelector.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_LandColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_LandColourSelector.Location = new System.Drawing.Point(18, 701);
-            this.btn_LandColourSelector.Name = "btn_LandColourSelector";
-            this.btn_LandColourSelector.Size = new System.Drawing.Size(164, 30);
-            this.btn_LandColourSelector.TabIndex = 18;
-            this.btn_LandColourSelector.Text = "Select Territory Colour";
-            this.btn_LandColourSelector.UseVisualStyleBackColor = false;
-            // 
-            // btn_BorderColourSelector
-            // 
-            this.btn_BorderColourSelector.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_BorderColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_BorderColourSelector.Location = new System.Drawing.Point(18, 737);
-            this.btn_BorderColourSelector.Name = "btn_BorderColourSelector";
-            this.btn_BorderColourSelector.Size = new System.Drawing.Size(164, 30);
-            this.btn_BorderColourSelector.TabIndex = 19;
-            this.btn_BorderColourSelector.Text = "Select Border Colour";
-            this.btn_BorderColourSelector.UseVisualStyleBackColor = false;
+            this.btn_FontColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_FontColourSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_FontColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FontColourSelector.Location = new System.Drawing.Point(68, 773);
+            this.btn_FontColourSelector.Name = "btn_FontColourSelector";
+            this.btn_FontColourSelector.Size = new System.Drawing.Size(164, 30);
+            this.btn_FontColourSelector.TabIndex = 17;
+            this.btn_FontColourSelector.Text = "Select Font Colour";
+            this.btn_FontColourSelector.UseVisualStyleBackColor = false;
+            this.btn_FontColourSelector.Click += new System.EventHandler(this.btn_FontColourSelector_Click);
             // 
             // form_Window
             // 
@@ -405,6 +423,7 @@
         private System.Windows.Forms.Button btn_BorderColourSelector;
         private System.Windows.Forms.Button btn_LandColourSelector;
         private System.Windows.Forms.Button btn_OceanColourSelector;
+        private System.Windows.Forms.Button btn_FontColourSelector;
     }
 }
 

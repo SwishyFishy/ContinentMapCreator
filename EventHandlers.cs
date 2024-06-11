@@ -47,8 +47,60 @@ namespace ContinentMapCreator
             tip_SettingsDetails.SetToolTip(btn_FontSelector, "Select font for location names.");
 
             // Set control defaults
-            UpdateDisplaySettings();
+            UpdateDisplay();
             btn_Generate.Enabled = true;
+        }
+
+        // chb_CleanBorders
+        // Check        -> Redraw
+        private void chb_CleanBorders_CheckChanged(object sender, EventArgs e)
+        {
+            UpdateDisplay();
+        }
+
+        // btn_OceanColourSelector
+        // Click        -> Open clrd_ColourSelector and set OCEAN_COLOUR then redraw
+        private void btn_OceanColourSelector_Click(object sender, EventArgs e)
+        {
+            clrd_ColourSelector.ShowDialog();
+            OCEAN_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
+            UpdateDisplay();
+        }
+
+        // btn_LandColourSelector
+        // Click        -> Open clrd_ColourSelector and set LAND_COLOUR then redraw
+        private void btn_LandColourSelector_Click(object sender, EventArgs e)
+        {
+            clrd_ColourSelector.ShowDialog();
+            LAND_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
+            UpdateDisplay();
+        }
+
+        // btn_BorderColourSelector
+        // Click        -> Open clrd_ColourSelector and set BORDER_COLOUR then redraw
+        private void btn_BorderColourSelector_Click(object sender, EventArgs e)
+        {
+            clrd_ColourSelector.ShowDialog();
+            BORDER_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
+            UpdateDisplay();
+        }
+
+        // btn_FontSelector
+        // Click        -> Open fntd_FontSelector and set DISPLAY_FONT then redraw
+        private void btn_FontSelector_Click(object sender, EventArgs e)
+        {
+            fntd_FontSelector.ShowDialog();
+            DISPLAY_FONT = fntd_FontSelector.Font;
+            UpdateDisplay();
+        }
+
+        // btn_FontColourSelector
+        // Click        -> Open clrd_ColourSelector and set NAME_COLOUR then redraw
+        private void btn_FontColourSelector_Click(object sender, EventArgs e)
+        {
+            clrd_ColourSelector.ShowDialog();
+            BORDER_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
+            UpdateDisplay();
         }
 
         // btn_Generate
@@ -70,21 +122,6 @@ namespace ContinentMapCreator
             {
                 control.Enabled = true;
             }
-        }
-
-        // chb_CleanBorders
-        // Check        -> Redraw
-        private void chb_CleanBorders_CheckChanged(object sender, EventArgs e)
-        {
-            UpdateDisplaySettings();
-        }
-
-        // btn_FontSelector
-        // Click        -> Select font then redraw
-        private void btn_FontSelector_Click(object sender, EventArgs e)
-        {
-            fntd_FontSelector.ShowDialog();
-            UpdateDisplaySettings();
         }
 
         // pnl_MapBackground

@@ -23,10 +23,10 @@ namespace ContinentMapCreator
         // Aesthetic Settings
         static bool ROUGH_BORDERS = true;
         static Font DISPLAY_FONT = new Font("Carlito", 12, FontStyle.Bold);
-        static Brush LAND_COLOUR = Brushes.Bisque;
-        static Brush OCEAN_COLOUR = Brushes.Blue;
-        static Brush NAME_COLOUR = Brushes.Black;
-        static Brush BORDER_COLOUR = Brushes.Black;
+        static SolidBrush LAND_COLOUR = new SolidBrush(Color.Bisque);
+        static SolidBrush OCEAN_COLOUR = new SolidBrush(Color.Blue);
+        static SolidBrush NAME_COLOUR = new SolidBrush(Color.Black);
+        static SolidBrush BORDER_COLOUR = new SolidBrush(Color.Black);
         static float BORDER_THICKNESS = 3.0F;
         static float BORDER_OFFSET = 1.5F;
 
@@ -56,11 +56,10 @@ namespace ContinentMapCreator
             // MIN_ORIGIN_SPACING based on nud_MinimumOriginSpacing
             MIN_ORIGIN_SPACING = (int)nud_MinimumOriginSpacing.Value;
         }
-        private void UpdateDisplaySettings()
+        private void UpdateDisplay()
         {
             // ROUGH_BORDERS based on chb_CleanBorders
             ROUGH_BORDERS = chb_CleanBorders.Checked ? false : true;
-            DISPLAY_FONT = fntd_FontSelector.Font;
 
             // BORDER_OFFSET based on BORDER_THICKNESS
             BORDER_OFFSET = BORDER_THICKNESS / 2.0F;
@@ -211,15 +210,6 @@ namespace ContinentMapCreator
                 e.Graphics.FillEllipse(LAND_COLOUR, xOffset, yOffset, 2 * Territories[i].MaxRadius, 2 * Territories[i].MaxRadius);
             }
 
-            // Draw TerritoryOrigins and Territory names
-            for (int i = 0; i < NUM_TERRITORIES; i++)
-            {
-                xOffset = Territories[i].Origin.X - BORDER_OFFSET;
-                yOffset = Territories[i].Origin.Y - BORDER_OFFSET;
-                e.Graphics.DrawRectangle(borderPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
-                e.Graphics.DrawString(i.ToString(), DISPLAY_FONT, NAME_COLOUR, Territories[i].Origin.X, Territories[i].Origin.Y);
-            }
-
             // Draw Borders
             for (int i = 0; i < TerritoryBorders.Length; i++)
             {
@@ -227,6 +217,16 @@ namespace ContinentMapCreator
                 xOffset = TerritoryBorders[i].X + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0) - BORDER_OFFSET;
                 yOffset = TerritoryBorders[i].Y + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0) - BORDER_OFFSET;
                 e.Graphics.DrawRectangle(borderPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
+
+            }
+            
+            // Draw TerritoryOrigins and Territory names
+            for (int i = 0; i < NUM_TERRITORIES; i++)
+            {
+                xOffset = Territories[i].Origin.X - BORDER_OFFSET;
+                yOffset = Territories[i].Origin.Y - BORDER_OFFSET;
+                e.Graphics.DrawRectangle(borderPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
+                e.Graphics.DrawString(i.ToString(), DISPLAY_FONT, NAME_COLOUR, Territories[i].Origin.X, Territories[i].Origin.Y);
             }
 
             borderPen.Dispose();
