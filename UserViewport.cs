@@ -306,6 +306,7 @@ namespace ContinentMapCreator
             {
                 xOffset = Lakes[i].Origin.X - Lakes[i].MajorRadius;
                 yOffset = Lakes[i].Origin.Y - Lakes[i].MinorRadius;
+
                 // Rotates about (0, 0), need to rotate about Lake Origin
                 e.Graphics.RotateTransform((float)(Lakes[i].Angle * 180 / Math.PI));
                 e.Graphics.FillEllipse(OCEAN_COLOUR, xOffset, yOffset, 2 * Lakes[i].MajorRadius, 2 * Lakes[i].MinorRadius);

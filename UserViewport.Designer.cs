@@ -57,6 +57,9 @@
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
             this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
             this.clrd_ColourSelector = new System.Windows.Forms.ColorDialog();
+            this.lbl_LakeRadius = new System.Windows.Forms.Label();
+            this.nud_LakeRadiusBound1 = new System.Windows.Forms.NumericUpDown();
+            this.nud_LakeRadiusBound2 = new System.Windows.Forms.NumericUpDown();
             this.pnl_SettingsBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound1)).BeginInit();
@@ -67,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound1)).BeginInit();
             this.pnl_MapBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_SettingsBackground
@@ -74,6 +79,9 @@
             this.pnl_SettingsBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_SettingsBackground.BackColor = System.Drawing.Color.Aquamarine;
+            this.pnl_SettingsBackground.Controls.Add(this.nud_LakeRadiusBound2);
+            this.pnl_SettingsBackground.Controls.Add(this.nud_LakeRadiusBound1);
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeRadius);
             this.pnl_SettingsBackground.Controls.Add(this.nud_LakeFrequencyBound2);
             this.pnl_SettingsBackground.Controls.Add(this.nud_LakeFrequencyBound1);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeCount);
@@ -472,6 +480,62 @@
             // 
             this.clrd_ColourSelector.AnyColor = true;
             // 
+            // lbl_LakeRadius
+            // 
+            this.lbl_LakeRadius.AutoSize = true;
+            this.lbl_LakeRadius.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LakeRadius.Location = new System.Drawing.Point(14, 238);
+            this.lbl_LakeRadius.Name = "lbl_LakeRadius";
+            this.lbl_LakeRadius.Size = new System.Drawing.Size(140, 19);
+            this.lbl_LakeRadius.TabIndex = 26;
+            this.lbl_LakeRadius.Text = "Lake Radius (Range)";
+            // 
+            // nud_LakeRadiusBound1
+            // 
+            this.nud_LakeRadiusBound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nud_LakeRadiusBound1.Location = new System.Drawing.Point(174, 238);
+            this.nud_LakeRadiusBound1.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.nud_LakeRadiusBound1.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.nud_LakeRadiusBound1.Name = "nud_LakeRadiusBound1";
+            this.nud_LakeRadiusBound1.Size = new System.Drawing.Size(49, 20);
+            this.nud_LakeRadiusBound1.TabIndex = 27;
+            this.nud_LakeRadiusBound1.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            // 
+            // nud_LakeRadiusBound2
+            // 
+            this.nud_LakeRadiusBound2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nud_LakeRadiusBound2.Location = new System.Drawing.Point(174, 264);
+            this.nud_LakeRadiusBound2.Maximum = new decimal(new int[] {
+            250,
+            0,
+            0,
+            0});
+            this.nud_LakeRadiusBound2.Minimum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.nud_LakeRadiusBound2.Name = "nud_LakeRadiusBound2";
+            this.nud_LakeRadiusBound2.Size = new System.Drawing.Size(49, 20);
+            this.nud_LakeRadiusBound2.TabIndex = 28;
+            this.nud_LakeRadiusBound2.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+            // 
             // form_Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,6 +561,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound1)).EndInit();
             this.pnl_MapBackground.ResumeLayout(false);
             this.pnl_MapBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -531,6 +597,9 @@
         private System.Windows.Forms.NumericUpDown nud_LakeFrequencyBound2;
         private System.Windows.Forms.NumericUpDown nud_LakeFrequencyBound1;
         private System.Windows.Forms.Label lbl_LakeCount;
+        private System.Windows.Forms.NumericUpDown nud_LakeRadiusBound1;
+        private System.Windows.Forms.Label lbl_LakeRadius;
+        private System.Windows.Forms.NumericUpDown nud_LakeRadiusBound2;
     }
 }
 
