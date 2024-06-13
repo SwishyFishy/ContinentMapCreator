@@ -15,10 +15,16 @@ namespace ContinentMapCreator
         // Map Creation Settings
         static int MIN_NUM_TERRITORIES = 12;
         static int MAX_NUM_TERRITORIES = 18;
-        static int NUM_TERRITORIES = 16;
-        static int MIN_TERRITORY_RADIUS = 200;
-        static int MAX_TERRITORY_RADIUS = 200;
+        static int NUM_TERRITORIES;
+        static int MIN_TERRITORY_RADIUS = 150;
+        static int MAX_TERRITORY_RADIUS = 250;
+        static int TERRITORY_RADIUS;
         static int MIN_ORIGIN_SPACING = 5;
+        static int MIN_NUM_LAKES = 3;
+        static int MAX_NUM_LAKES = 7;
+        static int NUM_LAKES;
+        static int MIN_LAKE_RADIUS = 25;
+        static int MAX_LAKE_RADIUS = 75;
 
         // Aesthetic Settings
         static bool ROUGH_BORDERS = true;
@@ -33,6 +39,7 @@ namespace ContinentMapCreator
         // Generation args
         bool allowPainting = false;
         Territory[] Territories;
+        Lake[] Lakes;
         Point[] PointsOnBorder = new Point[WINDOW_WIDTH * WINDOW_HEIGHT];
         Point[] TerritoryBorders;
 
@@ -55,6 +62,12 @@ namespace ContinentMapCreator
 
             // MIN_ORIGIN_SPACING based on nud_MinimumOriginSpacing
             MIN_ORIGIN_SPACING = (int)nud_MinimumOriginSpacing.Value;
+
+            // MIN_NUM_LAKES & MAX_NUM_LAKES based on nud_LakeCountBound1 & nud_LakeCountBound2
+            MIN_NUM_LAKES = Math.Min((int)nud_LakeFrequencyBound1.Value, (int)nud_LakeFrequencyBound2.Value); 
+            MIN_NUM_LAKES = Math.Max((int)nud_LakeFrequencyBound1.Value, (int)nud_LakeFrequencyBound2.Value);
+
+            // MIN_LAKE_RADIUS & MAX_LAKE_RADIUS based on nud_LakeRadiusBound1 & nud_LakeRadiusBound2
         }
         private void UpdateDisplay()
         {
@@ -85,23 +98,25 @@ namespace ContinentMapCreator
         // Populate TerritoryOrigins array with random points
         private void GenerateTerritoryOrigins()
         {
-            // Pick random points for territory origins
+            // Pick random points for Territory origins
             Random rnd = new Random();
             NUM_TERRITORIES = rnd.Next(MIN_NUM_TERRITORIES, MAX_NUM_TERRITORIES + 1);
-            int radius = rnd.Next(MIN_TERRITORY_RADIUS, MAX_TERRITORY_RADIUS);
+            TERRITORY_RADIUS = rnd.Next(MIN_TERRITORY_RADIUS, MAX_TERRITORY_RADIUS);
             Territories = new Territory[NUM_TERRITORIES];
+
+            // Set Territory origin boundaries
+            int minX = 0;
+            int maxX = pnl_MapBackground.Width;
+            int minY = 0;
+            int maxY = pnl_MapBackground.Height;
+            Point origin = new Point();
+            bool spacingVerified;
 
             for (int i = 0; i < NUM_TERRITORIES; i++)
             {
-                // Set territory origin boundaries
-                int minX = 0;
-                int maxX = pnl_MapBackground.Width;
-                int minY = 0;
-                int maxY = pnl_MapBackground.Height;
+                spacingVerified = false;
 
                 // Generate random (x, y) coordinates for this origin that are sufficiently distanced from all others
-                Point origin = new Point();
-                bool spacingVerified = false;
                 while (!spacingVerified)
                 {
                     spacingVerified = true;
@@ -118,7 +133,57 @@ namespace ContinentMapCreator
                 }
 
                 // Add a new Territory at the generated origin
-                Territories[i] = new Territory(origin, radius);
+                Territories[i] = new Territory(origin, TERRITORY_RADIUS);
+            }
+        }
+
+        // Populate Lakes array
+        private void GenerateLakes()
+        {
+            // Pick random points for Lake origins
+            Random rnd = new Random();
+            NUM_LAKES = rnd.Next(MIN_NUM_LAKES, MAX_NUM_LAKES);
+            Lakes = new Lake[NUM_LAKES];
+
+            // Set Lake origin boundaries
+            int minX = 0;
+            int maxX = pnl_MapBackground.Width;
+            int minY = 0;
+            int maxY = pnl_MapBackground.Height;
+            Point origin = new Point();
+            int rad1;
+            int rad2;
+            double angle;
+            bool spacingVerified;
+
+            // Repeat once per lake
+            for (int i = 0; i < NUM_LAKES; i++)
+            {
+                spacingVerified = false;
+
+                // Generate random (x, y) coordinates for this origin that are sufficiently distanced from all others
+                while (!spacingVerified)
+                {
+                    spacingVerified = true;
+
+                    // Set the lake's origin, radii, and angle above the horizontal
+                    origin = new Point(rnd.Next(minX, maxX), rnd.Next(minY, maxY));
+                    rad1 = rnd.Next(MIN_LAKE_RADIUS, MAX_LAKE_RADIUS);
+                    rad2 = rnd.Next(MIN_LAKE_RADIUS, MAX_LAKE_RADIUS);
+                    angle = rnd.NextDouble();
+
+                    // Add a new Lake at a random origin
+                    Lakes[i] = new Lake(origin, rad1, rad2, angle);
+
+                    // Check that lake does not contain any Territory origins
+                    for (int j = 0; j < NUM_TERRITORIES; j++)
+                    {
+                        if (Lakes[i].LakeBoundsContains(Territories[j].Origin))
+                        {
+                            spacingVerified = false;
+                        }
+                    }
+                }
             }
         }
 
@@ -133,10 +198,30 @@ namespace ContinentMapCreator
             {
                 for (int y = 0; y < pnl_MapBackground.Height; y++)
                 {
+                    bool inLake = false;
+                    bool onLakeBorder = false;
+                    Point thisPixel = new Point(x, y);
+
+                    // If this point is contained within a lake, move on
+                    for (int i = 0; i < NUM_LAKES; i++)
+                    {
+                        if (Lakes[i].LakeBoundsContains(thisPixel))
+                        {
+                            inLake = true;
+                        }
+                        else if (Lakes[i].LakeBorderContains(thisPixel))
+                        {
+                            onLakeBorder = true;
+                        }
+                    }
+                    if (inLake)
+                    {
+                        continue;
+                    }
+
                     // Get the distance between this point and each TerritoryOrigin
                     // -1 indicates that the point is too far away from that TerritoryOrigin to be inside it
                     // As the loop progresses, track which indices in distancesToOrigins are those of the closest and second-closest territories
-                    Point thisPixel = new Point(x, y);
                     int[] distancesToOrigins = new int[NUM_TERRITORIES];
                     int closestOriginIndex = -1;
                     int secondClosestOriginIndex = -1;
@@ -162,12 +247,19 @@ namespace ContinentMapCreator
                         }
                     }
 
-                    // If no TerritoryOrigins are close enough for that Territory to contain this point, continue
+                    // Point is too far from any Territory Origin to be land
                     if (distancesToOrigins[closestOriginIndex] > Territories[closestOriginIndex].MaxRadius)
                     {
                         continue;
                     }
-                    // If only one TerritoryOrigin is close enough for that Territory to contain this point, make it a border if it is on the edge
+                    // Point is on the border of a lake and is within the bounds of at least one Territory
+                    else if (onLakeBorder && distancesToOrigins[closestOriginIndex] <= Territories[closestOriginIndex].MaxRadius)
+                    {
+                        PointsOnBorder[numBorderPoints] = thisPixel;
+                        numBorderPoints++;
+                        Territories[closestOriginIndex].IsCoastal = true;
+                    }
+                    // Point is exactly a Territory's Radius from its Origin, and is closer to that TErritory than any other.
                     else if (distancesToOrigins[closestOriginIndex] == Territories[closestOriginIndex].MaxRadius && 
                         distancesToOrigins[secondClosestOriginIndex] > Territories[secondClosestOriginIndex].MaxRadius)
                     {
@@ -175,7 +267,7 @@ namespace ContinentMapCreator
                         numBorderPoints++;
                         Territories[closestOriginIndex].IsCoastal = true;
                     }
-                    // If two TerritoryOrigins are close enough for those Territories to contain this point, mark it a border if it is equidstant from both Origins
+                    // Point is equidistant from two Territory Origins, and is within the bounds of both Territories, and is closer to those two Territories than any others
                     else if (distancesToOrigins[secondClosestOriginIndex] <= Territories[secondClosestOriginIndex].MaxRadius && 
                         distancesToOrigins[closestOriginIndex] == distancesToOrigins[secondClosestOriginIndex])
                     {
@@ -209,6 +301,14 @@ namespace ContinentMapCreator
                 e.Graphics.FillEllipse(LAND_COLOUR, xOffset, yOffset, 2 * Territories[i].MaxRadius, 2 * Territories[i].MaxRadius);
             }
 
+            // Draw Lakes
+            for (int i = 0; i < NUM_LAKES; i++)
+            {
+                xOffset = Lakes[i].Origin.X - Lakes[i].MajorRadius;
+                yOffset = Lakes[i].Origin.Y - Lakes[i].MinorRadius;
+                e.Graphics.FillEllipse(OCEAN_COLOUR, xOffset, yOffset, 2 * Lakes[i].MajorRadius, 2 * Lakes[i].MinorRadius);
+            }
+
             // Draw Borders
             for (int i = 0; i < TerritoryBorders.Length; i++)
             {
@@ -230,11 +330,6 @@ namespace ContinentMapCreator
 
             borderPen.Dispose();
             locationPen.Dispose();
-        }
-
-        private void form_Window_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

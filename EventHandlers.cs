@@ -33,6 +33,8 @@ namespace ContinentMapCreator
             pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound1);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound2);
             pnl_SettingsBackground.Controls.Add(nud_MinimumOriginSpacing);
+            pnl_SettingsBackground.Controls.Add(nud_LakeFrequencyBound1);
+            pnl_SettingsBackground.Controls.Add(nud_LakeFrequencyBound2);
 
             pnl_SettingsBackground.Controls.Add(trk_BorderThickness);
             pnl_SettingsBackground.Controls.Add(chb_CleanBorders);
@@ -43,6 +45,7 @@ namespace ContinentMapCreator
             tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Bounds 1/2 the maximum allowed distance across a territory.");
             tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Bounds the number of territories.");
             tip_SettingsDetails.SetToolTip(lbl_OriginSpacing, "Minimum distance between territory origin points. Higher values generate more uniform maps.");
+            tip_SettingsDetails.SetToolTip(lbl_LakeCount, "Bounds the number of lakes");
 
             tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Number of pixels each border extends into territories from its centerline.");
             tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly.");
@@ -129,6 +132,7 @@ namespace ContinentMapCreator
             }
             UpdateGenerationSettings();
             GenerateTerritoryOrigins();
+            GenerateLakes();
             GenerateTerritoryBorders();
             allowPainting = true;
             Refresh();

@@ -10,17 +10,18 @@ namespace ContinentMapCreator
         public Point Origin { get; set; }
         public int MajorRadius { get; set; }
         public int MinorRadius { get; set; }
-        public int Angle { get; set; }
+        public double Angle { get; set; }
         public Point Focus1 { get; set; }
         public Point Focus2 { get; set; }
 
         // Constructor
-        public Lake(Point origin, int rad1, int rad2, int angle)
+        public Lake(Point origin, int rad1, int rad2, double angle)
         {
             Origin = origin;
             MajorRadius = Math.Max(rad1, rad2);
             MinorRadius = Math.Min(rad1, rad2);
-            Angle = angle;
+            //Angle = 2 * Math.PI * angle;
+            Angle = 0;
 
             // Determine focal points assuming angle = 0
             int focalLength = (int)Math.Sqrt(Math.Pow(MajorRadius, 2) - Math.Pow(MinorRadius, 2));
@@ -44,13 +45,22 @@ namespace ContinentMapCreator
         }
 
         // Methods
+        public bool LakeBorderContains(Point point)
+        {
+            double distanceToFocus1 = Math.Sqrt(Math.Pow(point.X - Focus1.X, 2) + Math.Pow(point.Y - Focus1.Y, 2));
+            double distanceToFocus2 = Math.Sqrt(Math.Pow(point.X - Focus2.X, 2) + Math.Pow(point.Y - Focus2.Y, 2));
+            int sumDistance = (int)(distanceToFocus1 + distanceToFocus2);
+
+            return sumDistance == 2 * MajorRadius ? true : false;
+        }
+
         public bool LakeBoundsContains(Point point)
         {
             double distanceToFocus1 = Math.Sqrt(Math.Pow(point.X - Focus1.X, 2) + Math.Pow(point.Y - Focus1.Y, 2));
             double distanceToFocus2 = Math.Sqrt(Math.Pow(point.X - Focus2.X, 2) + Math.Pow(point.Y - Focus2.Y, 2));
             int sumDistance = (int)(distanceToFocus1 + distanceToFocus2);
 
-            return sumDistance <= 2 * MajorRadius ? true : false;
+            return sumDistance < 2 * MajorRadius ? true : false;
         }
     }
 }
