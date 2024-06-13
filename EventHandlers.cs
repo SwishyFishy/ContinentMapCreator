@@ -34,6 +34,7 @@ namespace ContinentMapCreator
             pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound2);
             pnl_SettingsBackground.Controls.Add(nud_MinimumOriginSpacing);
 
+            pnl_SettingsBackground.Controls.Add(trk_BorderThickness);
             pnl_SettingsBackground.Controls.Add(chb_CleanBorders);
             pnl_SettingsBackground.Controls.Add(btn_FontSelector);
             pnl_SettingsBackground.Controls.Add(btn_Generate);
@@ -43,12 +44,26 @@ namespace ContinentMapCreator
             tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Bounds the number of territories.");
             tip_SettingsDetails.SetToolTip(lbl_OriginSpacing, "Minimum distance between territory origin points. Higher values generate more uniform maps.");
 
+            tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Number of pixels each border extends into territories from its centerline.");
             tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly.");
             tip_SettingsDetails.SetToolTip(btn_FontSelector, "Select font for location names.");
 
             // Set control defaults
             UpdateDisplay();
             btn_Generate.Enabled = true;
+        }
+
+
+        // trk_BorderThickness
+        // Scroll       -> Update the displayed value
+        // MouseUp      -> Redraw
+        private void trk_BorderThickness_Scroll(object sender, EventArgs e)
+        {
+            lbl_BorderThicknessDisplay.Text = trk_BorderThickness.Value.ToString();
+        }
+        private void trk_BorderThickness_MouseUp(object sender, EventArgs e)
+        {
+            UpdateDisplay();
         }
 
         // chb_CleanBorders

@@ -58,11 +58,12 @@ namespace ContinentMapCreator
         }
         private void UpdateDisplay()
         {
+            // BORDER_THICKNESS & BORDER_OFFSET based on trk_BorderThickness
+            BORDER_THICKNESS = (float)(trk_BorderThickness.Value / 10.0);
+            BORDER_OFFSET = BORDER_THICKNESS / 2.0F;
+
             // ROUGH_BORDERS based on chb_CleanBorders
             ROUGH_BORDERS = chb_CleanBorders.Checked ? false : true;
-
-            // BORDER_OFFSET based on BORDER_THICKNESS
-            BORDER_OFFSET = BORDER_THICKNESS / 2.0F;
 
             // Redraw map
             if (!lbl_NewWindowPrompt.Visible)
@@ -229,6 +230,11 @@ namespace ContinentMapCreator
 
             borderPen.Dispose();
             locationPen.Dispose();
+        }
+
+        private void form_Window_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

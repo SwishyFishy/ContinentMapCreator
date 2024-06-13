@@ -30,11 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_SettingsBackground = new System.Windows.Forms.Panel();
+            this.lbl_BorderThicknessDisplay = new System.Windows.Forms.Label();
+            this.trk_BorderThickness = new System.Windows.Forms.TrackBar();
+            this.btn_OceanColourSelector = new System.Windows.Forms.Button();
+            this.lbl_BorderThickness = new System.Windows.Forms.Label();
             this.btn_FontColourSelector = new System.Windows.Forms.Button();
             this.btn_BorderColourSelector = new System.Windows.Forms.Button();
             this.btn_LandColourSelector = new System.Windows.Forms.Button();
-            this.btn_OceanColourSelector = new System.Windows.Forms.Button();
-            this.btn_FontSelector = new System.Windows.Forms.Button();
             this.nud_MinimumOriginSpacing = new System.Windows.Forms.NumericUpDown();
             this.nud_TerritoryRadiusBound1 = new System.Windows.Forms.NumericUpDown();
             this.nud_TerritoryRadiusBound2 = new System.Windows.Forms.NumericUpDown();
@@ -46,18 +48,25 @@
             this.lbl_TerritoryRadius = new System.Windows.Forms.Label();
             this.lbl_OriginSpacing = new System.Windows.Forms.Label();
             this.lbl_TerritoryCount = new System.Windows.Forms.Label();
+            this.btn_FontSelector = new System.Windows.Forms.Button();
             this.pnl_MapBackground = new System.Windows.Forms.Panel();
             this.lbl_NewWindowPrompt = new System.Windows.Forms.Label();
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
             this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
             this.clrd_ColourSelector = new System.Windows.Forms.ColorDialog();
+            this.lbl_LakeFrequency = new System.Windows.Forms.Label();
+            this.nud_LakeFrequencyBound1 = new System.Windows.Forms.NumericUpDown();
+            this.nud_LakeFrequencyBound2 = new System.Windows.Forms.NumericUpDown();
             this.pnl_SettingsBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_BorderThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound1)).BeginInit();
             this.pnl_MapBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_SettingsBackground
@@ -65,11 +74,16 @@
             this.pnl_SettingsBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_SettingsBackground.BackColor = System.Drawing.Color.Aquamarine;
+            this.pnl_SettingsBackground.Controls.Add(this.nud_LakeFrequencyBound2);
+            this.pnl_SettingsBackground.Controls.Add(this.nud_LakeFrequencyBound1);
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeFrequency);
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_BorderThicknessDisplay);
+            this.pnl_SettingsBackground.Controls.Add(this.trk_BorderThickness);
+            this.pnl_SettingsBackground.Controls.Add(this.btn_OceanColourSelector);
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_BorderThickness);
             this.pnl_SettingsBackground.Controls.Add(this.btn_FontColourSelector);
             this.pnl_SettingsBackground.Controls.Add(this.btn_BorderColourSelector);
             this.pnl_SettingsBackground.Controls.Add(this.btn_LandColourSelector);
-            this.pnl_SettingsBackground.Controls.Add(this.btn_OceanColourSelector);
-            this.pnl_SettingsBackground.Controls.Add(this.btn_FontSelector);
             this.pnl_SettingsBackground.Controls.Add(this.nud_MinimumOriginSpacing);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound1);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound2);
@@ -81,11 +95,59 @@
             this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryRadius);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_OriginSpacing);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryCount);
+            this.pnl_SettingsBackground.Controls.Add(this.btn_FontSelector);
             this.pnl_SettingsBackground.Location = new System.Drawing.Point(0, 0);
             this.pnl_SettingsBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_SettingsBackground.Name = "pnl_SettingsBackground";
             this.pnl_SettingsBackground.Size = new System.Drawing.Size(250, 862);
             this.pnl_SettingsBackground.TabIndex = 0;
+            // 
+            // lbl_BorderThicknessDisplay
+            // 
+            this.lbl_BorderThicknessDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_BorderThicknessDisplay.AutoSize = true;
+            this.lbl_BorderThicknessDisplay.Location = new System.Drawing.Point(204, 646);
+            this.lbl_BorderThicknessDisplay.Name = "lbl_BorderThicknessDisplay";
+            this.lbl_BorderThicknessDisplay.Size = new System.Drawing.Size(19, 13);
+            this.lbl_BorderThicknessDisplay.TabIndex = 22;
+            this.lbl_BorderThicknessDisplay.Text = "20";
+            // 
+            // trk_BorderThickness
+            // 
+            this.trk_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trk_BorderThickness.Location = new System.Drawing.Point(68, 614);
+            this.trk_BorderThickness.Maximum = 40;
+            this.trk_BorderThickness.Minimum = 10;
+            this.trk_BorderThickness.Name = "trk_BorderThickness";
+            this.trk_BorderThickness.Size = new System.Drawing.Size(164, 45);
+            this.trk_BorderThickness.TabIndex = 20;
+            this.trk_BorderThickness.Value = 20;
+            this.trk_BorderThickness.Scroll += new System.EventHandler(this.trk_BorderThickness_Scroll);
+            this.trk_BorderThickness.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trk_BorderThickness_MouseUp);
+            // 
+            // btn_OceanColourSelector
+            // 
+            this.btn_OceanColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_OceanColourSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_OceanColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_OceanColourSelector.Location = new System.Drawing.Point(68, 665);
+            this.btn_OceanColourSelector.Name = "btn_OceanColourSelector";
+            this.btn_OceanColourSelector.Size = new System.Drawing.Size(164, 30);
+            this.btn_OceanColourSelector.TabIndex = 17;
+            this.btn_OceanColourSelector.Text = "Select Ocean Colour";
+            this.btn_OceanColourSelector.UseVisualStyleBackColor = false;
+            this.btn_OceanColourSelector.Click += new System.EventHandler(this.btn_OceanColourSelector_Click);
+            // 
+            // lbl_BorderThickness
+            // 
+            this.lbl_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_BorderThickness.AutoSize = true;
+            this.lbl_BorderThickness.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_BorderThickness.Location = new System.Drawing.Point(14, 614);
+            this.lbl_BorderThickness.Name = "lbl_BorderThickness";
+            this.lbl_BorderThickness.Size = new System.Drawing.Size(120, 19);
+            this.lbl_BorderThickness.TabIndex = 21;
+            this.lbl_BorderThickness.Text = "Border Thickness";
             // 
             // btn_FontColourSelector
             // 
@@ -125,32 +187,6 @@
             this.btn_LandColourSelector.Text = "Select Territory Colour";
             this.btn_LandColourSelector.UseVisualStyleBackColor = false;
             this.btn_LandColourSelector.Click += new System.EventHandler(this.btn_LandColourSelector_Click);
-            // 
-            // btn_OceanColourSelector
-            // 
-            this.btn_OceanColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_OceanColourSelector.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_OceanColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_OceanColourSelector.Location = new System.Drawing.Point(68, 665);
-            this.btn_OceanColourSelector.Name = "btn_OceanColourSelector";
-            this.btn_OceanColourSelector.Size = new System.Drawing.Size(164, 30);
-            this.btn_OceanColourSelector.TabIndex = 17;
-            this.btn_OceanColourSelector.Text = "Select Ocean Colour";
-            this.btn_OceanColourSelector.UseVisualStyleBackColor = false;
-            this.btn_OceanColourSelector.Click += new System.EventHandler(this.btn_OceanColourSelector_Click);
-            // 
-            // btn_FontSelector
-            // 
-            this.btn_FontSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_FontSelector.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FontSelector.Location = new System.Drawing.Point(18, 773);
-            this.btn_FontSelector.Name = "btn_FontSelector";
-            this.btn_FontSelector.Size = new System.Drawing.Size(164, 30);
-            this.btn_FontSelector.TabIndex = 16;
-            this.btn_FontSelector.Text = "Select Font";
-            this.btn_FontSelector.UseVisualStyleBackColor = false;
-            this.btn_FontSelector.Click += new System.EventHandler(this.btn_FontSelector_Click);
             // 
             // nud_MinimumOriginSpacing
             // 
@@ -338,6 +374,19 @@
             this.lbl_TerritoryCount.TabIndex = 11;
             this.lbl_TerritoryCount.Text = "Number Of Territories (Range)";
             // 
+            // btn_FontSelector
+            // 
+            this.btn_FontSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_FontSelector.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_FontSelector.Location = new System.Drawing.Point(18, 773);
+            this.btn_FontSelector.Name = "btn_FontSelector";
+            this.btn_FontSelector.Size = new System.Drawing.Size(164, 30);
+            this.btn_FontSelector.TabIndex = 16;
+            this.btn_FontSelector.Text = "Select Font";
+            this.btn_FontSelector.UseVisualStyleBackColor = false;
+            this.btn_FontSelector.Click += new System.EventHandler(this.btn_FontSelector_Click);
+            // 
             // pnl_MapBackground
             // 
             this.pnl_MapBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -377,6 +426,50 @@
             // 
             this.clrd_ColourSelector.AnyColor = true;
             // 
+            // lbl_LakeFrequency
+            // 
+            this.lbl_LakeFrequency.AutoSize = true;
+            this.lbl_LakeFrequency.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LakeFrequency.Location = new System.Drawing.Point(14, 187);
+            this.lbl_LakeFrequency.Name = "lbl_LakeFrequency";
+            this.lbl_LakeFrequency.Size = new System.Drawing.Size(164, 19);
+            this.lbl_LakeFrequency.TabIndex = 23;
+            this.lbl_LakeFrequency.Text = "Lake Frequency (Range)";
+            // 
+            // nud_LakeFrequencyBound1
+            // 
+            this.nud_LakeFrequencyBound1.Location = new System.Drawing.Point(174, 186);
+            this.nud_LakeFrequencyBound1.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nud_LakeFrequencyBound1.Name = "nud_LakeFrequencyBound1";
+            this.nud_LakeFrequencyBound1.Size = new System.Drawing.Size(49, 20);
+            this.nud_LakeFrequencyBound1.TabIndex = 24;
+            this.nud_LakeFrequencyBound1.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            // 
+            // nud_LakeFrequencyBound2
+            // 
+            this.nud_LakeFrequencyBound2.Location = new System.Drawing.Point(174, 212);
+            this.nud_LakeFrequencyBound2.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nud_LakeFrequencyBound2.Name = "nud_LakeFrequencyBound2";
+            this.nud_LakeFrequencyBound2.Size = new System.Drawing.Size(49, 20);
+            this.nud_LakeFrequencyBound2.TabIndex = 25;
+            this.nud_LakeFrequencyBound2.Value = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            // 
             // form_Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,6 +477,7 @@
             this.ClientSize = new System.Drawing.Size(984, 861);
             this.Controls.Add(this.pnl_MapBackground);
             this.Controls.Add(this.pnl_SettingsBackground);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "form_Window";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Continent Mapper";
@@ -391,6 +485,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_MapBackground_Paint);
             this.pnl_SettingsBackground.ResumeLayout(false);
             this.pnl_SettingsBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_BorderThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound2)).EndInit();
@@ -398,6 +493,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound1)).EndInit();
             this.pnl_MapBackground.ResumeLayout(false);
             this.pnl_MapBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -426,6 +523,12 @@
         private System.Windows.Forms.Button btn_LandColourSelector;
         private System.Windows.Forms.Button btn_OceanColourSelector;
         private System.Windows.Forms.Button btn_FontColourSelector;
+        private System.Windows.Forms.TrackBar trk_BorderThickness;
+        private System.Windows.Forms.Label lbl_BorderThickness;
+        private System.Windows.Forms.Label lbl_BorderThicknessDisplay;
+        private System.Windows.Forms.NumericUpDown nud_LakeFrequencyBound2;
+        private System.Windows.Forms.NumericUpDown nud_LakeFrequencyBound1;
+        private System.Windows.Forms.Label lbl_LakeFrequency;
     }
 }
 

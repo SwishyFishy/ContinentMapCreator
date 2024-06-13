@@ -49,6 +49,7 @@
     <Compile Include="EventHandlers.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Lake.cs" />
     <Compile Include="Territory.cs" />
     <Compile Include="UserViewport.cs">
       <SubType>Form</SubType>
