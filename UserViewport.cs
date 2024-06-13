@@ -35,11 +35,14 @@ namespace ContinentMapCreator
         static SolidBrush BORDER_COLOUR = new SolidBrush(Color.FromArgb(0, 64, 0));
         static float BORDER_THICKNESS = 2.0F;
         static float BORDER_OFFSET = 1.0F;
+        static float LOCATION_MARKER_THICKNESS;
+        static float LOCATION_MAKRER_OFFSET;
 
         // Generation args
         bool allowPainting = false;
         Territory[] Territories;
         Lake[] Lakes;
+        Point[,] DefiningLakePoints;
         Point[] PointsOnBorder = new Point[WINDOW_WIDTH * WINDOW_HEIGHT];
         Point[] TerritoryBorders;
 
@@ -65,9 +68,11 @@ namespace ContinentMapCreator
 
             // MIN_NUM_LAKES & MAX_NUM_LAKES based on nud_LakeCountBound1 & nud_LakeCountBound2
             MIN_NUM_LAKES = Math.Min((int)nud_LakeFrequencyBound1.Value, (int)nud_LakeFrequencyBound2.Value); 
-            MIN_NUM_LAKES = Math.Max((int)nud_LakeFrequencyBound1.Value, (int)nud_LakeFrequencyBound2.Value);
+            MAX_NUM_LAKES = Math.Max((int)nud_LakeFrequencyBound1.Value, (int)nud_LakeFrequencyBound2.Value);
 
             // MIN_LAKE_RADIUS & MAX_LAKE_RADIUS based on nud_LakeRadiusBound1 & nud_LakeRadiusBound2
+            MIN_LAKE_RADIUS = Math.Min((int)nud_LakeRadiusBound1.Value, (int)nud_LakeRadiusBound2.Value);
+            MAX_LAKE_RADIUS = Math.Max((int)nud_LakeRadiusBound1.Value, (int)nud_LakeRadiusBound2.Value);
         }
         private void UpdateDisplay()
         {
@@ -144,6 +149,7 @@ namespace ContinentMapCreator
             Random rnd = new Random();
             NUM_LAKES = rnd.Next(MIN_NUM_LAKES, MAX_NUM_LAKES);
             Lakes = new Lake[NUM_LAKES];
+            DefiningLakePoints = new Point[4, NUM_LAKES];
 
             // Set Lake origin boundaries
             int minX = 0;
@@ -304,13 +310,7 @@ namespace ContinentMapCreator
             // Draw Lakes
             for (int i = 0; i < NUM_LAKES; i++)
             {
-                xOffset = Lakes[i].Origin.X - Lakes[i].MajorRadius;
-                yOffset = Lakes[i].Origin.Y - Lakes[i].MinorRadius;
-
-                // Rotates about (0, 0), need to rotate about Lake Origin
-                e.Graphics.RotateTransform((float)(Lakes[i].Angle * 180 / Math.PI));
-                e.Graphics.FillEllipse(OCEAN_COLOUR, xOffset, yOffset, 2 * Lakes[i].MajorRadius, 2 * Lakes[i].MinorRadius);
-                e.Graphics.RotateTransform((float)-(Lakes[i].Angle * 180 / Math.PI));
+                e.Graphics.FillClosedCurve(OCEAN_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.9F);
             }
 
             // Draw Borders

@@ -28,13 +28,15 @@ namespace ContinentMapCreator
             pnl_MapBackground.Location = new Point(pnl_SettingsBackground.Width, 0);
 
             // Add Controls
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound1);
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound2);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound1);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound2);
+            pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound1);
+            pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound2);
             pnl_SettingsBackground.Controls.Add(nud_MinimumOriginSpacing);
             pnl_SettingsBackground.Controls.Add(nud_LakeFrequencyBound1);
             pnl_SettingsBackground.Controls.Add(nud_LakeFrequencyBound2);
+            pnl_SettingsBackground.Controls.Add(nud_LakeRadiusBound1);
+            pnl_SettingsBackground.Controls.Add(nud_LakeRadiusBound2);
 
             pnl_SettingsBackground.Controls.Add(trk_BorderThickness);
             pnl_SettingsBackground.Controls.Add(chb_CleanBorders);
@@ -42,10 +44,11 @@ namespace ContinentMapCreator
             pnl_SettingsBackground.Controls.Add(btn_Generate);
 
             // Add Tooltips
-            tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Bounds 1/2 the maximum allowed distance across a territory.");
             tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Bounds the number of territories.");
+            tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Bounds 1/2 the maximum allowed distance across a territory.");
             tip_SettingsDetails.SetToolTip(lbl_OriginSpacing, "Minimum distance between territory origin points. Higher values generate more uniform maps.");
             tip_SettingsDetails.SetToolTip(lbl_LakeCount, "Bounds the number of lakes");
+            tip_SettingsDetails.SetToolTip(lbl_LakeRadius, "Bounds 1/2 the maximum allowed distance across a lake. Randomized per instance.");
 
             tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Number of pixels each border extends into territories from its centerline.");
             tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly.");
