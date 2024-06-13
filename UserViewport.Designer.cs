@@ -36,8 +36,8 @@
             this.nud_LakeRadiusBound2 = new System.Windows.Forms.NumericUpDown();
             this.nud_LakeRadiusBound1 = new System.Windows.Forms.NumericUpDown();
             this.lbl_LakeRadius = new System.Windows.Forms.Label();
-            this.nud_LakeFrequencyBound2 = new System.Windows.Forms.NumericUpDown();
-            this.nud_LakeFrequencyBound1 = new System.Windows.Forms.NumericUpDown();
+            this.nud_LakeCountBound2 = new System.Windows.Forms.NumericUpDown();
+            this.nud_LakeCountBound1 = new System.Windows.Forms.NumericUpDown();
             this.lbl_LakeCount = new System.Windows.Forms.Label();
             this.lbl_BorderThicknessDisplay = new System.Windows.Forms.Label();
             this.trk_BorderThickness = new System.Windows.Forms.TrackBar();
@@ -69,8 +69,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_LocationThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeCountBound2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeCountBound1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_BorderThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
@@ -91,8 +91,8 @@
             this.pnl_SettingsBackground.Controls.Add(this.nud_LakeRadiusBound2);
             this.pnl_SettingsBackground.Controls.Add(this.nud_LakeRadiusBound1);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeRadius);
-            this.pnl_SettingsBackground.Controls.Add(this.nud_LakeFrequencyBound2);
-            this.pnl_SettingsBackground.Controls.Add(this.nud_LakeFrequencyBound1);
+            this.pnl_SettingsBackground.Controls.Add(this.nud_LakeCountBound2);
+            this.pnl_SettingsBackground.Controls.Add(this.nud_LakeCountBound1);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeCount);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_BorderThicknessDisplay);
             this.pnl_SettingsBackground.Controls.Add(this.trk_BorderThickness);
@@ -212,37 +212,37 @@
             this.lbl_LakeRadius.TabIndex = 26;
             this.lbl_LakeRadius.Text = "Lake Radius (Range)";
             // 
-            // nud_LakeFrequencyBound2
+            // nud_LakeCountBound2
             // 
-            this.nud_LakeFrequencyBound2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_LakeFrequencyBound2.Location = new System.Drawing.Point(174, 229);
-            this.nud_LakeFrequencyBound2.Maximum = new decimal(new int[] {
+            this.nud_LakeCountBound2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nud_LakeCountBound2.Location = new System.Drawing.Point(174, 229);
+            this.nud_LakeCountBound2.Maximum = new decimal(new int[] {
             32,
             0,
             0,
             0});
-            this.nud_LakeFrequencyBound2.Name = "nud_LakeFrequencyBound2";
-            this.nud_LakeFrequencyBound2.Size = new System.Drawing.Size(49, 20);
-            this.nud_LakeFrequencyBound2.TabIndex = 25;
-            this.nud_LakeFrequencyBound2.Value = new decimal(new int[] {
+            this.nud_LakeCountBound2.Name = "nud_LakeCountBound2";
+            this.nud_LakeCountBound2.Size = new System.Drawing.Size(49, 20);
+            this.nud_LakeCountBound2.TabIndex = 25;
+            this.nud_LakeCountBound2.Value = new decimal(new int[] {
             20,
             0,
             0,
             0});
             // 
-            // nud_LakeFrequencyBound1
+            // nud_LakeCountBound1
             // 
-            this.nud_LakeFrequencyBound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_LakeFrequencyBound1.Location = new System.Drawing.Point(174, 203);
-            this.nud_LakeFrequencyBound1.Maximum = new decimal(new int[] {
+            this.nud_LakeCountBound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nud_LakeCountBound1.Location = new System.Drawing.Point(174, 203);
+            this.nud_LakeCountBound1.Maximum = new decimal(new int[] {
             32,
             0,
             0,
             0});
-            this.nud_LakeFrequencyBound1.Name = "nud_LakeFrequencyBound1";
-            this.nud_LakeFrequencyBound1.Size = new System.Drawing.Size(49, 20);
-            this.nud_LakeFrequencyBound1.TabIndex = 24;
-            this.nud_LakeFrequencyBound1.Value = new decimal(new int[] {
+            this.nud_LakeCountBound1.Name = "nud_LakeCountBound1";
+            this.nud_LakeCountBound1.Size = new System.Drawing.Size(49, 20);
+            this.nud_LakeCountBound1.TabIndex = 24;
+            this.nud_LakeCountBound1.Value = new decimal(new int[] {
             10,
             0,
             0,
@@ -624,8 +624,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_LocationThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeCountBound2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_LakeCountBound1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_BorderThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).EndInit();
@@ -665,8 +665,8 @@
         private System.Windows.Forms.TrackBar trk_BorderThickness;
         private System.Windows.Forms.Label lbl_BorderThickness;
         private System.Windows.Forms.Label lbl_BorderThicknessDisplay;
-        private System.Windows.Forms.NumericUpDown nud_LakeFrequencyBound2;
-        private System.Windows.Forms.NumericUpDown nud_LakeFrequencyBound1;
+        private System.Windows.Forms.NumericUpDown nud_LakeCountBound2;
+        private System.Windows.Forms.NumericUpDown nud_LakeCountBound1;
         private System.Windows.Forms.Label lbl_LakeCount;
         private System.Windows.Forms.NumericUpDown nud_LakeRadiusBound1;
         private System.Windows.Forms.Label lbl_LakeRadius;

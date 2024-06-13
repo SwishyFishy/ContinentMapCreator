@@ -34,8 +34,8 @@ namespace ContinentMapCreator
             pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound1);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound2);
             pnl_SettingsBackground.Controls.Add(nud_MinimumOriginSpacing);
-            pnl_SettingsBackground.Controls.Add(nud_LakeFrequencyBound1);
-            pnl_SettingsBackground.Controls.Add(nud_LakeFrequencyBound2);
+            pnl_SettingsBackground.Controls.Add(nud_LakeCountBound1);
+            pnl_SettingsBackground.Controls.Add(nud_LakeCountBound2);
             pnl_SettingsBackground.Controls.Add(nud_LakeRadiusBound1);
             pnl_SettingsBackground.Controls.Add(nud_LakeRadiusBound2);
 
@@ -59,6 +59,7 @@ namespace ContinentMapCreator
 
             // Set control defaults
             UpdateDisplay();
+            PresetDefaults();
             btn_Generate.Enabled = true;
         }
 

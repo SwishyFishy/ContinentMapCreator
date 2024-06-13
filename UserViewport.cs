@@ -12,19 +12,19 @@ namespace ContinentMapCreator
         const double MAP_WIDTH_PROPORTION = (double)1 - SETTINGS_WIDTH_PROPORTION;
 
         // Map Creation Settings
-        static bool FULL_CONTINENT = false;
-        static int MIN_NUM_TERRITORIES = 12;
-        static int MAX_NUM_TERRITORIES = 18;
+        static bool FULL_CONTINENT;
+        static int MIN_NUM_TERRITORIES;
+        static int MAX_NUM_TERRITORIES;
         static int NUM_TERRITORIES;
-        static int MIN_TERRITORY_RADIUS = 150;
-        static int MAX_TERRITORY_RADIUS = 250;
+        static int MIN_TERRITORY_RADIUS;
+        static int MAX_TERRITORY_RADIUS;
         static int TERRITORY_RADIUS;
-        static int MIN_ORIGIN_SPACING = 5;
-        static int MIN_NUM_LAKES = 3;
-        static int MAX_NUM_LAKES = 7;
+        static int MIN_ORIGIN_SPACING;
+        static int MIN_NUM_LAKES;
+        static int MAX_NUM_LAKES;
         static int NUM_LAKES;
-        static int MIN_LAKE_RADIUS = 25;
-        static int MAX_LAKE_RADIUS = 75;
+        static int MIN_LAKE_RADIUS;
+        static int MAX_LAKE_RADIUS;
 
         // Aesthetic Settings
         static bool ROUGH_BORDERS = true;

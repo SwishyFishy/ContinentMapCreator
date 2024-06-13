@@ -25,8 +25,8 @@ namespace ContinentMapCreator
             MIN_ORIGIN_SPACING = (int)nud_MinimumOriginSpacing.Value;
 
             // MIN_NUM_LAKES & MAX_NUM_LAKES based on nud_LakeCountBound1 & nud_LakeCountBound2
-            MIN_NUM_LAKES = Math.Min((int)nud_LakeFrequencyBound1.Value, (int)nud_LakeFrequencyBound2.Value);
-            MAX_NUM_LAKES = Math.Max((int)nud_LakeFrequencyBound1.Value, (int)nud_LakeFrequencyBound2.Value);
+            MIN_NUM_LAKES = Math.Min((int)nud_LakeCountBound1.Value, (int)nud_LakeCountBound2.Value);
+            MAX_NUM_LAKES = Math.Max((int)nud_LakeCountBound1.Value, (int)nud_LakeCountBound2.Value);
 
             // MIN_LAKE_RADIUS & MAX_LAKE_RADIUS based on nud_LakeRadiusBound1 & nud_LakeRadiusBound2
             MIN_LAKE_RADIUS = Math.Min((int)nud_LakeRadiusBound1.Value, (int)nud_LakeRadiusBound2.Value);
