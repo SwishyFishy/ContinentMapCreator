@@ -50,7 +50,13 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lake.cs" />
+    <Compile Include="Methods.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Territory.cs" />
+    <Compile Include="TypePresets.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserViewport.cs">
       <SubType>Form</SubType>
     </Compile>
