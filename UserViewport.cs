@@ -13,6 +13,7 @@ namespace ContinentMapCreator
         const double MAP_WIDTH_PROPORTION = (double)1 - SETTINGS_WIDTH_PROPORTION;
 
         // Map Creation Settings
+        static bool FULL_CONTINENT = false;
         static int MIN_NUM_TERRITORIES = 12;
         static int MAX_NUM_TERRITORIES = 18;
         static int NUM_TERRITORIES;
@@ -26,11 +27,16 @@ namespace ContinentMapCreator
         static int MIN_LAKE_RADIUS = 25;
         static int MAX_LAKE_RADIUS = 75;
 
+        const int MIN_COASTLINE_DEPTH = 5;
+        const int MAX_COASTLINE_DEPTH = 50;
+        const int MIN_COASTLINE_WIDTH = 25;
+        const int MAX_COASTLINE_WIDTH = 200;
+
         // Aesthetic Settings
         static bool ROUGH_BORDERS = true;
         static Font DISPLAY_FONT = new Font("Carlito", 12, FontStyle.Bold);
         static SolidBrush LAND_COLOUR = new SolidBrush(Color.FromArgb(128, 128, 64));
-        static SolidBrush OCEAN_COLOUR = new SolidBrush(Color.FromArgb(0, 128, 192));
+        static SolidBrush WATER_COLOUR = new SolidBrush(Color.FromArgb(0, 128, 192));
         static SolidBrush LOCATION_COLOUR = new SolidBrush(Color.FromArgb(0, 0, 0));
         static SolidBrush BORDER_COLOUR = new SolidBrush(Color.FromArgb(0, 64, 0));
         static float BORDER_THICKNESS = 2.0F;
@@ -42,7 +48,6 @@ namespace ContinentMapCreator
         bool allowPainting = false;
         Territory[] Territories;
         Lake[] Lakes;
-        Point[,] DefiningLakePoints;
         Point[] PointsOnBorder = new Point[WINDOW_WIDTH * WINDOW_HEIGHT];
         Point[] TerritoryBorders;
 
@@ -55,6 +60,9 @@ namespace ContinentMapCreator
         // Update the map generation settings based on user input
         private void UpdateGenerationSettings()
         {
+            // FULL_CONTINENT based on chb_FullContinent
+            FULL_CONTINENT = chb_FullContinent.Checked ? true : false;
+
             // MIN_TERRITORY_RADIUS & MAX_TERRITORY_RADIUS based on nud_TerritoryRadiusBound1 & nud_TerritoryRadiusBound2
             MIN_TERRITORY_RADIUS = Math.Min((int)nud_TerritoryRadiusBound1.Value, (int)nud_TerritoryRadiusBound2.Value);
             MAX_TERRITORY_RADIUS = Math.Max((int)nud_TerritoryRadiusBound1.Value, (int)nud_TerritoryRadiusBound2.Value);
@@ -90,17 +98,16 @@ namespace ContinentMapCreator
             // Redraw map
             if (!lbl_TutorialSettingsPanel.Visible)
             {
-                foreach (Control control in pnl_SettingsBackground.Controls)
-                {
-                    control.Enabled = false;
-                }
+                // Disable controls
+                pnl_SettingsBackground.Enabled = false;
+
+                // Redraw
                 allowPainting = true;
                 Refresh();
-                allowPainting = false; 
-                foreach (Control control in pnl_SettingsBackground.Controls)
-                {
-                    control.Enabled = true;
-                }
+                allowPainting = false;
+
+                // Reenable controls
+                pnl_SettingsBackground.Enabled = true;
             }
         }
 
@@ -114,10 +121,10 @@ namespace ContinentMapCreator
             Territories = new Territory[NUM_TERRITORIES];
 
             // Set Territory origin boundaries
-            int minX = 0;
-            int maxX = pnl_MapBackground.Width;
-            int minY = 0;
-            int maxY = pnl_MapBackground.Height;
+            int minX = FULL_CONTINENT ? MAX_COASTLINE_DEPTH : 0;
+            int maxX = FULL_CONTINENT ? pnl_MapBackground.Width - MAX_COASTLINE_DEPTH : pnl_MapBackground.Width;
+            int minY = FULL_CONTINENT ? MAX_COASTLINE_DEPTH : 0;
+            int maxY = FULL_CONTINENT ? pnl_MapBackground.Height - MAX_COASTLINE_DEPTH : pnl_MapBackground.Height;
             Point origin = new Point();
             bool spacingVerified;
 
@@ -147,14 +154,15 @@ namespace ContinentMapCreator
         }
 
         // Populate Lakes array
-        private void GenerateLakes()
-        {
-            // Pick random points for Lake origins
+        private void GenerateWater()
+        { 
             Random rnd = new Random();
             NUM_LAKES = rnd.Next(MIN_NUM_LAKES, MAX_NUM_LAKES);
-            Lakes = new Lake[NUM_LAKES];
-            DefiningLakePoints = new Point[4, NUM_LAKES];
+            Lake[] inlandLakes = new Lake[NUM_LAKES];
+            int numCoastalLakes = 0;
+            Lake[] coastalLakes = new Lake[numCoastalLakes];
 
+            // Inland lakes
             // Set Lake origin boundaries
             int minX = 0;
             int maxX = pnl_MapBackground.Width;
@@ -183,18 +191,26 @@ namespace ContinentMapCreator
                     angle = rnd.NextDouble();
 
                     // Add a new Lake at a random origin
-                    Lakes[i] = new Lake(origin, rad1, rad2, angle);
+                    inlandLakes[i] = new Lake(origin, rad1, rad2, angle);
 
                     // Check that lake does not contain any Territory origins
                     for (int j = 0; j < NUM_TERRITORIES; j++)
                     {
-                        if (Lakes[i].LakeBoundsContains(Territories[j].Origin))
+                        if (inlandLakes[i].LakeBoundsContains(Territories[j].Origin))
                         {
                             spacingVerified = false;
                         }
                     }
                 }
             }
+
+            // Coastline for full continent setting
+            if (FULL_CONTINENT)
+            { }
+
+            // Merge lake arrays
+            Lakes = new Lake[NUM_LAKES];
+            Array.Copy(inlandLakes, Lakes, NUM_LAKES);
         }
 
         // Calculate territory borders and mark coastal territories as such
@@ -301,7 +317,7 @@ namespace ContinentMapCreator
             float yOffset;
 
             // Draw Ocean
-            e.Graphics.FillRectangle(OCEAN_COLOUR, 0, 0, pnl_MapBackground.Width, pnl_MapBackground.Height);
+            e.Graphics.FillRectangle(WATER_COLOUR, 0, 0, pnl_MapBackground.Width, pnl_MapBackground.Height);
 
             // Draw Territories
             for (int i = 0; i < NUM_TERRITORIES; i++)
@@ -314,7 +330,7 @@ namespace ContinentMapCreator
             // Draw Lakes
             for (int i = 0; i < NUM_LAKES; i++)
             {
-                e.Graphics.FillClosedCurve(OCEAN_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.95F);
+                e.Graphics.FillClosedCurve(WATER_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.95F);
             }
 
             // Draw Borders

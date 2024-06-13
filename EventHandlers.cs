@@ -28,6 +28,7 @@ namespace ContinentMapCreator
             pnl_MapBackground.Location = new Point(pnl_SettingsBackground.Width, 0);
 
             // Add Controls
+            pnl_SettingsBackground.Controls.Add(chb_FullContinent);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound1);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound2);
             pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound1);
@@ -45,6 +46,7 @@ namespace ContinentMapCreator
             pnl_SettingsBackground.Controls.Add(btn_Generate);
 
             // Add Tooltips
+            tip_SettingsDetails.SetToolTip(chb_FullContinent, "Surround generated land with ocean.");
             tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Bounds the number of territories.");
             tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Bounds 1/2 the maximum allowed distance across a territory.");
             tip_SettingsDetails.SetToolTip(lbl_OriginSpacing, "Minimum distance between territory origin points. Higher values generate more uniform maps.");
@@ -54,7 +56,6 @@ namespace ContinentMapCreator
             tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Number of pixels across each border.");
             tip_SettingsDetails.SetToolTip(lbl_LocationThickness, "Number of pixels across each location marker.");
             tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly.");
-            tip_SettingsDetails.SetToolTip(btn_FontSelector, "Select font for location names.");
 
             // Set control defaults
             UpdateDisplay();
@@ -94,11 +95,11 @@ namespace ContinentMapCreator
         }
 
         // btn_OceanColourSelector
-        // Click        -> Open clrd_ColourSelector and set OCEAN_COLOUR then redraw
+        // Click        -> Open clrd_ColourSelector and set WATER_COLOUR then redraw
         private void btn_OceanColourSelector_Click(object sender, EventArgs e)
         {
             clrd_ColourSelector.ShowDialog();
-            OCEAN_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
+            WATER_COLOUR = new SolidBrush(clrd_ColourSelector.Color);
             UpdateDisplay();
         }
 
@@ -150,7 +151,7 @@ namespace ContinentMapCreator
             // Call the generation methods
             UpdateGenerationSettings();
             GenerateTerritoryOrigins();
-            GenerateLakes();
+            GenerateWater();
             GenerateTerritoryBorders();
 
             // Redraw the screen
