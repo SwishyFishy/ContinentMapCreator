@@ -39,6 +39,7 @@ namespace ContinentMapCreator
             pnl_SettingsBackground.Controls.Add(nud_LakeRadiusBound2);
 
             pnl_SettingsBackground.Controls.Add(trk_BorderThickness);
+            pnl_SettingsBackground.Controls.Add(trk_LocationThickness);
             pnl_SettingsBackground.Controls.Add(chb_CleanBorders);
             pnl_SettingsBackground.Controls.Add(btn_FontSelector);
             pnl_SettingsBackground.Controls.Add(btn_Generate);
@@ -47,10 +48,11 @@ namespace ContinentMapCreator
             tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Bounds the number of territories.");
             tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Bounds 1/2 the maximum allowed distance across a territory.");
             tip_SettingsDetails.SetToolTip(lbl_OriginSpacing, "Minimum distance between territory origin points. Higher values generate more uniform maps.");
-            tip_SettingsDetails.SetToolTip(lbl_LakeCount, "Bounds the number of lakes");
+            tip_SettingsDetails.SetToolTip(lbl_LakeCount, "Bounds the number of lakes.");
             tip_SettingsDetails.SetToolTip(lbl_LakeRadius, "Bounds 1/2 the maximum allowed distance across a lake. Randomized per instance.");
 
-            tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Number of pixels each border extends into territories from its centerline.");
+            tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Number of pixels across each border.");
+            tip_SettingsDetails.SetToolTip(lbl_LocationThickness, "Number of pixels across each location marker.");
             tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly.");
             tip_SettingsDetails.SetToolTip(btn_FontSelector, "Select font for location names.");
 
@@ -65,9 +67,21 @@ namespace ContinentMapCreator
         // MouseUp      -> Redraw
         private void trk_BorderThickness_Scroll(object sender, EventArgs e)
         {
-            lbl_BorderThicknessDisplay.Text = trk_BorderThickness.Value.ToString();
+            lbl_BorderThicknessDisplay.Text = (trk_BorderThickness.Value / 10.0F).ToString();
         }
         private void trk_BorderThickness_MouseUp(object sender, EventArgs e)
+        {
+            UpdateDisplay();
+        }
+
+        // trk_LocationThickness
+        // Scroll       -> Update the displayed value
+        // MouseUp      -> Redraw
+        private void trk_LocationThickness_Scroll(object sender, EventArgs e)
+        {
+            lbl_LocationThicknessDisplay.Text = (trk_LocationThickness.Value / 10.0F).ToString();
+        }
+        private void trk_LocationThickness_MouseUp(object sender, EventArgs e)
         {
             UpdateDisplay();
         }
@@ -128,22 +142,24 @@ namespace ContinentMapCreator
         // Click        -> Generate new map
         private void btn_Generate_Click(object sender, EventArgs e)
         {
-            lbl_NewWindowPrompt.Visible = false;
-            foreach (Control control in pnl_SettingsBackground.Controls)
-            {
-                control.Enabled = false;
-            }
+            // Disable controls and hide new window tutorial labels
+            pnl_SettingsBackground.Enabled = false;
+            lbl_TutorialSettingsPanel.Visible = false;
+            lbl_TutorialSettingsHover.Visible = false;
+
+            // Call the generation methods
             UpdateGenerationSettings();
             GenerateTerritoryOrigins();
             GenerateLakes();
             GenerateTerritoryBorders();
+
+            // Redraw the screen
             allowPainting = true;
             Refresh();
             allowPainting = false;
-            foreach (Control control in pnl_SettingsBackground.Controls)
-            {
-                control.Enabled = true;
-            }
+
+            // Reenable controls
+            pnl_SettingsBackground.Enabled = true;
         }
 
         // pnl_MapBackground

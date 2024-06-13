@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_SettingsBackground = new System.Windows.Forms.Panel();
+            this.lbl_LocationThicknessDisplay = new System.Windows.Forms.Label();
+            this.trk_LocationThickness = new System.Windows.Forms.TrackBar();
             this.nud_LakeRadiusBound2 = new System.Windows.Forms.NumericUpDown();
             this.nud_LakeRadiusBound1 = new System.Windows.Forms.NumericUpDown();
             this.lbl_LakeRadius = new System.Windows.Forms.Label();
@@ -55,12 +57,15 @@
             this.lbl_OriginSpacing = new System.Windows.Forms.Label();
             this.lbl_TerritoryCount = new System.Windows.Forms.Label();
             this.btn_FontSelector = new System.Windows.Forms.Button();
+            this.lbl_LocationThickness = new System.Windows.Forms.Label();
             this.pnl_MapBackground = new System.Windows.Forms.Panel();
-            this.lbl_NewWindowPrompt = new System.Windows.Forms.Label();
+            this.lbl_TutorialSettingsPanel = new System.Windows.Forms.Label();
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
             this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
             this.clrd_ColourSelector = new System.Windows.Forms.ColorDialog();
+            this.lbl_TutorialSettingsHover = new System.Windows.Forms.Label();
             this.pnl_SettingsBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_LocationThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound2)).BeginInit();
@@ -79,6 +84,8 @@
             this.pnl_SettingsBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_SettingsBackground.BackColor = System.Drawing.Color.Aquamarine;
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_LocationThicknessDisplay);
+            this.pnl_SettingsBackground.Controls.Add(this.trk_LocationThickness);
             this.pnl_SettingsBackground.Controls.Add(this.nud_LakeRadiusBound2);
             this.pnl_SettingsBackground.Controls.Add(this.nud_LakeRadiusBound1);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeRadius);
@@ -104,11 +111,36 @@
             this.pnl_SettingsBackground.Controls.Add(this.lbl_OriginSpacing);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryCount);
             this.pnl_SettingsBackground.Controls.Add(this.btn_FontSelector);
+            this.pnl_SettingsBackground.Controls.Add(this.lbl_LocationThickness);
             this.pnl_SettingsBackground.Location = new System.Drawing.Point(0, 0);
             this.pnl_SettingsBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_SettingsBackground.Name = "pnl_SettingsBackground";
             this.pnl_SettingsBackground.Size = new System.Drawing.Size(250, 862);
             this.pnl_SettingsBackground.TabIndex = 0;
+            // 
+            // lbl_LocationThicknessDisplay
+            // 
+            this.lbl_LocationThicknessDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_LocationThicknessDisplay.AutoSize = true;
+            this.lbl_LocationThicknessDisplay.Location = new System.Drawing.Point(204, 646);
+            this.lbl_LocationThicknessDisplay.Name = "lbl_LocationThicknessDisplay";
+            this.lbl_LocationThicknessDisplay.Size = new System.Drawing.Size(13, 13);
+            this.lbl_LocationThicknessDisplay.TabIndex = 30;
+            this.lbl_LocationThicknessDisplay.Text = "2";
+            this.lbl_LocationThicknessDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // trk_LocationThickness
+            // 
+            this.trk_LocationThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trk_LocationThickness.Location = new System.Drawing.Point(68, 614);
+            this.trk_LocationThickness.Maximum = 80;
+            this.trk_LocationThickness.Minimum = 10;
+            this.trk_LocationThickness.Name = "trk_LocationThickness";
+            this.trk_LocationThickness.Size = new System.Drawing.Size(164, 45);
+            this.trk_LocationThickness.TabIndex = 29;
+            this.trk_LocationThickness.Value = 20;
+            this.trk_LocationThickness.Scroll += new System.EventHandler(this.trk_LocationThickness_Scroll);
+            this.trk_LocationThickness.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trk_LocationThickness_MouseUp);
             // 
             // nud_LakeRadiusBound2
             // 
@@ -216,16 +248,17 @@
             // 
             this.lbl_BorderThicknessDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_BorderThicknessDisplay.AutoSize = true;
-            this.lbl_BorderThicknessDisplay.Location = new System.Drawing.Point(204, 646);
+            this.lbl_BorderThicknessDisplay.Location = new System.Drawing.Point(204, 595);
             this.lbl_BorderThicknessDisplay.Name = "lbl_BorderThicknessDisplay";
-            this.lbl_BorderThicknessDisplay.Size = new System.Drawing.Size(19, 13);
+            this.lbl_BorderThicknessDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_BorderThicknessDisplay.TabIndex = 22;
-            this.lbl_BorderThicknessDisplay.Text = "20";
+            this.lbl_BorderThicknessDisplay.Text = "2";
+            this.lbl_BorderThicknessDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // trk_BorderThickness
             // 
             this.trk_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_BorderThickness.Location = new System.Drawing.Point(68, 614);
+            this.trk_BorderThickness.Location = new System.Drawing.Point(68, 563);
             this.trk_BorderThickness.Maximum = 40;
             this.trk_BorderThickness.Minimum = 10;
             this.trk_BorderThickness.Name = "trk_BorderThickness";
@@ -253,7 +286,7 @@
             this.lbl_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_BorderThickness.AutoSize = true;
             this.lbl_BorderThickness.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_BorderThickness.Location = new System.Drawing.Point(14, 614);
+            this.lbl_BorderThickness.Location = new System.Drawing.Point(14, 563);
             this.lbl_BorderThickness.Name = "lbl_BorderThickness";
             this.lbl_BorderThickness.Size = new System.Drawing.Size(120, 19);
             this.lbl_BorderThickness.TabIndex = 21;
@@ -497,12 +530,24 @@
             this.btn_FontSelector.UseVisualStyleBackColor = false;
             this.btn_FontSelector.Click += new System.EventHandler(this.btn_FontSelector_Click);
             // 
+            // lbl_LocationThickness
+            // 
+            this.lbl_LocationThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_LocationThickness.AutoSize = true;
+            this.lbl_LocationThickness.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LocationThickness.Location = new System.Drawing.Point(14, 614);
+            this.lbl_LocationThickness.Name = "lbl_LocationThickness";
+            this.lbl_LocationThickness.Size = new System.Drawing.Size(182, 19);
+            this.lbl_LocationThickness.TabIndex = 31;
+            this.lbl_LocationThickness.Text = "Location Marker Thickness";
+            // 
             // pnl_MapBackground
             // 
             this.pnl_MapBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_MapBackground.BackColor = System.Drawing.SystemColors.Control;
-            this.pnl_MapBackground.Controls.Add(this.lbl_NewWindowPrompt);
+            this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsHover);
+            this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsPanel);
             this.pnl_MapBackground.Location = new System.Drawing.Point(250, 0);
             this.pnl_MapBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_MapBackground.Name = "pnl_MapBackground";
@@ -510,16 +555,16 @@
             this.pnl_MapBackground.TabIndex = 1;
             this.pnl_MapBackground.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_MapBackground_Paint);
             // 
-            // lbl_NewWindowPrompt
+            // lbl_TutorialSettingsPanel
             // 
-            this.lbl_NewWindowPrompt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lbl_NewWindowPrompt.AutoSize = true;
-            this.lbl_NewWindowPrompt.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_NewWindowPrompt.Location = new System.Drawing.Point(3, 289);
-            this.lbl_NewWindowPrompt.Name = "lbl_NewWindowPrompt";
-            this.lbl_NewWindowPrompt.Size = new System.Drawing.Size(727, 19);
-            this.lbl_NewWindowPrompt.TabIndex = 0;
-            this.lbl_NewWindowPrompt.Text = "Use the settings panel on the left to customize the map properties, then click \'G" +
+            this.lbl_TutorialSettingsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lbl_TutorialSettingsPanel.AutoSize = true;
+            this.lbl_TutorialSettingsPanel.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TutorialSettingsPanel.Location = new System.Drawing.Point(3, 289);
+            this.lbl_TutorialSettingsPanel.Name = "lbl_TutorialSettingsPanel";
+            this.lbl_TutorialSettingsPanel.Size = new System.Drawing.Size(727, 19);
+            this.lbl_TutorialSettingsPanel.TabIndex = 0;
+            this.lbl_TutorialSettingsPanel.Text = "Use the settings panel on the left to customize the map properties, then click \'G" +
     "enerate\' to make a world map.";
             // 
             // tip_SettingsDetails
@@ -536,6 +581,17 @@
             // 
             this.clrd_ColourSelector.AnyColor = true;
             // 
+            // lbl_TutorialSettingsHover
+            // 
+            this.lbl_TutorialSettingsHover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lbl_TutorialSettingsHover.AutoSize = true;
+            this.lbl_TutorialSettingsHover.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TutorialSettingsHover.Location = new System.Drawing.Point(189, 308);
+            this.lbl_TutorialSettingsHover.Name = "lbl_TutorialSettingsHover";
+            this.lbl_TutorialSettingsHover.Size = new System.Drawing.Size(343, 19);
+            this.lbl_TutorialSettingsHover.TabIndex = 1;
+            this.lbl_TutorialSettingsHover.Text = "Hover over settings for a description of their effect.";
+            // 
             // form_Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -551,6 +607,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_MapBackground_Paint);
             this.pnl_SettingsBackground.ResumeLayout(false);
             this.pnl_SettingsBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_LocationThickness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeRadiusBound1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeFrequencyBound2)).EndInit();
@@ -578,7 +635,7 @@
         private System.Windows.Forms.NumericUpDown nud_TerritoryCountBound2;
         private System.Windows.Forms.NumericUpDown nud_TerritoryCountBound1;
         private System.Windows.Forms.Label lbl_TerritoryCount;
-        private System.Windows.Forms.Label lbl_NewWindowPrompt;
+        private System.Windows.Forms.Label lbl_TutorialSettingsPanel;
         private System.Windows.Forms.ToolTip tip_SettingsDetails;
         private System.Windows.Forms.NumericUpDown nud_TerritoryRadiusBound1;
         private System.Windows.Forms.NumericUpDown nud_TerritoryRadiusBound2;
@@ -600,6 +657,10 @@
         private System.Windows.Forms.NumericUpDown nud_LakeRadiusBound1;
         private System.Windows.Forms.Label lbl_LakeRadius;
         private System.Windows.Forms.NumericUpDown nud_LakeRadiusBound2;
+        private System.Windows.Forms.Label lbl_LocationThicknessDisplay;
+        private System.Windows.Forms.TrackBar trk_LocationThickness;
+        private System.Windows.Forms.Label lbl_LocationThickness;
+        private System.Windows.Forms.Label lbl_TutorialSettingsHover;
     }
 }
 

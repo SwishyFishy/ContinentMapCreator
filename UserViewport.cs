@@ -35,8 +35,8 @@ namespace ContinentMapCreator
         static SolidBrush BORDER_COLOUR = new SolidBrush(Color.FromArgb(0, 64, 0));
         static float BORDER_THICKNESS = 2.0F;
         static float BORDER_OFFSET = 1.0F;
-        static float LOCATION_MARKER_THICKNESS;
-        static float LOCATION_MAKRER_OFFSET;
+        static float LOCATION_MARKER_THICKNESS = 2.0F;
+        static float LOCATION_MARKER_OFFSET = 1.0F;
 
         // Generation args
         bool allowPainting = false;
@@ -80,11 +80,15 @@ namespace ContinentMapCreator
             BORDER_THICKNESS = (float)(trk_BorderThickness.Value / 10.0);
             BORDER_OFFSET = BORDER_THICKNESS / 2.0F;
 
+            // LOCATION_MARKER_THICKNESS & LOCATION_MARKER_OFFSET based on trk_LocationThickness
+            LOCATION_MARKER_THICKNESS = (float)(trk_LocationThickness.Value / 10.0F);
+            LOCATION_MARKER_OFFSET = LOCATION_MARKER_THICKNESS / 2.0F;
+
             // ROUGH_BORDERS based on chb_CleanBorders
             ROUGH_BORDERS = chb_CleanBorders.Checked ? false : true;
 
             // Redraw map
-            if (!lbl_NewWindowPrompt.Visible)
+            if (!lbl_TutorialSettingsPanel.Visible)
             {
                 foreach (Control control in pnl_SettingsBackground.Controls)
                 {
@@ -292,7 +296,7 @@ namespace ContinentMapCreator
         private void Draw(PaintEventArgs e)
         {
             Pen borderPen = new Pen(BORDER_COLOUR, BORDER_THICKNESS);
-            Pen locationPen = new Pen(LOCATION_COLOUR, BORDER_THICKNESS);
+            Pen locationPen = new Pen(LOCATION_COLOUR, LOCATION_MARKER_THICKNESS);
             float xOffset;
             float yOffset;
 
@@ -310,7 +314,7 @@ namespace ContinentMapCreator
             // Draw Lakes
             for (int i = 0; i < NUM_LAKES; i++)
             {
-                e.Graphics.FillClosedCurve(OCEAN_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.9F);
+                e.Graphics.FillClosedCurve(OCEAN_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.95F);
             }
 
             // Draw Borders
@@ -326,9 +330,9 @@ namespace ContinentMapCreator
             // Draw TerritoryOrigins and Territory names
             for (int i = 0; i < NUM_TERRITORIES; i++)
             {
-                xOffset = Territories[i].Origin.X - BORDER_OFFSET;
-                yOffset = Territories[i].Origin.Y - BORDER_OFFSET;
-                e.Graphics.DrawRectangle(locationPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
+                xOffset = Territories[i].Origin.X - LOCATION_MARKER_OFFSET;
+                yOffset = Territories[i].Origin.Y - LOCATION_MARKER_OFFSET;
+                e.Graphics.DrawRectangle(locationPen, xOffset, yOffset, LOCATION_MARKER_THICKNESS, LOCATION_MARKER_THICKNESS);
                 e.Graphics.DrawString(i.ToString(), DISPLAY_FONT, LOCATION_COLOUR, Territories[i].Origin.X, Territories[i].Origin.Y);
             }
 
