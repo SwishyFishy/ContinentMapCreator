@@ -20,8 +20,7 @@ namespace ContinentMapCreator
             Origin = origin;
             MajorRadius = Math.Max(rad1, rad2);
             MinorRadius = Math.Min(rad1, rad2);
-            //Angle = 2 * Math.PI * angle;
-            Angle = 0;
+            Angle = 2 * Math.PI * angle;
 
             // Determine focal points assuming angle = 0
             int focalLength = (int)Math.Sqrt(Math.Pow(MajorRadius, 2) - Math.Pow(MinorRadius, 2));
