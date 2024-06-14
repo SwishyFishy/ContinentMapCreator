@@ -41,6 +41,7 @@ namespace ContinentMapCreator
 
             pnl_SettingsBackground.Controls.Add(trk_BorderThickness);
             pnl_SettingsBackground.Controls.Add(trk_LocationThickness);
+            pnl_SettingsBackground.Controls.Add(cbo_LoadPreset);
             pnl_SettingsBackground.Controls.Add(chb_CleanBorders);
             pnl_SettingsBackground.Controls.Add(btn_FontSelector);
             pnl_SettingsBackground.Controls.Add(btn_Generate);
@@ -86,6 +87,27 @@ namespace ContinentMapCreator
         private void trk_LocationThickness_MouseUp(object sender, EventArgs e)
         {
             UpdateDisplay();
+        }
+
+        // cbo_LoadPresets
+        // SelectedIndexChanged -> Load a map preset
+        private void cbo_LoadPreset_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            switch (cbo_LoadPreset.SelectedIndex)
+            {
+                case 0:
+                    PresetDefaults();
+                    break;
+                case 1:
+                    PresetArchipelago();
+                    break;
+                case 2:
+                    PresetContinental();
+                    break;
+                case 3:
+                    PresetProvinces();
+                    break;
+            }
         }
 
         // chb_CleanBorders
