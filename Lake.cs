@@ -14,10 +14,12 @@ namespace ContinentMapCreator
         public Point Focus1 { get; set; }
         public Point Focus2 { get; set; }
         public Point[] Vertices { get; set; }
+        public Territory[] Neighbours { get; set; }
 
         // Constructor
-        public Lake(Point origin, int rad1, int rad2, double angle)
+        public Lake(String name, Point origin, int rad1, int rad2, double angle)
         {
+            Name = name;
             Origin = origin;
             MajorRadius = Math.Max(rad1, rad2);
             MinorRadius = Math.Min(rad1, rad2);
@@ -61,6 +63,8 @@ namespace ContinentMapCreator
             Vertices[1] = new Point(v3xRotation + Origin.X, v3yRotation + Origin.Y);
             Vertices[2] = new Point(v2xRotation + Origin.X, v2yRotation + Origin.Y);
             Vertices[3] = new Point(v4xRotation + Origin.X, v4yRotation + Origin.Y);
+
+            Neighbours = new Territory[1];
         }
 
         // Methods
@@ -80,6 +84,49 @@ namespace ContinentMapCreator
             int sumDistance = (int)(distanceToFocus1 + distanceToFocus2);
 
             return sumDistance < 2 * MajorRadius ? true : false;
+        }
+
+        public void AddNeighbour(Territory neighbour)
+        {
+            // If neighbour is not in Neighbours, add it
+            if (Array.Find(Neighbours, x => x == neighbour) == null)
+            {
+                Territory[] temp = new Territory[Neighbours.Length + 1];
+                Array.Copy(Neighbours, temp, Neighbours.Length);
+                temp[Neighbours.Length] = neighbour;
+                Neighbours = temp;
+
+                // Add neighbour to all other neighbours, and all other neighbours to neighbour
+                // Neighbours[0] is always null, begin at second index
+                for (int i = 1; i < Neighbours.Length - 1; i++)
+                {
+                    Neighbours[i].AddNeighbour(neighbour, false);
+                    neighbour.AddNeighbour(Neighbours[i], false);
+                }
+            }
+        }
+
+        public void RemoveNeighbour(Territory neighbour)
+        {
+            // If neighbour is in Neighbours, remove it
+            int index = Array.IndexOf(Neighbours, neighbour);
+            if (index != -1)
+            {
+                Territory[] temp = new Territory[Neighbours.Length - 1];
+                Array.Copy(Neighbours, 0, temp, 0, index);
+                if (index < Neighbours.Length - 1)
+                {
+                    Array.Copy(Neighbours, index + 1, temp, index + 1, Neighbours.Length - index - 1);
+                }
+                Neighbours = temp;
+
+                // Remove neighbour from all neighbours
+                // Neighbours[0] is always null, begin at second index
+                for (int i = 1; i < Neighbours.Length - 1; i++)
+                {
+                    Neighbours[i].RemoveNeighbour(neighbour, false);
+                }
+            }
         }
     }
 }
