@@ -116,7 +116,7 @@ namespace ContinentMapCreator
             int maxX = pnl_MapBackground.Width;
             int minY = 0;
             int maxY = pnl_MapBackground.Height;
-            Point origin = new Point();
+            Point origin;
             int rad1;
             int rad2;
             double angle;
