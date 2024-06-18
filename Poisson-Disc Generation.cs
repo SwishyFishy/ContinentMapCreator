@@ -14,9 +14,9 @@ namespace ContinentMapCreator
             // Initialize variables
             // Dictates which pixels are too close to the border to be territories
             int minXValue = FULL_CONTINENT ? MIN_LAKE_RADIUS : 0;
-            int maxXValue = FULL_CONTINENT ? pnl_MapBackground.Width - MIN_LAKE_RADIUS : 0;
+            int maxXValue = FULL_CONTINENT ? pnl_MapBackground.Width - MIN_LAKE_RADIUS : pnl_MapBackground.Width;
             int minYValue = FULL_CONTINENT ? MIN_LAKE_RADIUS : 0;
-            int maxYValue = FULL_CONTINENT ? pnl_MapBackground.Height - MIN_LAKE_RADIUS : 0;
+            int maxYValue = FULL_CONTINENT ? pnl_MapBackground.Height - MIN_LAKE_RADIUS : pnl_MapBackground.Height;
 
             // Tracks the (x, y) coordinated of pixels that can be territory origins
             // Tracks an array of tuples that store the index of, and distance to, each other origin
@@ -99,6 +99,10 @@ namespace ContinentMapCreator
 
             // End of Poisson-Disc algorithm
             // Result: OriginPoints contains numOriginPoints points, each of which is a valid point for a TerritoryOrigin
+
+            NUM_TERRITORIES = rnd.Next(MIN_NUM_TERRITORIES, MAX_NUM_TERRITORIES + 1);
+            TERRITORY_RADIUS = rnd.Next(MIN_TERRITORY_RADIUS, MAX_TERRITORY_RADIUS + 1);
+            NUM_LAKES = rnd.Next(MIN_NUM_LAKES, MAX_NUM_LAKES + 1);
 
             // Generate Territories
             // O(n) for n territories

@@ -175,6 +175,7 @@ namespace ContinentMapCreator
             UpdateGenerationSettings();
             GenerateTerritoryOrigins();
             GenerateWater();
+            //Generate();
             GenerateTerritoryBorders();
 
             // Redraw the screen
