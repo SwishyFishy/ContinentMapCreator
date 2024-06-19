@@ -173,9 +173,9 @@ namespace ContinentMapCreator
 
             // Call the generation methods
             UpdateGenerationSettings();
-            GenerateTerritoryOrigins();
-            GenerateWater();
-            //Generate();
+            //GenerateTerritoryOrigins();
+            //GenerateWater();
+            Generate();
             GenerateTerritoryBorders();
 
             // Redraw the screen

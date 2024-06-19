@@ -42,7 +42,8 @@ namespace ContinentMapCreator
         bool allowPainting = false;
         Territory[] Territories;
         Lake[] Lakes;
-        Point[] PointsOnBorder = new Point[WINDOW_WIDTH * WINDOW_HEIGHT];
+        Lake[] Oceans;
+        Point[] PointsOnBorder;
         Point[] TerritoryBorders;
 
         public form_Window()

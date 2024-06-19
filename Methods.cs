@@ -158,6 +158,7 @@ namespace ContinentMapCreator
         private void GenerateTerritoryBorders()
         {
             int numBorderPoints = 0;
+            PointsOnBorder = new Point[WINDOW_WIDTH * WINDOW_HEIGHT];
 
             // Loop through all points
             for (int x = 0; x < pnl_MapBackground.Width; x++)

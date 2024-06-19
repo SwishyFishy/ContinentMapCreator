@@ -121,7 +121,7 @@ namespace ContinentMapCreator
             // Generate Lakes
             // O(n * m) for n inland lakes and m territories
             Lakes = new Lake[NUM_LAKES];
-            Lake[] Ocean = new Lake[numOriginPoints];
+            Oceans = new Lake[numOriginPoints];
             int numLakes = 0;
             int numOceans = 0;
             while (numOriginPoints > 0)
@@ -151,7 +151,7 @@ namespace ContinentMapCreator
                         ocean = true;
                     }
                     // If the distance between the TerritoryOrigin and this point is enough for overlap, but not enough for the lake to contain the origin, it can be an inland lake
-                    else if (distance - MIN_TERRITORY_RADIUS < MIN_LAKE_RADIUS && distance - MIN_TERRITORY_RADIUS > MAX_LAKE_RADIUS)
+                    else
                     {
                         lake = true;
                         ocean = false;
@@ -180,7 +180,8 @@ namespace ContinentMapCreator
                 // Angle is irrelevant because the lake is circular
                 else if (ocean)
                 {
-                    Ocean[numOceans] = new Lake((100 + numOceans).ToString(), OriginPoints[originIndex], distance, distance, 0.0);
+                    Oceans[numOceans] = new Lake((100 + numOceans).ToString(), OriginPoints[originIndex], distance, distance, 0.0);
+                    numOceans++;
                 }
 
                 // Overwrite the used OriginPoint
