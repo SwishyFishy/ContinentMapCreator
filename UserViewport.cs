@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using System.Drawing;
 
 namespace ContinentMapCreator
@@ -39,12 +40,17 @@ namespace ContinentMapCreator
         static float LOCATION_MARKER_OFFSET = 1.0F;
 
         // Generation args
+        Random rnd = new Random();
         bool allowPainting = false;
         Territory[] Territories;
         Lake[] Lakes;
         Lake[] Oceans;
         Point[] PointsOnBorder;
         Point[] TerritoryBorders;
+
+        Point[] OriginPoints;
+        int numOriginPoints;
+        int originIndex;
 
         public form_Window()
         {
