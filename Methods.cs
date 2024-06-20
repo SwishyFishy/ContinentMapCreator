@@ -284,7 +284,7 @@ namespace ContinentMapCreator
 
                 // Create an inland lake
                 // Give the lake random radii and a random angle
-                if (leastDistance > TERRITORY_RADIUS + MIN_LAKE_RADIUS && leastDistance < TERRITORY_RADIUS + MAX_LAKE_RADIUS)
+                if (numLakes < NUM_LAKES && leastDistance > MIN_LAKE_RADIUS)
                 {
                     int rad1 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
                     int rad2 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
@@ -306,11 +306,12 @@ namespace ContinentMapCreator
 
             // Truncate the arrays
             Array.Resize(ref Lakes, numLakes);
+            NUM_LAKES = numLakes;
             Array.Resize(ref Oceans, numOceans);
         }
 
         // Calculate territory borders and mark coastal territories as such
-        // For each point, add it to the OwnedPoints of its closest TerritoryOrigin
+        // Determine neighbouring Territories (by land and sea)
         private void GenerateBorders()
         {
             int numBorderPoints = 0;
@@ -323,6 +324,7 @@ namespace ContinentMapCreator
                 {
                     bool inLake = false;
                     int bordersLakeIndex = -1;
+                    int bordersOceanIndex = -1;
                     Point thisPixel = new Point(x, y);
 
                     for (int i = 0; i < NUM_LAKES; i++)
@@ -341,6 +343,19 @@ namespace ContinentMapCreator
                     if (inLake)
                     {
                         continue;
+                    }
+                    for (int i = 0; i < Oceans.Length; i++)
+                    {
+                        // If this point is in an ocean, remember that so the territory owning this point can add WaterNeighbours
+                        if (Oceans[i].LakeBoundsContains(thisPixel))
+                        {
+                            bordersOceanIndex = i;
+                            if (bordersLakeIndex > -1)
+                            {
+                                Oceans[i].AddNeighbour(Lakes[bordersLakeIndex]);
+                                Lakes[bordersLakeIndex].AddNeighbour(Oceans[i]);
+                            }
+                        }
                     }
 
                     // Get the distance between this point and each TerritoryOrigin
@@ -388,6 +403,12 @@ namespace ContinentMapCreator
                     {
                         PointsOnBorder[numBorderPoints] = thisPixel;
                         numBorderPoints++;
+
+                        // Check if point also borders an ocean
+                        if (bordersOceanIndex > -1)
+                        {
+                            Oceans[bordersOceanIndex].AddNeighbour(Territories[closestOriginIndex]);
+                        }
                     }
                     // Point is equidistant from two Territory Origins, and is within the bounds of both Territories, and is closer to those two Territories than any others
                     else if (distancesToOrigins[secondClosestOriginIndex] <= Territories[secondClosestOriginIndex].MaxRadius &&

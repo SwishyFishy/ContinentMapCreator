@@ -15,6 +15,7 @@ namespace ContinentMapCreator
         public Point Focus2 { get; set; }
         public Point[] Vertices { get; set; }
         public Territory[] Neighbours { get; set; }
+        public Lake[] NeighbourLakes { get; set; }
 
         // Constructor
         public Lake(String name, Point origin, int rad1, int rad2, double angle)
@@ -65,6 +66,7 @@ namespace ContinentMapCreator
             Vertices[3] = new Point(v4xRotation + Origin.X, v4yRotation + Origin.Y);
 
             Neighbours = new Territory[1];
+            NeighbourLakes = new Lake[1];
         }
 
         // Methods
@@ -102,6 +104,37 @@ namespace ContinentMapCreator
                 {
                     Neighbours[i].AddNeighbour(neighbour, false);
                     neighbour.AddNeighbour(Neighbours[i], false);
+                }
+            }
+        }
+        public void AddNeighbour(Lake neighbour)
+        {
+            // If neighbour is not in Neighbours, add it
+            if (Array.Find(NeighbourLakes, x => x == neighbour) == null)
+            {
+                Lake[] temp = new Lake[NeighbourLakes.Length + 1];
+                Array.Copy(NeighbourLakes, temp, NeighbourLakes.Length);
+                temp[NeighbourLakes.Length] = neighbour;
+                NeighbourLakes = temp;
+
+                // Add neighbour to all other neighbours, and all other neighbours to neighbour
+                // NeighbourLakes[0] is always null, begin at second index
+                for (int i = 1; i < NeighbourLakes.Length - 1; i++)
+                {
+                    NeighbourLakes[i].AddNeighbour(neighbour);
+                    neighbour.AddNeighbour(NeighbourLakes[i]);
+
+                    // Add all NeighbourLakes Neighbours as Neighbours
+                    for (int j = 1; j < NeighbourLakes[i].Neighbours.Length - 1; j++)
+                    {
+                        AddNeighbour(NeighbourLakes[i].Neighbours[j]);
+
+                        // Add all Neighbours as Neighbours to NeighbourLakes
+                        for (int k = 1; k < Neighbours.Length - 1; k++)
+                        {
+                            NeighbourLakes[i].AddNeighbour(Neighbours[k]);
+                        }
+                    }
                 }
             }
         }
