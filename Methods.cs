@@ -276,57 +276,26 @@ namespace ContinentMapCreator
                 originIndex = rnd.Next(0, numOriginPoints);
 
                 // Check whether this point can be an inland lake, part of the ocean, or if it is too close to a TerritoryOrigin
-                bool lake = false;
-                bool ocean = false;
-                int distance = 0;
+                int leastDistance = pnl_MapBackground.Width * pnl_MapBackground.Height;
                 for (int j = 0; j < Territories.Length; j++)
                 {
-                    // Get distance from this point to the jth TerritoryOrigin 
-                    distance = Territories[j].OriginToPoint(OriginPoints[originIndex]);
-
-                    // If the distance between the TerritoryOrigin and this point is less than the minimum lake radius, the point is too close
-                    if (distance < MIN_LAKE_RADIUS)
-                    {
-                        lake = false;
-                        ocean = false;
-                        break;
-                    }
-                    // If the distance between the TerritoryOrigin and this point is greater than the sum of the territory radius and maxkimum lke radius, it can be an ocean
-                    else if (!lake && distance > MIN_TERRITORY_RADIUS + MAX_LAKE_RADIUS)
-                    {
-                        ocean = true;
-                    }
-                    // If the distance between the TerritoryOrigin and this point is enough for overlap, but not enough for the lake to contain the origin, it can be an inland lake
-                    else
-                    {
-                        lake = true;
-                        ocean = false;
-
-                        // If there are enough inland lakes, and this point can't be an ocean, break
-                        if (numLakes >= Lakes.Length)
-                        {
-                            lake = false;
-                            break;
-                        }
-                    }
+                    leastDistance = Math.Min(leastDistance, Territories[j].OriginToPoint(OriginPoints[originIndex]));
                 }
 
                 // Create an inland lake
                 // Give the lake random radii and a random angle
-                if (lake)
+                if (leastDistance > TERRITORY_RADIUS + MIN_LAKE_RADIUS && leastDistance < TERRITORY_RADIUS + MAX_LAKE_RADIUS)
                 {
-                    int rad1 = rnd.Next(MIN_LAKE_RADIUS, MAX_LAKE_RADIUS);
-                    int rad2 = rnd.Next(MIN_LAKE_RADIUS, MAX_LAKE_RADIUS);
+                    int rad1 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
+                    int rad2 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
                     double angle = rnd.NextDouble();
                     Lakes[numLakes] = new Lake(numLakes.ToString(), OriginPoints[originIndex], rad1, rad2, angle);
                     numLakes++;
                 }
-                // Create an ocean
-                // Radius is the last measured distance between TerritoryOrigin and this point
-                // Angle is irrelevant because the lake is circular
-                else if (ocean)
+                // Create an ocean if the point is too far away from every territory to overlap them
+                else if (leastDistance > TERRITORY_RADIUS + MAX_LAKE_RADIUS)
                 {
-                    Oceans[numOceans] = new Lake((100 + numOceans).ToString(), OriginPoints[originIndex], distance, distance, 0.0);
+                    Oceans[numOceans] = new Lake((100 + numOceans).ToString(), OriginPoints[originIndex], leastDistance, leastDistance, 0.0);
                     numOceans++;
                 }
 
@@ -335,7 +304,8 @@ namespace ContinentMapCreator
                 OriginPoints[originIndex] = OriginPoints[numOriginPoints];
             }
 
-            // Truncate the Oceans array
+            // Truncate the arrays
+            Array.Resize(ref Lakes, numLakes);
             Array.Resize(ref Oceans, numOceans);
         }
 

@@ -106,7 +106,7 @@ namespace ContinentMapCreator
 
             // Generate Territories
             // O(n) for n territories
-            Territories = new Territory[Math.Min(NUM_TERRITORIES, numOriginPoints)];
+            Territories = new Territory[NUM_TERRITORIES];
             for (int i = 0; i < Territories.Length; i++)
             {
                 // Get a random OriginPoint and make it a Territory
