@@ -194,7 +194,7 @@ namespace ContinentMapCreator
         {
             if (allowPainting)
             {
-                Draw(e);
+                DrawMap(e.Graphics);
             }
         }
     }
