@@ -53,9 +53,6 @@
     <Compile Include="Methods.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Poisson-Disc Generation.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Territory.cs" />
     <Compile Include="GenerationPresets.cs">
       <SubType>Form</SubType>
