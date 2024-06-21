@@ -146,7 +146,7 @@ namespace ContinentMapCreator
 
         // Generate Territories
         // O(territories * territories)
-        /*private void GenerateTerritories()
+        private void GenerateTerritories()
         {
             NUM_TERRITORIES = rnd.Next(MIN_NUM_TERRITORIES, MAX_NUM_TERRITORIES + 1);
             TERRITORY_RADIUS = rnd.Next(MIN_TERRITORY_RADIUS, MAX_TERRITORY_RADIUS + 1);
@@ -162,46 +162,8 @@ namespace ContinentMapCreator
                 numOriginPoints--;
                 OriginPoints[originIndex] = OriginPoints[numOriginPoints];
             }
-        }*/
-        private void GenerateTerritories()
-        {
-            NUM_TERRITORIES = rnd.Next(MIN_NUM_TERRITORIES, MAX_NUM_TERRITORIES + 1);
-            Territories = new Territory[Math.Min(NUM_TERRITORIES, numOriginPoints)];
-            int numTerritories = 0;
-
-            while (numOriginPoints > 0 && numTerritories < Territories.Length)
-            {
-                // Get a random OriginPoint and make it a Territory
-                originIndex = rnd.Next(0, numOriginPoints);
-
-                // Get the smallest distance from this origin to another
-                int leastDistance = pnl_MapBackground.Width;
-                for (int j = 0; j < numTerritories; j++)
-                {
-                    leastDistance = Math.Min(leastDistance, Territories[j].OriginToPoint(OriginPoints[originIndex]));
-                }
-
-                if (leastDistance < MIN_TERRITORY_RADIUS)
-                {
-                    numOriginPoints--;
-                    OriginPoints[originIndex] = OriginPoints[numOriginPoints];
-                    continue;
-                }
-
-                TERRITORY_RADIUS = rnd.Next(MIN_TERRITORY_RADIUS, Math.Min(MAX_TERRITORY_RADIUS + 1, leastDistance));
-                Territories[numTerritories] = new Territory(numTerritories.ToString(), OriginPoints[originIndex], TERRITORY_RADIUS);
-                numTerritories++;
-
-                // Overwrite the used OriginPoint
-                numOriginPoints--;
-                OriginPoints[originIndex] = OriginPoints[numOriginPoints];
-            }
-
-            // Truncate the array
-            Array.Resize(ref Territories, numTerritories);
-            NUM_TERRITORIES = numTerritories;
         }
-
+     
         // Generate Lakes
         // O(territories * lakes)
         private void GenerateWater()
@@ -287,6 +249,7 @@ namespace ContinentMapCreator
                         // Populate the distancesToOrigins array
                         for (int i = 0; i < Territories.Length; i++)
                         {
+                            // Scale the distance to origin such that origin = 0, and border = 1
                             distancesToOrigins[i] = (double)Territories[i].OriginToPoint(thisPixel) / (double)Territories[i].Radius;
 
                             // Track two closest territories
@@ -306,12 +269,12 @@ namespace ContinentMapCreator
                         }
 
                         // Point is too far from any Territory Origin to be land
-                        if (distancesToOrigins[closestOriginIndex] > 1)//Territories[closestOriginIndex].MaxRadius)
+                        if (distancesToOrigins[closestOriginIndex] > 1)
                         {
                             return;
                         }
                         // Point is on the border of a lake and is within the bounds of at least one Territory
-                        else if (bordersLakeIndex > -1 && distancesToOrigins[closestOriginIndex] <= 1) //Territories[closestOriginIndex].MaxRadius)
+                        else if (bordersLakeIndex > -1 && distancesToOrigins[closestOriginIndex] <= 1)
                         {
                             TerritoryBorders[numBorderPoints] = thisPixel;
                             numBorderPoints++;
@@ -323,15 +286,14 @@ namespace ContinentMapCreator
                             }
                         }
                         // Point is exactly a Territory's Radius from its Origin, and is closer to that Territory than any other.
-                        else if (distancesToOrigins[closestOriginIndex] == 1 && //Territories[closestOriginIndex].MaxRadius &&
-                            distancesToOrigins[secondClosestOriginIndex] > 1) //Territories[secondClosestOriginIndex].MaxRadius)
+                        else if (distancesToOrigins[closestOriginIndex] == 1 && distancesToOrigins[secondClosestOriginIndex] > 1)
                         {
                             TerritoryBorders[numBorderPoints] = thisPixel;
                             numBorderPoints++;
                             Territories[closestOriginIndex].Coastal = true;
                         }
                         // Point is equidistant from two Territory Origins, and is within the bounds of both Territories, and is closer to those two Territories than any others
-                        else if (distancesToOrigins[secondClosestOriginIndex] <= 1 && //Territories[secondClosestOriginIndex].MaxRadius &&
+                        else if (distancesToOrigins[secondClosestOriginIndex] <= 1 &&
                             distancesToOrigins[closestOriginIndex] == distancesToOrigins[secondClosestOriginIndex])
                         {
                             TerritoryBorders[numBorderPoints] = thisPixel;
