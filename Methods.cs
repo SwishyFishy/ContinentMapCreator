@@ -174,6 +174,7 @@ namespace ContinentMapCreator
                 // Get a random OriginPoint and make it a Territory
                 originIndex = rnd.Next(0, numOriginPoints);
 
+                // Get the smallest distance from this origin to another
                 int leastDistance = pnl_MapBackground.Width;
                 for (int j = 0; j < numTerritories; j++)
                 {
@@ -182,7 +183,6 @@ namespace ContinentMapCreator
 
                 if (leastDistance < MIN_TERRITORY_RADIUS)
                 {
-                    // Overwrite the used OriginPoint
                     numOriginPoints--;
                     OriginPoints[originIndex] = OriginPoints[numOriginPoints];
                     continue;
@@ -196,6 +196,10 @@ namespace ContinentMapCreator
                 numOriginPoints--;
                 OriginPoints[originIndex] = OriginPoints[numOriginPoints];
             }
+
+            // Truncate the array
+            Array.Resize(ref Territories, numTerritories);
+            NUM_TERRITORIES = numTerritories;
         }
 
         // Generate Lakes
@@ -234,7 +238,7 @@ namespace ContinentMapCreator
                 OriginPoints[originIndex] = OriginPoints[numOriginPoints];
             }
 
-            // Truncate the arrays
+            // Truncate the array
             Array.Resize(ref Lakes, numLakes);
             NUM_LAKES = numLakes;
         }
@@ -327,7 +331,7 @@ namespace ContinentMapCreator
                             Territories[closestOriginIndex].Coastal = true;
                         }
                         // Point is equidistant from two Territory Origins, and is within the bounds of both Territories, and is closer to those two Territories than any others
-                        else if ((int)distancesToOrigins[secondClosestOriginIndex] <= 1 && //Territories[secondClosestOriginIndex].MaxRadius &&
+                        else if (distancesToOrigins[secondClosestOriginIndex] <= 1 && //Territories[secondClosestOriginIndex].MaxRadius &&
                             distancesToOrigins[closestOriginIndex] == distancesToOrigins[secondClosestOriginIndex])
                         {
                             TerritoryBorders[numBorderPoints] = thisPixel;
