@@ -249,7 +249,7 @@ namespace ContinentMapCreator
                         // Populate the distancesToOrigins array
                         for (int i = 0; i < Territories.Length; i++)
                         {
-                            // Scale the distance to origin such that origin = 0, and border = 1
+                            // Scale the distance to origin such that origin = 0, and border = 1.
                             distancesToOrigins[i] = (double)Territories[i].OriginToPoint(thisPixel) / (double)Territories[i].Radius;
 
                             // Track two closest territories
