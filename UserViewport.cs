@@ -20,12 +20,13 @@ namespace ContinentMapCreator
         static int MIN_TERRITORY_RADIUS;
         static int MAX_TERRITORY_RADIUS;
         static int TERRITORY_RADIUS;
-        static int MIN_ORIGIN_SPACING;
         static int MIN_NUM_LAKES;
         static int MAX_NUM_LAKES;
         static int NUM_LAKES;
         static int MIN_LAKE_RADIUS;
         static int MAX_LAKE_RADIUS;
+
+        const int MIN_ORIGIN_SPACING = 50;
 
         // Aesthetic Settings
         static bool ROUGH_BORDERS = true;

@@ -21,9 +21,6 @@ namespace ContinentMapCreator
             MIN_NUM_TERRITORIES = Math.Min((int)nud_TerritoryCountBound1.Value, (int)nud_TerritoryCountBound2.Value);
             MAX_NUM_TERRITORIES = Math.Max((int)nud_TerritoryCountBound1.Value, (int)nud_TerritoryCountBound2.Value);
 
-            // MIN_ORIGIN_SPACING based on nud_MinimumOriginSpacing
-            MIN_ORIGIN_SPACING = (int)nud_MinimumOriginSpacing.Value;
-
             // MIN_NUM_LAKES & MAX_NUM_LAKES based on nud_LakeCountBound1 & nud_LakeCountBound2
             MIN_NUM_LAKES = Math.Min((int)nud_LakeCountBound1.Value, (int)nud_LakeCountBound2.Value);
             MAX_NUM_LAKES = Math.Max((int)nud_LakeCountBound1.Value, (int)nud_LakeCountBound2.Value);
@@ -277,9 +274,9 @@ namespace ContinentMapCreator
 
                 // Check whether this point can be an inland lake, part of the ocean, or if it is too close to a TerritoryOrigin
                 int leastDistance = pnl_MapBackground.Width * pnl_MapBackground.Height;
-                for (int j = 0; j < Territories.Length; j++)
+                for (int i = 0; i < Territories.Length; i++)
                 {
-                    leastDistance = Math.Min(leastDistance, Territories[j].OriginToPoint(OriginPoints[originIndex]));
+                    leastDistance = Math.Min(leastDistance, Territories[i].OriginToPoint(OriginPoints[originIndex]));
                 }
 
                 // Create an inland lake
@@ -293,7 +290,7 @@ namespace ContinentMapCreator
                     numLakes++;
                 }
                 // Create an ocean if the point is too far away from every territory to overlap them
-                else if (leastDistance > TERRITORY_RADIUS + MAX_LAKE_RADIUS)
+                else if (leastDistance > TERRITORY_RADIUS)
                 {
                     Oceans[numOceans] = new Lake((100 + numOceans).ToString(), OriginPoints[originIndex], leastDistance, leastDistance, 0.0);
                     numOceans++;

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnl_SettingsBackground = new System.Windows.Forms.Panel();
-            this.cbo_LoadPreset = new System.Windows.Forms.ComboBox();
             this.chb_FullContinent = new System.Windows.Forms.CheckBox();
             this.lbl_LocationThicknessDisplay = new System.Windows.Forms.Label();
             this.trk_LocationThickness = new System.Windows.Forms.TrackBar();
@@ -47,7 +46,6 @@
             this.btn_FontColourSelector = new System.Windows.Forms.Button();
             this.btn_BorderColourSelector = new System.Windows.Forms.Button();
             this.btn_LandColourSelector = new System.Windows.Forms.Button();
-            this.nud_MinimumOriginSpacing = new System.Windows.Forms.NumericUpDown();
             this.nud_TerritoryRadiusBound1 = new System.Windows.Forms.NumericUpDown();
             this.nud_TerritoryRadiusBound2 = new System.Windows.Forms.NumericUpDown();
             this.nud_TerritoryCountBound2 = new System.Windows.Forms.NumericUpDown();
@@ -56,10 +54,10 @@
             this.btn_Generate = new System.Windows.Forms.Button();
             this.lbl_Header = new System.Windows.Forms.Label();
             this.lbl_TerritoryRadius = new System.Windows.Forms.Label();
-            this.lbl_OriginSpacing = new System.Windows.Forms.Label();
             this.lbl_TerritoryCount = new System.Windows.Forms.Label();
             this.btn_FontSelector = new System.Windows.Forms.Button();
             this.lbl_LocationThickness = new System.Windows.Forms.Label();
+            this.cbo_LoadPreset = new System.Windows.Forms.ComboBox();
             this.pnl_MapBackground = new System.Windows.Forms.Panel();
             this.lbl_TutorialSettingsHover = new System.Windows.Forms.Label();
             this.lbl_TutorialSettingsPanel = new System.Windows.Forms.Label();
@@ -73,7 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeCountBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeCountBound1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_BorderThickness)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound2)).BeginInit();
@@ -102,7 +99,6 @@
             this.pnl_SettingsBackground.Controls.Add(this.btn_FontColourSelector);
             this.pnl_SettingsBackground.Controls.Add(this.btn_BorderColourSelector);
             this.pnl_SettingsBackground.Controls.Add(this.btn_LandColourSelector);
-            this.pnl_SettingsBackground.Controls.Add(this.nud_MinimumOriginSpacing);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound1);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryRadiusBound2);
             this.pnl_SettingsBackground.Controls.Add(this.nud_TerritoryCountBound2);
@@ -111,7 +107,6 @@
             this.pnl_SettingsBackground.Controls.Add(this.btn_Generate);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_Header);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryRadius);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_OriginSpacing);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryCount);
             this.pnl_SettingsBackground.Controls.Add(this.btn_FontSelector);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_LocationThickness);
@@ -121,23 +116,6 @@
             this.pnl_SettingsBackground.Name = "pnl_SettingsBackground";
             this.pnl_SettingsBackground.Size = new System.Drawing.Size(250, 860);
             this.pnl_SettingsBackground.TabIndex = 0;
-            // 
-            // cbo_LoadPreset
-            // 
-            this.cbo_LoadPreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cbo_LoadPreset.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_LoadPreset.FormattingEnabled = true;
-            this.cbo_LoadPreset.Items.AddRange(new object[] {
-            "--Defaults",
-            "Archipelago",
-            "Continental",
-            "Provincial"});
-            this.cbo_LoadPreset.Location = new System.Drawing.Point(17, 699);
-            this.cbo_LoadPreset.Name = "cbo_LoadPreset";
-            this.cbo_LoadPreset.Size = new System.Drawing.Size(121, 27);
-            this.cbo_LoadPreset.TabIndex = 33;
-            this.cbo_LoadPreset.Text = "Load Preset";
-            this.cbo_LoadPreset.SelectedIndexChanged += new System.EventHandler(this.cbo_LoadPreset_SelectedIndexChanged);
             // 
             // chb_FullContinent
             // 
@@ -178,7 +156,7 @@
             // nud_LakeRadiusBound2
             // 
             this.nud_LakeRadiusBound2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_LakeRadiusBound2.Location = new System.Drawing.Point(174, 281);
+            this.nud_LakeRadiusBound2.Location = new System.Drawing.Point(174, 255);
             this.nud_LakeRadiusBound2.Maximum = new decimal(new int[] {
             250,
             0,
@@ -201,7 +179,7 @@
             // nud_LakeRadiusBound1
             // 
             this.nud_LakeRadiusBound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_LakeRadiusBound1.Location = new System.Drawing.Point(174, 255);
+            this.nud_LakeRadiusBound1.Location = new System.Drawing.Point(174, 229);
             this.nud_LakeRadiusBound1.Maximum = new decimal(new int[] {
             250,
             0,
@@ -225,7 +203,7 @@
             // 
             this.lbl_LakeRadius.AutoSize = true;
             this.lbl_LakeRadius.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeRadius.Location = new System.Drawing.Point(14, 255);
+            this.lbl_LakeRadius.Location = new System.Drawing.Point(14, 229);
             this.lbl_LakeRadius.Name = "lbl_LakeRadius";
             this.lbl_LakeRadius.Size = new System.Drawing.Size(140, 19);
             this.lbl_LakeRadius.TabIndex = 26;
@@ -234,7 +212,7 @@
             // nud_LakeCountBound2
             // 
             this.nud_LakeCountBound2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_LakeCountBound2.Location = new System.Drawing.Point(174, 229);
+            this.nud_LakeCountBound2.Location = new System.Drawing.Point(174, 203);
             this.nud_LakeCountBound2.Maximum = new decimal(new int[] {
             32,
             0,
@@ -252,7 +230,7 @@
             // nud_LakeCountBound1
             // 
             this.nud_LakeCountBound1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_LakeCountBound1.Location = new System.Drawing.Point(174, 203);
+            this.nud_LakeCountBound1.Location = new System.Drawing.Point(174, 177);
             this.nud_LakeCountBound1.Maximum = new decimal(new int[] {
             32,
             0,
@@ -271,7 +249,7 @@
             // 
             this.lbl_LakeCount.AutoSize = true;
             this.lbl_LakeCount.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeCount.Location = new System.Drawing.Point(14, 203);
+            this.lbl_LakeCount.Location = new System.Drawing.Point(14, 177);
             this.lbl_LakeCount.Name = "lbl_LakeCount";
             this.lbl_LakeCount.Size = new System.Drawing.Size(164, 19);
             this.lbl_LakeCount.TabIndex = 23;
@@ -363,29 +341,6 @@
             this.btn_LandColourSelector.Text = "Select Territory Colour";
             this.btn_LandColourSelector.UseVisualStyleBackColor = false;
             this.btn_LandColourSelector.Click += new System.EventHandler(this.btn_LandColourSelector_Click);
-            // 
-            // nud_MinimumOriginSpacing
-            // 
-            this.nud_MinimumOriginSpacing.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nud_MinimumOriginSpacing.Location = new System.Drawing.Point(174, 177);
-            this.nud_MinimumOriginSpacing.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.nud_MinimumOriginSpacing.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.nud_MinimumOriginSpacing.Name = "nud_MinimumOriginSpacing";
-            this.nud_MinimumOriginSpacing.Size = new System.Drawing.Size(49, 20);
-            this.nud_MinimumOriginSpacing.TabIndex = 15;
-            this.nud_MinimumOriginSpacing.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
             // 
             // nud_TerritoryRadiusBound1
             // 
@@ -530,16 +485,6 @@
             this.lbl_TerritoryRadius.TabIndex = 7;
             this.lbl_TerritoryRadius.Text = "Territory Radius (Range)";
             // 
-            // lbl_OriginSpacing
-            // 
-            this.lbl_OriginSpacing.AutoSize = true;
-            this.lbl_OriginSpacing.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OriginSpacing.Location = new System.Drawing.Point(14, 177);
-            this.lbl_OriginSpacing.Name = "lbl_OriginSpacing";
-            this.lbl_OriginSpacing.Size = new System.Drawing.Size(192, 19);
-            this.lbl_OriginSpacing.TabIndex = 14;
-            this.lbl_OriginSpacing.Text = "Minimum Origin Separation";
-            // 
             // lbl_TerritoryCount
             // 
             this.lbl_TerritoryCount.AutoSize = true;
@@ -573,6 +518,23 @@
             this.lbl_LocationThickness.Size = new System.Drawing.Size(182, 19);
             this.lbl_LocationThickness.TabIndex = 31;
             this.lbl_LocationThickness.Text = "Location Marker Thickness";
+            // 
+            // cbo_LoadPreset
+            // 
+            this.cbo_LoadPreset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbo_LoadPreset.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_LoadPreset.FormattingEnabled = true;
+            this.cbo_LoadPreset.Items.AddRange(new object[] {
+            "--Defaults",
+            "Archipelago",
+            "Continental",
+            "Provincial"});
+            this.cbo_LoadPreset.Location = new System.Drawing.Point(17, 699);
+            this.cbo_LoadPreset.Name = "cbo_LoadPreset";
+            this.cbo_LoadPreset.Size = new System.Drawing.Size(121, 27);
+            this.cbo_LoadPreset.TabIndex = 33;
+            this.cbo_LoadPreset.Text = "Load Preset";
+            this.cbo_LoadPreset.SelectedIndexChanged += new System.EventHandler(this.cbo_LoadPreset_SelectedIndexChanged);
             // 
             // pnl_MapBackground
             // 
@@ -646,7 +608,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeCountBound2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_LakeCountBound1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_BorderThickness)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_MinimumOriginSpacing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryRadiusBound2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_TerritoryCountBound2)).EndInit();
@@ -672,8 +633,6 @@
         private System.Windows.Forms.ToolTip tip_SettingsDetails;
         private System.Windows.Forms.NumericUpDown nud_TerritoryRadiusBound1;
         private System.Windows.Forms.NumericUpDown nud_TerritoryRadiusBound2;
-        private System.Windows.Forms.NumericUpDown nud_MinimumOriginSpacing;
-        private System.Windows.Forms.Label lbl_OriginSpacing;
         private System.Windows.Forms.FontDialog fntd_FontSelector;
         private System.Windows.Forms.Button btn_FontSelector;
         private System.Windows.Forms.ColorDialog clrd_ColourSelector;
