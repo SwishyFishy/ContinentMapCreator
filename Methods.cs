@@ -188,8 +188,8 @@ namespace ContinentMapCreator
                 // Give the lake random radii and a random angle
                 if (leastDistance > MIN_LAKE_RADIUS && leastDistance < MAX_LAKE_RADIUS)
                 {
-                    int rad1 = rnd.Next(MIN_LAKE_RADIUS, MAX_LAKE_RADIUS);
-                    int rad2 = rnd.Next(MIN_LAKE_RADIUS, MAX_LAKE_RADIUS);
+                    int rad1 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
+                    int rad2 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
                     double angle = rnd.NextDouble();
                     Lakes[numLakes] = new Lake((Territories.Length + numLakes).ToString(), OriginPoints[originIndex], rad1, rad2, angle);
                     numLakes++;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace ContinentMapCreator
 {
@@ -171,10 +172,26 @@ namespace ContinentMapCreator
 
             // Call the generation methods
             UpdateGenerationSettings();
+
+            timer.Start();
             GenerateOrigins();
-            GenerateTerritories();
-            GenerateWater();
-            GenerateBorders();
+            timer.Stop();
+            Console.WriteLine("GenerateOrigins(): {0}", timer.ElapsedMilliseconds);
+
+            timer.Reset();
+            timer.Start();
+            GenerateTerritories(); timer.Stop();
+            Console.WriteLine("GenerateTerritories(): {0}", timer.ElapsedMilliseconds);
+
+            timer.Reset();
+            timer.Start();
+            GenerateWater(); timer.Stop();
+            Console.WriteLine("GenerateWater(): {0}", timer.ElapsedMilliseconds);
+
+            timer.Reset();
+            timer.Start();
+            GenerateBorders(); timer.Stop();
+            Console.WriteLine("GenerateBorders(): {0}", timer.ElapsedMilliseconds);
 
             // Redraw the screen
             allowPainting = true;

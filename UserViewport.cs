@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace ContinentMapCreator
 {
@@ -47,10 +48,12 @@ namespace ContinentMapCreator
         Lake[] Lakes;
         Point[] TerritoryBorders;
         bool[,] NeighbourMatrix;
-
         Point[] OriginPoints;
         int numOriginPoints;
         int originIndex;
+
+        // Diagnostics
+        Stopwatch timer = new Stopwatch();
 
         public form_Window()
         {
