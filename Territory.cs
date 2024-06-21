@@ -8,15 +8,15 @@ namespace ContinentMapCreator
         // Properties
         public string Name { get; set; }
         public Point Origin { get; set; }
-        public int MaxRadius { get; set; }
+        public int Radius { get; set; }
         public bool Coastal { get; set; }
 
         // Constructor
-        public Territory(string name, Point origin, int maxRadius)
+        public Territory(string name, Point origin, int radius)
         {
             Name = name;
             Origin = origin;
-            MaxRadius = maxRadius;
+            Radius = radius;
             Coastal = false;
         }
 
@@ -28,12 +28,12 @@ namespace ContinentMapCreator
 
         public bool TerritoryEdgeContains(Point point)
         {
-            return OriginToPoint(point) == MaxRadius ? true : false;
+            return OriginToPoint(point) == Radius ? true : false;
         }
 
         public bool TerritoryBoundsContains(Point point)
         {
-            return OriginToPoint(point) <= MaxRadius ? true : false;
+            return OriginToPoint(point) <= Radius ? true : false;
         }
 
     }
