@@ -172,26 +172,10 @@ namespace ContinentMapCreator
 
             // Call the generation methods
             UpdateGenerationSettings();
-
-            timer.Start();
             GenerateOrigins();
-            timer.Stop();
-            Console.WriteLine("GenerateOrigins(): {0}", timer.ElapsedMilliseconds);
-
-            timer.Reset();
-            timer.Start();
-            GenerateTerritories(); timer.Stop();
-            Console.WriteLine("GenerateTerritories(): {0}", timer.ElapsedMilliseconds);
-
-            timer.Reset();
-            timer.Start();
-            GenerateWater(); timer.Stop();
-            Console.WriteLine("GenerateWater(): {0}", timer.ElapsedMilliseconds);
-
-            timer.Reset();
-            timer.Start();
-            GenerateBorders(); timer.Stop();
-            Console.WriteLine("GenerateBorders(): {0}", timer.ElapsedMilliseconds);
+            GenerateTerritories(); 
+            GenerateWater(); 
+            GenerateBorders(); 
 
             // Redraw the screen
             allowPainting = true;
