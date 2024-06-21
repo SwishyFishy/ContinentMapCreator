@@ -60,7 +60,7 @@ namespace ContinentMapCreator
 
         // Use Poisson-Disc sampling to determine a random set of territory origin points
         // https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf
-        // O(n) for n possible origins
+        // O(origins)
         private void GenerateOrigins()
         {
             // Initialize variables
@@ -99,38 +99,38 @@ namespace ContinentMapCreator
 
                 for (int i = 0; i < GenerationAttempts; i++)
                 {
-                    // Hijack x and y to determine which quadrant of the grid around the next originIndex is being generated in this iteration of the loop
-                    x = rnd.Next(0, 2);
-                    y = rnd.Next(0, 2);
+                    Place();
 
-                    // Determine this iteration's point's x and y
-                    x = x == 0 ?
-                        rnd.Next(OriginPoints[originIndex].X - maxSpacing, OriginPoints[originIndex].X - minSpacing) :
-                        rnd.Next(OriginPoints[originIndex].X + minSpacing, OriginPoints[originIndex].X + maxSpacing);
-                    y = y == 0 ?
-                        rnd.Next(OriginPoints[originIndex].Y - maxSpacing, OriginPoints[originIndex].Y - minSpacing) :
-                        rnd.Next(OriginPoints[originIndex].Y + minSpacing, OriginPoints[originIndex].Y + maxSpacing);
+                    void Place()
+                    { 
+                        // Hijack x and y to determine which quadrant of the grid around the next originIndex is being generated in this iteration of the loop
+                        x = rnd.Next(0, 2);
+                        y = rnd.Next(0, 2);
 
-                    bool placeable = true;
+                        // Determine this iteration's point's x and y
+                        x = x == 0 ?
+                            rnd.Next(OriginPoints[originIndex].X - maxSpacing, OriginPoints[originIndex].X - minSpacing) :
+                            rnd.Next(OriginPoints[originIndex].X + minSpacing, OriginPoints[originIndex].X + maxSpacing);
+                        y = y == 0 ?
+                            rnd.Next(OriginPoints[originIndex].Y - maxSpacing, OriginPoints[originIndex].Y - minSpacing) :
+                            rnd.Next(OriginPoints[originIndex].Y + minSpacing, OriginPoints[originIndex].Y + maxSpacing);
 
-                    // If the new point is outside the acceptable bounds, the point is not placeable
-                    if (x < minXValue || x > maxXValue || y < minYValue || y > maxYValue)
-                    {
-                        placeable = false;
-                    }
-
-                    // If the new point is too close to another, the point is not placeable
-                    for (int j = 0; j < numOriginPoints && placeable; j++)
-                    {
-                        if (Math.Sqrt(Math.Pow(OriginPoints[j].X - x, 2) + Math.Pow(OriginPoints[j].Y - y, 2)) < MIN_ORIGIN_SPACING)
+                        // If the new point is outside the acceptable bounds, the point is not placeable
+                        if (x < minXValue || x > maxXValue || y < minYValue || y > maxYValue)
                         {
-                            placeable = false;
+                            return;
                         }
-                    }
 
-                    // Add the new point
-                    if (placeable)
-                    {
+                        // If the new point is too close to another, the point is not placeable
+                        for (int j = 0; j < numOriginPoints; j++)
+                        {
+                            if (Math.Sqrt(Math.Pow(OriginPoints[j].X - x, 2) + Math.Pow(OriginPoints[j].Y - y, 2)) < MIN_ORIGIN_SPACING)
+                            {
+                                return;
+                            }
+                        }
+
+                        // Add the new point
                         OriginPoints[numOriginPoints] = new Point(x, y);
                         ActiveIndices[numActiveIndices] = numOriginPoints;
                         numOriginPoints++;
@@ -145,7 +145,7 @@ namespace ContinentMapCreator
         }
 
         // Generate Territories
-        // O(n) for n territories
+        // O(territories)
         private void GenerateTerritories()
         {
             NUM_TERRITORIES = rnd.Next(MIN_NUM_TERRITORIES, MAX_NUM_TERRITORIES + 1);
@@ -165,14 +165,14 @@ namespace ContinentMapCreator
         }
 
         // Generate Lakes
-        // O(n * m) for n inland lakes and m territories
+        // O(territories * lakes)
         private void GenerateWater()
         {
             NUM_LAKES = rnd.Next(MIN_NUM_LAKES, MAX_NUM_LAKES + 1);
-            Lakes = new Lake[NUM_LAKES];
+            Lakes = new Lake[Math.Min(NUM_LAKES, numOriginPoints)];
             int numLakes = 0;
 
-            while (numOriginPoints > 0)
+            while (numOriginPoints > 0 && numLakes < NUM_LAKES)
             {
                 // Get a random OriginPoint
                 originIndex = rnd.Next(0, numOriginPoints);
@@ -186,12 +186,12 @@ namespace ContinentMapCreator
 
                 // Create an inland lake
                 // Give the lake random radii and a random angle
-                if (numLakes < NUM_LAKES && leastDistance > MIN_LAKE_RADIUS)
+                if (leastDistance > MIN_LAKE_RADIUS && leastDistance < MAX_LAKE_RADIUS)
                 {
-                    int rad1 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
-                    int rad2 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
+                    int rad1 = rnd.Next(MIN_LAKE_RADIUS, MAX_LAKE_RADIUS);
+                    int rad2 = rnd.Next(MIN_LAKE_RADIUS, MAX_LAKE_RADIUS);
                     double angle = rnd.NextDouble();
-                    Lakes[numLakes] = new Lake(numLakes.ToString(), OriginPoints[originIndex], rad1, rad2, angle);
+                    Lakes[numLakes] = new Lake((Territories.Length + numLakes).ToString(), OriginPoints[originIndex], rad1, rad2, angle);
                     numLakes++;
                 }
 
@@ -207,23 +207,26 @@ namespace ContinentMapCreator
 
         // Calculate territory borders and mark coastal territories as such
         // Determine neighbouring Territories (by land and sea)
+        // O(length * width * (territories + lakes))
         private void GenerateBorders()
         {
             int numBorderPoints = 0;
-            TerritoryBorders = new Point[WINDOW_WIDTH * WINDOW_HEIGHT];
-            Loop();
+            TerritoryBorders = new Point[pnl_MapBackground.Width * pnl_MapBackground.Height]; 
+            NeighbourMatrix = new bool[Territories.Length + Lakes.Length, Territories.Length + Lakes.Length];
 
             // Loop through all points
-            void Loop()
+            for (int x = 0; x < pnl_MapBackground.Width; x++)
             {
-                for (int x = 0; x < pnl_MapBackground.Width; x++)
+                for (int y = 0; y < pnl_MapBackground.Height; y++)
                 {
-                    for (int y = 0; y < pnl_MapBackground.Height; y++)
-                    {
-                        int bordersLakeIndex = -1;
-                        Point thisPixel = new Point(x, y);
+                    Point thisPixel = new Point(x, y);
+                    EvaluatePixel();
 
-                        for (int i = 0; i < NUM_LAKES; i++)
+                    void EvaluatePixel()
+                    {
+                        // Check if pixel is inside a lake
+                        int bordersLakeIndex = -1;
+                        for (int i = 0; i < Lakes.Length; i++)
                         {
                             // If this point is contained within a lake, move on
                             if (Lakes[i].LakeBoundsContains(thisPixel))
@@ -239,12 +242,12 @@ namespace ContinentMapCreator
 
                         // Get the distance between this point and each TerritoryOrigin
                         // As the loop progresses, track which indices in distancesToOrigins are those of the closest and second-closest territories
-                        int[] distancesToOrigins = new int[NUM_TERRITORIES];
+                        int[] distancesToOrigins = new int[Territories.Length];
                         int closestOriginIndex = -1;
                         int secondClosestOriginIndex = -1;
 
                         // Populate the distancesToOrigins array
-                        for (int i = 0; i < NUM_TERRITORIES; i++)
+                        for (int i = 0; i < Territories.Length; i++)
                         {
                             distancesToOrigins[i] = Territories[i].OriginToPoint(thisPixel);
 
@@ -267,7 +270,7 @@ namespace ContinentMapCreator
                         // Point is too far from any Territory Origin to be land
                         if (distancesToOrigins[closestOriginIndex] > Territories[closestOriginIndex].MaxRadius)
                         {
-                            continue;
+                            return;
                         }
                         // Point is on the border of a lake and is within the bounds of at least one Territory
                         else if (bordersLakeIndex > -1 && distancesToOrigins[closestOriginIndex] <= Territories[closestOriginIndex].MaxRadius)
@@ -275,7 +278,11 @@ namespace ContinentMapCreator
                             TerritoryBorders[numBorderPoints] = thisPixel;
                             numBorderPoints++;
 
-                            // Neighbours
+                            if (!NeighbourMatrix[closestOriginIndex, Territories.Length + bordersLakeIndex])
+                            {
+                                NeighbourMatrix[closestOriginIndex, Territories.Length + bordersLakeIndex] = true;
+                                NeighbourMatrix[Territories.Length + bordersLakeIndex, closestOriginIndex] = true;
+                            }
                         }
                         // Point is exactly a Territory's Radius from its Origin, and is closer to that Territory than any other.
                         else if (distancesToOrigins[closestOriginIndex] == Territories[closestOriginIndex].MaxRadius &&
@@ -292,7 +299,8 @@ namespace ContinentMapCreator
                             TerritoryBorders[numBorderPoints] = thisPixel;
                             numBorderPoints++;
 
-                            // Neighbours
+                            NeighbourMatrix[closestOriginIndex, secondClosestOriginIndex] = true;
+                            NeighbourMatrix[secondClosestOriginIndex, closestOriginIndex] = true;
                         }
                     }
                 }
@@ -314,7 +322,7 @@ namespace ContinentMapCreator
             g.FillRectangle(WATER_COLOUR, 0, 0, pnl_MapBackground.Width, pnl_MapBackground.Height);
 
             // Draw Territories
-            for (int i = 0; i < NUM_TERRITORIES; i++)
+            for (int i = 0; i < Territories.Length; i++)
             {
                 xOffset = Territories[i].Origin.X - Territories[i].MaxRadius;
                 yOffset = Territories[i].Origin.Y - Territories[i].MaxRadius;
@@ -322,9 +330,10 @@ namespace ContinentMapCreator
             }
 
             // Draw Lakes
-            for (int i = 0; i < NUM_LAKES; i++)
+            for (int i = 0; i < Lakes.Length; i++)
             {
                 g.FillClosedCurve(WATER_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.95F);
+                g.DrawString(Lakes[i].Name, DISPLAY_FONT, LOCATION_COLOUR, Lakes[i].Origin.X, Lakes[i].Origin.Y);
             }
 
             // Draw Borders
@@ -338,7 +347,7 @@ namespace ContinentMapCreator
             }
 
             // Draw TerritoryOrigins and Territory names
-            for (int i = 0; i < NUM_TERRITORIES; i++)
+            for (int i = 0; i < Territories.Length; i++)
             {
                 xOffset = Territories[i].Origin.X - LOCATION_MARKER_OFFSET;
                 yOffset = Territories[i].Origin.Y - LOCATION_MARKER_OFFSET;

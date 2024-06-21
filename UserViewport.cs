@@ -46,6 +46,7 @@ namespace ContinentMapCreator
         Territory[] Territories;
         Lake[] Lakes;
         Point[] TerritoryBorders;
+        bool[,] NeighbourMatrix;
 
         Point[] OriginPoints;
         int numOriginPoints;
