@@ -45,7 +45,6 @@ namespace ContinentMapCreator
         bool allowPainting = false;
         Territory[] Territories;
         Lake[] Lakes;
-        Point[] PointsOnBorder;
         Point[] TerritoryBorders;
 
         Point[] OriginPoints;

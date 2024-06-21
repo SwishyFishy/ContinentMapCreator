@@ -14,8 +14,6 @@ namespace ContinentMapCreator
         public Point Focus1 { get; set; }
         public Point Focus2 { get; set; }
         public Point[] Vertices { get; set; }
-        public Territory[] Neighbours { get; set; }
-        public Lake[] NeighbourLakes { get; set; }
 
         // Constructor
         public Lake(String name, Point origin, int rad1, int rad2, double angle)
@@ -64,9 +62,6 @@ namespace ContinentMapCreator
             Vertices[1] = new Point(v3xRotation + Origin.X, v3yRotation + Origin.Y);
             Vertices[2] = new Point(v2xRotation + Origin.X, v2yRotation + Origin.Y);
             Vertices[3] = new Point(v4xRotation + Origin.X, v4yRotation + Origin.Y);
-
-            Neighbours = new Territory[1];
-            NeighbourLakes = new Lake[1];
         }
 
         // Methods
@@ -86,80 +81,6 @@ namespace ContinentMapCreator
             int sumDistance = (int)(distanceToFocus1 + distanceToFocus2);
 
             return sumDistance < 2 * MajorRadius ? true : false;
-        }
-
-        public void AddNeighbour(Territory neighbour)
-        {
-            // If neighbour is not in Neighbours, add it
-            if (Array.Find(Neighbours, x => x == neighbour) == null)
-            {
-                Territory[] temp = new Territory[Neighbours.Length + 1];
-                Array.Copy(Neighbours, temp, Neighbours.Length);
-                temp[Neighbours.Length] = neighbour;
-                Neighbours = temp;
-
-                // Add neighbour to all other neighbours, and all other neighbours to neighbour
-                // Neighbours[0] is always null, begin at second index
-                for (int i = 1; i < Neighbours.Length - 1; i++)
-                {
-                    Neighbours[i].AddNeighbour(neighbour, false);
-                    neighbour.AddNeighbour(Neighbours[i], false);
-                }
-            }
-        }
-        public void AddNeighbour(Lake neighbour)
-        {
-            // If neighbour is not in Neighbours, add it
-            if (Array.Find(NeighbourLakes, x => x == neighbour) == null)
-            {
-                Lake[] temp = new Lake[NeighbourLakes.Length + 1];
-                Array.Copy(NeighbourLakes, temp, NeighbourLakes.Length);
-                temp[NeighbourLakes.Length] = neighbour;
-                NeighbourLakes = temp;
-
-                // Add neighbour to all other neighbours, and all other neighbours to neighbour
-                // NeighbourLakes[0] is always null, begin at second index
-                for (int i = 1; i < NeighbourLakes.Length - 1; i++)
-                {
-                    NeighbourLakes[i].AddNeighbour(neighbour);
-                    neighbour.AddNeighbour(NeighbourLakes[i]);
-
-                    // Add all NeighbourLakes Neighbours as Neighbours
-                    for (int j = 1; j < NeighbourLakes[i].Neighbours.Length - 1; j++)
-                    {
-                        AddNeighbour(NeighbourLakes[i].Neighbours[j]);
-
-                        // Add all Neighbours as Neighbours to NeighbourLakes
-                        for (int k = 1; k < Neighbours.Length - 1; k++)
-                        {
-                            NeighbourLakes[i].AddNeighbour(Neighbours[k]);
-                        }
-                    }
-                }
-            }
-        }
-
-        public void RemoveNeighbour(Territory neighbour)
-        {
-            // If neighbour is in Neighbours, remove it
-            int index = Array.IndexOf(Neighbours, neighbour);
-            if (index != -1)
-            {
-                Territory[] temp = new Territory[Neighbours.Length - 1];
-                Array.Copy(Neighbours, 0, temp, 0, index);
-                if (index < Neighbours.Length - 1)
-                {
-                    Array.Copy(Neighbours, index + 1, temp, index + 1, Neighbours.Length - index - 1);
-                }
-                Neighbours = temp;
-
-                // Remove neighbour from all neighbours
-                // Neighbours[0] is always null, begin at second index
-                for (int i = 1; i < Neighbours.Length - 1; i++)
-                {
-                    Neighbours[i].RemoveNeighbour(neighbour, false);
-                }
-            }
         }
     }
 }

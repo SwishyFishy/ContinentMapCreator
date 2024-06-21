@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Continent.cs" />
     <Compile Include="EventHandlers.cs">
       <SubType>Form</SubType>
     </Compile>

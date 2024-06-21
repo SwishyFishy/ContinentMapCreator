@@ -210,96 +210,96 @@ namespace ContinentMapCreator
         private void GenerateBorders()
         {
             int numBorderPoints = 0;
-            PointsOnBorder = new Point[WINDOW_WIDTH * WINDOW_HEIGHT];
+            TerritoryBorders = new Point[WINDOW_WIDTH * WINDOW_HEIGHT];
+            Loop();
 
             // Loop through all points
-            for (int x = 0; x < pnl_MapBackground.Width; x++)
+            void Loop()
             {
-                for (int y = 0; y < pnl_MapBackground.Height; y++)
+                for (int x = 0; x < pnl_MapBackground.Width; x++)
                 {
-                    bool inLake = false;
-                    int bordersLakeIndex = -1;
-                    Point thisPixel = new Point(x, y);
+                    for (int y = 0; y < pnl_MapBackground.Height; y++)
+                    {
+                        int bordersLakeIndex = -1;
+                        Point thisPixel = new Point(x, y);
 
-                    for (int i = 0; i < NUM_LAKES; i++)
-                    {
-                        // If this point is contained within a lake, move on
-                        if (Lakes[i].LakeBoundsContains(thisPixel))
+                        for (int i = 0; i < NUM_LAKES; i++)
                         {
-                            inLake = true;
+                            // If this point is contained within a lake, move on
+                            if (Lakes[i].LakeBoundsContains(thisPixel))
+                            {
+                                return;
+                            }
+                            // If this point is on a lake border, remember that so the territory owning this point can add WaterNeighbours
+                            else if (bordersLakeIndex < 0 && Lakes[i].LakeBorderContains(thisPixel))
+                            {
+                                bordersLakeIndex = i;
+                            }
                         }
-                        // If this point is on a lake border, remember that so the territory owning this point can add WaterNeighbours
-                        else if (Lakes[i].LakeBorderContains(thisPixel))
-                        {
-                            bordersLakeIndex = i;
-                        }
-                    }
-                    if (inLake)
-                    {
-                        continue;
-                    }
 
-                    // Get the distance between this point and each TerritoryOrigin
-                    // As the loop progresses, track which indices in distancesToOrigins are those of the closest and second-closest territories
-                    int[] distancesToOrigins = new int[NUM_TERRITORIES];
-                    int closestOriginIndex = -1;
-                    int secondClosestOriginIndex = -1;
+                        // Get the distance between this point and each TerritoryOrigin
+                        // As the loop progresses, track which indices in distancesToOrigins are those of the closest and second-closest territories
+                        int[] distancesToOrigins = new int[NUM_TERRITORIES];
+                        int closestOriginIndex = -1;
+                        int secondClosestOriginIndex = -1;
 
-                    // Populate the distancesToOrigins array
-                    for (int i = 0; i < NUM_TERRITORIES; i++)
-                    {
-                        distancesToOrigins[i] = Territories[i].OriginToPoint(thisPixel);
+                        // Populate the distancesToOrigins array
+                        for (int i = 0; i < NUM_TERRITORIES; i++)
+                        {
+                            distancesToOrigins[i] = Territories[i].OriginToPoint(thisPixel);
 
-                        // Track two closest territories
-                        if (closestOriginIndex == -1)
-                        {
-                            closestOriginIndex = i;
+                            // Track two closest territories
+                            if (closestOriginIndex == -1)
+                            {
+                                closestOriginIndex = i;
+                            }
+                            else if (distancesToOrigins[closestOriginIndex] > distancesToOrigins[i])
+                            {
+                                secondClosestOriginIndex = closestOriginIndex;
+                                closestOriginIndex = i;
+                            }
+                            else if (secondClosestOriginIndex == -1 || distancesToOrigins[secondClosestOriginIndex] > distancesToOrigins[i])
+                            {
+                                secondClosestOriginIndex = i;
+                            }
                         }
-                        else if (distancesToOrigins[closestOriginIndex] > distancesToOrigins[i])
-                        {
-                            secondClosestOriginIndex = closestOriginIndex;
-                            closestOriginIndex = i;
-                        }
-                        else if (secondClosestOriginIndex == -1 || distancesToOrigins[secondClosestOriginIndex] > distancesToOrigins[i])
-                        {
-                            secondClosestOriginIndex = i;
-                        }
-                    }
 
-                    // Point is too far from any Territory Origin to be land
-                    if (distancesToOrigins[closestOriginIndex] > Territories[closestOriginIndex].MaxRadius)
-                    {
-                        continue;
-                    }
-                    // Point is on the border of a lake and is within the bounds of at least one Territory
-                    else if (bordersLakeIndex > -1 && distancesToOrigins[closestOriginIndex] <= Territories[closestOriginIndex].MaxRadius)
-                    {
-                        PointsOnBorder[numBorderPoints] = thisPixel;
-                        numBorderPoints++;
-                        Lakes[bordersLakeIndex].AddNeighbour(Territories[closestOriginIndex]);
-                    }
-                    // Point is exactly a Territory's Radius from its Origin, and is closer to that Territory than any other.
-                    else if (distancesToOrigins[closestOriginIndex] == Territories[closestOriginIndex].MaxRadius &&
-                        distancesToOrigins[secondClosestOriginIndex] > Territories[secondClosestOriginIndex].MaxRadius)
-                    {
-                        PointsOnBorder[numBorderPoints] = thisPixel;
-                        numBorderPoints++;
-                    }
-                    // Point is equidistant from two Territory Origins, and is within the bounds of both Territories, and is closer to those two Territories than any others
-                    else if (distancesToOrigins[secondClosestOriginIndex] <= Territories[secondClosestOriginIndex].MaxRadius &&
-                        distancesToOrigins[closestOriginIndex] == distancesToOrigins[secondClosestOriginIndex])
-                    {
-                        PointsOnBorder[numBorderPoints] = thisPixel;
-                        numBorderPoints++;
-                        Territories[closestOriginIndex].AddNeighbour(Territories[secondClosestOriginIndex], true);
-                        Territories[secondClosestOriginIndex].AddNeighbour(Territories[closestOriginIndex], true);
+                        // Point is too far from any Territory Origin to be land
+                        if (distancesToOrigins[closestOriginIndex] > Territories[closestOriginIndex].MaxRadius)
+                        {
+                            continue;
+                        }
+                        // Point is on the border of a lake and is within the bounds of at least one Territory
+                        else if (bordersLakeIndex > -1 && distancesToOrigins[closestOriginIndex] <= Territories[closestOriginIndex].MaxRadius)
+                        {
+                            TerritoryBorders[numBorderPoints] = thisPixel;
+                            numBorderPoints++;
+
+                            // Neighbours
+                        }
+                        // Point is exactly a Territory's Radius from its Origin, and is closer to that Territory than any other.
+                        else if (distancesToOrigins[closestOriginIndex] == Territories[closestOriginIndex].MaxRadius &&
+                            distancesToOrigins[secondClosestOriginIndex] > Territories[secondClosestOriginIndex].MaxRadius)
+                        {
+                            TerritoryBorders[numBorderPoints] = thisPixel;
+                            numBorderPoints++;
+                            Territories[closestOriginIndex].Coastal = true;
+                        }
+                        // Point is equidistant from two Territory Origins, and is within the bounds of both Territories, and is closer to those two Territories than any others
+                        else if (distancesToOrigins[secondClosestOriginIndex] <= Territories[secondClosestOriginIndex].MaxRadius &&
+                            distancesToOrigins[closestOriginIndex] == distancesToOrigins[secondClosestOriginIndex])
+                        {
+                            TerritoryBorders[numBorderPoints] = thisPixel;
+                            numBorderPoints++;
+
+                            // Neighbours
+                        }
                     }
                 }
             }
 
-            // Shorten PointsOnBorder to actual size
-            TerritoryBorders = new Point[numBorderPoints];
-            Array.Copy(PointsOnBorder, TerritoryBorders, numBorderPoints);
+            // Shorten TerritoryBorders to actual size
+            Array.Resize(ref TerritoryBorders, numBorderPoints);
         }
 
         // Draw the screen
@@ -310,7 +310,7 @@ namespace ContinentMapCreator
             float xOffset;
             float yOffset;
 
-            // Draw Oceans
+            // Draw Ocean
             g.FillRectangle(WATER_COLOUR, 0, 0, pnl_MapBackground.Width, pnl_MapBackground.Height);
 
             // Draw Territories
@@ -344,10 +344,6 @@ namespace ContinentMapCreator
                 yOffset = Territories[i].Origin.Y - LOCATION_MARKER_OFFSET;
                 g.DrawRectangle(locationPen, xOffset, yOffset, LOCATION_MARKER_THICKNESS, LOCATION_MARKER_THICKNESS);
                 g.DrawString(Territories[i].Name, DISPLAY_FONT, LOCATION_COLOUR, Territories[i].Origin.X, Territories[i].Origin.Y);
-                for (int j = 1; j < Territories[i].WaterNeighbours.Length; j++)
-                {
-                    g.DrawString(Territories[i].WaterNeighbours[j].Name, DISPLAY_FONT, LOCATION_COLOUR, Territories[i].Origin.X, Territories[i].Origin.Y + 15 * j);
-                }
             }
 
             borderPen.Dispose();
