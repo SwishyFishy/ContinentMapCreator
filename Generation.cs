@@ -187,19 +187,52 @@ namespace ContinentMapCreator
             // Generate bordering oceans
             if (FULL_CONTINENT)
             {
-                Oceans = new Ocean[2 * (pnl_MapBackground.Width + pnl_MapBackground.Height) / MIN_OCEAN_RADIUS_COAST];
+                HorizontalOceans = new Ocean[2 * (pnl_MapBackground.Width / MIN_OCEAN_RADIUS_COAST) + 2];
+                VerticalOceans = new Ocean[2 * (pnl_MapBackground.Height / MIN_OCEAN_RADIUS_COAST) + 2];
+                int numOceans = 0;
+                int xrad1;
+                int yrad1;
+                int xrad2;
+                int yrad2;
 
                 // Oceans on top and bottom of panel
-                for (int i = 0; i < pnl_MapBackground.Width; i += MIN_OCEAN_RADIUS_COAST)
+                for (int i = 0; i < pnl_MapBackground.Width; i += 2 * MIN_OCEAN_RADIUS_COAST)
                 {
+                    xrad1 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
+                    yrad1 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
 
+                    xrad2 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
+                    yrad2 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
+
+                    HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), new Point(i, 0), xrad1, yrad1);
+                    numOceans++;
+                    HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), new Point(i, pnl_MapBackground.Height), xrad2, yrad2);
+                    numOceans++;
                 }
+                Array.Resize(ref HorizontalOceans, numOceans);
+
+                // Oceans on left and right of panel
+                numOceans = 0;
+                for (int i = 0; i < pnl_MapBackground.Height; i += 2 * MIN_OCEAN_RADIUS_COAST)
+                {
+                    xrad1 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
+                    yrad1 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
+
+                    xrad2 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
+                    yrad2 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
+
+                    VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), new Point(0, i), xrad1, yrad1);
+                    numOceans++;
+                    VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), new Point(pnl_MapBackground.Width, i), xrad2, yrad2);
+                    numOceans++;
+                }
+                Array.Resize(ref VerticalOceans, numOceans);
             }
         }
 
         // Calculate territory borders and mark coastal territories as such
         // Determine neighbouring Territories
-        // O(length * width * (territories + lakes))
+        // O(length * width * (territories + lakes + oceans))
         private void GenerateBorders()
         {
             int numBorderPoints = 0;
@@ -216,8 +249,41 @@ namespace ContinentMapCreator
 
                     void EvaluatePixel()
                     {
+                        int bordersWaterIndex = -1;
+
+                        if (FULL_CONTINENT && (x < MAX_OCEAN_RADIUS_INLAND || x > pnl_MapBackground.Width - MAX_OCEAN_RADIUS_INLAND ||
+                            y < MAX_OCEAN_RADIUS_INLAND || y > pnl_MapBackground.Height - MAX_OCEAN_RADIUS_INLAND))
+                        { 
+                            // Check if this pixel is inside an ocean
+                            for (int i = 0; i < HorizontalOceans.Length; i++)
+                            {
+                                // If this point is contained within an ocean, move on
+                                if (HorizontalOceans[i].BoundsContains(thisPixel))
+                                {
+                                    return;
+                                }
+                                // If this point is on an ocean border, remember that
+                                else if (bordersWaterIndex < 0 && HorizontalOceans[i].BorderContains(thisPixel))
+                                {
+                                    bordersWaterIndex = i;
+                                }
+                            }
+                            for (int i = 0; i < VerticalOceans.Length; i++)
+                            {
+                                // If this point is contained within an ocean, move on
+                                if (VerticalOceans[i].BoundsContains(thisPixel))
+                                {
+                                    return;
+                                }
+                                // If this point is on a lake border, remember that
+                                else if (bordersWaterIndex < 0 && VerticalOceans[i].BorderContains(thisPixel))
+                                {
+                                    bordersWaterIndex = i;
+                                }
+                            }
+                        }
+                        
                         // Check if pixel is inside a lake
-                        int bordersLakeIndex = -1;
                         for (int i = 0; i < Lakes.Length; i++)
                         {
                             // If this point is contained within a lake, move on
@@ -226,9 +292,9 @@ namespace ContinentMapCreator
                                 return;
                             }
                             // If this point is on a lake border, remember that so the territory owning this point can add WaterNeighbours
-                            else if (bordersLakeIndex < 0 && Lakes[i].BorderContains(thisPixel))
+                            else if (bordersWaterIndex < 0 && Lakes[i].BorderContains(thisPixel))
                             {
-                                bordersLakeIndex = i;
+                                bordersWaterIndex = i;
                             }
                         }
 
@@ -265,8 +331,8 @@ namespace ContinentMapCreator
                         {
                             return;
                         }
-                        // Point is on the border of a lake and is within the bounds of at least one Territory
-                        else if (bordersLakeIndex > -1 && distancesToOrigins[closestOriginIndex] <= 1)
+                        // Point is on the border of a lake or ocean and is within the bounds of at least one Territory
+                        else if (bordersWaterIndex > -1 && distancesToOrigins[closestOriginIndex] <= 1)
                         {
                             TerritoryBorders[numBorderPoints] = thisPixel;
                             numBorderPoints++;

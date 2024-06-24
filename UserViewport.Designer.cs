@@ -323,7 +323,7 @@
             this.lbl_LocationThicknessDisplay.Name = "lbl_LocationThicknessDisplay";
             this.lbl_LocationThicknessDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_LocationThicknessDisplay.TabIndex = 30;
-            this.lbl_LocationThicknessDisplay.Text = "2";
+            this.lbl_LocationThicknessDisplay.Text = "3";
             this.lbl_LocationThicknessDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // trk_LocationThickness
@@ -335,7 +335,7 @@
             this.trk_LocationThickness.Name = "trk_LocationThickness";
             this.trk_LocationThickness.Size = new System.Drawing.Size(164, 45);
             this.trk_LocationThickness.TabIndex = 29;
-            this.trk_LocationThickness.Value = 20;
+            this.trk_LocationThickness.Value = 30;
             this.trk_LocationThickness.Scroll += new System.EventHandler(this.trk_LocationThickness_Scroll);
             this.trk_LocationThickness.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trk_LocationThickness_MouseUp);
             // 
@@ -345,19 +345,19 @@
             this.lbl_LakeRadius.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_LakeRadius.Location = new System.Drawing.Point(14, 386);
             this.lbl_LakeRadius.Name = "lbl_LakeRadius";
-            this.lbl_LakeRadius.Size = new System.Drawing.Size(143, 19);
+            this.lbl_LakeRadius.Size = new System.Drawing.Size(85, 19);
             this.lbl_LakeRadius.TabIndex = 26;
-            this.lbl_LakeRadius.Text = "Average Lake Radius";
+            this.lbl_LakeRadius.Text = "Lake Radius";
             // 
             // lbl_LakeFrequency
             // 
             this.lbl_LakeFrequency.AutoSize = true;
             this.lbl_LakeFrequency.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeFrequency.Location = new System.Drawing.Point(12, 284);
+            this.lbl_LakeFrequency.Location = new System.Drawing.Point(14, 284);
             this.lbl_LakeFrequency.Name = "lbl_LakeFrequency";
-            this.lbl_LakeFrequency.Size = new System.Drawing.Size(167, 19);
+            this.lbl_LakeFrequency.Size = new System.Drawing.Size(44, 19);
             this.lbl_LakeFrequency.TabIndex = 23;
-            this.lbl_LakeFrequency.Text = "Average Lake Frequency";
+            this.lbl_LakeFrequency.Text = "Lakes";
             // 
             // lbl_BorderThicknessDisplay
             // 
@@ -491,9 +491,9 @@
             this.lbl_TerritoryRadius.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TerritoryRadius.Location = new System.Drawing.Point(14, 182);
             this.lbl_TerritoryRadius.Name = "lbl_TerritoryRadius";
-            this.lbl_TerritoryRadius.Size = new System.Drawing.Size(171, 19);
+            this.lbl_TerritoryRadius.Size = new System.Drawing.Size(113, 19);
             this.lbl_TerritoryRadius.TabIndex = 7;
-            this.lbl_TerritoryRadius.Text = "Average Territory Radius";
+            this.lbl_TerritoryRadius.Text = "Territory Radius";
             // 
             // lbl_TerritoryFrequency
             // 
@@ -501,9 +501,9 @@
             this.lbl_TerritoryFrequency.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TerritoryFrequency.Location = new System.Drawing.Point(12, 80);
             this.lbl_TerritoryFrequency.Name = "lbl_TerritoryFrequency";
-            this.lbl_TerritoryFrequency.Size = new System.Drawing.Size(195, 19);
+            this.lbl_TerritoryFrequency.Size = new System.Drawing.Size(77, 19);
             this.lbl_TerritoryFrequency.TabIndex = 11;
-            this.lbl_TerritoryFrequency.Text = "Average Territory Frequency";
+            this.lbl_TerritoryFrequency.Text = "Territories";
             // 
             // btn_FontSelector
             // 
@@ -553,15 +553,15 @@
             this.lbl_TerritoryFrequencyVariation.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TerritoryFrequencyVariation.Location = new System.Drawing.Point(14, 128);
             this.lbl_TerritoryFrequencyVariation.Name = "lbl_TerritoryFrequencyVariation";
-            this.lbl_TerritoryFrequencyVariation.Size = new System.Drawing.Size(207, 19);
+            this.lbl_TerritoryFrequencyVariation.Size = new System.Drawing.Size(136, 19);
             this.lbl_TerritoryFrequencyVariation.TabIndex = 50;
-            this.lbl_TerritoryFrequencyVariation.Text = "Territory Frequency Variability";
+            this.lbl_TerritoryFrequencyVariation.Text = "Territory Variability";
             // 
             // lbl_TerritoryRadiusVariation
             // 
             this.lbl_TerritoryRadiusVariation.AutoSize = true;
             this.lbl_TerritoryRadiusVariation.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryRadiusVariation.Location = new System.Drawing.Point(14, 230);
+            this.lbl_TerritoryRadiusVariation.Location = new System.Drawing.Point(12, 233);
             this.lbl_TerritoryRadiusVariation.Name = "lbl_TerritoryRadiusVariation";
             this.lbl_TerritoryRadiusVariation.Size = new System.Drawing.Size(183, 19);
             this.lbl_TerritoryRadiusVariation.TabIndex = 51;
@@ -573,9 +573,9 @@
             this.lbl_LakeFrequencyVariation.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_LakeFrequencyVariation.Location = new System.Drawing.Point(14, 335);
             this.lbl_LakeFrequencyVariation.Name = "lbl_LakeFrequencyVariation";
-            this.lbl_LakeFrequencyVariation.Size = new System.Drawing.Size(179, 19);
+            this.lbl_LakeFrequencyVariation.Size = new System.Drawing.Size(108, 19);
             this.lbl_LakeFrequencyVariation.TabIndex = 52;
-            this.lbl_LakeFrequencyVariation.Text = "Lake Frequency Variability";
+            this.lbl_LakeFrequencyVariation.Text = "Lake Variability";
             // 
             // lbl_LakeRadiusVariation
             // 

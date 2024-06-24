@@ -29,8 +29,8 @@ namespace ContinentMapCreator
         const int MIN_ORIGIN_SPACING = 50;
         const int MIN_OCEAN_RADIUS_INLAND = 10;
         const int MAX_OCEAN_RADIUS_INLAND = MIN_ORIGIN_SPACING;
-        const int MIN_OCEAN_RADIUS_COAST = 100;
-        const int MAX_OCEAN_RADIUS_COAST = 1000;
+        const int MIN_OCEAN_RADIUS_COAST = 50;
+        const int MAX_OCEAN_RADIUS_COAST = 100;
 
         // Aesthetic Settings
         bool ROUGH_BORDERS = true;
@@ -48,7 +48,8 @@ namespace ContinentMapCreator
         Random rnd = new Random();
         Territory[] Territories;
         Lake[] Lakes;
-        Ocean[] Oceans;
+        Ocean[] HorizontalOceans;
+        Ocean[] VerticalOceans;
         Point[] TerritoryBorders;
         bool[,] NeighbourMatrix;
         Point[] OriginPoints;

@@ -70,6 +70,7 @@ namespace ContinentMapCreator
             Angle = 2 * Math.PI * angle;
 
             // Reassign the focus points relative to the origin, so that they can be rotated
+            // Assume angle = 0, x axis is major radius
             Focus1 = new Point(FocalLength, 0);
             Focus2 = new Point(-FocalLength, 0);
 

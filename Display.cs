@@ -55,7 +55,7 @@ namespace ContinentMapCreator
             float xOffset;
             float yOffset;
 
-            // Draw Ocean
+            // Draw Ocean Backdrop
             g.FillRectangle(WATER_COLOUR, 0, 0, pnl_MapBackground.Width, pnl_MapBackground.Height);
 
             // Draw Territories
@@ -71,6 +71,26 @@ namespace ContinentMapCreator
             {
                 g.FillClosedCurve(WATER_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.95F);
                 g.DrawString(Lakes[i].Name, DISPLAY_FONT, LOCATION_COLOUR, Lakes[i].Origin.X, Lakes[i].Origin.Y);
+            }
+
+            // Draw Oceans
+            if (FULL_CONTINENT)
+            {
+                // Oceans at top and bottom of screen
+                for (int i = 0; i < HorizontalOceans.Length; i++)
+                {
+                    xOffset = HorizontalOceans[i].Origin.X - HorizontalOceans[i].MajorRadius;
+                    yOffset = HorizontalOceans[i].Origin.Y - HorizontalOceans[i].MinorRadius;
+                    g.FillEllipse(WATER_COLOUR, xOffset, yOffset, 2 * HorizontalOceans[i].MajorRadius, 2 * HorizontalOceans[i].MinorRadius);
+                }
+
+                // Oceans at left and right of screen
+                for (int i = 0; i < VerticalOceans.Length; i++)
+                {
+                    xOffset = VerticalOceans[i].Origin.X - VerticalOceans[i].MinorRadius;
+                    yOffset = VerticalOceans[i].Origin.Y - VerticalOceans[i].MajorRadius;
+                    g.FillEllipse(WATER_COLOUR, xOffset, yOffset, 2 * VerticalOceans[i].MinorRadius, 2 * VerticalOceans[i].MajorRadius);
+                }
             }
 
             // Draw Borders
