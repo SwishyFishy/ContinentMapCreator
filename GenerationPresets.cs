@@ -22,15 +22,15 @@ namespace ContinentMapCreator
         // Settings for archipelago-style maps
         private void PresetArchipelago()
         {
-            chb_FullContinent.Checked = true;
-            trk_TerritoryFrequencyBase.Value = 23;
-            trk_TerritoryFrequencyVariation.Value = 3;
-            trk_TerritoryRadiusBase.Value = 90;
+            chb_FullContinent.Checked = false;
+            trk_TerritoryFrequencyBase.Value = 28;
+            trk_TerritoryFrequencyVariation.Value = 4;
+            trk_TerritoryRadiusBase.Value = 100;
             trk_TerritoryRadiusVariation.Value = 15;
-            trk_LakeFrequencyBase.Value = 32;
-            trk_LakeFrequencyVariation.Value = 8;
-            trk_LakeRadiusBase.Value = 70;
-            trk_LakeRadiusVariation.Value = 10;
+            trk_LakeFrequencyBase.Value = 64;
+            trk_LakeFrequencyVariation.Value = 12;
+            trk_LakeRadiusBase.Value = 85;
+            trk_LakeRadiusVariation.Value = 25;
             UpdateTrackbarDisplayLabels();
         }
 
@@ -61,6 +61,36 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 6;
             trk_LakeRadiusBase.Value = 125;
             trk_LakeRadiusVariation.Value = 50;
+            UpdateTrackbarDisplayLabels();
+        }
+
+        // Settings for a continental-style map with large inland seas
+        private void PresetInlandSeas()
+        {
+            chb_FullContinent.Checked = true;
+            trk_TerritoryFrequencyBase.Value = 15;
+            trk_TerritoryFrequencyVariation.Value = 2;
+            trk_TerritoryRadiusBase.Value = 200;
+            trk_TerritoryRadiusVariation.Value = 50;
+            trk_LakeFrequencyBase.Value = 20;
+            trk_LakeFrequencyVariation.Value = 2;
+            trk_LakeRadiusBase.Value = 150;
+            trk_LakeRadiusVariation.Value = 100;
+            UpdateTrackbarDisplayLabels();
+        }
+
+        // Settings for multi-island-style maps
+        private void PresetIslands()
+        {
+            chb_FullContinent.Checked = true;
+            trk_TerritoryFrequencyBase.Value = 23;
+            trk_TerritoryFrequencyVariation.Value = 3;
+            trk_TerritoryRadiusBase.Value = 90;
+            trk_TerritoryRadiusVariation.Value = 15;
+            trk_LakeFrequencyBase.Value = 32;
+            trk_LakeFrequencyVariation.Value = 8;
+            trk_LakeRadiusBase.Value = 70;
+            trk_LakeRadiusVariation.Value = 10;
             UpdateTrackbarDisplayLabels();
         }
 

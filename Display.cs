@@ -69,8 +69,10 @@ namespace ContinentMapCreator
             // Draw Lakes
             for (int i = 0; i < Lakes.Length; i++)
             {
-                g.FillClosedCurve(WATER_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.95F);
-                g.DrawString(Lakes[i].Name, DISPLAY_FONT, LOCATION_COLOUR, Lakes[i].Origin.X, Lakes[i].Origin.Y);
+                xOffset = Lakes[i].MajorRadius;
+                yOffset = Lakes[i].MinorRadius;
+                float tension = yOffset / xOffset / 10;
+                g.FillClosedCurve(WATER_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.85F + tension);
             }
 
             // Draw Oceans

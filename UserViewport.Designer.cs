@@ -539,6 +539,8 @@
             "Archipelago",
             "Continental",
             "Cratered",
+            "Inland Seas",
+            "Islands",
             "Provincial"});
             this.cbo_LoadPreset.Location = new System.Drawing.Point(111, 47);
             this.cbo_LoadPreset.Name = "cbo_LoadPreset";

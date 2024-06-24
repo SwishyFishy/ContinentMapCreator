@@ -145,6 +145,12 @@ namespace ContinentMapCreator
                     PresetCratered();
                     break;
                 case 4:
+                    PresetInlandSeas();
+                    break;
+                case 5:
+                    PresetIslands();
+                    break;
+                case 6:
                     PresetProvinces();
                     break;
             }
