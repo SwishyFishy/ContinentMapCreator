@@ -26,14 +26,14 @@ namespace ContinentMapCreator
             return (int)Math.Sqrt(Math.Pow(Origin.X - point.X, 2) + Math.Pow(Origin.Y - point.Y, 2));
         }
 
-        public bool TerritoryEdgeContains(Point point)
+        public bool BorderContains(Point point)
         {
             return OriginToPoint(point) == Radius ? true : false;
         }
 
-        public bool TerritoryBoundsContains(Point point)
+        public bool BoundsContains(Point point)
         {
-            return OriginToPoint(point) <= Radius ? true : false;
+            return OriginToPoint(point) < Radius ? true : false;
         }
 
     }

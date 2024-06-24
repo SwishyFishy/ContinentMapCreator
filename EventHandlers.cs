@@ -64,7 +64,6 @@ namespace ContinentMapCreator
             // Set control defaults
             UpdateDisplay();
             PresetDefaults();
-            UpdateTrackbarDisplayLabels();
             btn_Generate.Enabled = true;
         }
 

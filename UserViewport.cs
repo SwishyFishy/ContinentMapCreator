@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Diagnostics;
 
 namespace ContinentMapCreator
 {
@@ -47,14 +46,16 @@ namespace ContinentMapCreator
 
         // Generation args
         Random rnd = new Random();
-        bool allowPainting = false;
         Territory[] Territories;
         Lake[] Lakes;
+        Ocean[] Oceans;
         Point[] TerritoryBorders;
         bool[,] NeighbourMatrix;
         Point[] OriginPoints;
         int numOriginPoints;
-        int originIndex;
+
+        // Display args
+        bool allowPainting = false;
 
         public form_Window()
         {

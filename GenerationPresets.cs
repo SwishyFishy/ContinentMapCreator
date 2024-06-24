@@ -16,6 +16,7 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 5;
             trk_LakeRadiusBase.Value = 50;
             trk_LakeRadiusVariation.Value = 25;
+            UpdateTrackbarDisplayLabels();
         }
 
         // Settings for archipelago-style maps
@@ -30,6 +31,7 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 8;
             trk_LakeRadiusBase.Value = 70;
             trk_LakeRadiusVariation.Value = 10;
+            UpdateTrackbarDisplayLabels();
         }
 
         // Settings for a continental-style map
@@ -44,6 +46,7 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 3;
             trk_LakeRadiusBase.Value = 225;
             trk_LakeRadiusVariation.Value = 75;
+            UpdateTrackbarDisplayLabels();
         }
 
         // Settings for a cratered map
@@ -58,6 +61,7 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 6;
             trk_LakeRadiusBase.Value = 125;
             trk_LakeRadiusVariation.Value = 50;
+            UpdateTrackbarDisplayLabels();
         }
 
         // Settins for provincial-style maps
@@ -72,6 +76,7 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 2;
             trk_LakeRadiusBase.Value = 75;
             trk_LakeRadiusVariation.Value = 25;
+            UpdateTrackbarDisplayLabels();
         }
     }
 }

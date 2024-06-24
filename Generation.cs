@@ -6,24 +6,12 @@ namespace ContinentMapCreator
 {
     public partial class form_Window : Form
     {
-        // Methods
         // Update the map generation settings based on user input
-        private void UpdateTrackbarDisplayLabels()
-        {
-            lbl_TerritoryFrequencyBaseDisplay.Text = trk_TerritoryFrequencyBase.Value.ToString();
-            lbl_TerritoryFrequencyVariationDisplay.Text = trk_TerritoryFrequencyVariation.Value.ToString();
-            lbl_TerritoryRadiusBaseDisplay.Text = trk_TerritoryRadiusBase.Value.ToString();
-            lbl_TerritoryRadiusVariationDisplay.Text = trk_TerritoryRadiusVariation.Value.ToString();
-            lbl_LakeFrequencyBaseDisplay.Text = trk_LakeFrequencyBase.Value.ToString();
-            lbl_LakeFrequencyVariationDisplay.Text = trk_LakeFrequencyVariation.Value.ToString();
-            lbl_LakeRadiusBaseDisplay.Text = trk_LakeRadiusBase.Value.ToString();
-            lbl_LakeRadiusVariationDisplay.Text = trk_LakeRadiusVariation.Value.ToString();
-        }
         private void UpdateGenerationSettings()
         {
             int temp;
 
-            // FULL_CONTINENT based on chb_FullContinent
+            // FULL_CONTINENT
             FULL_CONTINENT = chb_FullContinent.Checked;
 
             // MIN_NUM_TERRITORIES & MAX_NUM_TERRITORIES
@@ -46,34 +34,6 @@ namespace ContinentMapCreator
             MIN_LAKE_RADIUS = temp >= trk_LakeRadiusBase.Minimum ? temp : trk_LakeRadiusBase.Minimum;
             MAX_LAKE_RADIUS = Math.Min(trk_LakeRadiusBase.Value + trk_LakeRadiusVariation.Value, trk_LakeRadiusBase.Maximum);
         }
-        private void UpdateDisplay()
-        {
-            // BORDER_THICKNESS & BORDER_OFFSET based on trk_BorderThickness
-            BORDER_THICKNESS = (float)(trk_BorderThickness.Value / 10.0);
-            BORDER_OFFSET = BORDER_THICKNESS / 2.0F;
-
-            // LOCATION_MARKER_THICKNESS & LOCATION_MARKER_OFFSET based on trk_LocationThickness
-            LOCATION_MARKER_THICKNESS = (float)(trk_LocationThickness.Value / 10.0F);
-            LOCATION_MARKER_OFFSET = LOCATION_MARKER_THICKNESS / 2.0F;
-
-            // ROUGH_BORDERS based on chb_CleanBorders
-            ROUGH_BORDERS = !chb_CleanBorders.Checked;
-
-            // Redraw map
-            if (!lbl_TutorialSettingsPanel.Visible)
-            {
-                // Disable controls
-                pnl_SettingsBackground.Enabled = false;
-
-                // Redraw
-                allowPainting = true;
-                Refresh();
-                allowPainting = false;
-
-                // Reenable controls
-                pnl_SettingsBackground.Enabled = true;
-            }
-        }
 
         // Use Poisson-Disc sampling to determine a random set of territory origin points
         // https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf
@@ -92,6 +52,7 @@ namespace ContinentMapCreator
             numOriginPoints = 0;
             int[] ActiveIndices = new int[OriginPoints.Length];
             int numActiveIndices = 0;
+            int originIndex;
 
             // Get minimum and maximum spacing of points
             int minSpacing = MIN_ORIGIN_SPACING;
@@ -162,12 +123,13 @@ namespace ContinentMapCreator
         }
 
         // Generate Territories
-        // O(territories * territories)
+        // O(territories)
         private void GenerateTerritories()
         {
             NUM_TERRITORIES = rnd.Next(MIN_NUM_TERRITORIES, MAX_NUM_TERRITORIES + 1);
             TERRITORY_RADIUS = rnd.Next(MIN_TERRITORY_RADIUS, MAX_TERRITORY_RADIUS + 1);
             Territories = new Territory[Math.Min(NUM_TERRITORIES, numOriginPoints)];
+            int originIndex;
 
             for (int i = 0; i < Territories.Length; i++)
             {
@@ -182,12 +144,13 @@ namespace ContinentMapCreator
         }
      
         // Generate Lakes
-        // O(territories * lakes)
+        // O(territories * origins)
         private void GenerateWater()
         {
             NUM_LAKES = rnd.Next(MIN_NUM_LAKES, MAX_NUM_LAKES + 1);
             Lakes = new Lake[Math.Min(NUM_LAKES, numOriginPoints)];
             int numLakes = 0;
+            int originIndex;
 
             while (numOriginPoints > 0 && numLakes < Lakes.Length)
             {
@@ -220,6 +183,18 @@ namespace ContinentMapCreator
             // Truncate the array
             Array.Resize(ref Lakes, numLakes);
             NUM_LAKES = numLakes;
+
+            // Generate bordering oceans
+            if (FULL_CONTINENT)
+            {
+                Oceans = new Ocean[2 * (pnl_MapBackground.Width + pnl_MapBackground.Height) / MIN_OCEAN_RADIUS_COAST];
+
+                // Oceans on top and bottom of panel
+                for (int i = 0; i < pnl_MapBackground.Width; i += MIN_OCEAN_RADIUS_COAST)
+                {
+
+                }
+            }
         }
 
         // Calculate territory borders and mark coastal territories as such
@@ -228,7 +203,7 @@ namespace ContinentMapCreator
         private void GenerateBorders()
         {
             int numBorderPoints = 0;
-            TerritoryBorders = new Point[pnl_MapBackground.Width * pnl_MapBackground.Height]; 
+            TerritoryBorders = new Point[pnl_MapBackground.Width * pnl_MapBackground.Height];
             NeighbourMatrix = new bool[Territories.Length, Territories.Length];
 
             // Loop through all points
@@ -246,12 +221,12 @@ namespace ContinentMapCreator
                         for (int i = 0; i < Lakes.Length; i++)
                         {
                             // If this point is contained within a lake, move on
-                            if (Lakes[i].LakeBoundsContains(thisPixel))
+                            if (Lakes[i].BoundsContains(thisPixel))
                             {
                                 return;
                             }
                             // If this point is on a lake border, remember that so the territory owning this point can add WaterNeighbours
-                            else if (bordersLakeIndex < 0 && Lakes[i].LakeBorderContains(thisPixel))
+                            else if (bordersLakeIndex < 0 && Lakes[i].BorderContains(thisPixel))
                             {
                                 bordersLakeIndex = i;
                             }
@@ -309,7 +284,7 @@ namespace ContinentMapCreator
                         {
                             TerritoryBorders[numBorderPoints] = thisPixel;
                             numBorderPoints++;
-                            
+
                             NeighbourMatrix[closestOriginIndex, secondClosestOriginIndex] = true;
                             NeighbourMatrix[secondClosestOriginIndex, closestOriginIndex] = true;
                         }
@@ -319,55 +294,6 @@ namespace ContinentMapCreator
 
             // Shorten TerritoryBorders to actual size
             Array.Resize(ref TerritoryBorders, numBorderPoints);
-        }
-
-        // Draw the screen
-        private void DrawMap(Graphics g)
-        {
-            Pen borderPen = new Pen(BORDER_COLOUR, BORDER_THICKNESS);
-            Pen locationPen = new Pen(LOCATION_COLOUR, LOCATION_MARKER_THICKNESS);
-            float xOffset;
-            float yOffset;
-
-            // Draw Ocean
-            g.FillRectangle(WATER_COLOUR, 0, 0, pnl_MapBackground.Width, pnl_MapBackground.Height);
-
-            // Draw Territories
-            for (int i = 0; i < Territories.Length; i++)
-            {
-                xOffset = Territories[i].Origin.X - Territories[i].Radius;
-                yOffset = Territories[i].Origin.Y - Territories[i].Radius;
-                g.FillEllipse(LAND_COLOUR, xOffset, yOffset, 2 * Territories[i].Radius, 2 * Territories[i].Radius);
-            }
-
-            // Draw Lakes
-            for (int i = 0; i < Lakes.Length; i++)
-            {
-                g.FillClosedCurve(WATER_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.95F);
-                g.DrawString(Lakes[i].Name, DISPLAY_FONT, LOCATION_COLOUR, Lakes[i].Origin.X, Lakes[i].Origin.Y);
-            }
-
-            // Draw Borders
-            for (int i = 0; i < TerritoryBorders.Length; i++)
-            {
-                Random rnd = new Random();
-                xOffset = TerritoryBorders[i].X + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0) - BORDER_OFFSET;
-                yOffset = TerritoryBorders[i].Y + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0) - BORDER_OFFSET;
-                g.DrawRectangle(borderPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
-
-            }
-
-            // Draw TerritoryOrigins and Territory names
-            for (int i = 0; i < Territories.Length; i++)
-            {
-                xOffset = Territories[i].Origin.X - LOCATION_MARKER_OFFSET;
-                yOffset = Territories[i].Origin.Y - LOCATION_MARKER_OFFSET;
-                g.DrawRectangle(locationPen, xOffset, yOffset, LOCATION_MARKER_THICKNESS, LOCATION_MARKER_THICKNESS);
-                g.DrawString(Territories[i].Name, DISPLAY_FONT, LOCATION_COLOUR, Territories[i].Origin.X, Territories[i].Origin.Y);
-            }
-
-            borderPen.Dispose();
-            locationPen.Dispose();
         }
     }
 }
