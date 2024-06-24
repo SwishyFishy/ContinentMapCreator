@@ -8,56 +8,56 @@ namespace ContinentMapCreator
         private void PresetDefaults()
         {
             chb_FullContinent.Checked = false;
-            nud_TerritoryCountBound1.Value = 12;
-            nud_TerritoryCountBound2.Value = 18;
-            nud_TerritoryRadiusBound1.Value = 150;
-            nud_TerritoryRadiusBound2.Value = 250;
-            nud_LakeCountBound1.Value = 10;
-            nud_LakeCountBound2.Value = 20;
-            nud_LakeRadiusBound1.Value = 25;
-            nud_LakeRadiusBound2.Value = 75;
+            trk_TerritoryFrequencyBase.Value = 15;
+            trk_TerritoryFrequencyVariation.Value = 3;
+            trk_TerritoryRadiusBase.Value = 200;
+            trk_TerritoryRadiusVariation.Value = 50;
+            trk_LakeFrequencyBase.Value = 15;
+            trk_LakeFrequencyVariation.Value = 5;
+            trk_LakeRadiusBase.Value = 50;
+            trk_LakeRadiusVariation.Value = 25;
         }
 
         // Settings for a continental-scale map
-        private void PresetContinental()
+        private void PresetCratered()
         {
-            chb_FullContinent.Checked = true;
-            nud_TerritoryCountBound1.Value = 20;
-            nud_TerritoryCountBound2.Value = 25;
-            nud_TerritoryRadiusBound1.Value = 150;
-            nud_TerritoryRadiusBound2.Value = 175;
-            nud_LakeCountBound1.Value = 20;
-            nud_LakeCountBound2.Value = 32;
-            nud_LakeRadiusBound1.Value = 75;
-            nud_LakeRadiusBound2.Value = 175;
+            chb_FullContinent.Checked = false; 
+            trk_TerritoryFrequencyBase.Value = 23;
+            trk_TerritoryFrequencyVariation.Value = 3;
+            trk_TerritoryRadiusBase.Value = 165;
+            trk_TerritoryRadiusVariation.Value = 15;
+            trk_LakeFrequencyBase.Value = 26;
+            trk_LakeFrequencyVariation.Value = 6;
+            trk_LakeRadiusBase.Value = 125;
+            trk_LakeRadiusVariation.Value = 50;
         }
 
         // Settings for archipelago-style maps
         private void PresetArchipelago() 
         {
             chb_FullContinent.Checked = true;
-            nud_TerritoryCountBound1.Value = 20;
-            nud_TerritoryCountBound2.Value = 25;
-            nud_TerritoryRadiusBound1.Value = 75;
-            nud_TerritoryRadiusBound2.Value = 100;
-            nud_LakeCountBound1.Value = 32;
-            nud_LakeCountBound2.Value = 32;
-            nud_LakeRadiusBound1.Value = 50;
-            nud_LakeRadiusBound2.Value = 75;
+            trk_TerritoryFrequencyBase.Value = 23;
+            trk_TerritoryFrequencyVariation.Value = 3;
+            trk_TerritoryRadiusBase.Value = 90;
+            trk_TerritoryRadiusVariation.Value = 15;
+            trk_LakeFrequencyBase.Value = 32;
+            trk_LakeFrequencyVariation.Value = 8;
+            trk_LakeRadiusBase.Value = 70;
+            trk_LakeRadiusVariation.Value = 10;
         }
 
         // Settins for provincial-style maps
         private void PresetProvinces() 
         {
             chb_FullContinent.Checked = false;
-            nud_TerritoryCountBound1.Value = 25;
-            nud_TerritoryCountBound2.Value = 32;
-            nud_TerritoryRadiusBound1.Value = 200;
-            nud_TerritoryRadiusBound2.Value = 300;
-            nud_LakeCountBound1.Value = 0;
-            nud_LakeCountBound2.Value = 5;
-            nud_LakeRadiusBound1.Value = 25;
-            nud_LakeRadiusBound2.Value = 100;
+            trk_TerritoryFrequencyBase.Value = 28;
+            trk_TerritoryFrequencyVariation.Value = 4;
+            trk_TerritoryRadiusBase.Value = 250;
+            trk_TerritoryRadiusVariation.Value = 50;
+            trk_LakeFrequencyBase.Value = 2;
+            trk_LakeFrequencyVariation.Value = 2;
+            trk_LakeRadiusBase.Value = 75;
+            trk_LakeRadiusVariation.Value = 25;
         }
     }
 }

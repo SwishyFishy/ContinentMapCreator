@@ -10,24 +10,30 @@ namespace ContinentMapCreator
         // Update the map generation settings based on user input
         private void UpdateGenerationSettings()
         {
+            int temp;
+
             // FULL_CONTINENT based on chb_FullContinent
             FULL_CONTINENT = chb_FullContinent.Checked;
 
-            // MIN_TERRITORY_RADIUS & MAX_TERRITORY_RADIUS based on nud_TerritoryRadiusBound1 & nud_TerritoryRadiusBound2
-            MIN_TERRITORY_RADIUS = Math.Min((int)nud_TerritoryRadiusBound1.Value, (int)nud_TerritoryRadiusBound2.Value);
-            MAX_TERRITORY_RADIUS = Math.Max((int)nud_TerritoryRadiusBound1.Value, (int)nud_TerritoryRadiusBound2.Value);
+            // MIN_NUM_TERRITORIES & MAX_NUM_TERRITORIES
+            temp = trk_TerritoryFrequencyBase.Value - trk_TerritoryFrequencyVariation.Value;
+            MIN_NUM_TERRITORIES = temp >= trk_TerritoryFrequencyBase.Minimum ? temp : trk_TerritoryFrequencyBase.Minimum;
+            MAX_NUM_TERRITORIES = Math.Min(trk_TerritoryFrequencyBase.Value + trk_TerritoryFrequencyVariation.Value, trk_TerritoryFrequencyBase.Maximum);
 
-            // MIN_NUM_TERRITORIES & MAX_NUM_TERRITORIES based on nud_TerritoryCountBound1 & nud_TerritoryCountBound2
-            MIN_NUM_TERRITORIES = Math.Min((int)nud_TerritoryCountBound1.Value, (int)nud_TerritoryCountBound2.Value);
-            MAX_NUM_TERRITORIES = Math.Max((int)nud_TerritoryCountBound1.Value, (int)nud_TerritoryCountBound2.Value);
+            // MIN_TERRITORY_RADIUS & MAX_TERRITORY_RADIUS
+            temp = trk_TerritoryRadiusBase.Value - trk_TerritoryRadiusVariation.Value;
+            MIN_TERRITORY_RADIUS = temp >= trk_TerritoryRadiusBase.Minimum ? temp : trk_TerritoryRadiusBase.Minimum;
+            MAX_TERRITORY_RADIUS = Math.Min(trk_TerritoryRadiusBase.Value + trk_TerritoryRadiusVariation.Value, trk_TerritoryRadiusBase.Maximum);
 
-            // MIN_NUM_LAKES & MAX_NUM_LAKES based on nud_LakeCountBound1 & nud_LakeCountBound2
-            MIN_NUM_LAKES = Math.Min((int)nud_LakeCountBound1.Value, (int)nud_LakeCountBound2.Value);
-            MAX_NUM_LAKES = Math.Max((int)nud_LakeCountBound1.Value, (int)nud_LakeCountBound2.Value);
+            // MIN_NUM_LAKES & MAX_NUM_LAKES
+            temp = trk_LakeFrequencyBase.Value - trk_LakeFrequencyVariation.Value;
+            MIN_NUM_LAKES = temp >= trk_LakeFrequencyBase.Minimum ? temp : trk_LakeFrequencyBase.Minimum;
+            MAX_NUM_LAKES = Math.Min(trk_LakeFrequencyBase.Value + trk_LakeFrequencyVariation.Value, trk_LakeFrequencyBase.Maximum);
 
-            // MIN_LAKE_RADIUS & MAX_LAKE_RADIUS based on nud_LakeRadiusBound1 & nud_LakeRadiusBound2
-            MIN_LAKE_RADIUS = Math.Min((int)nud_LakeRadiusBound1.Value, (int)nud_LakeRadiusBound2.Value);
-            MAX_LAKE_RADIUS = Math.Max((int)nud_LakeRadiusBound1.Value, (int)nud_LakeRadiusBound2.Value);
+            // MIN_LAKE_RADIUS & MAX_LAKE_RADIUS
+            temp = trk_LakeRadiusBase.Value - trk_LakeRadiusVariation.Value;
+            MIN_LAKE_RADIUS = temp >= trk_LakeRadiusBase.Minimum ? temp : trk_LakeRadiusBase.Minimum;
+            MAX_LAKE_RADIUS = Math.Min(trk_LakeRadiusBase.Value + trk_LakeRadiusVariation.Value, trk_LakeRadiusBase.Maximum);
         }
         private void UpdateDisplay()
         {
@@ -206,13 +212,13 @@ namespace ContinentMapCreator
         }
 
         // Calculate territory borders and mark coastal territories as such
-        // Determine neighbouring Territories (by land and sea)
+        // Determine neighbouring Territories
         // O(length * width * (territories + lakes))
         private void GenerateBorders()
         {
             int numBorderPoints = 0;
             TerritoryBorders = new Point[pnl_MapBackground.Width * pnl_MapBackground.Height]; 
-            NeighbourMatrix = new bool[Territories.Length + Lakes.Length, Territories.Length + Lakes.Length];
+            NeighbourMatrix = new bool[Territories.Length, Territories.Length];
 
             // Loop through all points
             for (int x = 0; x < pnl_MapBackground.Width; x++)
@@ -278,27 +284,21 @@ namespace ContinentMapCreator
                         {
                             TerritoryBorders[numBorderPoints] = thisPixel;
                             numBorderPoints++;
-
-                            if (!NeighbourMatrix[closestOriginIndex, Territories.Length + bordersLakeIndex])
-                            {
-                                NeighbourMatrix[closestOriginIndex, Territories.Length + bordersLakeIndex] = true;
-                                NeighbourMatrix[Territories.Length + bordersLakeIndex, closestOriginIndex] = true;
-                            }
                         }
                         // Point is exactly a Territory's Radius from its Origin, and is closer to that Territory than any other.
-                        else if (distancesToOrigins[closestOriginIndex] == 1 && distancesToOrigins[secondClosestOriginIndex] > 1)
+                        else if (distancesToOrigins[closestOriginIndex] == 1 && (secondClosestOriginIndex == -1 || distancesToOrigins[secondClosestOriginIndex] > 1))
                         {
                             TerritoryBorders[numBorderPoints] = thisPixel;
                             numBorderPoints++;
                             Territories[closestOriginIndex].Coastal = true;
                         }
                         // Point is equidistant from two Territory Origins, and is within the bounds of both Territories, and is closer to those two Territories than any others
-                        else if (distancesToOrigins[secondClosestOriginIndex] <= 1 &&
+                        else if (secondClosestOriginIndex > -1 && distancesToOrigins[secondClosestOriginIndex] <= 1 &&
                             distancesToOrigins[closestOriginIndex] == distancesToOrigins[secondClosestOriginIndex])
                         {
                             TerritoryBorders[numBorderPoints] = thisPixel;
                             numBorderPoints++;
-
+                            
                             NeighbourMatrix[closestOriginIndex, secondClosestOriginIndex] = true;
                             NeighbourMatrix[secondClosestOriginIndex, closestOriginIndex] = true;
                         }

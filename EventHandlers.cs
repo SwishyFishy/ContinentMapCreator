@@ -30,14 +30,14 @@ namespace ContinentMapCreator
 
             // Add Controls
             pnl_SettingsBackground.Controls.Add(chb_FullContinent);
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound1);
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryCountBound2);
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound1);
-            pnl_SettingsBackground.Controls.Add(nud_TerritoryRadiusBound2);
-            pnl_SettingsBackground.Controls.Add(nud_LakeCountBound1);
-            pnl_SettingsBackground.Controls.Add(nud_LakeCountBound2);
-            pnl_SettingsBackground.Controls.Add(nud_LakeRadiusBound1);
-            pnl_SettingsBackground.Controls.Add(nud_LakeRadiusBound2);
+            pnl_SettingsBackground.Controls.Add(trk_TerritoryFrequencyBase);
+            pnl_SettingsBackground.Controls.Add(trk_TerritoryFrequencyVariation);
+            pnl_SettingsBackground.Controls.Add(trk_TerritoryRadiusBase);
+            pnl_SettingsBackground.Controls.Add(trk_TerritoryRadiusVariation);
+            pnl_SettingsBackground.Controls.Add(trk_LakeFrequencyBase);
+            pnl_SettingsBackground.Controls.Add(trk_LakeFrequencyVariation);
+            pnl_SettingsBackground.Controls.Add(trk_LakeRadiusBase);
+            pnl_SettingsBackground.Controls.Add(trk_LakeRadiusVariation);
 
             pnl_SettingsBackground.Controls.Add(trk_BorderThickness);
             pnl_SettingsBackground.Controls.Add(trk_LocationThickness);
@@ -47,15 +47,19 @@ namespace ContinentMapCreator
             pnl_SettingsBackground.Controls.Add(btn_Generate);
 
             // Add Tooltips
-            tip_SettingsDetails.SetToolTip(chb_FullContinent, "Surround generated land with ocean.");
-            tip_SettingsDetails.SetToolTip(lbl_TerritoryCount, "Bounds the number of territories.");
-            tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "Bounds 1/2 the maximum allowed distance across a territory.");
-            tip_SettingsDetails.SetToolTip(lbl_LakeCount, "Bounds the number of lakes.");
-            tip_SettingsDetails.SetToolTip(lbl_LakeRadius, "Bounds 1/2 the maximum allowed distance across a lake. Randomized per instance.");
+            tip_SettingsDetails.SetToolTip(chb_FullContinent, "Surround with Ocean");
+            tip_SettingsDetails.SetToolTip(lbl_TerritoryFrequency, "Number of Territories");
+            tip_SettingsDetails.SetToolTip(lbl_TerritoryFrequencyVariation, "+/- Number of Territories");
+            tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "(Static) 1/2 maximum Territory diameter");
+            tip_SettingsDetails.SetToolTip(lbl_TerritoryRadiusVariation, "+/- 1/2 maximum Territory diameter");
+            tip_SettingsDetails.SetToolTip(lbl_LakeFrequency, "Number of Lakes");
+            tip_SettingsDetails.SetToolTip(lbl_LakeFrequencyVariation, "+/- Number of Lakes");
+            tip_SettingsDetails.SetToolTip(lbl_LakeRadius, "(Randomized twice per instance) 1/2 maximum Lake diameter");
+            tip_SettingsDetails.SetToolTip(lbl_LakeRadiusVariation, "+/- 1/2 maximum Lake diameter");
 
-            tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Number of pixels across each border.");
-            tip_SettingsDetails.SetToolTip(lbl_LocationThickness, "Number of pixels across each location marker.");
-            tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly.");
+            tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Border pixel thickness");
+            tip_SettingsDetails.SetToolTip(lbl_LocationThickness, "Location Marker pixel thickness");
+            tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly");
 
             // Set control defaults
             UpdateDisplay();
@@ -63,6 +67,40 @@ namespace ContinentMapCreator
             btn_Generate.Enabled = true;
         }
 
+        // Generation Settings track bars
+        // Scroll       -> Update the displayed value
+        private void trk_TerritoryFrequencyBase_Scroll(object sender, EventArgs e)
+        {
+            lbl_TerritoryFrequencyBaseDisplay.Text = trk_TerritoryFrequencyBase.Value.ToString();
+        }
+        private void trk_TerritoryFrequencyVariation_Scroll(object sender, EventArgs e)
+        {
+            lbl_TerritoryFrequencyVariationDisplay.Text = trk_TerritoryFrequencyVariation.Value.ToString();
+        }
+        private void trk_TerritoryRadiusBase_Scroll(object sender, EventArgs e)
+        {
+            lbl_TerritoryRadiusBaseDisplay.Text = trk_TerritoryRadiusBase.Value.ToString();
+        }
+        private void trk_TerritoryRadiusVariation_Scroll(object sender, EventArgs e)
+        {
+            lbl_TerritoryRadiusVariationDisplay.Text = trk_TerritoryRadiusVariation.Value.ToString();
+        }
+        private void trk_LakeFrequencyBase_Scroll(object sender, EventArgs e)
+        {
+            lbl_LakeFrequencyBaseDisplay.Text = trk_LakeFrequencyBase.Value.ToString();
+        }
+        private void trk_LakeFrequencyVariation_Scroll(object sender, EventArgs e)
+        {
+            lbl_LakeFrequencyVariationDisplay.Text = trk_LakeFrequencyVariation.Value.ToString();
+        }
+        private void trk_LakeRadiusBase_Scroll(object sender, EventArgs e)
+        {
+            lbl_LakeRadiusBaseDisplay.Text = trk_LakeRadiusBase.Value.ToString();
+        }
+        private void trk_LakeRadiusVariation_Scroll(object sender, EventArgs e)
+        {
+            lbl_LakeRadiusVariationDisplay.Text = trk_LakeRadiusVariation.Value.ToString();
+        }
 
         // trk_BorderThickness
         // Scroll       -> Update the displayed value
@@ -101,7 +139,7 @@ namespace ContinentMapCreator
                     PresetArchipelago();
                     break;
                 case 2:
-                    PresetContinental();
+                    PresetCratered();
                     break;
                 case 3:
                     PresetProvinces();

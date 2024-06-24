@@ -52,9 +52,6 @@ namespace ContinentMapCreator
         int numOriginPoints;
         int originIndex;
 
-        // Diagnostics
-        Stopwatch timer = new Stopwatch();
-
         public form_Window()
         {
             InitializeComponent();
