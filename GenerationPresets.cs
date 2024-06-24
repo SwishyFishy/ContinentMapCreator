@@ -18,7 +18,35 @@ namespace ContinentMapCreator
             trk_LakeRadiusVariation.Value = 25;
         }
 
-        // Settings for a continental-scale map
+        // Settings for archipelago-style maps
+        private void PresetArchipelago()
+        {
+            chb_FullContinent.Checked = true;
+            trk_TerritoryFrequencyBase.Value = 23;
+            trk_TerritoryFrequencyVariation.Value = 3;
+            trk_TerritoryRadiusBase.Value = 90;
+            trk_TerritoryRadiusVariation.Value = 15;
+            trk_LakeFrequencyBase.Value = 32;
+            trk_LakeFrequencyVariation.Value = 8;
+            trk_LakeRadiusBase.Value = 70;
+            trk_LakeRadiusVariation.Value = 10;
+        }
+
+        // Settings for a continental-style map
+        private void PresetContinental()
+        {
+            chb_FullContinent.Checked = true;
+            trk_TerritoryFrequencyBase.Value = 26;
+            trk_TerritoryFrequencyVariation.Value = 6;
+            trk_TerritoryRadiusBase.Value = 250;
+            trk_TerritoryRadiusVariation.Value = 75;
+            trk_LakeFrequencyBase.Value = 6;
+            trk_LakeFrequencyVariation.Value = 3;
+            trk_LakeRadiusBase.Value = 225;
+            trk_LakeRadiusVariation.Value = 75;
+        }
+
+        // Settings for a cratered map
         private void PresetCratered()
         {
             chb_FullContinent.Checked = false; 
@@ -30,20 +58,6 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 6;
             trk_LakeRadiusBase.Value = 125;
             trk_LakeRadiusVariation.Value = 50;
-        }
-
-        // Settings for archipelago-style maps
-        private void PresetArchipelago() 
-        {
-            chb_FullContinent.Checked = true;
-            trk_TerritoryFrequencyBase.Value = 23;
-            trk_TerritoryFrequencyVariation.Value = 3;
-            trk_TerritoryRadiusBase.Value = 90;
-            trk_TerritoryRadiusVariation.Value = 15;
-            trk_LakeFrequencyBase.Value = 32;
-            trk_LakeFrequencyVariation.Value = 8;
-            trk_LakeRadiusBase.Value = 70;
-            trk_LakeRadiusVariation.Value = 10;
         }
 
         // Settins for provincial-style maps

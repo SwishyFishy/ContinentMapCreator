@@ -8,6 +8,17 @@ namespace ContinentMapCreator
     {
         // Methods
         // Update the map generation settings based on user input
+        private void UpdateTrackbarDisplayLabels()
+        {
+            lbl_TerritoryFrequencyBaseDisplay.Text = trk_TerritoryFrequencyBase.Value.ToString();
+            lbl_TerritoryFrequencyVariationDisplay.Text = trk_TerritoryFrequencyVariation.Value.ToString();
+            lbl_TerritoryRadiusBaseDisplay.Text = trk_TerritoryRadiusBase.Value.ToString();
+            lbl_TerritoryRadiusVariationDisplay.Text = trk_TerritoryRadiusVariation.Value.ToString();
+            lbl_LakeFrequencyBaseDisplay.Text = trk_LakeFrequencyBase.Value.ToString();
+            lbl_LakeFrequencyVariationDisplay.Text = trk_LakeFrequencyVariation.Value.ToString();
+            lbl_LakeRadiusBaseDisplay.Text = trk_LakeRadiusBase.Value.ToString();
+            lbl_LakeRadiusVariationDisplay.Text = trk_LakeRadiusVariation.Value.ToString();
+        }
         private void UpdateGenerationSettings()
         {
             int temp;
@@ -71,10 +82,10 @@ namespace ContinentMapCreator
         {
             // Initialize variables
             // Dictates which pixels are too close to the border to be territories
-            int minXValue = FULL_CONTINENT ? MIN_LAKE_RADIUS : 0;
-            int maxXValue = FULL_CONTINENT ? pnl_MapBackground.Width - MIN_LAKE_RADIUS : pnl_MapBackground.Width;
-            int minYValue = FULL_CONTINENT ? MIN_LAKE_RADIUS : 0;
-            int maxYValue = FULL_CONTINENT ? pnl_MapBackground.Height - MIN_LAKE_RADIUS : pnl_MapBackground.Height;
+            int minXValue = FULL_CONTINENT ? MAX_OCEAN_RADIUS_INLAND : 0;
+            int maxXValue = FULL_CONTINENT ? pnl_MapBackground.Width - MAX_OCEAN_RADIUS_INLAND : pnl_MapBackground.Width;
+            int minYValue = FULL_CONTINENT ? MAX_OCEAN_RADIUS_INLAND : 0;
+            int maxYValue = FULL_CONTINENT ? pnl_MapBackground.Height - MAX_OCEAN_RADIUS_INLAND : pnl_MapBackground.Height;
 
             // Tracks the indices of OriginPoints that are exansionable
             OriginPoints = new Point[pnl_MapBackground.Width * pnl_MapBackground.Height];

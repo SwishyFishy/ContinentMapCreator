@@ -64,6 +64,7 @@ namespace ContinentMapCreator
             // Set control defaults
             UpdateDisplay();
             PresetDefaults();
+            UpdateTrackbarDisplayLabels();
             btn_Generate.Enabled = true;
         }
 
@@ -139,12 +140,17 @@ namespace ContinentMapCreator
                     PresetArchipelago();
                     break;
                 case 2:
-                    PresetCratered();
+                    PresetContinental();
                     break;
                 case 3:
+                    PresetCratered();
+                    break;
+                case 4:
                     PresetProvinces();
                     break;
             }
+
+            UpdateTrackbarDisplayLabels();
         }
 
         // chb_CleanBorders

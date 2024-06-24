@@ -537,6 +537,7 @@
             this.cbo_LoadPreset.Items.AddRange(new object[] {
             "--Defaults",
             "Archipelago",
+            "Continental",
             "Cratered",
             "Provincial"});
             this.cbo_LoadPreset.Location = new System.Drawing.Point(111, 47);
