@@ -25,6 +25,15 @@ namespace ContinentMapCreator
         int NUM_LAKES;
         int MIN_LAKE_RADIUS;
         int MAX_LAKE_RADIUS;
+        int MIN_NUM_RIVERS;
+        int MAX_NUM_RIVERS;
+        int NUM_RIVERS;
+        int MIN_RIVER_CURVATURE;
+        int MAX_RIVER_CURVATURE;
+        int RIVER_CURVATURE;
+        int MIN_RIVER_THICKNESS;
+        int MAX_RIVER_THICKNESS;
+        int RIVER_THICKNESS;
 
         const int MIN_ORIGIN_SPACING = 50;
         const int MIN_OCEAN_RADIUS_INLAND = 10;
