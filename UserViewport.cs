@@ -56,7 +56,8 @@ namespace ContinentMapCreator
         int numOriginPoints;
 
         // Display args
-        bool allowPainting = false;
+        bool paintMap = false;
+        bool paintSettings = true;
 
         public form_Window()
         {

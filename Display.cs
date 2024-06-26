@@ -38,12 +38,25 @@ namespace ContinentMapCreator
                 pnl_SettingsBackground.Enabled = false;
 
                 // Redraw
-                allowPainting = true;
+                paintMap = true;
                 Refresh();
-                allowPainting = false;
+                paintMap = false;
 
                 // Reenable controls
                 pnl_SettingsBackground.Enabled = true;
+            }
+        }
+
+        public override void Refresh()
+        {
+            if (paintMap)
+            { 
+                pnl_MapBackground.Refresh(); 
+            }
+
+            if (paintSettings)
+            {
+                pnl_SettingsBackground.Refresh();
             }
         }
 

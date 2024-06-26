@@ -227,20 +227,19 @@ namespace ContinentMapCreator
             GenerateBorders(); 
 
             // Redraw the screen
-            allowPainting = true;
+            paintMap = true;
             Refresh();
-            allowPainting = false;
+            paintMap = false;
 
             // Reenable controls
             pnl_SettingsBackground.Enabled = true;
         }
 
         // pnl_MapBackground
-        // Paint        -> Call Draw() method to redraw screen when refreshed
-        // DoubleClick  -> Regenerate new territory origins
+        // Paint        -> Call DrawMap() method to redraw screen when refreshed
         private void pnl_MapBackground_Paint(object sender, PaintEventArgs e)
         {
-            if (allowPainting)
+            if (paintMap)
             {
                 DrawMap(e.Graphics);
             }
