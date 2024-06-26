@@ -135,7 +135,7 @@ namespace ContinentMapCreator
             {
                 // Get a random OriginPoint and make it a Territory
                 originIndex = rnd.Next(0, numOriginPoints);
-                Territories[i] = new Territory(i.ToString(), OriginPoints[originIndex], TERRITORY_RADIUS);
+                Territories[i] = new Territory(i.ToString(), LAND_COLOUR, OriginPoints[originIndex], TERRITORY_RADIUS);
                 
                 // Overwrite the used OriginPoint
                 numOriginPoints--;
@@ -171,7 +171,7 @@ namespace ContinentMapCreator
                     int rad1 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
                     int rad2 = rnd.Next(MIN_LAKE_RADIUS, Math.Min(MAX_LAKE_RADIUS, leastDistance));
                     double angle = rnd.NextDouble();
-                    Lakes[numLakes] = new Lake((Territories.Length + numLakes).ToString(), OriginPoints[originIndex], rad1, rad2, angle);
+                    Lakes[numLakes] = new Lake((Territories.Length + numLakes).ToString(), WATER_COLOUR, OriginPoints[originIndex], rad1, rad2, angle);
                     numLakes++;
                 }
 
@@ -204,9 +204,9 @@ namespace ContinentMapCreator
                     xrad2 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
                     yrad2 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
 
-                    HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), new Point(i, 0), xrad1, yrad1);
+                    HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(i, 0), xrad1, yrad1);
                     numOceans++;
-                    HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), new Point(i, pnl_MapBackground.Height), xrad2, yrad2);
+                    HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(i, pnl_MapBackground.Height), xrad2, yrad2);
                     numOceans++;
                 }
                 Array.Resize(ref HorizontalOceans, numOceans);
@@ -221,9 +221,9 @@ namespace ContinentMapCreator
                     xrad2 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
                     yrad2 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
 
-                    VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), new Point(0, i), xrad1, yrad1);
+                    VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(0, i), xrad1, yrad1);
                     numOceans++;
-                    VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), new Point(pnl_MapBackground.Width, i), xrad2, yrad2);
+                    VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(pnl_MapBackground.Width, i), xrad2, yrad2);
                     numOceans++;
                 }
                 Array.Resize(ref VerticalOceans, numOceans);

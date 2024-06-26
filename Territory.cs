@@ -7,14 +7,16 @@ namespace ContinentMapCreator
     {
         // Properties
         public string Name { get; set; }
+        public Brush Colour { get; set; }
         public Point Origin { get; set; }
         public int Radius { get; set; }
         public bool Coastal { get; set; }
 
         // Constructor
-        public Territory(string name, Point origin, int radius)
+        public Territory(string name, Brush colour, Point origin, int radius)
         {
             Name = name;
+            Colour = colour;
             Origin = origin;
             Radius = radius;
             Coastal = false;
@@ -34,6 +36,13 @@ namespace ContinentMapCreator
         public bool BoundsContains(Point point)
         {
             return OriginToPoint(point) < Radius ? true : false;
+        }
+
+        public void Draw(Graphics g)
+        {
+            int xOffset = Origin.X - Radius;
+            int yOffset = Origin.Y - Radius;
+            g.FillEllipse(Colour, xOffset, yOffset, 2 * Radius, 2 * Radius);
         }
 
     }

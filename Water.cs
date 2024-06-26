@@ -7,6 +7,7 @@ namespace ContinentMapCreator
     {
         // Properties
         public string Name { get; set; }
+        public Brush Colour { get; set; }
         public Point Origin { get; set; }
         public int MajorRadius { get; set; }
         public int MinorRadius { get; set; }
@@ -15,9 +16,10 @@ namespace ContinentMapCreator
         public int FocalLength { get; set; }
 
         // Constructor
-        public Ocean(string name, Point origin, int xrad, int yrad)
+        public Ocean(string name, Brush colour, Point origin, int xrad, int yrad)
         {
             Name = name;
+            Colour = colour;
             Origin = origin;
             MajorRadius = Math.Max(xrad, yrad);
             MinorRadius = Math.Min(xrad, yrad);
@@ -56,6 +58,22 @@ namespace ContinentMapCreator
 
             return sumDistance < 2 * MajorRadius ? true : false;
         }
+
+        public void Draw(Graphics g, bool horizontal)
+        {
+            if (horizontal)
+            {
+                int xOffset = Origin.X - MajorRadius;
+                int yOffset = Origin.Y - MinorRadius;
+                g.FillEllipse(Colour, xOffset, yOffset, 2 * MajorRadius, 2 * MinorRadius);
+            }
+            else
+            {
+                int xOffset = Origin.X - MinorRadius;
+                int yOffset = Origin.Y - MajorRadius;
+                g.FillEllipse(Colour, xOffset, yOffset, 2 * MinorRadius, 2 * MajorRadius);
+            }
+        }
     }
 
     public class Lake : Ocean
@@ -64,7 +82,7 @@ namespace ContinentMapCreator
         public Point[] Vertices { get; set; }
 
         // Constructor
-        public Lake(string name, Point origin, int rad1, int rad2, double angle) : base(name, origin, rad1, rad2)
+        public Lake(string name, Brush colour, Point origin, int rad1, int rad2, double angle) : base(name, colour, origin, rad1, rad2)
         {
             // Angle is measured in radians, 2 * PI * angle. angle should be passed as a double between 0.0 and 1.0
             Angle = 2 * Math.PI * angle;
@@ -106,6 +124,13 @@ namespace ContinentMapCreator
             Vertices[1] = new Point(v3xRotation + Origin.X, v3yRotation + Origin.Y);
             Vertices[2] = new Point(v2xRotation + Origin.X, v2yRotation + Origin.Y);
             Vertices[3] = new Point(v4xRotation + Origin.X, v4yRotation + Origin.Y);
+        }
+
+        // Methods
+        public void Draw(Graphics g)
+        {
+            float tension = MajorRadius / MinorRadius / 10;
+            g.FillClosedCurve(Colour, Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.85F + tension);
         }
     }
 

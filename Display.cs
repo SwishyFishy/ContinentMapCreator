@@ -60,7 +60,7 @@ namespace ContinentMapCreator
             }
         }
 
-        // Draw the screen
+        // Draw the map
         private void DrawMap(Graphics g)
         {
             Pen borderPen = new Pen(BORDER_COLOUR, BORDER_THICKNESS);
@@ -74,18 +74,13 @@ namespace ContinentMapCreator
             // Draw Territories
             for (int i = 0; i < Territories.Length; i++)
             {
-                xOffset = Territories[i].Origin.X - Territories[i].Radius;
-                yOffset = Territories[i].Origin.Y - Territories[i].Radius;
-                g.FillEllipse(LAND_COLOUR, xOffset, yOffset, 2 * Territories[i].Radius, 2 * Territories[i].Radius);
+                Territories[i].Draw(g);
             }
 
             // Draw Lakes
             for (int i = 0; i < Lakes.Length; i++)
             {
-                xOffset = Lakes[i].MajorRadius;
-                yOffset = Lakes[i].MinorRadius;
-                float tension = yOffset / xOffset / 10;
-                g.FillClosedCurve(WATER_COLOUR, Lakes[i].Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.85F + tension);
+                Lakes[i].Draw(g);
             }
 
             // Draw Oceans
@@ -94,17 +89,13 @@ namespace ContinentMapCreator
                 // Oceans at top and bottom of screen
                 for (int i = 0; i < HorizontalOceans.Length; i++)
                 {
-                    xOffset = HorizontalOceans[i].Origin.X - HorizontalOceans[i].MajorRadius;
-                    yOffset = HorizontalOceans[i].Origin.Y - HorizontalOceans[i].MinorRadius;
-                    g.FillEllipse(WATER_COLOUR, xOffset, yOffset, 2 * HorizontalOceans[i].MajorRadius, 2 * HorizontalOceans[i].MinorRadius);
+                    HorizontalOceans[i].Draw(g, true);
                 }
 
                 // Oceans at left and right of screen
                 for (int i = 0; i < VerticalOceans.Length; i++)
                 {
-                    xOffset = VerticalOceans[i].Origin.X - VerticalOceans[i].MinorRadius;
-                    yOffset = VerticalOceans[i].Origin.Y - VerticalOceans[i].MajorRadius;
-                    g.FillEllipse(WATER_COLOUR, xOffset, yOffset, 2 * VerticalOceans[i].MinorRadius, 2 * VerticalOceans[i].MajorRadius);
+                    VerticalOceans[i].Draw(g, false);
                 }
             }
 
