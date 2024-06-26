@@ -108,4 +108,22 @@ namespace ContinentMapCreator
             Vertices[3] = new Point(v4xRotation + Origin.X, v4yRotation + Origin.Y);
         }
     }
+
+    public class River
+    {
+        // Properties
+        public Point Source { get; set; }
+        public Point Sink { get; set; }
+        public Point[] ControlPoints { get; set; }
+        public int Thickness { get; set; }
+
+        // Constructor
+        public River(Point source, Point sink, Point[] controls, int thickness)
+        {
+            Source = source;
+            Sink = sink;
+            ControlPoints = controls;
+            Thickness = thickness;
+        }
+    }
 }
