@@ -223,7 +223,8 @@ namespace ContinentMapCreator
             UpdateGenerationSettings();
             GenerateOrigins();
             GenerateTerritories(); 
-            GenerateWater(); 
+            GenerateLakes();
+            GenerateOceans();
             GenerateBorders(); 
 
             // Redraw the screen

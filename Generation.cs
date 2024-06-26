@@ -145,7 +145,7 @@ namespace ContinentMapCreator
      
         // Generate Lakes
         // O(territories * origins)
-        private void GenerateWater()
+        private void GenerateLakes()
         {
             NUM_LAKES = rnd.Next(MIN_NUM_LAKES, MAX_NUM_LAKES + 1);
             Lakes = new Lake[Math.Min(NUM_LAKES, numOriginPoints)];
@@ -183,7 +183,12 @@ namespace ContinentMapCreator
             // Truncate the array
             Array.Resize(ref Lakes, numLakes);
             NUM_LAKES = numLakes;
+        }
 
+        // Generate Oceans
+        // O(1)
+        public void GenerateOceans()
+        {
             // Generate bordering oceans
             if (FULL_CONTINENT)
             {
