@@ -32,26 +32,23 @@ namespace ContinentMapCreator
             ROUGH_BORDERS = !chb_CleanBorders.Checked;
 
             // Redraw map
-            if (!lbl_TutorialSettingsPanel.Visible)
-            {
-                // Disable controls
-                pnl_SettingsBackground.Enabled = false;
-
-                // Redraw
-                paintMap = true;
-                Refresh();
-                paintMap = false;
-
-                // Reenable controls
-                pnl_SettingsBackground.Enabled = true;
-            }
+            paintMap = true;
+            Refresh();
+            paintMap = false;
         }
 
         public override void Refresh()
         {
-            if (paintMap)
-            { 
-                pnl_MapBackground.Refresh(); 
+            if (paintMap && mapExists)
+            {
+                // Disable controls
+                pnl_SettingsBackground.Enabled = false;
+
+                // Draw
+                pnl_MapBackground.Refresh();
+
+                // Reenable controls
+                pnl_SettingsBackground.Enabled = true;
             }
 
             if (paintSettings)
@@ -69,7 +66,7 @@ namespace ContinentMapCreator
             float yOffset;
 
             // Draw Ocean Backdrop
-            g.FillRectangle(WATER_COLOUR, 0, 0, pnl_MapBackground.Width, pnl_MapBackground.Height);
+            g.FillRectangle(WATER_COLOUR, 0, 0, MAP_WIDTH, MAP_HEIGHT);
 
             // Draw Territories
             for (int i = 0; i < Territories.Length; i++)

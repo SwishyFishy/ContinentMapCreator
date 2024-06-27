@@ -43,13 +43,13 @@ namespace ContinentMapCreator
             // Initialize variables
             // Dictates which pixels are too close to the border to be territories
             int minXValue = 0;
-            int maxXValue = pnl_MapBackground.Width;
+            int maxXValue = MAP_WIDTH;
             int minYValue = 0;
-            int maxYValue = pnl_MapBackground.Height;
+            int maxYValue = MAP_HEIGHT;
 
             // If FULL_CONTINENT, define an elliptical area for territory origin points
             // Creates rounder continents, rather than the rectangular bounding of the border oceans
-            WorkingAreaOrigin = new Point(pnl_MapBackground.Width / 2, pnl_MapBackground.Height / 2);
+            WorkingAreaOrigin = new Point(MAP_WIDTH / 2, MAP_HEIGHT / 2);
             WorkingAreaFocus1 = new Point(0, 0);
             WorkingAreaFocus2 = new Point(0, 0);
             workingAreaFociCoverage = 0;
@@ -73,7 +73,7 @@ namespace ContinentMapCreator
             }
 
             // Tracks the indices of OriginPoints that are exansionable
-            OriginPoints = new Point[pnl_MapBackground.Width * pnl_MapBackground.Height];
+            OriginPoints = new Point[MAP_WIDTH * MAP_HEIGHT];
             numOriginPoints = 0;
             int[] ActiveIndices = new int[OriginPoints.Length];
             int numActiveIndices = 0;
@@ -192,7 +192,7 @@ namespace ContinentMapCreator
                 originIndex = rnd.Next(0, numOriginPoints);
 
                 // Check whether this point can be an inland lake, part of the ocean, or if it is too close to a TerritoryOrigin
-                int leastDistance = pnl_MapBackground.Width * pnl_MapBackground.Height;
+                int leastDistance = MAP_WIDTH * MAP_HEIGHT;
                 for (int i = 0; i < Territories.Length; i++)
                 {
                     leastDistance = Math.Min(leastDistance, Territories[i].OriginToPoint(OriginPoints[originIndex]));
@@ -226,8 +226,8 @@ namespace ContinentMapCreator
             // Generate bordering oceans
             if (FULL_CONTINENT)
             {
-                HorizontalOceans = new Ocean[2 * (pnl_MapBackground.Width / MIN_OCEAN_RADIUS_COAST) + 2];
-                VerticalOceans = new Ocean[2 * (pnl_MapBackground.Height / MIN_OCEAN_RADIUS_COAST) + 2];
+                HorizontalOceans = new Ocean[2 * (MAP_WIDTH / MIN_OCEAN_RADIUS_COAST) + 2];
+                VerticalOceans = new Ocean[2 * (MAP_HEIGHT / MIN_OCEAN_RADIUS_COAST) + 2];
                 int numOceans = 0;
                 int xrad1;
                 int yrad1;
@@ -235,7 +235,7 @@ namespace ContinentMapCreator
                 int yrad2;
 
                 // Oceans on top and bottom of panel
-                for (int i = 0; i < pnl_MapBackground.Width; i += 2 * MIN_OCEAN_RADIUS_COAST)
+                for (int i = 0; i < MAP_WIDTH; i += 2 * MIN_OCEAN_RADIUS_COAST)
                 {
                     // Get ocean radii
                     xrad1 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
@@ -249,7 +249,7 @@ namespace ContinentMapCreator
                     // TODO: Technically, this is bad and unstable. There's no guarantee that no ocean crosses into the WorkingArea, and there's no failsafe
                     // for if a TerritoryOrigin exists inside the space in the WorkingArea the ocean occupies. The chances are low, but not impossible.
                     // This should be fixed so that this algorithm takes the size of the WorkingArea, or the TerritoryOrigins' locations, as an input.
-                    double halfWidth = pnl_MapBackground.Width / 2.0;
+                    double halfWidth = MAP_WIDTH / 2.0;
                     double distanceFromCenter = Math.Abs(halfWidth - i);
                     double normalizedDistanceFromCenter = distanceFromCenter / halfWidth;
                     xrad1 = Math.Max((int)(xrad1 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), xrad1);
@@ -260,14 +260,14 @@ namespace ContinentMapCreator
                     // Add oceans
                     HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(i, 0), xrad1, yrad1);
                     numOceans++;
-                    HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(i, pnl_MapBackground.Height), xrad2, yrad2);
+                    HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(i, MAP_HEIGHT), xrad2, yrad2);
                     numOceans++;
                 }
                 Array.Resize(ref HorizontalOceans, numOceans);
 
                 // Oceans on left and right of panel
                 numOceans = 0;
-                for (int i = 0; i < pnl_MapBackground.Height; i += 2 * MIN_OCEAN_RADIUS_COAST)
+                for (int i = 0; i < MAP_HEIGHT; i += 2 * MIN_OCEAN_RADIUS_COAST)
                 {
                     // Get ocean radii
                     xrad1 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
@@ -281,7 +281,7 @@ namespace ContinentMapCreator
                     // TODO: Technically, this is bad and unstable. There's no guarantee that no ocean crosses into the WorkingArea, and there's no failsafe
                     // for if a TerritoryOrigin exists inside the space in the WorkingArea the ocean occupies. The chances are low, but not impossible.
                     // This should be fixed so that this algorithm takes the size of the WorkingArea, or the TerritoryOrigins' locations, as an input.
-                    double halfHeight = pnl_MapBackground.Height / 2.0;
+                    double halfHeight = MAP_HEIGHT / 2.0;
                     double distanceFromCenter = Math.Abs(halfHeight - i);
                     double normalizedDistanceFromCenter = distanceFromCenter / halfHeight;
                     xrad1 = Math.Max((int)(xrad1 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), xrad1);
@@ -292,7 +292,7 @@ namespace ContinentMapCreator
                     // Add oceans
                     VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(0, i), xrad1, yrad1);
                     numOceans++;
-                    VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(pnl_MapBackground.Width, i), xrad2, yrad2);
+                    VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(MAP_WIDTH, i), xrad2, yrad2);
                     numOceans++;
                 }
                 Array.Resize(ref VerticalOceans, numOceans);
@@ -305,13 +305,13 @@ namespace ContinentMapCreator
         private void GenerateBorders()
         {
             int numBorderPoints = 0;
-            TerritoryBorders = new Point[pnl_MapBackground.Width * pnl_MapBackground.Height];
+            TerritoryBorders = new Point[MAP_WIDTH * MAP_HEIGHT];
             NeighbourMatrix = new bool[Territories.Length, Territories.Length];
 
             // Loop through all points
-            for (int x = 0; x < pnl_MapBackground.Width; x++)
+            for (int x = 0; x < MAP_WIDTH; x++)
             {
-                for (int y = 0; y < pnl_MapBackground.Height; y++)
+                for (int y = 0; y < MAP_HEIGHT; y++)
                 {
                     Point thisPixel = new Point(x, y);
                     EvaluatePixel();

@@ -7,13 +7,20 @@ namespace ContinentMapCreator
     public partial class form_Window : Form
     {
         // Window Presentation Values
-        int WINDOW_WIDTH = 1600;
-        int WINDOW_HEIGHT = 900;
+        int WINDOW_WIDTH;
+        int WINDOW_HEIGHT;
+
+        const int BASE_WINDOW_WIDTH = 1600;
+        const int BASE_WINDOW_HEIGHT = 900;
         const double SETTINGS_WIDTH_PROPORTION = 0.25;
-        const double MAP_WIDTH_PROPORTION = (double)1 - SETTINGS_WIDTH_PROPORTION;
+        const double SETTINGS_HEIGHT_PROPORTION = 1.0;
+        const double MAP_WIDTH_PROPORTION = 1.0 - SETTINGS_WIDTH_PROPORTION;
+        const double MAP_HEIGHT_PROPORTION = 1.0;
 
         // Map Creation Settings
         bool FULL_CONTINENT;
+        int MAP_WIDTH;
+        int MAP_HEIGHT;
         int MIN_NUM_TERRITORIES;
         int MAX_NUM_TERRITORIES;
         int NUM_TERRITORIES;
@@ -72,6 +79,7 @@ namespace ContinentMapCreator
         // Display args
         bool paintMap = false;
         bool paintSettings = true;
+        bool mapExists = false;
 
         public form_Window()
         {

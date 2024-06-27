@@ -603,9 +603,8 @@
             // 
             // pnl_MapBackground
             // 
-            this.pnl_MapBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnl_MapBackground.BackColor = System.Drawing.SystemColors.Control;
+            this.pnl_MapBackground.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnl_MapBackground.BackColor = System.Drawing.Color.Sienna;
             this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsHover);
             this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsPanel);
             this.pnl_MapBackground.Location = new System.Drawing.Point(247, 0);
@@ -656,16 +655,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Sienna;
             this.ClientSize = new System.Drawing.Size(981, 861);
-            this.Controls.Add(this.pnl_MapBackground);
             this.Controls.Add(this.pnl_SettingsBackground);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.pnl_MapBackground);
             this.KeyPreview = true;
             this.Name = "form_Window";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Continent Mapper";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.form_Window_Load);
+            this.ResizeEnd += new System.EventHandler(this.form_Window_ResizeEnd);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_MapBackground_Paint);
+            this.Resize += new System.EventHandler(this.form_Window_Resize);
             this.pnl_SettingsBackground.ResumeLayout(false);
             this.pnl_SettingsBackground.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trk_LakeRadiusVariation)).EndInit();

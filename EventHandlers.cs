@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Diagnostics;
 
 namespace ContinentMapCreator
 {
@@ -10,29 +9,31 @@ namespace ContinentMapCreator
         // Event Handlers
         // form_Window
         // Load         -> Set window proportions and load initial assets
+        // Resize       -> Resize and redraw panels
         private void form_Window_Load(object sender, EventArgs e)
         {
             // Set window size
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
-            WINDOW_WIDTH = Math.Min(WINDOW_WIDTH, screenWidth);
-            WINDOW_HEIGHT = Math.Min(WINDOW_HEIGHT, screenHeight);
+            WINDOW_WIDTH = this.ClientSize.Width;
+            WINDOW_HEIGHT = this.ClientSize.Height;
             this.Size = new Size(WINDOW_WIDTH, WINDOW_HEIGHT);
-            this.MaximumSize = this.Size;
-            this.MinimumSize = this.Size;
 
             // Set window location
             int left = Math.Max((screenWidth - WINDOW_WIDTH) / 2, 0);
             int top = Math.Max((screenHeight - WINDOW_HEIGHT) / 2, 0);
             this.Location = new Point(left, top);
 
-            // Set interior panel sizes
-            pnl_SettingsBackground.Width = (int)(SETTINGS_WIDTH_PROPORTION * this.ClientSize.Width);
-            pnl_SettingsBackground.Height = this.ClientSize.Height;
+            // Set initial interior panel and map sizes
+            pnl_SettingsBackground.Width = (int)(SETTINGS_WIDTH_PROPORTION * BASE_WINDOW_WIDTH);
+            pnl_SettingsBackground.Height = (int)(SETTINGS_HEIGHT_PROPORTION * WINDOW_HEIGHT);
             pnl_SettingsBackground.Location = new Point(0, 0);
 
-            pnl_MapBackground.Width = (int)(MAP_WIDTH_PROPORTION * this.ClientSize.Width);
-            pnl_MapBackground.Height = this.ClientSize.Height;
+            MAP_WIDTH = (int)(MAP_WIDTH_PROPORTION * BASE_WINDOW_WIDTH);
+            MAP_HEIGHT = (int)(MAP_HEIGHT_PROPORTION * BASE_WINDOW_HEIGHT);
+
+            pnl_MapBackground.Width = MAP_WIDTH;
+            pnl_MapBackground.Height = MAP_HEIGHT;
             pnl_MapBackground.Location = new Point(pnl_SettingsBackground.Width, 0);
 
             // Add Controls
@@ -72,6 +73,26 @@ namespace ContinentMapCreator
             UpdateDisplay();
             PresetDefaults();
             btn_Generate.Enabled = true;
+        }
+        private void form_Window_Resize(object sender, EventArgs e)
+        {
+            // Reset settings panel
+            // Adjust height to new window
+            pnl_SettingsBackground.Height = this.ClientSize.Height;
+            pnl_SettingsBackground.Location = new Point(0, 0);
+
+            // Reset map panel
+            // Do not adjust width or height. Adjust location so map is centered
+            int availableX = this.ClientSize.Width - pnl_SettingsBackground.Width;
+            int availableY = this.ClientSize.Height;
+            pnl_MapBackground.Location = new Point(pnl_SettingsBackground.Width + (availableX - MAP_WIDTH) / 2, (availableY - MAP_HEIGHT) / 2);
+        }
+        private void form_Window_ResizeEnd(object sender, EventArgs e)
+        {
+            // Redraw the screen
+            paintMap = true;
+            Refresh();
+            paintMap = false;
         }
 
         // Generation Settings track bars
@@ -221,8 +242,7 @@ namespace ContinentMapCreator
         // Click        -> Generate new map
         private void btn_Generate_Click(object sender, EventArgs e)
         {
-            // Disable controls and hide new window tutorial labels
-            pnl_SettingsBackground.Enabled = false;
+            // Hide new window tutorial labels
             lbl_TutorialSettingsPanel.Visible = false;
             lbl_TutorialSettingsHover.Visible = false;
 
@@ -232,15 +252,15 @@ namespace ContinentMapCreator
             GenerateTerritories(); 
             GenerateLakes();
             GenerateOceans();
-            GenerateBorders(); 
+            GenerateBorders();
+
+            // Confirm that a map now exists for this runtime
+            mapExists = true;
 
             // Redraw the screen
             paintMap = true;
             Refresh();
             paintMap = false;
-
-            // Reenable controls
-            pnl_SettingsBackground.Enabled = true;
         }
 
         // pnl_MapBackground
