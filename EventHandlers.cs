@@ -34,7 +34,7 @@ namespace ContinentMapCreator
 
             pnl_MapBackground.Width = MAP_WIDTH;
             pnl_MapBackground.Height = MAP_HEIGHT;
-            pnl_MapBackground.Location = new Point(pnl_SettingsBackground.Width, 0);
+            pnl_MapBackground.Location = new Point(pnl_SettingsBackground.Width + (this.ClientSize.Width - pnl_SettingsBackground.Width - MAP_WIDTH) / 2, (this.ClientSize.Height - MAP_HEIGHT) / 2);
 
             // Add Controls
             pnl_SettingsBackground.Controls.Add(chb_FullContinent);
@@ -86,13 +86,18 @@ namespace ContinentMapCreator
             int availableX = this.ClientSize.Width - pnl_SettingsBackground.Width;
             int availableY = this.ClientSize.Height;
             pnl_MapBackground.Location = new Point(pnl_SettingsBackground.Width + (availableX - MAP_WIDTH) / 2, (availableY - MAP_HEIGHT) / 2);
+
+            // Track changes in window state
+            newWindowState = this.WindowState;
+            if (newWindowState != oldWindowState)
+            {
+                oldWindowState = newWindowState;
+                UpdateDisplay();
+            }
         }
         private void form_Window_ResizeEnd(object sender, EventArgs e)
         {
-            // Redraw the screen
-            paintMap = true;
-            Refresh();
-            paintMap = false;
+            UpdateDisplay();
         }
 
         // Generation Settings track bars
@@ -257,10 +262,8 @@ namespace ContinentMapCreator
             // Confirm that a map now exists for this runtime
             mapExists = true;
 
-            // Redraw the screen
-            paintMap = true;
-            Refresh();
-            paintMap = false;
+            // Redraw map
+            UpdateDisplay();
         }
 
         // pnl_MapBackground

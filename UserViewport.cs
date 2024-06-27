@@ -77,6 +77,8 @@ namespace ContinentMapCreator
         int workingAreaFociCoverage;
 
         // Display args
+        FormWindowState oldWindowState;
+        FormWindowState newWindowState;
         bool paintMap = false;
         bool paintSettings = true;
         bool mapExists = false;
