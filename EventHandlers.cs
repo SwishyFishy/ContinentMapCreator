@@ -76,11 +76,6 @@ namespace ContinentMapCreator
         }
         private void form_Window_Resize(object sender, EventArgs e)
         {
-            // Reset settings panel
-            // Adjust height to new window
-            pnl_SettingsBackground.Height = this.ClientSize.Height;
-            pnl_SettingsBackground.Location = new Point(0, 0);
-
             // Reset map panel
             // Do not adjust width or height. Adjust location so map is centered
             int availableX = this.ClientSize.Width - pnl_SettingsBackground.Width;

@@ -138,7 +138,7 @@
             this.pnl_SettingsBackground.Location = new System.Drawing.Point(0, 0);
             this.pnl_SettingsBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_SettingsBackground.Name = "pnl_SettingsBackground";
-            this.pnl_SettingsBackground.Size = new System.Drawing.Size(250, 860);
+            this.pnl_SettingsBackground.Size = new System.Drawing.Size(250, 899);
             this.pnl_SettingsBackground.TabIndex = 0;
             // 
             // lbl_LakeRadiusVariationDisplay
@@ -319,7 +319,7 @@
             // 
             this.lbl_LocationThicknessDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LocationThicknessDisplay.AutoSize = true;
-            this.lbl_LocationThicknessDisplay.Location = new System.Drawing.Point(219, 644);
+            this.lbl_LocationThicknessDisplay.Location = new System.Drawing.Point(219, 683);
             this.lbl_LocationThicknessDisplay.Name = "lbl_LocationThicknessDisplay";
             this.lbl_LocationThicknessDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_LocationThicknessDisplay.TabIndex = 30;
@@ -329,7 +329,7 @@
             // trk_LocationThickness
             // 
             this.trk_LocationThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LocationThickness.Location = new System.Drawing.Point(68, 612);
+            this.trk_LocationThickness.Location = new System.Drawing.Point(68, 651);
             this.trk_LocationThickness.Maximum = 80;
             this.trk_LocationThickness.Minimum = 10;
             this.trk_LocationThickness.Name = "trk_LocationThickness";
@@ -363,7 +363,7 @@
             // 
             this.lbl_BorderThicknessDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_BorderThicknessDisplay.AutoSize = true;
-            this.lbl_BorderThicknessDisplay.Location = new System.Drawing.Point(219, 593);
+            this.lbl_BorderThicknessDisplay.Location = new System.Drawing.Point(219, 632);
             this.lbl_BorderThicknessDisplay.Name = "lbl_BorderThicknessDisplay";
             this.lbl_BorderThicknessDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_BorderThicknessDisplay.TabIndex = 22;
@@ -373,7 +373,7 @@
             // trk_BorderThickness
             // 
             this.trk_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_BorderThickness.Location = new System.Drawing.Point(68, 561);
+            this.trk_BorderThickness.Location = new System.Drawing.Point(68, 600);
             this.trk_BorderThickness.Maximum = 40;
             this.trk_BorderThickness.Minimum = 10;
             this.trk_BorderThickness.Name = "trk_BorderThickness";
@@ -388,7 +388,7 @@
             this.btn_WaterColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_WaterColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_WaterColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_WaterColourSelector.Location = new System.Drawing.Point(68, 663);
+            this.btn_WaterColourSelector.Location = new System.Drawing.Point(68, 702);
             this.btn_WaterColourSelector.Name = "btn_WaterColourSelector";
             this.btn_WaterColourSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_WaterColourSelector.TabIndex = 17;
@@ -401,7 +401,7 @@
             this.lbl_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_BorderThickness.AutoSize = true;
             this.lbl_BorderThickness.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_BorderThickness.Location = new System.Drawing.Point(14, 561);
+            this.lbl_BorderThickness.Location = new System.Drawing.Point(14, 600);
             this.lbl_BorderThickness.Name = "lbl_BorderThickness";
             this.lbl_BorderThickness.Size = new System.Drawing.Size(120, 19);
             this.lbl_BorderThickness.TabIndex = 21;
@@ -412,7 +412,7 @@
             this.btn_FontColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_FontColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_FontColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FontColourSelector.Location = new System.Drawing.Point(68, 771);
+            this.btn_FontColourSelector.Location = new System.Drawing.Point(68, 810);
             this.btn_FontColourSelector.Name = "btn_FontColourSelector";
             this.btn_FontColourSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_FontColourSelector.TabIndex = 17;
@@ -425,7 +425,7 @@
             this.btn_BorderColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_BorderColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_BorderColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_BorderColourSelector.Location = new System.Drawing.Point(68, 735);
+            this.btn_BorderColourSelector.Location = new System.Drawing.Point(68, 774);
             this.btn_BorderColourSelector.Name = "btn_BorderColourSelector";
             this.btn_BorderColourSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_BorderColourSelector.TabIndex = 19;
@@ -438,7 +438,7 @@
             this.btn_LandColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_LandColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_LandColourSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_LandColourSelector.Location = new System.Drawing.Point(68, 699);
+            this.btn_LandColourSelector.Location = new System.Drawing.Point(68, 738);
             this.btn_LandColourSelector.Name = "btn_LandColourSelector";
             this.btn_LandColourSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_LandColourSelector.TabIndex = 18;
@@ -453,7 +453,7 @@
             this.chb_CleanBorders.Checked = true;
             this.chb_CleanBorders.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chb_CleanBorders.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_CleanBorders.Location = new System.Drawing.Point(18, 742);
+            this.chb_CleanBorders.Location = new System.Drawing.Point(18, 781);
             this.chb_CleanBorders.Name = "chb_CleanBorders";
             this.chb_CleanBorders.Size = new System.Drawing.Size(120, 23);
             this.chb_CleanBorders.TabIndex = 8;
@@ -467,7 +467,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Generate.Enabled = false;
             this.btn_Generate.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Generate.Location = new System.Drawing.Point(18, 807);
+            this.btn_Generate.Location = new System.Drawing.Point(18, 846);
             this.btn_Generate.Name = "btn_Generate";
             this.btn_Generate.Size = new System.Drawing.Size(214, 40);
             this.btn_Generate.TabIndex = 5;
@@ -510,7 +510,7 @@
             this.btn_FontSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_FontSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_FontSelector.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FontSelector.Location = new System.Drawing.Point(18, 771);
+            this.btn_FontSelector.Location = new System.Drawing.Point(18, 810);
             this.btn_FontSelector.Name = "btn_FontSelector";
             this.btn_FontSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_FontSelector.TabIndex = 16;
@@ -523,7 +523,7 @@
             this.lbl_LocationThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_LocationThickness.AutoSize = true;
             this.lbl_LocationThickness.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LocationThickness.Location = new System.Drawing.Point(14, 612);
+            this.lbl_LocationThickness.Location = new System.Drawing.Point(14, 651);
             this.lbl_LocationThickness.Name = "lbl_LocationThickness";
             this.lbl_LocationThickness.Size = new System.Drawing.Size(182, 19);
             this.lbl_LocationThickness.TabIndex = 31;
@@ -607,7 +607,7 @@
             this.pnl_MapBackground.BackColor = System.Drawing.Color.Sienna;
             this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsHover);
             this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsPanel);
-            this.pnl_MapBackground.Location = new System.Drawing.Point(247, 0);
+            this.pnl_MapBackground.Location = new System.Drawing.Point(557, 20);
             this.pnl_MapBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_MapBackground.Name = "pnl_MapBackground";
             this.pnl_MapBackground.Size = new System.Drawing.Size(736, 860);
@@ -655,6 +655,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoScrollMinSize = new System.Drawing.Size(1600, 900);
             this.BackColor = System.Drawing.Color.Sienna;
             this.ClientSize = new System.Drawing.Size(981, 861);
             this.Controls.Add(this.pnl_SettingsBackground);
