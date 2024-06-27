@@ -233,7 +233,7 @@
             // 
             this.trk_LakeRadiusVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trk_LakeRadiusVariation.Location = new System.Drawing.Point(68, 437);
-            this.trk_LakeRadiusVariation.Maximum = 100;
+            this.trk_LakeRadiusVariation.Maximum = 250;
             this.trk_LakeRadiusVariation.Name = "trk_LakeRadiusVariation";
             this.trk_LakeRadiusVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_LakeRadiusVariation.TabIndex = 41;
@@ -255,7 +255,7 @@
             // 
             this.trk_LakeFrequencyVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trk_LakeFrequencyVariation.Location = new System.Drawing.Point(68, 335);
-            this.trk_LakeFrequencyVariation.Maximum = 32;
+            this.trk_LakeFrequencyVariation.Maximum = 64;
             this.trk_LakeFrequencyVariation.Name = "trk_LakeFrequencyVariation";
             this.trk_LakeFrequencyVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_LakeFrequencyVariation.TabIndex = 39;
@@ -275,7 +275,7 @@
             // 
             this.trk_TerritoryRadiusVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trk_TerritoryRadiusVariation.Location = new System.Drawing.Point(68, 233);
-            this.trk_TerritoryRadiusVariation.Maximum = 200;
+            this.trk_TerritoryRadiusVariation.Maximum = 350;
             this.trk_TerritoryRadiusVariation.Name = "trk_TerritoryRadiusVariation";
             this.trk_TerritoryRadiusVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_TerritoryRadiusVariation.TabIndex = 37;
@@ -297,7 +297,7 @@
             // 
             this.trk_TerritoryFrequencyVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trk_TerritoryFrequencyVariation.Location = new System.Drawing.Point(68, 131);
-            this.trk_TerritoryFrequencyVariation.Maximum = 16;
+            this.trk_TerritoryFrequencyVariation.Maximum = 32;
             this.trk_TerritoryFrequencyVariation.Name = "trk_TerritoryFrequencyVariation";
             this.trk_TerritoryFrequencyVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_TerritoryFrequencyVariation.TabIndex = 35;
