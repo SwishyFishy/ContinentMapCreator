@@ -7,8 +7,8 @@ namespace ContinentMapCreator
     public partial class form_Window : Form
     {
         // Window Presentation Values
-        const int WINDOW_WIDTH = 1600;
-        const int WINDOW_HEIGHT = 900;
+        int WINDOW_WIDTH = 1600;
+        int WINDOW_HEIGHT = 900;
         const double SETTINGS_WIDTH_PROPORTION = 0.25;
         const double MAP_WIDTH_PROPORTION = (double)1 - SETTINGS_WIDTH_PROPORTION;
 

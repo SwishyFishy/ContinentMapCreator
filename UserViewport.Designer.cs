@@ -660,6 +660,7 @@
             this.Controls.Add(this.pnl_MapBackground);
             this.Controls.Add(this.pnl_SettingsBackground);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "form_Window";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Continent Mapper";

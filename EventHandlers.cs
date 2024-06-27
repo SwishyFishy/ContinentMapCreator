@@ -13,11 +13,18 @@ namespace ContinentMapCreator
         private void form_Window_Load(object sender, EventArgs e)
         {
             // Set window size
-            Size windowSize = new Size(WINDOW_WIDTH, WINDOW_HEIGHT);
-            this.Size = windowSize;
-            this.MaximumSize = windowSize;
-            this.MinimumSize = windowSize;
-            this.Location = new Point(75, 75);
+            int screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+            WINDOW_WIDTH = Math.Min(WINDOW_WIDTH, screenWidth);
+            WINDOW_HEIGHT = Math.Min(WINDOW_HEIGHT, screenHeight);
+            this.Size = new Size(WINDOW_WIDTH, WINDOW_HEIGHT);
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+
+            // Set window location
+            int left = Math.Max((screenWidth - WINDOW_WIDTH) / 2, 0);
+            int top = Math.Max((screenHeight - WINDOW_HEIGHT) / 2, 0);
+            this.Location = new Point(left, top);
 
             // Set interior panel sizes
             pnl_SettingsBackground.Width = (int)(SETTINGS_WIDTH_PROPORTION * this.ClientSize.Width);
