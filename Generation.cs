@@ -299,6 +299,13 @@ namespace ContinentMapCreator
             }
         }
 
+        // Generate Rivers
+        // O(i dunno yet)
+        private void GenerateRivers()
+        {
+
+        }
+
         // Calculate territory borders and mark coastal territories as such
         // Determine neighbouring Territories
         // O(length * width * (territories + lakes + oceans))

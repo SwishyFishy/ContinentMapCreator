@@ -13,8 +13,6 @@ namespace ContinentMapCreator
         private void form_Window_Load(object sender, EventArgs e)
         {
             // Set window size
-            int screenWidth = Screen.PrimaryScreen.Bounds.Width;
-            int screenHeight = Screen.PrimaryScreen.Bounds.Height;
             WINDOW_WIDTH = this.ClientSize.Width;
             WINDOW_HEIGHT = this.ClientSize.Height;
             this.Size = new Size(WINDOW_WIDTH, WINDOW_HEIGHT);
