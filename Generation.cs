@@ -49,6 +49,7 @@ namespace ContinentMapCreator
 
             // If FULL_CONTINENT, define an elliptical area for territory origin points
             // Creates rounder continents, rather than the rectangular bounding of the border oceans
+            WorkingAreaOrigin = new Point(pnl_MapBackground.Width / 2, pnl_MapBackground.Height / 2);
             WorkingAreaFocus1 = new Point(0, 0);
             WorkingAreaFocus2 = new Point(0, 0);
             workingAreaFociCoverage = 0;
@@ -60,14 +61,11 @@ namespace ContinentMapCreator
                 minYValue += MAX_OCEAN_RADIUS_INLAND;
                 maxYValue -= MAX_OCEAN_RADIUS_INLAND;
 
-                // Get center of working area
-                Point workingAreaOrigin = new Point(pnl_MapBackground.Width / 2, pnl_MapBackground.Height / 2);
-
                 // Define working area focal points
                 // Assume panel is wider than it is high
-                int focalLength = (int)Math.Sqrt(Math.Pow(workingAreaOrigin.X, 2) - Math.Pow(workingAreaOrigin.Y, 2));
-                WorkingAreaFocus1 = new Point(workingAreaOrigin.X - focalLength, workingAreaOrigin.Y);
-                WorkingAreaFocus2 = new Point(workingAreaOrigin.X + focalLength, workingAreaOrigin.Y);
+                int focalLength = (int)Math.Sqrt(Math.Pow(WorkingAreaOrigin.X, 2) - Math.Pow(WorkingAreaOrigin.Y, 2));
+                WorkingAreaFocus1 = new Point(WorkingAreaOrigin.X - focalLength, WorkingAreaOrigin.Y);
+                WorkingAreaFocus2 = new Point(WorkingAreaOrigin.X + focalLength, WorkingAreaOrigin.Y);
                 
                 // Define length from focal points to edge of working area
                 // 2 * major radius, which is (maxX - minX) / 2
@@ -248,6 +246,9 @@ namespace ContinentMapCreator
 
                     // Apply OCEAN_SIZE_MULTIPLIER based on proximity to panel corner
                     // Weights larger oceans at corners and smaller oceans in the middle, resulting in a more rounded continent
+                    // TODO: Technically, this is bad and unstable. There's no guarantee that no ocean crosses into the WorkingArea, and there's no failsafe
+                    // for if a TerritoryOrigin exists inside the space in the WorkingArea the ocean occupies. The chances are low, but not impossible.
+                    // This should be fixed so that this algorithm takes the size of the WorkingArea, or the TerritoryOrigins' locations, as an input.
                     double halfWidth = pnl_MapBackground.Width / 2.0;
                     double distanceFromCenter = Math.Abs(halfWidth - i);
                     double normalizedDistanceFromCenter = distanceFromCenter / halfWidth;
@@ -255,7 +256,7 @@ namespace ContinentMapCreator
                     yrad1 = Math.Max((int)(yrad1 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), yrad1);
                     xrad2 = Math.Max((int)(xrad2 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), xrad2);
                     yrad2 = Math.Max((int)(yrad2 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), yrad2);
-                    
+
                     // Add oceans
                     HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(i, 0), xrad1, yrad1);
                     numOceans++;
@@ -277,6 +278,9 @@ namespace ContinentMapCreator
 
                     // Apply OCEAN_SIZE_MULTIPLIER based on proximity to panel corner
                     // Weights larger oceans at corners and smaller oceans in the middle, resulting in a more rounded continent
+                    // TODO: Technically, this is bad and unstable. There's no guarantee that no ocean crosses into the WorkingArea, and there's no failsafe
+                    // for if a TerritoryOrigin exists inside the space in the WorkingArea the ocean occupies. The chances are low, but not impossible.
+                    // This should be fixed so that this algorithm takes the size of the WorkingArea, or the TerritoryOrigins' locations, as an input.
                     double halfHeight = pnl_MapBackground.Height / 2.0;
                     double distanceFromCenter = Math.Abs(halfHeight - i);
                     double normalizedDistanceFromCenter = distanceFromCenter / halfHeight;

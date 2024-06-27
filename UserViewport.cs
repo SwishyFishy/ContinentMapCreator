@@ -40,7 +40,7 @@ namespace ContinentMapCreator
         const int MAX_OCEAN_RADIUS_INLAND = MIN_ORIGIN_SPACING;
         const int MIN_OCEAN_RADIUS_COAST = 50;
         const int MAX_OCEAN_RADIUS_COAST = 100;
-        const int OCEAN_SIZE_MULTIPLIER = 5;
+        const int OCEAN_SIZE_MULTIPLIER = 4;
 
         // Aesthetic Settings
         bool ROUGH_BORDERS = true;
@@ -64,6 +64,7 @@ namespace ContinentMapCreator
         bool[,] NeighbourMatrix;
         Point[] OriginPoints;
         int numOriginPoints;
+        Point WorkingAreaOrigin;
         Point WorkingAreaFocus1;
         Point WorkingAreaFocus2;
         int workingAreaFociCoverage;
