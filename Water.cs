@@ -131,24 +131,39 @@ namespace ContinentMapCreator
         {
             float tension = MajorRadius / MinorRadius / 10;
             g.FillClosedCurve(Colour, Vertices, System.Drawing.Drawing2D.FillMode.Alternate, 0.85F + tension);
+
         }
     }
 
     public class River
     {
         // Properties
-        public Point Source { get; set; }
-        public Point Sink { get; set; }
-        public Point[] ControlPoints { get; set; }
+        public Point[] Points { get; set; }
+        public Brush Colour { get; set; }
+        public int Curvature { get; set; }
         public int Thickness { get; set; }
 
         // Constructor
-        public River(Point source, Point sink, Point[] controls, int thickness)
+        public River(Point source, Point sink, Point[] curves, Brush colour, int curvature, int thickness)
         {
-            Source = source;
-            Sink = sink;
-            ControlPoints = controls;
+            // Insert points
+            Points = new Point[curves.Length + 2];
+            Points[0] = source;
+            Array.Copy(curves, 0, Points, 1, curves.Length);
+            Points[Points.Length - 1] = sink;
+
+            // Set other properties
+            Colour = colour;
+            Curvature = curvature;
             Thickness = thickness;
+        }
+
+        // Methods
+        public void Draw(Graphics g)
+        {
+            Pen pen = new Pen(Colour);
+            g.DrawCurve(pen, Points, Curvature);
+            pen.Dispose();
         }
     }
 }
