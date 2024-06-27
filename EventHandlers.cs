@@ -18,11 +18,7 @@ namespace ContinentMapCreator
             WINDOW_WIDTH = this.ClientSize.Width;
             WINDOW_HEIGHT = this.ClientSize.Height;
             this.Size = new Size(WINDOW_WIDTH, WINDOW_HEIGHT);
-
-            // Set window location
-            int left = Math.Max((screenWidth - WINDOW_WIDTH) / 2, 0);
-            int top = Math.Max((screenHeight - WINDOW_HEIGHT) / 2, 0);
-            this.Location = new Point(left, top);
+            this.Location = new Point(0, 0);
 
             // Set initial interior panel and map sizes
             pnl_SettingsBackground.Width = (int)(SETTINGS_WIDTH_PROPORTION * BASE_WINDOW_WIDTH);
