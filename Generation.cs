@@ -42,10 +42,37 @@ namespace ContinentMapCreator
         {
             // Initialize variables
             // Dictates which pixels are too close to the border to be territories
-            int minXValue = FULL_CONTINENT ? MAX_OCEAN_RADIUS_INLAND : 0;
-            int maxXValue = FULL_CONTINENT ? pnl_MapBackground.Width - MAX_OCEAN_RADIUS_INLAND : pnl_MapBackground.Width;
-            int minYValue = FULL_CONTINENT ? MAX_OCEAN_RADIUS_INLAND : 0;
-            int maxYValue = FULL_CONTINENT ? pnl_MapBackground.Height - MAX_OCEAN_RADIUS_INLAND : pnl_MapBackground.Height;
+            int minXValue = 0;
+            int maxXValue = pnl_MapBackground.Width;
+            int minYValue = 0;
+            int maxYValue = pnl_MapBackground.Height;
+
+            // If FULL_CONTINENT, define an elliptical area for territory origin points
+            // Creates rounder continents, rather than the rectangular bounding of the border oceans
+            WorkingAreaFocus1 = new Point(0, 0);
+            WorkingAreaFocus2 = new Point(0, 0);
+            workingAreaFociCoverage = 0;
+            if (FULL_CONTINENT)
+            {
+                // Squeeze the boundaries to account for border oceans
+                minXValue += MAX_OCEAN_RADIUS_INLAND;
+                maxXValue -= MAX_OCEAN_RADIUS_INLAND;
+                minYValue += MAX_OCEAN_RADIUS_INLAND;
+                maxYValue -= MAX_OCEAN_RADIUS_INLAND;
+
+                // Get center of working area
+                Point workingAreaOrigin = new Point(pnl_MapBackground.Width / 2, pnl_MapBackground.Height / 2);
+
+                // Define working area focal points
+                // Assume panel is wider than it is high
+                int focalLength = (int)Math.Sqrt(Math.Pow(workingAreaOrigin.X, 2) - Math.Pow(workingAreaOrigin.Y, 2));
+                WorkingAreaFocus1 = new Point(workingAreaOrigin.X - focalLength, workingAreaOrigin.Y);
+                WorkingAreaFocus2 = new Point(workingAreaOrigin.X + focalLength, workingAreaOrigin.Y);
+                
+                // Define length from focal points to edge of working area
+                // 2 * major radius, which is (maxX - minX) / 2
+                workingAreaFociCoverage = maxXValue - minXValue;
+            }
 
             // Tracks the indices of OriginPoints that are exansionable
             OriginPoints = new Point[pnl_MapBackground.Width * pnl_MapBackground.Height];
@@ -92,6 +119,15 @@ namespace ContinentMapCreator
                         y = y == 0 ?
                             rnd.Next(OriginPoints[originIndex].Y - maxSpacing, OriginPoints[originIndex].Y - minSpacing) :
                             rnd.Next(OriginPoints[originIndex].Y + minSpacing, OriginPoints[originIndex].Y + maxSpacing);
+
+                        // If FULL_CONTINENT, check that the point is within the working area
+                        if (FULL_CONTINENT && 
+                            Math.Sqrt(Math.Pow(x - WorkingAreaFocus1.X, 2) + Math.Pow(y - WorkingAreaFocus1.Y, 2)) +
+                            Math.Sqrt(Math.Pow(x - WorkingAreaFocus2.X, 2) + Math.Pow(y - WorkingAreaFocus2.Y, 2))
+                            > workingAreaFociCoverage)
+                        {
+                            return;
+                        }
 
                         // If the new point is outside the acceptable bounds, the point is not placeable
                         if (x < minXValue || x > maxXValue || y < minYValue || y > maxYValue)
@@ -203,12 +239,24 @@ namespace ContinentMapCreator
                 // Oceans on top and bottom of panel
                 for (int i = 0; i < pnl_MapBackground.Width; i += 2 * MIN_OCEAN_RADIUS_COAST)
                 {
+                    // Get ocean radii
                     xrad1 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
                     yrad1 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
 
                     xrad2 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
                     yrad2 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
 
+                    // Apply OCEAN_SIZE_MULTIPLIER based on proximity to panel corner
+                    // Weights larger oceans at corners and smaller oceans in the middle, resulting in a more rounded continent
+                    double halfWidth = pnl_MapBackground.Width / 2.0;
+                    double distanceFromCenter = Math.Abs(halfWidth - i);
+                    double normalizedDistanceFromCenter = distanceFromCenter / halfWidth;
+                    xrad1 = Math.Max((int)(xrad1 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), xrad1);
+                    yrad1 = Math.Max((int)(yrad1 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), yrad1);
+                    xrad2 = Math.Max((int)(xrad2 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), xrad2);
+                    yrad2 = Math.Max((int)(yrad2 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), yrad2);
+                    
+                    // Add oceans
                     HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(i, 0), xrad1, yrad1);
                     numOceans++;
                     HorizontalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(i, pnl_MapBackground.Height), xrad2, yrad2);
@@ -220,12 +268,24 @@ namespace ContinentMapCreator
                 numOceans = 0;
                 for (int i = 0; i < pnl_MapBackground.Height; i += 2 * MIN_OCEAN_RADIUS_COAST)
                 {
+                    // Get ocean radii
                     xrad1 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
                     yrad1 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
 
                     xrad2 = rnd.Next(MIN_OCEAN_RADIUS_INLAND, MAX_OCEAN_RADIUS_INLAND);
                     yrad2 = rnd.Next(MIN_OCEAN_RADIUS_COAST, MAX_OCEAN_RADIUS_COAST);
 
+                    // Apply OCEAN_SIZE_MULTIPLIER based on proximity to panel corner
+                    // Weights larger oceans at corners and smaller oceans in the middle, resulting in a more rounded continent
+                    double halfHeight = pnl_MapBackground.Height / 2.0;
+                    double distanceFromCenter = Math.Abs(halfHeight - i);
+                    double normalizedDistanceFromCenter = distanceFromCenter / halfHeight;
+                    xrad1 = Math.Max((int)(xrad1 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), xrad1);
+                    yrad1 = Math.Max((int)(yrad1 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), yrad1);
+                    xrad2 = Math.Max((int)(xrad2 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), xrad2);
+                    yrad2 = Math.Max((int)(yrad2 * normalizedDistanceFromCenter * OCEAN_SIZE_MULTIPLIER), yrad2);
+
+                    // Add oceans
                     VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(0, i), xrad1, yrad1);
                     numOceans++;
                     VerticalOceans[numOceans] = new Ocean(numOceans.ToString(), WATER_COLOUR, new Point(pnl_MapBackground.Width, i), xrad2, yrad2);
@@ -256,8 +316,27 @@ namespace ContinentMapCreator
                     {
                         int bordersWaterIndex = -1;
 
-                        if (FULL_CONTINENT && (x < MAX_OCEAN_RADIUS_INLAND || x > pnl_MapBackground.Width - MAX_OCEAN_RADIUS_INLAND ||
-                            y < MAX_OCEAN_RADIUS_INLAND || y > pnl_MapBackground.Height - MAX_OCEAN_RADIUS_INLAND))
+
+                        // Check if pixel is inside a lake
+                        for (int i = 0; i < Lakes.Length; i++)
+                        {
+                            // If this point is contained within a lake, move on
+                            if (Lakes[i].BoundsContains(thisPixel))
+                            {
+                                return;
+                            }
+                            // If this point is on a lake border, remember that so the territory owning this point can add WaterNeighbours
+                            else if (bordersWaterIndex < 0 && Lakes[i].BorderContains(thisPixel))
+                            {
+                                bordersWaterIndex = i;
+                            }
+                        }
+
+                        // Check if the pixel is inside an ocean
+                        if (FULL_CONTINENT && 
+                            Math.Sqrt(Math.Pow(thisPixel.X - WorkingAreaFocus1.X, 2) + Math.Pow(thisPixel.Y - WorkingAreaFocus1.Y, 2)) +
+                            Math.Sqrt(Math.Pow(thisPixel.X - WorkingAreaFocus2.X, 2) + Math.Pow(thisPixel.Y - WorkingAreaFocus2.Y, 2))
+                            > workingAreaFociCoverage)
                         { 
                             // Check if this pixel is inside an ocean
                             for (int i = 0; i < HorizontalOceans.Length; i++)
@@ -285,21 +364,6 @@ namespace ContinentMapCreator
                                 {
                                     bordersWaterIndex = i;
                                 }
-                            }
-                        }
-                        
-                        // Check if pixel is inside a lake
-                        for (int i = 0; i < Lakes.Length; i++)
-                        {
-                            // If this point is contained within a lake, move on
-                            if (Lakes[i].BoundsContains(thisPixel))
-                            {
-                                return;
-                            }
-                            // If this point is on a lake border, remember that so the territory owning this point can add WaterNeighbours
-                            else if (bordersWaterIndex < 0 && Lakes[i].BorderContains(thisPixel))
-                            {
-                                bordersWaterIndex = i;
                             }
                         }
 
