@@ -300,26 +300,46 @@ namespace ContinentMapCreator
         }
 
         // Generate Rivers
-        // O(rivers * curvature)
+        // O(lakes + oceans + rivers)
         private void GenerateRivers()
         {
+            // Set up for river point randomization
+            int sourceIndexUpperBound = 2 * NUM_LAKES;
+            int sinkIndexUpperBound = 2 * NUM_LAKES + (FULL_CONTINENT ? 2 * (VerticalOceans.Length + HorizontalOceans.Length) : 0);
+            
+            // If there are no sources or sinks, generate no rivers
+            if (sinkIndexUpperBound == 0)
+            {
+                NUM_RIVERS = 0;
+                return;
+            }
+            // If there are only sinks (i.e. only oceans, no lakes) allow sources to be inside oceans
+            else if (sourceIndexUpperBound == 0)
+            {
+                sourceIndexUpperBound = sinkIndexUpperBound;
+            }
+
             // Get number of rivers
             NUM_RIVERS = rnd.Next(MIN_NUM_RIVERS, MAX_NUM_RIVERS + 1);
-            int sinkIndexUpperBound = 2 * NUM_LAKES + (FULL_CONTINENT ? 2 * (VerticalOceans.Length + HorizontalOceans.Length) : 0);
+
             int sourceIndex;
             int sinkIndex;
+            Point source;
+            Point sink;
             Point control1;
             Point control2;
+            int maxControlPointRange;
 
             // Loop through all rivers
             for (int i = 0; i < NUM_RIVERS; i++)
             {
                 // Random source and sink
-                sourceIndex = rnd.Next(0, 2 * NUM_LAKES);
+                sourceIndex = rnd.Next(0, sourceIndexUpperBound);
                 sinkIndex = rnd.Next(0, sinkIndexUpperBound);
 
                 // Control points, with allowed distance based on curvature
-
+                maxControlPointRange = rnd.Next(10 * MIN_RIVER_CURVATURE, 10 * MAX_RIVER_CURVATURE);
+                
             }
         }
 

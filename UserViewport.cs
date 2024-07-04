@@ -21,26 +21,27 @@ namespace ContinentMapCreator
         bool FULL_CONTINENT;
         int MAP_WIDTH;
         int MAP_HEIGHT;
+
         int MIN_NUM_TERRITORIES;
         int MAX_NUM_TERRITORIES;
         int NUM_TERRITORIES;
         int MIN_TERRITORY_RADIUS;
         int MAX_TERRITORY_RADIUS;
         int TERRITORY_RADIUS;
+
         int MIN_NUM_LAKES;
         int MAX_NUM_LAKES;
         int NUM_LAKES;
         int MIN_LAKE_RADIUS;
         int MAX_LAKE_RADIUS;
+
         int MIN_NUM_RIVERS;
         int MAX_NUM_RIVERS;
         int NUM_RIVERS;
         int MIN_RIVER_CURVATURE;
-        int MAX_RIVER_CURVATURE;
-        int RIVER_CURVATURE;
+        int MAX_RIVER_CURVATURE; // Multiplied by 10 in code - give range [0, 120]
         int MIN_RIVER_THICKNESS;
-        int MAX_RIVER_THICKNESS;
-        int RIVER_THICKNESS;
+        int MAX_RIVER_THICKNESS; // Divided by 10 in code
 
         const int MIN_ORIGIN_SPACING = 50;
         const int MIN_OCEAN_RADIUS_INLAND = 10;
