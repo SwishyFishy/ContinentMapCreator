@@ -138,31 +138,29 @@ namespace ContinentMapCreator
     public class River
     {
         // Properties
-        public Point[] Points { get; set; }
+        public Point Source { get; set; }
+        public Point Control1 {  get; set; }
+        public Point Control2 { get; set; }
+        public Point Sink {  get; set; }
         public Brush Colour { get; set; }
-        public int Curvature { get; set; }
-        public int Thickness { get; set; }
+        public float Thickness { get; set; }
 
         // Constructor
-        public River(Point source, Point sink, Point[] curves, Brush colour, int curvature, int thickness)
+        public River(Point source, Point sink, Point control1, Point control2, Brush colour, int thickness)
         {
-            // Insert points
-            Points = new Point[curves.Length + 2];
-            Points[0] = source;
-            Array.Copy(curves, 0, Points, 1, curves.Length);
-            Points[Points.Length - 1] = sink;
-
-            // Set other properties
+            Source = source;
+            Control1 = control1;
+            Control2 = control2;
+            Sink = sink;
             Colour = colour;
-            Curvature = curvature;
-            Thickness = thickness;
+            Thickness = (float)(thickness / 10.0);
         }
 
         // Methods
         public void Draw(Graphics g)
         {
-            Pen pen = new Pen(Colour);
-            g.DrawCurve(pen, Points, Curvature);
+            Pen pen = new Pen(Colour, Thickness);
+            g.DrawBezier(pen, Source, Control1, Control2, Sink);
             pen.Dispose();
         }
     }

@@ -300,10 +300,27 @@ namespace ContinentMapCreator
         }
 
         // Generate Rivers
-        // O(i dunno yet)
+        // O(rivers * curvature)
         private void GenerateRivers()
         {
+            // Get number of rivers
+            NUM_RIVERS = rnd.Next(MIN_NUM_RIVERS, MAX_NUM_RIVERS + 1);
+            int sinkIndexUpperBound = 2 * NUM_LAKES + (FULL_CONTINENT ? 2 * (VerticalOceans.Length + HorizontalOceans.Length) : 0);
+            int sourceIndex;
+            int sinkIndex;
+            Point control1;
+            Point control2;
 
+            // Loop through all rivers
+            for (int i = 0; i < NUM_RIVERS; i++)
+            {
+                // Random source and sink
+                sourceIndex = rnd.Next(0, 2 * NUM_LAKES);
+                sinkIndex = rnd.Next(0, sinkIndexUpperBound);
+
+                // Control points, with allowed distance based on curvature
+
+            }
         }
 
         // Calculate territory borders and mark coastal territories as such

@@ -67,6 +67,7 @@ namespace ContinentMapCreator
         Lake[] Lakes;
         Ocean[] HorizontalOceans;
         Ocean[] VerticalOceans;
+        River[] Rivers;
         Point[] TerritoryBorders;
         bool[,] NeighbourMatrix;
         Point[] OriginPoints;
