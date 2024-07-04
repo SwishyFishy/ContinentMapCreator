@@ -106,6 +106,12 @@ namespace ContinentMapCreator
 
             }
 
+            // Draw Rivers
+            for (int i = 0; i < Rivers.Length; i++)
+            {
+                Rivers[i].Draw(g);
+            }
+
             // Draw TerritoryOrigins and Territory names
             for (int i = 0; i < Territories.Length; i++)
             {
