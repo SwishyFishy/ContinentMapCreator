@@ -358,13 +358,13 @@ namespace ContinentMapCreator
             int sinkIndex;
             Point source;
             Point sink;
-            Point control1;
-            Point control2;
             int minControlX;
             int maxControlX;
             int minControlY;
             int maxControlY;
             int maxControlPointRange;
+            Point control1;
+            Point control2;
 
             // Loop through all rivers
             for (int i = 0; i < NUM_RIVERS; i++)
