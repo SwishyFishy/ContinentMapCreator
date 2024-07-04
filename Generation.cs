@@ -304,9 +304,11 @@ namespace ContinentMapCreator
         private void GenerateRivers()
         {
             // Set up for river point randomization
-            int sourceIndexUpperBound = 2 * NUM_LAKES;
-            int sinkIndexUpperBound = 2 * NUM_LAKES + (FULL_CONTINENT ? 2 * (VerticalOceans.Length + HorizontalOceans.Length) : 0);
-            
+            Point[] SourcesAndSinks = new Point[3 * NUM_LAKES + 3 * (FULL_CONTINENT ? HorizontalOceans.Length + VerticalOceans.Length : 0)];
+
+            int sourceIndexUpperBound = 3 * NUM_LAKES;
+            int sinkIndexUpperBound = SourcesAndSinks.Length;
+
             // If there are no sources or sinks, generate no rivers
             if (sinkIndexUpperBound == 0)
             {
@@ -319,15 +321,49 @@ namespace ContinentMapCreator
                 sourceIndexUpperBound = sinkIndexUpperBound;
             }
 
+            // Populate the sources and sinks array
+            // Lakes
+            for (int i = 0; i < NUM_LAKES; i++)
+            {
+                SourcesAndSinks[3 * i] = Lakes[i].Origin;
+                SourcesAndSinks[3 * i + 1] = Lakes[i].Focus1;
+                SourcesAndSinks[3 * i + 2] = Lakes[i].Focus2;
+            }
+            // Oceans
+            if (FULL_CONTINENT)
+            {
+                // Horizontal oceans
+                for (int i = 0; i < HorizontalOceans.Length; i++)
+                {
+                    SourcesAndSinks[3 * NUM_LAKES + 3 * i] = HorizontalOceans[i].Origin;
+                    SourcesAndSinks[3 * NUM_LAKES + 3 * i + 1] = HorizontalOceans[i].Focus1;
+                    SourcesAndSinks[3 * NUM_LAKES + 3 * i + 2] = HorizontalOceans[i].Focus2;
+                }
+
+                // Vertical oceans
+                for (int i = 0; i < VerticalOceans.Length; i++)
+                {
+                    SourcesAndSinks[3 * NUM_LAKES + 3 * HorizontalOceans.Length + 3 * i] = VerticalOceans[i].Origin;
+                    SourcesAndSinks[3 * NUM_LAKES + 3 * HorizontalOceans.Length + 3 * i + 1] = VerticalOceans[i].Focus1;
+                    SourcesAndSinks[3 * NUM_LAKES + 3 * HorizontalOceans.Length + 3 * i + 2] = VerticalOceans[i].Focus2;
+                }
+            }
+
             // Get number of rivers
             NUM_RIVERS = rnd.Next(MIN_NUM_RIVERS, MAX_NUM_RIVERS + 1);
+            Rivers = new River[NUM_RIVERS];
 
+            int thickness;
             int sourceIndex;
             int sinkIndex;
             Point source;
             Point sink;
             Point control1;
             Point control2;
+            int minControlX;
+            int maxControlX;
+            int minControlY;
+            int maxControlY;
             int maxControlPointRange;
 
             // Loop through all rivers
@@ -337,9 +373,24 @@ namespace ContinentMapCreator
                 sourceIndex = rnd.Next(0, sourceIndexUpperBound);
                 sinkIndex = rnd.Next(0, sinkIndexUpperBound);
 
+                source = SourcesAndSinks[sourceIndex];
+                sink = SourcesAndSinks[sinkIndex];
+
                 // Control points, with allowed distance based on curvature
                 maxControlPointRange = rnd.Next(10 * MIN_RIVER_CURVATURE, 10 * MAX_RIVER_CURVATURE);
-                
+
+                minControlX = (source.X + sink.X) / 2 - maxControlPointRange;
+                maxControlX = minControlX + 2 * maxControlPointRange;
+
+                minControlY = (source.Y + sink.Y) / 2 - maxControlPointRange;
+                maxControlY = minControlY + 2 * maxControlPointRange;
+
+                control1 = new Point(rnd.Next(minControlX, maxControlX), rnd.Next(minControlY, maxControlY));
+                control2 = new Point(rnd.Next(minControlX, maxControlX), rnd.Next(minControlY, maxControlY));
+
+                // Create the river
+                thickness = rnd.Next(MIN_RIVER_THICKNESS, MAX_RIVER_THICKNESS);
+                Rivers[i] = new River(source, sink, control1, control2, WATER_COLOUR, thickness);
             }
         }
 
