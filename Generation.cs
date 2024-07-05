@@ -15,23 +15,19 @@ namespace ContinentMapCreator
             FULL_CONTINENT = chb_FullContinent.Checked;
 
             // MIN_NUM_TERRITORIES & MAX_NUM_TERRITORIES
-            temp = trk_TerritoryFrequencyBase.Value - trk_TerritoryFrequencyVariation.Value;
-            MIN_NUM_TERRITORIES = temp >= trk_TerritoryFrequencyBase.Minimum ? temp : trk_TerritoryFrequencyBase.Minimum;
+            MIN_NUM_TERRITORIES = Math.Max(trk_TerritoryFrequencyBase.Value - trk_TerritoryFrequencyVariation.Value, trk_TerritoryFrequencyBase.Minimum);
             MAX_NUM_TERRITORIES = Math.Min(trk_TerritoryFrequencyBase.Value + trk_TerritoryFrequencyVariation.Value, trk_TerritoryFrequencyBase.Maximum);
 
             // MIN_TERRITORY_RADIUS & MAX_TERRITORY_RADIUS
-            temp = trk_TerritoryRadiusBase.Value - trk_TerritoryRadiusVariation.Value;
-            MIN_TERRITORY_RADIUS = temp >= trk_TerritoryRadiusBase.Minimum ? temp : trk_TerritoryRadiusBase.Minimum;
+            MIN_TERRITORY_RADIUS = Math.Max(trk_TerritoryRadiusBase.Value - trk_TerritoryRadiusVariation.Value, trk_TerritoryRadiusBase.Minimum);
             MAX_TERRITORY_RADIUS = Math.Min(trk_TerritoryRadiusBase.Value + trk_TerritoryRadiusVariation.Value, trk_TerritoryRadiusBase.Maximum);
 
             // MIN_NUM_LAKES & MAX_NUM_LAKES
-            temp = trk_LakeFrequencyBase.Value - trk_LakeFrequencyVariation.Value;
-            MIN_NUM_LAKES = temp >= trk_LakeFrequencyBase.Minimum ? temp : trk_LakeFrequencyBase.Minimum;
+            MIN_NUM_LAKES = Math.Max(trk_LakeFrequencyBase.Value - trk_LakeFrequencyVariation.Value, trk_LakeFrequencyBase.Minimum);
             MAX_NUM_LAKES = Math.Min(trk_LakeFrequencyBase.Value + trk_LakeFrequencyVariation.Value, trk_LakeFrequencyBase.Maximum);
 
             // MIN_LAKE_RADIUS & MAX_LAKE_RADIUS
-            temp = trk_LakeRadiusBase.Value - trk_LakeRadiusVariation.Value;
-            MIN_LAKE_RADIUS = temp >= trk_LakeRadiusBase.Minimum ? temp : trk_LakeRadiusBase.Minimum;
+            MIN_LAKE_RADIUS = Math.Max(trk_LakeRadiusBase.Value - trk_LakeRadiusVariation.Value, trk_LakeRadiusBase.Minimum);
             MAX_LAKE_RADIUS = Math.Min(trk_LakeRadiusBase.Value + trk_LakeRadiusVariation.Value, trk_LakeRadiusBase.Maximum);
 
             // MIN_NUM_RIVERS & MAX_NUM_RIVERS
@@ -45,7 +41,6 @@ namespace ContinentMapCreator
             // MIN_RIVER_CURVATURE & MAX_RIVER_CURVATURE
             MIN_RIVER_CURVATURE = Math.Max(trk_RiverCurvatureBase.Value - trk_RiverCurvatureVariation.Value, trk_RiverCurvatureBase.Minimum);
             MAX_RIVER_CURVATURE = Math.Min(trk_RiverCurvatureBase.Value + trk_RiverCurvatureVariation.Value, trk_RiverCurvatureBase.Maximum);
-
         }
 
         // Use Poisson-Disc sampling to determine a random set of territory origin points
