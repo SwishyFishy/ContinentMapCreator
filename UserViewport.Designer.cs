@@ -253,7 +253,7 @@
             // 
             this.lbl_RiverFrequency.AutoSize = true;
             this.lbl_RiverFrequency.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_RiverFrequency.Location = new System.Drawing.Point(11, 3);
+            this.lbl_RiverFrequency.Location = new System.Drawing.Point(8, 3);
             this.lbl_RiverFrequency.Name = "lbl_RiverFrequency";
             this.lbl_RiverFrequency.Size = new System.Drawing.Size(49, 19);
             this.lbl_RiverFrequency.TabIndex = 23;
@@ -380,7 +380,7 @@
             // btn_RiverSettings
             // 
             this.btn_RiverSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_RiverSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_RiverSettings.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_RiverSettings.Location = new System.Drawing.Point(140, 80);
             this.btn_RiverSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_RiverSettings.Name = "btn_RiverSettings";
@@ -393,7 +393,7 @@
             // btn_LakeSettings
             // 
             this.btn_LakeSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_LakeSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_LakeSettings.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_LakeSettings.Location = new System.Drawing.Point(85, 80);
             this.btn_LakeSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_LakeSettings.Name = "btn_LakeSettings";
@@ -405,7 +405,7 @@
             // 
             // btn_TerritorySettings
             // 
-            this.btn_TerritorySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_TerritorySettings.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_TerritorySettings.Location = new System.Drawing.Point(15, 80);
             this.btn_TerritorySettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_TerritorySettings.Name = "btn_TerritorySettings";
