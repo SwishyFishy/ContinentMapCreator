@@ -67,11 +67,15 @@ namespace ContinentMapCreator
             tip_SettingsDetails.SetToolTip(lbl_LakeRadius, "(Randomized twice per instance) 1/2 maximum Lake diameter");
             tip_SettingsDetails.SetToolTip(lbl_LakeRadiusVariation, "+/- 1/2 maximum Lake diameter");
 
-            //TODO: Add Rivers Tooltips
-            //TODO: Test Rivers Values
+            tip_SettingsDetails.SetToolTip(lbl_RiverFrequency, "Number of Rivers");
+            tip_SettingsDetails.SetToolTip(lbl_RiverFrequencyVariation, "+/- Number of Rivers");
+            tip_SettingsDetails.SetToolTip(lbl_RiverThickness, "(Randomized per instance) River Thickness");
+            tip_SettingsDetails.SetToolTip(lbl_RiverThicknessVariation, "+/- River Thickness");
+            tip_SettingsDetails.SetToolTip(lbl_RiverCurvature, "(Randomized per Instance) River Tension");
+            tip_SettingsDetails.SetToolTip(lbl_RiverCurvatureVariation, "+/- River Tension");
 
-            tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Border pixel thickness");
-            tip_SettingsDetails.SetToolTip(lbl_LocationThickness, "Location Marker pixel thickness");
+            tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Border Thickness");
+            tip_SettingsDetails.SetToolTip(lbl_LocationThickness, "Location Marker Thickness");
             tip_SettingsDetails.SetToolTip(chb_CleanBorders, "Draw borders cleanly or roughly");
 
             // Set control defaults
