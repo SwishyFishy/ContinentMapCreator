@@ -143,7 +143,7 @@ namespace ContinentMapCreator
         private void btn_RiverSettings_Click(object sender, EventArgs e)
         {
             // If river settings are disabled, enable them and disable the rest
-            if (!pnl_TerritorySettings.Enabled)
+            if (!pnl_RiverSettings.Enabled)
             {
                 pnl_LakeSettings.Enabled = false;
                 pnl_LakeSettings.Visible = false;
@@ -157,8 +157,8 @@ namespace ContinentMapCreator
             // Otherwise, disable them
             else
             {
-                pnl_TerritorySettings.Enabled = false;
-                pnl_TerritorySettings.Visible = false;
+                pnl_RiverSettings.Enabled = false;
+                pnl_RiverSettings.Visible = false;
             }
         }
 
