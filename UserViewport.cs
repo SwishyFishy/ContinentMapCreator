@@ -39,9 +39,9 @@ namespace ContinentMapCreator
         int MAX_NUM_RIVERS;
         int NUM_RIVERS;
         int MIN_RIVER_CURVATURE;
-        int MAX_RIVER_CURVATURE; // Multiplied by 10 in code - give range [0, 120]
+        int MAX_RIVER_CURVATURE;
         int MIN_RIVER_THICKNESS;
-        int MAX_RIVER_THICKNESS; // Divided by 10 in code
+        int MAX_RIVER_THICKNESS;
 
         const int MIN_ORIGIN_SPACING = 50;
         const int MIN_OCEAN_RADIUS_INLAND = 10;
@@ -63,7 +63,7 @@ namespace ContinentMapCreator
         float LOCATION_MARKER_OFFSET = 1.0F;
 
         // Generation args
-        Random rnd = new Random();
+        readonly Random rnd = new Random();
         Territory[] Territories;
         Lake[] Lakes;
         Ocean[] HorizontalOceans;

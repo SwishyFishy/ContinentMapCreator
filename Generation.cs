@@ -9,8 +9,6 @@ namespace ContinentMapCreator
         // Update the map generation settings based on user input
         private void UpdateGenerationSettings()
         {
-            int temp;
-
             // FULL_CONTINENT
             FULL_CONTINENT = chb_FullContinent.Checked;
 
