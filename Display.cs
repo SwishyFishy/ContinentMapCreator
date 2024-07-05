@@ -69,13 +69,13 @@ namespace ContinentMapCreator
             g.FillRectangle(WATER_COLOUR, 0, 0, MAP_WIDTH, MAP_HEIGHT);
 
             // Draw Territories
-            for (int i = 0; i < Territories.Length; i++)
+            for (int i = 0; i < NUM_TERRITORIES; i++)
             {
                 Territories[i].Draw(g);
             }
 
             // Draw Lakes
-            for (int i = 0; i < Lakes.Length; i++)
+            for (int i = 0; i < NUM_LAKES; i++)
             {
                 Lakes[i].Draw(g);
             }
@@ -106,13 +106,13 @@ namespace ContinentMapCreator
             }
 
             // Draw Rivers
-            for (int i = 0; i < Rivers.Length; i++)
+            for (int i = 0; i < NUM_RIVERS; i++)
             {
                 Rivers[i].Draw(g);
             }
 
             // Draw TerritoryOrigins and Territory names
-            for (int i = 0; i < Territories.Length; i++)
+            for (int i = 0; i < NUM_TERRITORIES; i++)
             {
                 xOffset = Territories[i].Origin.X - LOCATION_MARKER_OFFSET;
                 yOffset = Territories[i].Origin.Y - LOCATION_MARKER_OFFSET;

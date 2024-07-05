@@ -87,19 +87,19 @@
             this.lbl_RiverCurvatureVariation = new System.Windows.Forms.Label();
             this.lbl_RiverCurvature = new System.Windows.Forms.Label();
             this.trk_RiverCurvatureVariation = new System.Windows.Forms.TrackBar();
-            this.trk_RiverCurvature = new System.Windows.Forms.TrackBar();
+            this.trk_RiverCurvatureBase = new System.Windows.Forms.TrackBar();
             this.lbl_RiverFrequency = new System.Windows.Forms.Label();
             this.lbl_RiverThicknessVariation = new System.Windows.Forms.Label();
             this.lbl_RiverFrequencyVariation = new System.Windows.Forms.Label();
             this.lbl_RiverThickness = new System.Windows.Forms.Label();
             this.lbl_RiverThicknessVariationDisplay = new System.Windows.Forms.Label();
             this.lbl_RiverThicknessDisplay = new System.Windows.Forms.Label();
-            this.trk_RiverThickness = new System.Windows.Forms.TrackBar();
+            this.trk_RiverThicknessBase = new System.Windows.Forms.TrackBar();
             this.lbl_RiversFrequencyVariationDisplay = new System.Windows.Forms.Label();
             this.trk_RiverThicknessVariation = new System.Windows.Forms.TrackBar();
             this.lbl_RiversFrequencyDisplay = new System.Windows.Forms.Label();
             this.trk_RiverFrequencyVariation = new System.Windows.Forms.TrackBar();
-            this.trk_RiverFrequency = new System.Windows.Forms.TrackBar();
+            this.trk_RiverFrequencyBase = new System.Windows.Forms.TrackBar();
             this.pnl_SettingsBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trk_LocationThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_BorderThickness)).BeginInit();
@@ -116,11 +116,11 @@
             this.pnl_MapBackground.SuspendLayout();
             this.pnl_RiverSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trk_RiverCurvatureVariation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverCurvature)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverThickness)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverCurvatureBase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverThicknessBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_RiverThicknessVariation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_RiverFrequencyVariation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverFrequency)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverFrequencyBase)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_SettingsBackground
@@ -172,7 +172,7 @@
             // 
             this.btn_LakeSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_LakeSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_LakeSettings.Location = new System.Drawing.Point(91, 99);
+            this.btn_LakeSettings.Location = new System.Drawing.Point(113, 99);
             this.btn_LakeSettings.Name = "btn_LakeSettings";
             this.btn_LakeSettings.Size = new System.Drawing.Size(130, 37);
             this.btn_LakeSettings.TabIndex = 56;
@@ -800,19 +800,19 @@
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverCurvatureVariation);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverCurvature);
             this.pnl_RiverSettings.Controls.Add(this.trk_RiverCurvatureVariation);
-            this.pnl_RiverSettings.Controls.Add(this.trk_RiverCurvature);
+            this.pnl_RiverSettings.Controls.Add(this.trk_RiverCurvatureBase);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverFrequency);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverThicknessVariation);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverFrequencyVariation);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverThickness);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverThicknessVariationDisplay);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverThicknessDisplay);
-            this.pnl_RiverSettings.Controls.Add(this.trk_RiverThickness);
+            this.pnl_RiverSettings.Controls.Add(this.trk_RiverThicknessBase);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiversFrequencyVariationDisplay);
             this.pnl_RiverSettings.Controls.Add(this.trk_RiverThicknessVariation);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiversFrequencyDisplay);
             this.pnl_RiverSettings.Controls.Add(this.trk_RiverFrequencyVariation);
-            this.pnl_RiverSettings.Controls.Add(this.trk_RiverFrequency);
+            this.pnl_RiverSettings.Controls.Add(this.trk_RiverFrequencyBase);
             this.pnl_RiverSettings.Enabled = false;
             this.pnl_RiverSettings.Location = new System.Drawing.Point(0, 195);
             this.pnl_RiverSettings.Name = "pnl_RiverSettings";
@@ -876,15 +876,15 @@
             this.trk_RiverCurvatureVariation.Size = new System.Drawing.Size(219, 56);
             this.trk_RiverCurvatureVariation.TabIndex = 55;
             // 
-            // trk_RiverCurvature
+            // trk_RiverCurvatureBase
             // 
-            this.trk_RiverCurvature.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_RiverCurvature.Location = new System.Drawing.Point(87, 256);
-            this.trk_RiverCurvature.Margin = new System.Windows.Forms.Padding(4);
-            this.trk_RiverCurvature.Maximum = 120;
-            this.trk_RiverCurvature.Name = "trk_RiverCurvature";
-            this.trk_RiverCurvature.Size = new System.Drawing.Size(219, 56);
-            this.trk_RiverCurvature.TabIndex = 54;
+            this.trk_RiverCurvatureBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trk_RiverCurvatureBase.Location = new System.Drawing.Point(87, 256);
+            this.trk_RiverCurvatureBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_RiverCurvatureBase.Maximum = 120;
+            this.trk_RiverCurvatureBase.Name = "trk_RiverCurvatureBase";
+            this.trk_RiverCurvatureBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_RiverCurvatureBase.TabIndex = 54;
             // 
             // lbl_RiverFrequency
             // 
@@ -954,17 +954,17 @@
             this.lbl_RiverThicknessDisplay.Text = "0";
             this.lbl_RiverThicknessDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // trk_RiverThickness
+            // trk_RiverThicknessBase
             // 
-            this.trk_RiverThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_RiverThickness.Location = new System.Drawing.Point(87, 129);
-            this.trk_RiverThickness.Margin = new System.Windows.Forms.Padding(4);
-            this.trk_RiverThickness.Maximum = 100;
-            this.trk_RiverThickness.Minimum = 1;
-            this.trk_RiverThickness.Name = "trk_RiverThickness";
-            this.trk_RiverThickness.Size = new System.Drawing.Size(219, 56);
-            this.trk_RiverThickness.TabIndex = 40;
-            this.trk_RiverThickness.Value = 1;
+            this.trk_RiverThicknessBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trk_RiverThicknessBase.Location = new System.Drawing.Point(87, 129);
+            this.trk_RiverThicknessBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_RiverThicknessBase.Maximum = 100;
+            this.trk_RiverThicknessBase.Minimum = 1;
+            this.trk_RiverThicknessBase.Name = "trk_RiverThicknessBase";
+            this.trk_RiverThicknessBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_RiverThicknessBase.TabIndex = 40;
+            this.trk_RiverThicknessBase.Value = 1;
             // 
             // lbl_RiversFrequencyVariationDisplay
             // 
@@ -1012,15 +1012,15 @@
             this.trk_RiverFrequencyVariation.Size = new System.Drawing.Size(219, 56);
             this.trk_RiverFrequencyVariation.TabIndex = 39;
             // 
-            // trk_RiverFrequency
+            // trk_RiverFrequencyBase
             // 
-            this.trk_RiverFrequency.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_RiverFrequency.Location = new System.Drawing.Point(87, 4);
-            this.trk_RiverFrequency.Margin = new System.Windows.Forms.Padding(4);
-            this.trk_RiverFrequency.Maximum = 64;
-            this.trk_RiverFrequency.Name = "trk_RiverFrequency";
-            this.trk_RiverFrequency.Size = new System.Drawing.Size(219, 56);
-            this.trk_RiverFrequency.TabIndex = 38;
+            this.trk_RiverFrequencyBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trk_RiverFrequencyBase.Location = new System.Drawing.Point(87, 4);
+            this.trk_RiverFrequencyBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_RiverFrequencyBase.Maximum = 64;
+            this.trk_RiverFrequencyBase.Name = "trk_RiverFrequencyBase";
+            this.trk_RiverFrequencyBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_RiverFrequencyBase.TabIndex = 38;
             // 
             // form_Window
             // 
@@ -1063,11 +1063,11 @@
             this.pnl_RiverSettings.ResumeLayout(false);
             this.pnl_RiverSettings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trk_RiverCurvatureVariation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverCurvature)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverThickness)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverCurvatureBase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverThicknessBase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_RiverThicknessVariation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_RiverFrequencyVariation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverFrequency)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trk_RiverFrequencyBase)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1132,19 +1132,19 @@
         private System.Windows.Forms.Label lbl_RiverCurvatureVariation;
         private System.Windows.Forms.Label lbl_RiverCurvature;
         private System.Windows.Forms.TrackBar trk_RiverCurvatureVariation;
-        private System.Windows.Forms.TrackBar trk_RiverCurvature;
+        private System.Windows.Forms.TrackBar trk_RiverCurvatureBase;
         private System.Windows.Forms.Label lbl_RiverFrequency;
         private System.Windows.Forms.Label lbl_RiverThicknessVariation;
         private System.Windows.Forms.Label lbl_RiverFrequencyVariation;
         private System.Windows.Forms.Label lbl_RiverThickness;
         private System.Windows.Forms.Label lbl_RiverThicknessVariationDisplay;
         private System.Windows.Forms.Label lbl_RiverThicknessDisplay;
-        private System.Windows.Forms.TrackBar trk_RiverThickness;
+        private System.Windows.Forms.TrackBar trk_RiverThicknessBase;
         private System.Windows.Forms.Label lbl_RiversFrequencyVariationDisplay;
         private System.Windows.Forms.TrackBar trk_RiverThicknessVariation;
         private System.Windows.Forms.Label lbl_RiversFrequencyDisplay;
         private System.Windows.Forms.TrackBar trk_RiverFrequencyVariation;
-        private System.Windows.Forms.TrackBar trk_RiverFrequency;
+        private System.Windows.Forms.TrackBar trk_RiverFrequencyBase;
     }
 }
 
