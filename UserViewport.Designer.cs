@@ -241,6 +241,7 @@
             this.trk_RiverCurvatureVariation.Name = "trk_RiverCurvatureVariation";
             this.trk_RiverCurvatureVariation.Size = new System.Drawing.Size(219, 56);
             this.trk_RiverCurvatureVariation.TabIndex = 55;
+            this.trk_RiverCurvatureVariation.Scroll += new System.EventHandler(this.trk_RiverCurvatureVariation_Scroll);
             // 
             // trk_RiverCurvatureBase
             // 
@@ -251,6 +252,7 @@
             this.trk_RiverCurvatureBase.Name = "trk_RiverCurvatureBase";
             this.trk_RiverCurvatureBase.Size = new System.Drawing.Size(219, 56);
             this.trk_RiverCurvatureBase.TabIndex = 54;
+            this.trk_RiverCurvatureBase.Scroll += new System.EventHandler(this.trk_RiverCurvatureBase_Scroll);
             // 
             // lbl_RiverFrequency
             // 
@@ -331,6 +333,7 @@
             this.trk_RiverThicknessBase.Size = new System.Drawing.Size(219, 56);
             this.trk_RiverThicknessBase.TabIndex = 40;
             this.trk_RiverThicknessBase.Value = 1;
+            this.trk_RiverThicknessBase.Scroll += new System.EventHandler(this.trk_RiverThicknessBase_Scroll);
             // 
             // lbl_RiverFrequencyVariationDisplay
             // 
@@ -355,6 +358,7 @@
             this.trk_RiverThicknessVariation.Size = new System.Drawing.Size(219, 56);
             this.trk_RiverThicknessVariation.TabIndex = 41;
             this.trk_RiverThicknessVariation.Value = 1;
+            this.trk_RiverThicknessVariation.Scroll += new System.EventHandler(this.trk_RiverThicknessVariation_Scroll);
             // 
             // lbl_RiverFrequencyBaseDisplay
             // 
@@ -377,6 +381,7 @@
             this.trk_RiverFrequencyVariation.Name = "trk_RiverFrequencyVariation";
             this.trk_RiverFrequencyVariation.Size = new System.Drawing.Size(219, 56);
             this.trk_RiverFrequencyVariation.TabIndex = 39;
+            this.trk_RiverFrequencyVariation.Scroll += new System.EventHandler(this.trk_RiverFrequencyVariation_Scroll);
             // 
             // trk_RiverFrequencyBase
             // 
@@ -387,6 +392,7 @@
             this.trk_RiverFrequencyBase.Name = "trk_RiverFrequencyBase";
             this.trk_RiverFrequencyBase.Size = new System.Drawing.Size(219, 56);
             this.trk_RiverFrequencyBase.TabIndex = 38;
+            this.trk_RiverFrequencyBase.Scroll += new System.EventHandler(this.trk_RiverFrequencyBase_Scroll);
             // 
             // btn_RiverSettings
             // 
@@ -1029,7 +1035,7 @@
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1600, 900);
             this.BackColor = System.Drawing.Color.Sienna;
-            this.ClientSize = new System.Drawing.Size(1308, 1055);
+            this.ClientSize = new System.Drawing.Size(1308, 1076);
             this.Controls.Add(this.pnl_SettingsBackground);
             this.Controls.Add(this.pnl_MapBackground);
             this.KeyPreview = true;
