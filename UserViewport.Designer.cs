@@ -91,9 +91,9 @@
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.lbl_RiverThicknessDisplay = new System.Windows.Forms.Label();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.lbl_RiversVariationDisplay = new System.Windows.Forms.Label();
+            this.lbl_RiversFrequencyVariationDisplay = new System.Windows.Forms.Label();
             this.trackBar4 = new System.Windows.Forms.TrackBar();
-            this.lbl_RiversDisplay = new System.Windows.Forms.Label();
+            this.lbl_RiversFrequencyDisplay = new System.Windows.Forms.Label();
             this.trackBar5 = new System.Windows.Forms.TrackBar();
             this.trackBar6 = new System.Windows.Forms.TrackBar();
             this.lbl_RiverCurvature = new System.Windows.Forms.Label();
@@ -807,9 +807,9 @@
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverThicknessVariationDisplay);
             this.pnl_RiverSettings.Controls.Add(this.lbl_RiverThicknessDisplay);
             this.pnl_RiverSettings.Controls.Add(this.trackBar3);
-            this.pnl_RiverSettings.Controls.Add(this.lbl_RiversVariationDisplay);
+            this.pnl_RiverSettings.Controls.Add(this.lbl_RiversFrequencyVariationDisplay);
             this.pnl_RiverSettings.Controls.Add(this.trackBar4);
-            this.pnl_RiverSettings.Controls.Add(this.lbl_RiversDisplay);
+            this.pnl_RiverSettings.Controls.Add(this.lbl_RiversFrequencyDisplay);
             this.pnl_RiverSettings.Controls.Add(this.trackBar2);
             this.pnl_RiverSettings.Controls.Add(this.trackBar1);
             this.pnl_RiverSettings.Enabled = false;
@@ -919,17 +919,17 @@
             this.trackBar3.TabIndex = 40;
             this.trackBar3.Value = 50;
             // 
-            // lbl_RiversVariationDisplay
+            // lbl_RiversFrequencyVariationDisplay
             // 
-            this.lbl_RiversVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_RiversVariationDisplay.AutoSize = true;
-            this.lbl_RiversVariationDisplay.Location = new System.Drawing.Point(288, 106);
-            this.lbl_RiversVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_RiversVariationDisplay.Name = "lbl_RiversVariationDisplay";
-            this.lbl_RiversVariationDisplay.Size = new System.Drawing.Size(14, 16);
-            this.lbl_RiversVariationDisplay.TabIndex = 47;
-            this.lbl_RiversVariationDisplay.Text = "0";
-            this.lbl_RiversVariationDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_RiversFrequencyVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_RiversFrequencyVariationDisplay.AutoSize = true;
+            this.lbl_RiversFrequencyVariationDisplay.Location = new System.Drawing.Point(288, 106);
+            this.lbl_RiversFrequencyVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiversFrequencyVariationDisplay.Name = "lbl_RiversFrequencyVariationDisplay";
+            this.lbl_RiversFrequencyVariationDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_RiversFrequencyVariationDisplay.TabIndex = 47;
+            this.lbl_RiversFrequencyVariationDisplay.Text = "0";
+            this.lbl_RiversFrequencyVariationDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // trackBar4
             // 
@@ -941,17 +941,17 @@
             this.trackBar4.Size = new System.Drawing.Size(219, 56);
             this.trackBar4.TabIndex = 41;
             // 
-            // lbl_RiversDisplay
+            // lbl_RiversFrequencyDisplay
             // 
-            this.lbl_RiversDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_RiversDisplay.AutoSize = true;
-            this.lbl_RiversDisplay.Location = new System.Drawing.Point(288, 43);
-            this.lbl_RiversDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_RiversDisplay.Name = "lbl_RiversDisplay";
-            this.lbl_RiversDisplay.Size = new System.Drawing.Size(14, 16);
-            this.lbl_RiversDisplay.TabIndex = 46;
-            this.lbl_RiversDisplay.Text = "0";
-            this.lbl_RiversDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_RiversFrequencyDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_RiversFrequencyDisplay.AutoSize = true;
+            this.lbl_RiversFrequencyDisplay.Location = new System.Drawing.Point(288, 43);
+            this.lbl_RiversFrequencyDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiversFrequencyDisplay.Name = "lbl_RiversFrequencyDisplay";
+            this.lbl_RiversFrequencyDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_RiversFrequencyDisplay.TabIndex = 46;
+            this.lbl_RiversFrequencyDisplay.Text = "0";
+            this.lbl_RiversFrequencyDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // trackBar5
             // 
@@ -1138,9 +1138,9 @@
         private System.Windows.Forms.Label lbl_RiverThicknessVariationDisplay;
         private System.Windows.Forms.Label lbl_RiverThicknessDisplay;
         private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.Label lbl_RiversVariationDisplay;
+        private System.Windows.Forms.Label lbl_RiversFrequencyVariationDisplay;
         private System.Windows.Forms.TrackBar trackBar4;
-        private System.Windows.Forms.Label lbl_RiversDisplay;
+        private System.Windows.Forms.Label lbl_RiversFrequencyDisplay;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.TrackBar trackBar1;
     }
