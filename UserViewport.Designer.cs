@@ -153,7 +153,7 @@
             this.pnl_SettingsBackground.Location = new System.Drawing.Point(0, 0);
             this.pnl_SettingsBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_SettingsBackground.Name = "pnl_SettingsBackground";
-            this.pnl_SettingsBackground.Size = new System.Drawing.Size(333, 938);
+            this.pnl_SettingsBackground.Size = new System.Drawing.Size(250, 762);
             this.pnl_SettingsBackground.TabIndex = 0;
             // 
             // pnl_RiverSettings
@@ -180,9 +180,10 @@
             this.pnl_RiverSettings.Controls.Add(this.trk_RiverFrequencyVariation);
             this.pnl_RiverSettings.Controls.Add(this.trk_RiverFrequencyBase);
             this.pnl_RiverSettings.Enabled = false;
-            this.pnl_RiverSettings.Location = new System.Drawing.Point(0, 174);
+            this.pnl_RiverSettings.Location = new System.Drawing.Point(0, 141);
+            this.pnl_RiverSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnl_RiverSettings.Name = "pnl_RiverSettings";
-            this.pnl_RiverSettings.Size = new System.Drawing.Size(333, 378);
+            this.pnl_RiverSettings.Size = new System.Drawing.Size(250, 307);
             this.pnl_RiverSettings.TabIndex = 57;
             this.pnl_RiverSettings.Visible = false;
             // 
@@ -190,10 +191,9 @@
             // 
             this.lbl_RiverCurvatureVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_RiverCurvatureVariationDisplay.AutoSize = true;
-            this.lbl_RiverCurvatureVariationDisplay.Location = new System.Drawing.Point(292, 360);
-            this.lbl_RiverCurvatureVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverCurvatureVariationDisplay.Location = new System.Drawing.Point(219, 292);
             this.lbl_RiverCurvatureVariationDisplay.Name = "lbl_RiverCurvatureVariationDisplay";
-            this.lbl_RiverCurvatureVariationDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_RiverCurvatureVariationDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_RiverCurvatureVariationDisplay.TabIndex = 59;
             this.lbl_RiverCurvatureVariationDisplay.Text = "0";
             this.lbl_RiverCurvatureVariationDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -202,10 +202,9 @@
             // 
             this.lbl_RiverCurvatureBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_RiverCurvatureBaseDisplay.AutoSize = true;
-            this.lbl_RiverCurvatureBaseDisplay.Location = new System.Drawing.Point(292, 296);
-            this.lbl_RiverCurvatureBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverCurvatureBaseDisplay.Location = new System.Drawing.Point(219, 240);
             this.lbl_RiverCurvatureBaseDisplay.Name = "lbl_RiverCurvatureBaseDisplay";
-            this.lbl_RiverCurvatureBaseDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_RiverCurvatureBaseDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_RiverCurvatureBaseDisplay.TabIndex = 58;
             this.lbl_RiverCurvatureBaseDisplay.Text = "0";
             this.lbl_RiverCurvatureBaseDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -213,88 +212,80 @@
             // lbl_RiverCurvatureVariation
             // 
             this.lbl_RiverCurvatureVariation.AutoSize = true;
-            this.lbl_RiverCurvatureVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_RiverCurvatureVariation.Location = new System.Drawing.Point(12, 316);
-            this.lbl_RiverCurvatureVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverCurvatureVariation.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_RiverCurvatureVariation.Location = new System.Drawing.Point(10, 261);
             this.lbl_RiverCurvatureVariation.Name = "lbl_RiverCurvatureVariation";
-            this.lbl_RiverCurvatureVariation.Size = new System.Drawing.Size(236, 25);
+            this.lbl_RiverCurvatureVariation.Size = new System.Drawing.Size(182, 19);
             this.lbl_RiverCurvatureVariation.TabIndex = 57;
             this.lbl_RiverCurvatureVariation.Text = "River Curvature Variability";
             // 
             // lbl_RiverCurvature
             // 
             this.lbl_RiverCurvature.AutoSize = true;
-            this.lbl_RiverCurvature.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_RiverCurvature.Location = new System.Drawing.Point(12, 252);
-            this.lbl_RiverCurvature.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverCurvature.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_RiverCurvature.Location = new System.Drawing.Point(10, 210);
             this.lbl_RiverCurvature.Name = "lbl_RiverCurvature";
-            this.lbl_RiverCurvature.Size = new System.Drawing.Size(147, 25);
+            this.lbl_RiverCurvature.Size = new System.Drawing.Size(112, 19);
             this.lbl_RiverCurvature.TabIndex = 56;
             this.lbl_RiverCurvature.Text = "River Curvature";
             // 
             // trk_RiverCurvatureVariation
             // 
             this.trk_RiverCurvatureVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_RiverCurvatureVariation.Location = new System.Drawing.Point(87, 320);
-            this.trk_RiverCurvatureVariation.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_RiverCurvatureVariation.Location = new System.Drawing.Point(65, 260);
             this.trk_RiverCurvatureVariation.Maximum = 120;
             this.trk_RiverCurvatureVariation.Name = "trk_RiverCurvatureVariation";
-            this.trk_RiverCurvatureVariation.Size = new System.Drawing.Size(219, 56);
+            this.trk_RiverCurvatureVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_RiverCurvatureVariation.TabIndex = 55;
             this.trk_RiverCurvatureVariation.Scroll += new System.EventHandler(this.trk_RiverCurvatureVariation_Scroll);
             // 
             // trk_RiverCurvatureBase
             // 
             this.trk_RiverCurvatureBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_RiverCurvatureBase.Location = new System.Drawing.Point(87, 256);
-            this.trk_RiverCurvatureBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_RiverCurvatureBase.Location = new System.Drawing.Point(65, 208);
             this.trk_RiverCurvatureBase.Maximum = 120;
             this.trk_RiverCurvatureBase.Name = "trk_RiverCurvatureBase";
-            this.trk_RiverCurvatureBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_RiverCurvatureBase.Size = new System.Drawing.Size(164, 45);
             this.trk_RiverCurvatureBase.TabIndex = 54;
             this.trk_RiverCurvatureBase.Scroll += new System.EventHandler(this.trk_RiverCurvatureBase_Scroll);
             // 
             // lbl_RiverFrequency
             // 
             this.lbl_RiverFrequency.AutoSize = true;
-            this.lbl_RiverFrequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_RiverFrequency.Location = new System.Drawing.Point(15, 4);
-            this.lbl_RiverFrequency.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverFrequency.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_RiverFrequency.Location = new System.Drawing.Point(11, 3);
             this.lbl_RiverFrequency.Name = "lbl_RiverFrequency";
-            this.lbl_RiverFrequency.Size = new System.Drawing.Size(66, 25);
+            this.lbl_RiverFrequency.Size = new System.Drawing.Size(49, 19);
             this.lbl_RiverFrequency.TabIndex = 23;
             this.lbl_RiverFrequency.Text = "Rivers";
             // 
             // lbl_RiverThicknessVariation
             // 
             this.lbl_RiverThicknessVariation.AutoSize = true;
-            this.lbl_RiverThicknessVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_RiverThicknessVariation.Location = new System.Drawing.Point(12, 192);
-            this.lbl_RiverThicknessVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverThicknessVariation.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_RiverThicknessVariation.Location = new System.Drawing.Point(9, 156);
             this.lbl_RiverThicknessVariation.Name = "lbl_RiverThicknessVariation";
-            this.lbl_RiverThicknessVariation.Size = new System.Drawing.Size(240, 25);
+            this.lbl_RiverThicknessVariation.Size = new System.Drawing.Size(179, 19);
             this.lbl_RiverThicknessVariation.TabIndex = 53;
             this.lbl_RiverThicknessVariation.Text = "River Thickness Variability";
             // 
             // lbl_RiverFrequencyVariation
             // 
             this.lbl_RiverFrequencyVariation.AutoSize = true;
-            this.lbl_RiverFrequencyVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_RiverFrequencyVariation.Location = new System.Drawing.Point(12, 66);
-            this.lbl_RiverFrequencyVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverFrequencyVariation.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_RiverFrequencyVariation.Location = new System.Drawing.Point(9, 54);
             this.lbl_RiverFrequencyVariation.Name = "lbl_RiverFrequencyVariation";
-            this.lbl_RiverFrequencyVariation.Size = new System.Drawing.Size(145, 25);
+            this.lbl_RiverFrequencyVariation.Size = new System.Drawing.Size(113, 19);
             this.lbl_RiverFrequencyVariation.TabIndex = 52;
             this.lbl_RiverFrequencyVariation.Text = "River Variability";
             // 
             // lbl_RiverThickness
             // 
             this.lbl_RiverThickness.AutoSize = true;
-            this.lbl_RiverThickness.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_RiverThickness.Location = new System.Drawing.Point(12, 129);
-            this.lbl_RiverThickness.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverThickness.Font = new System.Drawing.Font("Carlito", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_RiverThickness.Location = new System.Drawing.Point(9, 105);
             this.lbl_RiverThickness.Name = "lbl_RiverThickness";
-            this.lbl_RiverThickness.Size = new System.Drawing.Size(151, 25);
+            this.lbl_RiverThickness.Size = new System.Drawing.Size(109, 19);
             this.lbl_RiverThickness.TabIndex = 26;
             this.lbl_RiverThickness.Text = "River Thickness";
             // 
@@ -302,10 +293,9 @@
             // 
             this.lbl_RiverThicknessVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_RiverThicknessVariationDisplay.AutoSize = true;
-            this.lbl_RiverThicknessVariationDisplay.Location = new System.Drawing.Point(288, 231);
-            this.lbl_RiverThicknessVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverThicknessVariationDisplay.Location = new System.Drawing.Point(216, 188);
             this.lbl_RiverThicknessVariationDisplay.Name = "lbl_RiverThicknessVariationDisplay";
-            this.lbl_RiverThicknessVariationDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_RiverThicknessVariationDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_RiverThicknessVariationDisplay.TabIndex = 49;
             this.lbl_RiverThicknessVariationDisplay.Text = "0";
             this.lbl_RiverThicknessVariationDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -314,10 +304,9 @@
             // 
             this.lbl_RiverThicknessBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_RiverThicknessBaseDisplay.AutoSize = true;
-            this.lbl_RiverThicknessBaseDisplay.Location = new System.Drawing.Point(288, 168);
-            this.lbl_RiverThicknessBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverThicknessBaseDisplay.Location = new System.Drawing.Point(216, 136);
             this.lbl_RiverThicknessBaseDisplay.Name = "lbl_RiverThicknessBaseDisplay";
-            this.lbl_RiverThicknessBaseDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_RiverThicknessBaseDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_RiverThicknessBaseDisplay.TabIndex = 48;
             this.lbl_RiverThicknessBaseDisplay.Text = "0";
             this.lbl_RiverThicknessBaseDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -325,12 +314,11 @@
             // trk_RiverThicknessBase
             // 
             this.trk_RiverThicknessBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_RiverThicknessBase.Location = new System.Drawing.Point(87, 129);
-            this.trk_RiverThicknessBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_RiverThicknessBase.Location = new System.Drawing.Point(65, 105);
             this.trk_RiverThicknessBase.Maximum = 100;
             this.trk_RiverThicknessBase.Minimum = 1;
             this.trk_RiverThicknessBase.Name = "trk_RiverThicknessBase";
-            this.trk_RiverThicknessBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_RiverThicknessBase.Size = new System.Drawing.Size(164, 45);
             this.trk_RiverThicknessBase.TabIndex = 40;
             this.trk_RiverThicknessBase.Value = 1;
             this.trk_RiverThicknessBase.Scroll += new System.EventHandler(this.trk_RiverThicknessBase_Scroll);
@@ -339,10 +327,9 @@
             // 
             this.lbl_RiverFrequencyVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_RiverFrequencyVariationDisplay.AutoSize = true;
-            this.lbl_RiverFrequencyVariationDisplay.Location = new System.Drawing.Point(288, 106);
-            this.lbl_RiverFrequencyVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverFrequencyVariationDisplay.Location = new System.Drawing.Point(216, 86);
             this.lbl_RiverFrequencyVariationDisplay.Name = "lbl_RiverFrequencyVariationDisplay";
-            this.lbl_RiverFrequencyVariationDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_RiverFrequencyVariationDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_RiverFrequencyVariationDisplay.TabIndex = 47;
             this.lbl_RiverFrequencyVariationDisplay.Text = "0";
             this.lbl_RiverFrequencyVariationDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -350,12 +337,11 @@
             // trk_RiverThicknessVariation
             // 
             this.trk_RiverThicknessVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_RiverThicknessVariation.Location = new System.Drawing.Point(87, 192);
-            this.trk_RiverThicknessVariation.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_RiverThicknessVariation.Location = new System.Drawing.Point(65, 156);
             this.trk_RiverThicknessVariation.Maximum = 100;
             this.trk_RiverThicknessVariation.Minimum = 1;
             this.trk_RiverThicknessVariation.Name = "trk_RiverThicknessVariation";
-            this.trk_RiverThicknessVariation.Size = new System.Drawing.Size(219, 56);
+            this.trk_RiverThicknessVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_RiverThicknessVariation.TabIndex = 41;
             this.trk_RiverThicknessVariation.Value = 1;
             this.trk_RiverThicknessVariation.Scroll += new System.EventHandler(this.trk_RiverThicknessVariation_Scroll);
@@ -364,10 +350,9 @@
             // 
             this.lbl_RiverFrequencyBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_RiverFrequencyBaseDisplay.AutoSize = true;
-            this.lbl_RiverFrequencyBaseDisplay.Location = new System.Drawing.Point(288, 43);
-            this.lbl_RiverFrequencyBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_RiverFrequencyBaseDisplay.Location = new System.Drawing.Point(216, 35);
             this.lbl_RiverFrequencyBaseDisplay.Name = "lbl_RiverFrequencyBaseDisplay";
-            this.lbl_RiverFrequencyBaseDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_RiverFrequencyBaseDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_RiverFrequencyBaseDisplay.TabIndex = 46;
             this.lbl_RiverFrequencyBaseDisplay.Text = "0";
             this.lbl_RiverFrequencyBaseDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -375,22 +360,20 @@
             // trk_RiverFrequencyVariation
             // 
             this.trk_RiverFrequencyVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_RiverFrequencyVariation.Location = new System.Drawing.Point(87, 66);
-            this.trk_RiverFrequencyVariation.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_RiverFrequencyVariation.Location = new System.Drawing.Point(65, 54);
             this.trk_RiverFrequencyVariation.Maximum = 64;
             this.trk_RiverFrequencyVariation.Name = "trk_RiverFrequencyVariation";
-            this.trk_RiverFrequencyVariation.Size = new System.Drawing.Size(219, 56);
+            this.trk_RiverFrequencyVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_RiverFrequencyVariation.TabIndex = 39;
             this.trk_RiverFrequencyVariation.Scroll += new System.EventHandler(this.trk_RiverFrequencyVariation_Scroll);
             // 
             // trk_RiverFrequencyBase
             // 
             this.trk_RiverFrequencyBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_RiverFrequencyBase.Location = new System.Drawing.Point(87, 4);
-            this.trk_RiverFrequencyBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_RiverFrequencyBase.Location = new System.Drawing.Point(65, 3);
             this.trk_RiverFrequencyBase.Maximum = 64;
             this.trk_RiverFrequencyBase.Name = "trk_RiverFrequencyBase";
-            this.trk_RiverFrequencyBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_RiverFrequencyBase.Size = new System.Drawing.Size(164, 45);
             this.trk_RiverFrequencyBase.TabIndex = 38;
             this.trk_RiverFrequencyBase.Scroll += new System.EventHandler(this.trk_RiverFrequencyBase_Scroll);
             // 
@@ -398,9 +381,10 @@
             // 
             this.btn_RiverSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_RiverSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_RiverSettings.Location = new System.Drawing.Point(186, 99);
+            this.btn_RiverSettings.Location = new System.Drawing.Point(140, 80);
+            this.btn_RiverSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_RiverSettings.Name = "btn_RiverSettings";
-            this.btn_RiverSettings.Size = new System.Drawing.Size(130, 37);
+            this.btn_RiverSettings.Size = new System.Drawing.Size(98, 30);
             this.btn_RiverSettings.TabIndex = 55;
             this.btn_RiverSettings.Text = "Rivers";
             this.btn_RiverSettings.UseVisualStyleBackColor = true;
@@ -410,9 +394,10 @@
             // 
             this.btn_LakeSettings.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_LakeSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_LakeSettings.Location = new System.Drawing.Point(113, 99);
+            this.btn_LakeSettings.Location = new System.Drawing.Point(85, 80);
+            this.btn_LakeSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_LakeSettings.Name = "btn_LakeSettings";
-            this.btn_LakeSettings.Size = new System.Drawing.Size(130, 37);
+            this.btn_LakeSettings.Size = new System.Drawing.Size(98, 30);
             this.btn_LakeSettings.TabIndex = 56;
             this.btn_LakeSettings.Text = "Lakes";
             this.btn_LakeSettings.UseVisualStyleBackColor = true;
@@ -421,9 +406,10 @@
             // btn_TerritorySettings
             // 
             this.btn_TerritorySettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_TerritorySettings.Location = new System.Drawing.Point(20, 99);
+            this.btn_TerritorySettings.Location = new System.Drawing.Point(15, 80);
+            this.btn_TerritorySettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_TerritorySettings.Name = "btn_TerritorySettings";
-            this.btn_TerritorySettings.Size = new System.Drawing.Size(130, 37);
+            this.btn_TerritorySettings.Size = new System.Drawing.Size(98, 30);
             this.btn_TerritorySettings.TabIndex = 2;
             this.btn_TerritorySettings.Text = "Territories";
             this.btn_TerritorySettings.UseVisualStyleBackColor = true;
@@ -433,10 +419,9 @@
             // 
             this.lbl_LocationThicknessDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LocationThicknessDisplay.AutoSize = true;
-            this.lbl_LocationThicknessDisplay.Location = new System.Drawing.Point(292, 673);
-            this.lbl_LocationThicknessDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LocationThicknessDisplay.Location = new System.Drawing.Point(219, 547);
             this.lbl_LocationThicknessDisplay.Name = "lbl_LocationThicknessDisplay";
-            this.lbl_LocationThicknessDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_LocationThicknessDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_LocationThicknessDisplay.TabIndex = 30;
             this.lbl_LocationThicknessDisplay.Text = "3";
             this.lbl_LocationThicknessDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -444,12 +429,11 @@
             // trk_LocationThickness
             // 
             this.trk_LocationThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LocationThickness.Location = new System.Drawing.Point(91, 633);
-            this.trk_LocationThickness.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_LocationThickness.Location = new System.Drawing.Point(68, 514);
             this.trk_LocationThickness.Maximum = 80;
             this.trk_LocationThickness.Minimum = 10;
             this.trk_LocationThickness.Name = "trk_LocationThickness";
-            this.trk_LocationThickness.Size = new System.Drawing.Size(219, 56);
+            this.trk_LocationThickness.Size = new System.Drawing.Size(164, 45);
             this.trk_LocationThickness.TabIndex = 29;
             this.trk_LocationThickness.Value = 30;
             this.trk_LocationThickness.Scroll += new System.EventHandler(this.trk_LocationThickness_Scroll);
@@ -459,10 +443,9 @@
             // 
             this.lbl_BorderThicknessDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_BorderThicknessDisplay.AutoSize = true;
-            this.lbl_BorderThicknessDisplay.Location = new System.Drawing.Point(292, 610);
-            this.lbl_BorderThicknessDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_BorderThicknessDisplay.Location = new System.Drawing.Point(219, 496);
             this.lbl_BorderThicknessDisplay.Name = "lbl_BorderThicknessDisplay";
-            this.lbl_BorderThicknessDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_BorderThicknessDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_BorderThicknessDisplay.TabIndex = 22;
             this.lbl_BorderThicknessDisplay.Text = "2";
             this.lbl_BorderThicknessDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -470,12 +453,11 @@
             // trk_BorderThickness
             // 
             this.trk_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_BorderThickness.Location = new System.Drawing.Point(91, 570);
-            this.trk_BorderThickness.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_BorderThickness.Location = new System.Drawing.Point(68, 463);
             this.trk_BorderThickness.Maximum = 40;
             this.trk_BorderThickness.Minimum = 10;
             this.trk_BorderThickness.Name = "trk_BorderThickness";
-            this.trk_BorderThickness.Size = new System.Drawing.Size(219, 56);
+            this.trk_BorderThickness.Size = new System.Drawing.Size(164, 45);
             this.trk_BorderThickness.TabIndex = 20;
             this.trk_BorderThickness.Value = 20;
             this.trk_BorderThickness.Scroll += new System.EventHandler(this.trk_BorderThickness_Scroll);
@@ -486,10 +468,9 @@
             this.btn_WaterColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_WaterColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_WaterColourSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_WaterColourSelector.Location = new System.Drawing.Point(91, 696);
-            this.btn_WaterColourSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_WaterColourSelector.Location = new System.Drawing.Point(68, 566);
             this.btn_WaterColourSelector.Name = "btn_WaterColourSelector";
-            this.btn_WaterColourSelector.Size = new System.Drawing.Size(219, 37);
+            this.btn_WaterColourSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_WaterColourSelector.TabIndex = 17;
             this.btn_WaterColourSelector.Text = "Select Water Colour";
             this.btn_WaterColourSelector.UseVisualStyleBackColor = false;
@@ -500,10 +481,9 @@
             this.lbl_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_BorderThickness.AutoSize = true;
             this.lbl_BorderThickness.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_BorderThickness.Location = new System.Drawing.Point(19, 570);
-            this.lbl_BorderThickness.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_BorderThickness.Location = new System.Drawing.Point(14, 463);
             this.lbl_BorderThickness.Name = "lbl_BorderThickness";
-            this.lbl_BorderThickness.Size = new System.Drawing.Size(165, 25);
+            this.lbl_BorderThickness.Size = new System.Drawing.Size(132, 20);
             this.lbl_BorderThickness.TabIndex = 21;
             this.lbl_BorderThickness.Text = "Border Thickness";
             // 
@@ -512,10 +492,9 @@
             this.btn_FontColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_FontColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_FontColourSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FontColourSelector.Location = new System.Drawing.Point(91, 829);
-            this.btn_FontColourSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_FontColourSelector.Location = new System.Drawing.Point(68, 674);
             this.btn_FontColourSelector.Name = "btn_FontColourSelector";
-            this.btn_FontColourSelector.Size = new System.Drawing.Size(219, 37);
+            this.btn_FontColourSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_FontColourSelector.TabIndex = 17;
             this.btn_FontColourSelector.Text = "Select Font Colour";
             this.btn_FontColourSelector.UseVisualStyleBackColor = false;
@@ -526,10 +505,9 @@
             this.btn_BorderColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_BorderColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_BorderColourSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_BorderColourSelector.Location = new System.Drawing.Point(91, 785);
-            this.btn_BorderColourSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_BorderColourSelector.Location = new System.Drawing.Point(68, 638);
             this.btn_BorderColourSelector.Name = "btn_BorderColourSelector";
-            this.btn_BorderColourSelector.Size = new System.Drawing.Size(219, 37);
+            this.btn_BorderColourSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_BorderColourSelector.TabIndex = 19;
             this.btn_BorderColourSelector.Text = "Select Border Colour";
             this.btn_BorderColourSelector.UseVisualStyleBackColor = false;
@@ -540,10 +518,9 @@
             this.btn_LandColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_LandColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_LandColourSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_LandColourSelector.Location = new System.Drawing.Point(91, 740);
-            this.btn_LandColourSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_LandColourSelector.Location = new System.Drawing.Point(68, 601);
             this.btn_LandColourSelector.Name = "btn_LandColourSelector";
-            this.btn_LandColourSelector.Size = new System.Drawing.Size(219, 37);
+            this.btn_LandColourSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_LandColourSelector.TabIndex = 18;
             this.btn_LandColourSelector.Text = "Select Territory Colour";
             this.btn_LandColourSelector.UseVisualStyleBackColor = false;
@@ -556,10 +533,9 @@
             this.chb_CleanBorders.Checked = true;
             this.chb_CleanBorders.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chb_CleanBorders.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_CleanBorders.Location = new System.Drawing.Point(24, 793);
-            this.chb_CleanBorders.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_CleanBorders.Location = new System.Drawing.Point(18, 644);
             this.chb_CleanBorders.Name = "chb_CleanBorders";
-            this.chb_CleanBorders.Size = new System.Drawing.Size(159, 29);
+            this.chb_CleanBorders.Size = new System.Drawing.Size(129, 24);
             this.chb_CleanBorders.TabIndex = 8;
             this.chb_CleanBorders.Text = "Clean Borders";
             this.chb_CleanBorders.UseVisualStyleBackColor = true;
@@ -571,10 +547,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Generate.Enabled = false;
             this.btn_Generate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Generate.Location = new System.Drawing.Point(24, 873);
-            this.btn_Generate.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Generate.Location = new System.Drawing.Point(18, 709);
             this.btn_Generate.Name = "btn_Generate";
-            this.btn_Generate.Size = new System.Drawing.Size(285, 49);
+            this.btn_Generate.Size = new System.Drawing.Size(214, 40);
             this.btn_Generate.TabIndex = 5;
             this.btn_Generate.Text = "GENERATE";
             this.btn_Generate.UseVisualStyleBackColor = true;
@@ -584,10 +559,9 @@
             // 
             this.lbl_Header.AutoSize = true;
             this.lbl_Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Header.Location = new System.Drawing.Point(13, 11);
-            this.lbl_Header.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Header.Location = new System.Drawing.Point(10, 9);
             this.lbl_Header.Name = "lbl_Header";
-            this.lbl_Header.Size = new System.Drawing.Size(303, 39);
+            this.lbl_Header.Size = new System.Drawing.Size(245, 31);
             this.lbl_Header.TabIndex = 0;
             this.lbl_Header.Text = "Continent Mapper";
             // 
@@ -596,10 +570,9 @@
             this.btn_FontSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_FontSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_FontSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FontSelector.Location = new System.Drawing.Point(24, 829);
-            this.btn_FontSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_FontSelector.Location = new System.Drawing.Point(18, 674);
             this.btn_FontSelector.Name = "btn_FontSelector";
-            this.btn_FontSelector.Size = new System.Drawing.Size(219, 37);
+            this.btn_FontSelector.Size = new System.Drawing.Size(164, 30);
             this.btn_FontSelector.TabIndex = 16;
             this.btn_FontSelector.Text = "Select Font";
             this.btn_FontSelector.UseVisualStyleBackColor = false;
@@ -610,10 +583,9 @@
             this.lbl_LocationThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_LocationThickness.AutoSize = true;
             this.lbl_LocationThickness.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LocationThickness.Location = new System.Drawing.Point(19, 633);
-            this.lbl_LocationThickness.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LocationThickness.Location = new System.Drawing.Point(14, 514);
             this.lbl_LocationThickness.Name = "lbl_LocationThickness";
-            this.lbl_LocationThickness.Size = new System.Drawing.Size(247, 25);
+            this.lbl_LocationThickness.Size = new System.Drawing.Size(198, 20);
             this.lbl_LocationThickness.TabIndex = 31;
             this.lbl_LocationThickness.Text = "Location Marker Thickness";
             // 
@@ -630,10 +602,9 @@
             "Inland Seas",
             "Islands",
             "Provincial"});
-            this.cbo_LoadPreset.Location = new System.Drawing.Point(148, 58);
-            this.cbo_LoadPreset.Margin = new System.Windows.Forms.Padding(4);
+            this.cbo_LoadPreset.Location = new System.Drawing.Point(111, 47);
             this.cbo_LoadPreset.Name = "cbo_LoadPreset";
-            this.cbo_LoadPreset.Size = new System.Drawing.Size(160, 33);
+            this.cbo_LoadPreset.Size = new System.Drawing.Size(121, 28);
             this.cbo_LoadPreset.TabIndex = 33;
             this.cbo_LoadPreset.Text = "Load Preset";
             this.cbo_LoadPreset.SelectedIndexChanged += new System.EventHandler(this.cbo_LoadPreset_SelectedIndexChanged);
@@ -642,11 +613,10 @@
             // 
             this.chb_FullContinent.AutoSize = true;
             this.chb_FullContinent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FullContinent.Location = new System.Drawing.Point(21, 63);
-            this.chb_FullContinent.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_FullContinent.Location = new System.Drawing.Point(16, 51);
             this.chb_FullContinent.Name = "chb_FullContinent";
             this.chb_FullContinent.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chb_FullContinent.Size = new System.Drawing.Size(240, 29);
+            this.chb_FullContinent.Size = new System.Drawing.Size(198, 24);
             this.chb_FullContinent.TabIndex = 32;
             this.chb_FullContinent.Text = "Generate Full Continent";
             this.chb_FullContinent.UseVisualStyleBackColor = true;
@@ -668,20 +638,20 @@
             this.pnl_LakeSettings.Controls.Add(this.trk_LakeRadiusVariation);
             this.pnl_LakeSettings.Controls.Add(this.lbl_LakeFrequencyBaseDisplay);
             this.pnl_LakeSettings.Enabled = false;
-            this.pnl_LakeSettings.Location = new System.Drawing.Point(0, 296);
+            this.pnl_LakeSettings.Location = new System.Drawing.Point(0, 240);
+            this.pnl_LakeSettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnl_LakeSettings.Name = "pnl_LakeSettings";
-            this.pnl_LakeSettings.Size = new System.Drawing.Size(333, 256);
+            this.pnl_LakeSettings.Size = new System.Drawing.Size(250, 208);
             this.pnl_LakeSettings.TabIndex = 54;
             this.pnl_LakeSettings.Visible = false;
             // 
             // trk_LakeFrequencyBase
             // 
             this.trk_LakeFrequencyBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LakeFrequencyBase.Location = new System.Drawing.Point(87, 4);
-            this.trk_LakeFrequencyBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_LakeFrequencyBase.Location = new System.Drawing.Point(65, 3);
             this.trk_LakeFrequencyBase.Maximum = 64;
             this.trk_LakeFrequencyBase.Name = "trk_LakeFrequencyBase";
-            this.trk_LakeFrequencyBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_LakeFrequencyBase.Size = new System.Drawing.Size(164, 45);
             this.trk_LakeFrequencyBase.TabIndex = 38;
             this.trk_LakeFrequencyBase.Scroll += new System.EventHandler(this.trk_LakeFrequencyBase_Scroll);
             // 
@@ -689,10 +659,9 @@
             // 
             this.lbl_LakeFrequency.AutoSize = true;
             this.lbl_LakeFrequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeFrequency.Location = new System.Drawing.Point(15, 4);
-            this.lbl_LakeFrequency.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LakeFrequency.Location = new System.Drawing.Point(11, 3);
             this.lbl_LakeFrequency.Name = "lbl_LakeFrequency";
-            this.lbl_LakeFrequency.Size = new System.Drawing.Size(65, 25);
+            this.lbl_LakeFrequency.Size = new System.Drawing.Size(52, 20);
             this.lbl_LakeFrequency.TabIndex = 23;
             this.lbl_LakeFrequency.Text = "Lakes";
             // 
@@ -700,10 +669,9 @@
             // 
             this.lbl_LakeRadiusVariation.AutoSize = true;
             this.lbl_LakeRadiusVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeRadiusVariation.Location = new System.Drawing.Point(12, 192);
-            this.lbl_LakeRadiusVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LakeRadiusVariation.Location = new System.Drawing.Point(9, 156);
             this.lbl_LakeRadiusVariation.Name = "lbl_LakeRadiusVariation";
-            this.lbl_LakeRadiusVariation.Size = new System.Drawing.Size(209, 25);
+            this.lbl_LakeRadiusVariation.Size = new System.Drawing.Size(169, 20);
             this.lbl_LakeRadiusVariation.TabIndex = 53;
             this.lbl_LakeRadiusVariation.Text = "Lake Radius Variability";
             // 
@@ -711,10 +679,9 @@
             // 
             this.lbl_LakeFrequencyVariation.AutoSize = true;
             this.lbl_LakeFrequencyVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeFrequencyVariation.Location = new System.Drawing.Point(12, 66);
-            this.lbl_LakeFrequencyVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LakeFrequencyVariation.Location = new System.Drawing.Point(9, 54);
             this.lbl_LakeFrequencyVariation.Name = "lbl_LakeFrequencyVariation";
-            this.lbl_LakeFrequencyVariation.Size = new System.Drawing.Size(144, 25);
+            this.lbl_LakeFrequencyVariation.Size = new System.Drawing.Size(115, 20);
             this.lbl_LakeFrequencyVariation.TabIndex = 52;
             this.lbl_LakeFrequencyVariation.Text = "Lake Variability";
             // 
@@ -722,10 +689,9 @@
             // 
             this.lbl_LakeRadius.AutoSize = true;
             this.lbl_LakeRadius.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeRadius.Location = new System.Drawing.Point(12, 129);
-            this.lbl_LakeRadius.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LakeRadius.Location = new System.Drawing.Point(9, 105);
             this.lbl_LakeRadius.Name = "lbl_LakeRadius";
-            this.lbl_LakeRadius.Size = new System.Drawing.Size(120, 25);
+            this.lbl_LakeRadius.Size = new System.Drawing.Size(98, 20);
             this.lbl_LakeRadius.TabIndex = 26;
             this.lbl_LakeRadius.Text = "Lake Radius";
             // 
@@ -733,10 +699,9 @@
             // 
             this.lbl_LakeRadiusVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LakeRadiusVariationDisplay.AutoSize = true;
-            this.lbl_LakeRadiusVariationDisplay.Location = new System.Drawing.Point(288, 231);
-            this.lbl_LakeRadiusVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LakeRadiusVariationDisplay.Location = new System.Drawing.Point(216, 188);
             this.lbl_LakeRadiusVariationDisplay.Name = "lbl_LakeRadiusVariationDisplay";
-            this.lbl_LakeRadiusVariationDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_LakeRadiusVariationDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_LakeRadiusVariationDisplay.TabIndex = 49;
             this.lbl_LakeRadiusVariationDisplay.Text = "0";
             this.lbl_LakeRadiusVariationDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -744,11 +709,10 @@
             // trk_LakeFrequencyVariation
             // 
             this.trk_LakeFrequencyVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LakeFrequencyVariation.Location = new System.Drawing.Point(87, 66);
-            this.trk_LakeFrequencyVariation.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_LakeFrequencyVariation.Location = new System.Drawing.Point(65, 54);
             this.trk_LakeFrequencyVariation.Maximum = 64;
             this.trk_LakeFrequencyVariation.Name = "trk_LakeFrequencyVariation";
-            this.trk_LakeFrequencyVariation.Size = new System.Drawing.Size(219, 56);
+            this.trk_LakeFrequencyVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_LakeFrequencyVariation.TabIndex = 39;
             this.trk_LakeFrequencyVariation.Scroll += new System.EventHandler(this.trk_LakeFrequencyVariation_Scroll);
             // 
@@ -756,10 +720,9 @@
             // 
             this.lbl_LakeRadiusBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LakeRadiusBaseDisplay.AutoSize = true;
-            this.lbl_LakeRadiusBaseDisplay.Location = new System.Drawing.Point(288, 168);
-            this.lbl_LakeRadiusBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LakeRadiusBaseDisplay.Location = new System.Drawing.Point(216, 136);
             this.lbl_LakeRadiusBaseDisplay.Name = "lbl_LakeRadiusBaseDisplay";
-            this.lbl_LakeRadiusBaseDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_LakeRadiusBaseDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_LakeRadiusBaseDisplay.TabIndex = 48;
             this.lbl_LakeRadiusBaseDisplay.Text = "0";
             this.lbl_LakeRadiusBaseDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -767,12 +730,11 @@
             // trk_LakeRadiusBase
             // 
             this.trk_LakeRadiusBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LakeRadiusBase.Location = new System.Drawing.Point(87, 129);
-            this.trk_LakeRadiusBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_LakeRadiusBase.Location = new System.Drawing.Point(65, 105);
             this.trk_LakeRadiusBase.Maximum = 250;
             this.trk_LakeRadiusBase.Minimum = 50;
             this.trk_LakeRadiusBase.Name = "trk_LakeRadiusBase";
-            this.trk_LakeRadiusBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_LakeRadiusBase.Size = new System.Drawing.Size(164, 45);
             this.trk_LakeRadiusBase.TabIndex = 40;
             this.trk_LakeRadiusBase.Value = 50;
             this.trk_LakeRadiusBase.Scroll += new System.EventHandler(this.trk_LakeRadiusBase_Scroll);
@@ -781,10 +743,9 @@
             // 
             this.lbl_LakeFrequencyVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LakeFrequencyVariationDisplay.AutoSize = true;
-            this.lbl_LakeFrequencyVariationDisplay.Location = new System.Drawing.Point(288, 106);
-            this.lbl_LakeFrequencyVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LakeFrequencyVariationDisplay.Location = new System.Drawing.Point(216, 86);
             this.lbl_LakeFrequencyVariationDisplay.Name = "lbl_LakeFrequencyVariationDisplay";
-            this.lbl_LakeFrequencyVariationDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_LakeFrequencyVariationDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_LakeFrequencyVariationDisplay.TabIndex = 47;
             this.lbl_LakeFrequencyVariationDisplay.Text = "0";
             this.lbl_LakeFrequencyVariationDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -792,11 +753,10 @@
             // trk_LakeRadiusVariation
             // 
             this.trk_LakeRadiusVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LakeRadiusVariation.Location = new System.Drawing.Point(87, 192);
-            this.trk_LakeRadiusVariation.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_LakeRadiusVariation.Location = new System.Drawing.Point(65, 156);
             this.trk_LakeRadiusVariation.Maximum = 250;
             this.trk_LakeRadiusVariation.Name = "trk_LakeRadiusVariation";
-            this.trk_LakeRadiusVariation.Size = new System.Drawing.Size(219, 56);
+            this.trk_LakeRadiusVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_LakeRadiusVariation.TabIndex = 41;
             this.trk_LakeRadiusVariation.Scroll += new System.EventHandler(this.trk_LakeRadiusVariation_Scroll);
             // 
@@ -804,10 +764,9 @@
             // 
             this.lbl_LakeFrequencyBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LakeFrequencyBaseDisplay.AutoSize = true;
-            this.lbl_LakeFrequencyBaseDisplay.Location = new System.Drawing.Point(288, 43);
-            this.lbl_LakeFrequencyBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_LakeFrequencyBaseDisplay.Location = new System.Drawing.Point(216, 35);
             this.lbl_LakeFrequencyBaseDisplay.Name = "lbl_LakeFrequencyBaseDisplay";
-            this.lbl_LakeFrequencyBaseDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_LakeFrequencyBaseDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_LakeFrequencyBaseDisplay.TabIndex = 46;
             this.lbl_LakeFrequencyBaseDisplay.Text = "0";
             this.lbl_LakeFrequencyBaseDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -830,21 +789,21 @@
             this.pnl_TerritorySettings.Controls.Add(this.lbl_TerritoryFrequencyBaseDisplay);
             this.pnl_TerritorySettings.Controls.Add(this.trk_TerritoryRadiusVariation);
             this.pnl_TerritorySettings.Enabled = false;
-            this.pnl_TerritorySettings.Location = new System.Drawing.Point(0, 296);
+            this.pnl_TerritorySettings.Location = new System.Drawing.Point(0, 240);
+            this.pnl_TerritorySettings.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnl_TerritorySettings.Name = "pnl_TerritorySettings";
-            this.pnl_TerritorySettings.Size = new System.Drawing.Size(333, 256);
+            this.pnl_TerritorySettings.Size = new System.Drawing.Size(250, 208);
             this.pnl_TerritorySettings.TabIndex = 2;
             this.pnl_TerritorySettings.Visible = false;
             // 
             // trk_TerritoryRadiusBase
             // 
             this.trk_TerritoryRadiusBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_TerritoryRadiusBase.Location = new System.Drawing.Point(86, 135);
-            this.trk_TerritoryRadiusBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_TerritoryRadiusBase.Location = new System.Drawing.Point(64, 110);
             this.trk_TerritoryRadiusBase.Maximum = 400;
             this.trk_TerritoryRadiusBase.Minimum = 50;
             this.trk_TerritoryRadiusBase.Name = "trk_TerritoryRadiusBase";
-            this.trk_TerritoryRadiusBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_TerritoryRadiusBase.Size = new System.Drawing.Size(164, 45);
             this.trk_TerritoryRadiusBase.TabIndex = 36;
             this.trk_TerritoryRadiusBase.Value = 50;
             this.trk_TerritoryRadiusBase.Scroll += new System.EventHandler(this.trk_TerritoryRadiusBase_Scroll);
@@ -853,10 +812,9 @@
             // 
             this.lbl_TerritoryRadiusVariation.AutoSize = true;
             this.lbl_TerritoryRadiusVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryRadiusVariation.Location = new System.Drawing.Point(11, 198);
-            this.lbl_TerritoryRadiusVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TerritoryRadiusVariation.Location = new System.Drawing.Point(8, 161);
             this.lbl_TerritoryRadiusVariation.Name = "lbl_TerritoryRadiusVariation";
-            this.lbl_TerritoryRadiusVariation.Size = new System.Drawing.Size(238, 25);
+            this.lbl_TerritoryRadiusVariation.Size = new System.Drawing.Size(191, 20);
             this.lbl_TerritoryRadiusVariation.TabIndex = 51;
             this.lbl_TerritoryRadiusVariation.Text = "Territory Radius Variability";
             // 
@@ -864,10 +822,9 @@
             // 
             this.lbl_TerritoryFrequencyVariation.AutoSize = true;
             this.lbl_TerritoryFrequencyVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryFrequencyVariation.Location = new System.Drawing.Point(14, 69);
-            this.lbl_TerritoryFrequencyVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TerritoryFrequencyVariation.Location = new System.Drawing.Point(10, 56);
             this.lbl_TerritoryFrequencyVariation.Name = "lbl_TerritoryFrequencyVariation";
-            this.lbl_TerritoryFrequencyVariation.Size = new System.Drawing.Size(173, 25);
+            this.lbl_TerritoryFrequencyVariation.Size = new System.Drawing.Size(137, 20);
             this.lbl_TerritoryFrequencyVariation.TabIndex = 50;
             this.lbl_TerritoryFrequencyVariation.Text = "Territory Variability";
             // 
@@ -875,10 +832,9 @@
             // 
             this.lbl_TerritoryFrequency.AutoSize = true;
             this.lbl_TerritoryFrequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryFrequency.Location = new System.Drawing.Point(11, 9);
-            this.lbl_TerritoryFrequency.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TerritoryFrequency.Location = new System.Drawing.Point(8, 7);
             this.lbl_TerritoryFrequency.Name = "lbl_TerritoryFrequency";
-            this.lbl_TerritoryFrequency.Size = new System.Drawing.Size(99, 25);
+            this.lbl_TerritoryFrequency.Size = new System.Drawing.Size(79, 20);
             this.lbl_TerritoryFrequency.TabIndex = 11;
             this.lbl_TerritoryFrequency.Text = "Territories";
             // 
@@ -886,10 +842,9 @@
             // 
             this.lbl_TerritoryRadiusVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TerritoryRadiusVariationDisplay.AutoSize = true;
-            this.lbl_TerritoryRadiusVariationDisplay.Location = new System.Drawing.Point(287, 237);
-            this.lbl_TerritoryRadiusVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TerritoryRadiusVariationDisplay.Location = new System.Drawing.Point(215, 193);
             this.lbl_TerritoryRadiusVariationDisplay.Name = "lbl_TerritoryRadiusVariationDisplay";
-            this.lbl_TerritoryRadiusVariationDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_TerritoryRadiusVariationDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_TerritoryRadiusVariationDisplay.TabIndex = 45;
             this.lbl_TerritoryRadiusVariationDisplay.Text = "0";
             this.lbl_TerritoryRadiusVariationDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -898,10 +853,9 @@
             // 
             this.lbl_TerritoryRadius.AutoSize = true;
             this.lbl_TerritoryRadius.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryRadius.Location = new System.Drawing.Point(14, 135);
-            this.lbl_TerritoryRadius.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TerritoryRadius.Location = new System.Drawing.Point(10, 110);
             this.lbl_TerritoryRadius.Name = "lbl_TerritoryRadius";
-            this.lbl_TerritoryRadius.Size = new System.Drawing.Size(149, 25);
+            this.lbl_TerritoryRadius.Size = new System.Drawing.Size(120, 20);
             this.lbl_TerritoryRadius.TabIndex = 7;
             this.lbl_TerritoryRadius.Text = "Territory Radius";
             // 
@@ -909,10 +863,9 @@
             // 
             this.lbl_TerritoryRadiusBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TerritoryRadiusBaseDisplay.AutoSize = true;
-            this.lbl_TerritoryRadiusBaseDisplay.Location = new System.Drawing.Point(287, 174);
-            this.lbl_TerritoryRadiusBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TerritoryRadiusBaseDisplay.Location = new System.Drawing.Point(215, 141);
             this.lbl_TerritoryRadiusBaseDisplay.Name = "lbl_TerritoryRadiusBaseDisplay";
-            this.lbl_TerritoryRadiusBaseDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_TerritoryRadiusBaseDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_TerritoryRadiusBaseDisplay.TabIndex = 44;
             this.lbl_TerritoryRadiusBaseDisplay.Text = "0";
             this.lbl_TerritoryRadiusBaseDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -920,12 +873,11 @@
             // trk_TerritoryFrequencyBase
             // 
             this.trk_TerritoryFrequencyBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_TerritoryFrequencyBase.Location = new System.Drawing.Point(86, 9);
-            this.trk_TerritoryFrequencyBase.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_TerritoryFrequencyBase.Location = new System.Drawing.Point(64, 7);
             this.trk_TerritoryFrequencyBase.Maximum = 32;
             this.trk_TerritoryFrequencyBase.Minimum = 1;
             this.trk_TerritoryFrequencyBase.Name = "trk_TerritoryFrequencyBase";
-            this.trk_TerritoryFrequencyBase.Size = new System.Drawing.Size(219, 56);
+            this.trk_TerritoryFrequencyBase.Size = new System.Drawing.Size(164, 45);
             this.trk_TerritoryFrequencyBase.TabIndex = 34;
             this.trk_TerritoryFrequencyBase.Value = 1;
             this.trk_TerritoryFrequencyBase.Scroll += new System.EventHandler(this.trk_TerritoryFrequencyBase_Scroll);
@@ -934,10 +886,9 @@
             // 
             this.lbl_TerritoryFrequencyVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TerritoryFrequencyVariationDisplay.AutoSize = true;
-            this.lbl_TerritoryFrequencyVariationDisplay.Location = new System.Drawing.Point(287, 112);
-            this.lbl_TerritoryFrequencyVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TerritoryFrequencyVariationDisplay.Location = new System.Drawing.Point(215, 91);
             this.lbl_TerritoryFrequencyVariationDisplay.Name = "lbl_TerritoryFrequencyVariationDisplay";
-            this.lbl_TerritoryFrequencyVariationDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_TerritoryFrequencyVariationDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_TerritoryFrequencyVariationDisplay.TabIndex = 43;
             this.lbl_TerritoryFrequencyVariationDisplay.Text = "0";
             this.lbl_TerritoryFrequencyVariationDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -945,11 +896,10 @@
             // trk_TerritoryFrequencyVariation
             // 
             this.trk_TerritoryFrequencyVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_TerritoryFrequencyVariation.Location = new System.Drawing.Point(86, 72);
-            this.trk_TerritoryFrequencyVariation.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_TerritoryFrequencyVariation.Location = new System.Drawing.Point(64, 58);
             this.trk_TerritoryFrequencyVariation.Maximum = 32;
             this.trk_TerritoryFrequencyVariation.Name = "trk_TerritoryFrequencyVariation";
-            this.trk_TerritoryFrequencyVariation.Size = new System.Drawing.Size(219, 56);
+            this.trk_TerritoryFrequencyVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_TerritoryFrequencyVariation.TabIndex = 35;
             this.trk_TerritoryFrequencyVariation.Scroll += new System.EventHandler(this.trk_TerritoryFrequencyVariation_Scroll);
             // 
@@ -957,10 +907,9 @@
             // 
             this.lbl_TerritoryFrequencyBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TerritoryFrequencyBaseDisplay.AutoSize = true;
-            this.lbl_TerritoryFrequencyBaseDisplay.Location = new System.Drawing.Point(287, 49);
-            this.lbl_TerritoryFrequencyBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TerritoryFrequencyBaseDisplay.Location = new System.Drawing.Point(215, 40);
             this.lbl_TerritoryFrequencyBaseDisplay.Name = "lbl_TerritoryFrequencyBaseDisplay";
-            this.lbl_TerritoryFrequencyBaseDisplay.Size = new System.Drawing.Size(14, 16);
+            this.lbl_TerritoryFrequencyBaseDisplay.Size = new System.Drawing.Size(13, 13);
             this.lbl_TerritoryFrequencyBaseDisplay.TabIndex = 42;
             this.lbl_TerritoryFrequencyBaseDisplay.Text = "0";
             this.lbl_TerritoryFrequencyBaseDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -968,11 +917,10 @@
             // trk_TerritoryRadiusVariation
             // 
             this.trk_TerritoryRadiusVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_TerritoryRadiusVariation.Location = new System.Drawing.Point(86, 198);
-            this.trk_TerritoryRadiusVariation.Margin = new System.Windows.Forms.Padding(4);
+            this.trk_TerritoryRadiusVariation.Location = new System.Drawing.Point(64, 161);
             this.trk_TerritoryRadiusVariation.Maximum = 350;
             this.trk_TerritoryRadiusVariation.Name = "trk_TerritoryRadiusVariation";
-            this.trk_TerritoryRadiusVariation.Size = new System.Drawing.Size(219, 56);
+            this.trk_TerritoryRadiusVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_TerritoryRadiusVariation.TabIndex = 37;
             this.trk_TerritoryRadiusVariation.Scroll += new System.EventHandler(this.trk_TerritoryRadiusVariation_Scroll);
             // 
@@ -982,10 +930,10 @@
             this.pnl_MapBackground.BackColor = System.Drawing.Color.Sienna;
             this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsHover);
             this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsPanel);
-            this.pnl_MapBackground.Location = new System.Drawing.Point(743, -55);
+            this.pnl_MapBackground.Location = new System.Drawing.Point(557, -45);
             this.pnl_MapBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_MapBackground.Name = "pnl_MapBackground";
-            this.pnl_MapBackground.Size = new System.Drawing.Size(981, 1058);
+            this.pnl_MapBackground.Size = new System.Drawing.Size(736, 860);
             this.pnl_MapBackground.TabIndex = 1;
             this.pnl_MapBackground.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_MapBackground_Paint);
             // 
@@ -994,10 +942,9 @@
             this.lbl_TutorialSettingsHover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lbl_TutorialSettingsHover.AutoSize = true;
             this.lbl_TutorialSettingsHover.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TutorialSettingsHover.Location = new System.Drawing.Point(243, 379);
-            this.lbl_TutorialSettingsHover.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TutorialSettingsHover.Location = new System.Drawing.Point(182, 308);
             this.lbl_TutorialSettingsHover.Name = "lbl_TutorialSettingsHover";
-            this.lbl_TutorialSettingsHover.Size = new System.Drawing.Size(441, 25);
+            this.lbl_TutorialSettingsHover.Size = new System.Drawing.Size(364, 20);
             this.lbl_TutorialSettingsHover.TabIndex = 1;
             this.lbl_TutorialSettingsHover.Text = "Hover over settings for a description of their effect.";
             // 
@@ -1006,10 +953,9 @@
             this.lbl_TutorialSettingsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lbl_TutorialSettingsPanel.AutoSize = true;
             this.lbl_TutorialSettingsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TutorialSettingsPanel.Location = new System.Drawing.Point(4, 356);
-            this.lbl_TutorialSettingsPanel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_TutorialSettingsPanel.Location = new System.Drawing.Point(3, 289);
             this.lbl_TutorialSettingsPanel.Name = "lbl_TutorialSettingsPanel";
-            this.lbl_TutorialSettingsPanel.Size = new System.Drawing.Size(947, 25);
+            this.lbl_TutorialSettingsPanel.Size = new System.Drawing.Size(780, 20);
             this.lbl_TutorialSettingsPanel.TabIndex = 0;
             this.lbl_TutorialSettingsPanel.Text = "Use the settings panel on the left to customize the map properties, then click \'G" +
     "enerate\' to make a world map.";
@@ -1030,16 +976,15 @@
             // 
             // form_Window
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoScrollMinSize = new System.Drawing.Size(1600, 900);
             this.BackColor = System.Drawing.Color.Sienna;
-            this.ClientSize = new System.Drawing.Size(1308, 1076);
+            this.ClientSize = new System.Drawing.Size(981, 862);
             this.Controls.Add(this.pnl_SettingsBackground);
             this.Controls.Add(this.pnl_MapBackground);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "form_Window";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Continent Mapper";
