@@ -76,6 +76,8 @@
             this.tip_SettingsDetails = new System.Windows.Forms.ToolTip(this.components);
             this.fntd_FontSelector = new System.Windows.Forms.FontDialog();
             this.clrd_ColourSelector = new System.Windows.Forms.ColorDialog();
+            this.pnl_TerritorySettings = new System.Windows.Forms.Panel();
+            this.pnl_LakeSettings = new System.Windows.Forms.Panel();
             this.pnl_SettingsBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trk_LakeRadiusVariation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_LakeRadiusBase)).BeginInit();
@@ -88,6 +90,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_LocationThickness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trk_BorderThickness)).BeginInit();
             this.pnl_MapBackground.SuspendLayout();
+            this.pnl_TerritorySettings.SuspendLayout();
+            this.pnl_LakeSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_SettingsBackground
@@ -95,26 +99,9 @@
             this.pnl_SettingsBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_SettingsBackground.BackColor = System.Drawing.Color.Aquamarine;
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeRadiusVariationDisplay);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeRadiusBaseDisplay);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeFrequencyVariationDisplay);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeFrequencyBaseDisplay);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryRadiusVariationDisplay);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryRadiusBaseDisplay);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryFrequencyVariationDisplay);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryFrequencyBaseDisplay);
-            this.pnl_SettingsBackground.Controls.Add(this.trk_LakeRadiusVariation);
-            this.pnl_SettingsBackground.Controls.Add(this.trk_LakeRadiusBase);
-            this.pnl_SettingsBackground.Controls.Add(this.trk_LakeFrequencyVariation);
-            this.pnl_SettingsBackground.Controls.Add(this.trk_LakeFrequencyBase);
-            this.pnl_SettingsBackground.Controls.Add(this.trk_TerritoryRadiusVariation);
-            this.pnl_SettingsBackground.Controls.Add(this.trk_TerritoryRadiusBase);
-            this.pnl_SettingsBackground.Controls.Add(this.trk_TerritoryFrequencyVariation);
-            this.pnl_SettingsBackground.Controls.Add(this.trk_TerritoryFrequencyBase);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_LocationThicknessDisplay);
+            this.pnl_SettingsBackground.Controls.Add(this.pnl_TerritorySettings);
             this.pnl_SettingsBackground.Controls.Add(this.trk_LocationThickness);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeRadius);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeFrequency);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_BorderThicknessDisplay);
             this.pnl_SettingsBackground.Controls.Add(this.trk_BorderThickness);
             this.pnl_SettingsBackground.Controls.Add(this.btn_WaterColourSelector);
@@ -125,27 +112,22 @@
             this.pnl_SettingsBackground.Controls.Add(this.chb_CleanBorders);
             this.pnl_SettingsBackground.Controls.Add(this.btn_Generate);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_Header);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryRadius);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryFrequency);
             this.pnl_SettingsBackground.Controls.Add(this.btn_FontSelector);
             this.pnl_SettingsBackground.Controls.Add(this.lbl_LocationThickness);
             this.pnl_SettingsBackground.Controls.Add(this.cbo_LoadPreset);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryFrequencyVariation);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_TerritoryRadiusVariation);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeFrequencyVariation);
-            this.pnl_SettingsBackground.Controls.Add(this.lbl_LakeRadiusVariation);
             this.pnl_SettingsBackground.Controls.Add(this.chb_FullContinent);
+            this.pnl_SettingsBackground.Controls.Add(this.pnl_LakeSettings);
             this.pnl_SettingsBackground.Location = new System.Drawing.Point(0, 0);
             this.pnl_SettingsBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_SettingsBackground.Name = "pnl_SettingsBackground";
-            this.pnl_SettingsBackground.Size = new System.Drawing.Size(333, 1043);
+            this.pnl_SettingsBackground.Size = new System.Drawing.Size(333, 1022);
             this.pnl_SettingsBackground.TabIndex = 0;
             // 
             // lbl_LakeRadiusVariationDisplay
             // 
             this.lbl_LakeRadiusVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LakeRadiusVariationDisplay.AutoSize = true;
-            this.lbl_LakeRadiusVariationDisplay.Location = new System.Drawing.Point(292, 577);
+            this.lbl_LakeRadiusVariationDisplay.Location = new System.Drawing.Point(288, 231);
             this.lbl_LakeRadiusVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LakeRadiusVariationDisplay.Name = "lbl_LakeRadiusVariationDisplay";
             this.lbl_LakeRadiusVariationDisplay.Size = new System.Drawing.Size(14, 16);
@@ -157,7 +139,7 @@
             // 
             this.lbl_LakeRadiusBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LakeRadiusBaseDisplay.AutoSize = true;
-            this.lbl_LakeRadiusBaseDisplay.Location = new System.Drawing.Point(292, 514);
+            this.lbl_LakeRadiusBaseDisplay.Location = new System.Drawing.Point(288, 168);
             this.lbl_LakeRadiusBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LakeRadiusBaseDisplay.Name = "lbl_LakeRadiusBaseDisplay";
             this.lbl_LakeRadiusBaseDisplay.Size = new System.Drawing.Size(14, 16);
@@ -169,7 +151,7 @@
             // 
             this.lbl_LakeFrequencyVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LakeFrequencyVariationDisplay.AutoSize = true;
-            this.lbl_LakeFrequencyVariationDisplay.Location = new System.Drawing.Point(292, 452);
+            this.lbl_LakeFrequencyVariationDisplay.Location = new System.Drawing.Point(288, 106);
             this.lbl_LakeFrequencyVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LakeFrequencyVariationDisplay.Name = "lbl_LakeFrequencyVariationDisplay";
             this.lbl_LakeFrequencyVariationDisplay.Size = new System.Drawing.Size(14, 16);
@@ -181,7 +163,7 @@
             // 
             this.lbl_LakeFrequencyBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LakeFrequencyBaseDisplay.AutoSize = true;
-            this.lbl_LakeFrequencyBaseDisplay.Location = new System.Drawing.Point(292, 389);
+            this.lbl_LakeFrequencyBaseDisplay.Location = new System.Drawing.Point(288, 43);
             this.lbl_LakeFrequencyBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LakeFrequencyBaseDisplay.Name = "lbl_LakeFrequencyBaseDisplay";
             this.lbl_LakeFrequencyBaseDisplay.Size = new System.Drawing.Size(14, 16);
@@ -193,7 +175,7 @@
             // 
             this.lbl_TerritoryRadiusVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TerritoryRadiusVariationDisplay.AutoSize = true;
-            this.lbl_TerritoryRadiusVariationDisplay.Location = new System.Drawing.Point(292, 326);
+            this.lbl_TerritoryRadiusVariationDisplay.Location = new System.Drawing.Point(287, 237);
             this.lbl_TerritoryRadiusVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TerritoryRadiusVariationDisplay.Name = "lbl_TerritoryRadiusVariationDisplay";
             this.lbl_TerritoryRadiusVariationDisplay.Size = new System.Drawing.Size(14, 16);
@@ -205,7 +187,7 @@
             // 
             this.lbl_TerritoryRadiusBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TerritoryRadiusBaseDisplay.AutoSize = true;
-            this.lbl_TerritoryRadiusBaseDisplay.Location = new System.Drawing.Point(292, 263);
+            this.lbl_TerritoryRadiusBaseDisplay.Location = new System.Drawing.Point(287, 174);
             this.lbl_TerritoryRadiusBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TerritoryRadiusBaseDisplay.Name = "lbl_TerritoryRadiusBaseDisplay";
             this.lbl_TerritoryRadiusBaseDisplay.Size = new System.Drawing.Size(14, 16);
@@ -217,7 +199,7 @@
             // 
             this.lbl_TerritoryFrequencyVariationDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TerritoryFrequencyVariationDisplay.AutoSize = true;
-            this.lbl_TerritoryFrequencyVariationDisplay.Location = new System.Drawing.Point(292, 201);
+            this.lbl_TerritoryFrequencyVariationDisplay.Location = new System.Drawing.Point(287, 112);
             this.lbl_TerritoryFrequencyVariationDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TerritoryFrequencyVariationDisplay.Name = "lbl_TerritoryFrequencyVariationDisplay";
             this.lbl_TerritoryFrequencyVariationDisplay.Size = new System.Drawing.Size(14, 16);
@@ -229,7 +211,7 @@
             // 
             this.lbl_TerritoryFrequencyBaseDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TerritoryFrequencyBaseDisplay.AutoSize = true;
-            this.lbl_TerritoryFrequencyBaseDisplay.Location = new System.Drawing.Point(292, 138);
+            this.lbl_TerritoryFrequencyBaseDisplay.Location = new System.Drawing.Point(287, 49);
             this.lbl_TerritoryFrequencyBaseDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TerritoryFrequencyBaseDisplay.Name = "lbl_TerritoryFrequencyBaseDisplay";
             this.lbl_TerritoryFrequencyBaseDisplay.Size = new System.Drawing.Size(14, 16);
@@ -240,7 +222,7 @@
             // trk_LakeRadiusVariation
             // 
             this.trk_LakeRadiusVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LakeRadiusVariation.Location = new System.Drawing.Point(91, 538);
+            this.trk_LakeRadiusVariation.Location = new System.Drawing.Point(87, 192);
             this.trk_LakeRadiusVariation.Margin = new System.Windows.Forms.Padding(4);
             this.trk_LakeRadiusVariation.Maximum = 250;
             this.trk_LakeRadiusVariation.Name = "trk_LakeRadiusVariation";
@@ -251,7 +233,7 @@
             // trk_LakeRadiusBase
             // 
             this.trk_LakeRadiusBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LakeRadiusBase.Location = new System.Drawing.Point(91, 475);
+            this.trk_LakeRadiusBase.Location = new System.Drawing.Point(87, 129);
             this.trk_LakeRadiusBase.Margin = new System.Windows.Forms.Padding(4);
             this.trk_LakeRadiusBase.Maximum = 250;
             this.trk_LakeRadiusBase.Minimum = 50;
@@ -264,7 +246,7 @@
             // trk_LakeFrequencyVariation
             // 
             this.trk_LakeFrequencyVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LakeFrequencyVariation.Location = new System.Drawing.Point(91, 412);
+            this.trk_LakeFrequencyVariation.Location = new System.Drawing.Point(87, 66);
             this.trk_LakeFrequencyVariation.Margin = new System.Windows.Forms.Padding(4);
             this.trk_LakeFrequencyVariation.Maximum = 64;
             this.trk_LakeFrequencyVariation.Name = "trk_LakeFrequencyVariation";
@@ -275,7 +257,7 @@
             // trk_LakeFrequencyBase
             // 
             this.trk_LakeFrequencyBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LakeFrequencyBase.Location = new System.Drawing.Point(91, 350);
+            this.trk_LakeFrequencyBase.Location = new System.Drawing.Point(87, 4);
             this.trk_LakeFrequencyBase.Margin = new System.Windows.Forms.Padding(4);
             this.trk_LakeFrequencyBase.Maximum = 64;
             this.trk_LakeFrequencyBase.Name = "trk_LakeFrequencyBase";
@@ -286,7 +268,7 @@
             // trk_TerritoryRadiusVariation
             // 
             this.trk_TerritoryRadiusVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_TerritoryRadiusVariation.Location = new System.Drawing.Point(91, 287);
+            this.trk_TerritoryRadiusVariation.Location = new System.Drawing.Point(86, 198);
             this.trk_TerritoryRadiusVariation.Margin = new System.Windows.Forms.Padding(4);
             this.trk_TerritoryRadiusVariation.Maximum = 350;
             this.trk_TerritoryRadiusVariation.Name = "trk_TerritoryRadiusVariation";
@@ -297,7 +279,7 @@
             // trk_TerritoryRadiusBase
             // 
             this.trk_TerritoryRadiusBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_TerritoryRadiusBase.Location = new System.Drawing.Point(91, 224);
+            this.trk_TerritoryRadiusBase.Location = new System.Drawing.Point(86, 135);
             this.trk_TerritoryRadiusBase.Margin = new System.Windows.Forms.Padding(4);
             this.trk_TerritoryRadiusBase.Maximum = 400;
             this.trk_TerritoryRadiusBase.Minimum = 50;
@@ -310,7 +292,7 @@
             // trk_TerritoryFrequencyVariation
             // 
             this.trk_TerritoryFrequencyVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_TerritoryFrequencyVariation.Location = new System.Drawing.Point(91, 161);
+            this.trk_TerritoryFrequencyVariation.Location = new System.Drawing.Point(86, 72);
             this.trk_TerritoryFrequencyVariation.Margin = new System.Windows.Forms.Padding(4);
             this.trk_TerritoryFrequencyVariation.Maximum = 32;
             this.trk_TerritoryFrequencyVariation.Name = "trk_TerritoryFrequencyVariation";
@@ -321,7 +303,7 @@
             // trk_TerritoryFrequencyBase
             // 
             this.trk_TerritoryFrequencyBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_TerritoryFrequencyBase.Location = new System.Drawing.Point(91, 98);
+            this.trk_TerritoryFrequencyBase.Location = new System.Drawing.Point(86, 9);
             this.trk_TerritoryFrequencyBase.Margin = new System.Windows.Forms.Padding(4);
             this.trk_TerritoryFrequencyBase.Maximum = 32;
             this.trk_TerritoryFrequencyBase.Minimum = 1;
@@ -335,7 +317,7 @@
             // 
             this.lbl_LocationThicknessDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_LocationThicknessDisplay.AutoSize = true;
-            this.lbl_LocationThicknessDisplay.Location = new System.Drawing.Point(292, 778);
+            this.lbl_LocationThicknessDisplay.Location = new System.Drawing.Point(292, 757);
             this.lbl_LocationThicknessDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LocationThicknessDisplay.Name = "lbl_LocationThicknessDisplay";
             this.lbl_LocationThicknessDisplay.Size = new System.Drawing.Size(14, 16);
@@ -346,7 +328,7 @@
             // trk_LocationThickness
             // 
             this.trk_LocationThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_LocationThickness.Location = new System.Drawing.Point(91, 738);
+            this.trk_LocationThickness.Location = new System.Drawing.Point(91, 717);
             this.trk_LocationThickness.Margin = new System.Windows.Forms.Padding(4);
             this.trk_LocationThickness.Maximum = 80;
             this.trk_LocationThickness.Minimum = 10;
@@ -361,7 +343,7 @@
             // 
             this.lbl_LakeRadius.AutoSize = true;
             this.lbl_LakeRadius.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeRadius.Location = new System.Drawing.Point(19, 475);
+            this.lbl_LakeRadius.Location = new System.Drawing.Point(12, 129);
             this.lbl_LakeRadius.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LakeRadius.Name = "lbl_LakeRadius";
             this.lbl_LakeRadius.Size = new System.Drawing.Size(120, 25);
@@ -372,7 +354,7 @@
             // 
             this.lbl_LakeFrequency.AutoSize = true;
             this.lbl_LakeFrequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeFrequency.Location = new System.Drawing.Point(19, 350);
+            this.lbl_LakeFrequency.Location = new System.Drawing.Point(15, 4);
             this.lbl_LakeFrequency.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LakeFrequency.Name = "lbl_LakeFrequency";
             this.lbl_LakeFrequency.Size = new System.Drawing.Size(65, 25);
@@ -383,7 +365,7 @@
             // 
             this.lbl_BorderThicknessDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_BorderThicknessDisplay.AutoSize = true;
-            this.lbl_BorderThicknessDisplay.Location = new System.Drawing.Point(292, 715);
+            this.lbl_BorderThicknessDisplay.Location = new System.Drawing.Point(292, 694);
             this.lbl_BorderThicknessDisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_BorderThicknessDisplay.Name = "lbl_BorderThicknessDisplay";
             this.lbl_BorderThicknessDisplay.Size = new System.Drawing.Size(14, 16);
@@ -394,7 +376,7 @@
             // trk_BorderThickness
             // 
             this.trk_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.trk_BorderThickness.Location = new System.Drawing.Point(91, 675);
+            this.trk_BorderThickness.Location = new System.Drawing.Point(91, 654);
             this.trk_BorderThickness.Margin = new System.Windows.Forms.Padding(4);
             this.trk_BorderThickness.Maximum = 40;
             this.trk_BorderThickness.Minimum = 10;
@@ -410,7 +392,7 @@
             this.btn_WaterColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_WaterColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_WaterColourSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_WaterColourSelector.Location = new System.Drawing.Point(91, 801);
+            this.btn_WaterColourSelector.Location = new System.Drawing.Point(91, 780);
             this.btn_WaterColourSelector.Margin = new System.Windows.Forms.Padding(4);
             this.btn_WaterColourSelector.Name = "btn_WaterColourSelector";
             this.btn_WaterColourSelector.Size = new System.Drawing.Size(219, 37);
@@ -424,7 +406,7 @@
             this.lbl_BorderThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_BorderThickness.AutoSize = true;
             this.lbl_BorderThickness.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_BorderThickness.Location = new System.Drawing.Point(19, 675);
+            this.lbl_BorderThickness.Location = new System.Drawing.Point(19, 654);
             this.lbl_BorderThickness.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_BorderThickness.Name = "lbl_BorderThickness";
             this.lbl_BorderThickness.Size = new System.Drawing.Size(165, 25);
@@ -436,7 +418,7 @@
             this.btn_FontColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_FontColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_FontColourSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FontColourSelector.Location = new System.Drawing.Point(91, 934);
+            this.btn_FontColourSelector.Location = new System.Drawing.Point(91, 913);
             this.btn_FontColourSelector.Margin = new System.Windows.Forms.Padding(4);
             this.btn_FontColourSelector.Name = "btn_FontColourSelector";
             this.btn_FontColourSelector.Size = new System.Drawing.Size(219, 37);
@@ -450,7 +432,7 @@
             this.btn_BorderColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_BorderColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_BorderColourSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_BorderColourSelector.Location = new System.Drawing.Point(91, 890);
+            this.btn_BorderColourSelector.Location = new System.Drawing.Point(91, 869);
             this.btn_BorderColourSelector.Margin = new System.Windows.Forms.Padding(4);
             this.btn_BorderColourSelector.Name = "btn_BorderColourSelector";
             this.btn_BorderColourSelector.Size = new System.Drawing.Size(219, 37);
@@ -464,7 +446,7 @@
             this.btn_LandColourSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_LandColourSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_LandColourSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_LandColourSelector.Location = new System.Drawing.Point(91, 845);
+            this.btn_LandColourSelector.Location = new System.Drawing.Point(91, 824);
             this.btn_LandColourSelector.Margin = new System.Windows.Forms.Padding(4);
             this.btn_LandColourSelector.Name = "btn_LandColourSelector";
             this.btn_LandColourSelector.Size = new System.Drawing.Size(219, 37);
@@ -480,7 +462,7 @@
             this.chb_CleanBorders.Checked = true;
             this.chb_CleanBorders.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chb_CleanBorders.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_CleanBorders.Location = new System.Drawing.Point(24, 898);
+            this.chb_CleanBorders.Location = new System.Drawing.Point(24, 877);
             this.chb_CleanBorders.Margin = new System.Windows.Forms.Padding(4);
             this.chb_CleanBorders.Name = "chb_CleanBorders";
             this.chb_CleanBorders.Size = new System.Drawing.Size(159, 29);
@@ -495,7 +477,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Generate.Enabled = false;
             this.btn_Generate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Generate.Location = new System.Drawing.Point(24, 978);
+            this.btn_Generate.Location = new System.Drawing.Point(24, 957);
             this.btn_Generate.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Generate.Name = "btn_Generate";
             this.btn_Generate.Size = new System.Drawing.Size(285, 49);
@@ -519,7 +501,7 @@
             // 
             this.lbl_TerritoryRadius.AutoSize = true;
             this.lbl_TerritoryRadius.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryRadius.Location = new System.Drawing.Point(19, 224);
+            this.lbl_TerritoryRadius.Location = new System.Drawing.Point(14, 135);
             this.lbl_TerritoryRadius.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TerritoryRadius.Name = "lbl_TerritoryRadius";
             this.lbl_TerritoryRadius.Size = new System.Drawing.Size(149, 25);
@@ -530,7 +512,7 @@
             // 
             this.lbl_TerritoryFrequency.AutoSize = true;
             this.lbl_TerritoryFrequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryFrequency.Location = new System.Drawing.Point(16, 98);
+            this.lbl_TerritoryFrequency.Location = new System.Drawing.Point(11, 9);
             this.lbl_TerritoryFrequency.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TerritoryFrequency.Name = "lbl_TerritoryFrequency";
             this.lbl_TerritoryFrequency.Size = new System.Drawing.Size(99, 25);
@@ -542,7 +524,7 @@
             this.btn_FontSelector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_FontSelector.BackColor = System.Drawing.SystemColors.Control;
             this.btn_FontSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_FontSelector.Location = new System.Drawing.Point(24, 934);
+            this.btn_FontSelector.Location = new System.Drawing.Point(24, 913);
             this.btn_FontSelector.Margin = new System.Windows.Forms.Padding(4);
             this.btn_FontSelector.Name = "btn_FontSelector";
             this.btn_FontSelector.Size = new System.Drawing.Size(219, 37);
@@ -556,7 +538,7 @@
             this.lbl_LocationThickness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_LocationThickness.AutoSize = true;
             this.lbl_LocationThickness.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LocationThickness.Location = new System.Drawing.Point(19, 738);
+            this.lbl_LocationThickness.Location = new System.Drawing.Point(19, 717);
             this.lbl_LocationThickness.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LocationThickness.Name = "lbl_LocationThickness";
             this.lbl_LocationThickness.Size = new System.Drawing.Size(247, 25);
@@ -588,7 +570,7 @@
             // 
             this.lbl_TerritoryFrequencyVariation.AutoSize = true;
             this.lbl_TerritoryFrequencyVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryFrequencyVariation.Location = new System.Drawing.Point(19, 158);
+            this.lbl_TerritoryFrequencyVariation.Location = new System.Drawing.Point(14, 69);
             this.lbl_TerritoryFrequencyVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TerritoryFrequencyVariation.Name = "lbl_TerritoryFrequencyVariation";
             this.lbl_TerritoryFrequencyVariation.Size = new System.Drawing.Size(173, 25);
@@ -599,7 +581,7 @@
             // 
             this.lbl_TerritoryRadiusVariation.AutoSize = true;
             this.lbl_TerritoryRadiusVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TerritoryRadiusVariation.Location = new System.Drawing.Point(16, 287);
+            this.lbl_TerritoryRadiusVariation.Location = new System.Drawing.Point(11, 198);
             this.lbl_TerritoryRadiusVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_TerritoryRadiusVariation.Name = "lbl_TerritoryRadiusVariation";
             this.lbl_TerritoryRadiusVariation.Size = new System.Drawing.Size(238, 25);
@@ -610,7 +592,7 @@
             // 
             this.lbl_LakeFrequencyVariation.AutoSize = true;
             this.lbl_LakeFrequencyVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeFrequencyVariation.Location = new System.Drawing.Point(19, 412);
+            this.lbl_LakeFrequencyVariation.Location = new System.Drawing.Point(12, 66);
             this.lbl_LakeFrequencyVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LakeFrequencyVariation.Name = "lbl_LakeFrequencyVariation";
             this.lbl_LakeFrequencyVariation.Size = new System.Drawing.Size(144, 25);
@@ -621,7 +603,7 @@
             // 
             this.lbl_LakeRadiusVariation.AutoSize = true;
             this.lbl_LakeRadiusVariation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_LakeRadiusVariation.Location = new System.Drawing.Point(16, 538);
+            this.lbl_LakeRadiusVariation.Location = new System.Drawing.Point(12, 192);
             this.lbl_LakeRadiusVariation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_LakeRadiusVariation.Name = "lbl_LakeRadiusVariation";
             this.lbl_LakeRadiusVariation.Size = new System.Drawing.Size(209, 25);
@@ -647,7 +629,7 @@
             this.pnl_MapBackground.BackColor = System.Drawing.Color.Sienna;
             this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsHover);
             this.pnl_MapBackground.Controls.Add(this.lbl_TutorialSettingsPanel);
-            this.pnl_MapBackground.Location = new System.Drawing.Point(743, -5);
+            this.pnl_MapBackground.Location = new System.Drawing.Point(743, -15);
             this.pnl_MapBackground.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_MapBackground.Name = "pnl_MapBackground";
             this.pnl_MapBackground.Size = new System.Drawing.Size(981, 1058);
@@ -693,6 +675,52 @@
             // 
             this.clrd_ColourSelector.AnyColor = true;
             // 
+            // pnl_TerritorySettings
+            // 
+            this.pnl_TerritorySettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl_TerritorySettings.BackColor = System.Drawing.Color.Aquamarine;
+            this.pnl_TerritorySettings.Controls.Add(this.trk_TerritoryRadiusBase);
+            this.pnl_TerritorySettings.Controls.Add(this.lbl_TerritoryRadiusVariation);
+            this.pnl_TerritorySettings.Controls.Add(this.lbl_TerritoryFrequencyVariation);
+            this.pnl_TerritorySettings.Controls.Add(this.lbl_TerritoryFrequency);
+            this.pnl_TerritorySettings.Controls.Add(this.lbl_TerritoryRadiusVariationDisplay);
+            this.pnl_TerritorySettings.Controls.Add(this.lbl_TerritoryRadius);
+            this.pnl_TerritorySettings.Controls.Add(this.lbl_TerritoryRadiusBaseDisplay);
+            this.pnl_TerritorySettings.Controls.Add(this.trk_TerritoryFrequencyBase);
+            this.pnl_TerritorySettings.Controls.Add(this.lbl_TerritoryFrequencyVariationDisplay);
+            this.pnl_TerritorySettings.Controls.Add(this.trk_TerritoryFrequencyVariation);
+            this.pnl_TerritorySettings.Controls.Add(this.lbl_TerritoryFrequencyBaseDisplay);
+            this.pnl_TerritorySettings.Controls.Add(this.trk_TerritoryRadiusVariation);
+            this.pnl_TerritorySettings.Enabled = false;
+            this.pnl_TerritorySettings.Location = new System.Drawing.Point(0, 380);
+            this.pnl_TerritorySettings.Name = "pnl_TerritorySettings";
+            this.pnl_TerritorySettings.Size = new System.Drawing.Size(333, 256);
+            this.pnl_TerritorySettings.TabIndex = 2;
+            this.pnl_TerritorySettings.Visible = false;
+            // 
+            // pnl_LakeSettings
+            // 
+            this.pnl_LakeSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl_LakeSettings.Controls.Add(this.trk_LakeFrequencyBase);
+            this.pnl_LakeSettings.Controls.Add(this.lbl_LakeFrequency);
+            this.pnl_LakeSettings.Controls.Add(this.lbl_LakeRadiusVariation);
+            this.pnl_LakeSettings.Controls.Add(this.lbl_LakeFrequencyVariation);
+            this.pnl_LakeSettings.Controls.Add(this.lbl_LakeRadius);
+            this.pnl_LakeSettings.Controls.Add(this.lbl_LakeRadiusVariationDisplay);
+            this.pnl_LakeSettings.Controls.Add(this.trk_LakeFrequencyVariation);
+            this.pnl_LakeSettings.Controls.Add(this.lbl_LakeRadiusBaseDisplay);
+            this.pnl_LakeSettings.Controls.Add(this.trk_LakeRadiusBase);
+            this.pnl_LakeSettings.Controls.Add(this.lbl_LakeFrequencyVariationDisplay);
+            this.pnl_LakeSettings.Controls.Add(this.trk_LakeRadiusVariation);
+            this.pnl_LakeSettings.Controls.Add(this.lbl_LakeFrequencyBaseDisplay);
+            this.pnl_LakeSettings.Enabled = false;
+            this.pnl_LakeSettings.Location = new System.Drawing.Point(0, 380);
+            this.pnl_LakeSettings.Name = "pnl_LakeSettings";
+            this.pnl_LakeSettings.Size = new System.Drawing.Size(333, 256);
+            this.pnl_LakeSettings.TabIndex = 54;
+            // 
             // form_Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -727,6 +755,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trk_BorderThickness)).EndInit();
             this.pnl_MapBackground.ResumeLayout(false);
             this.pnl_MapBackground.PerformLayout();
+            this.pnl_TerritorySettings.ResumeLayout(false);
+            this.pnl_TerritorySettings.PerformLayout();
+            this.pnl_LakeSettings.ResumeLayout(false);
+            this.pnl_LakeSettings.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -780,6 +812,8 @@
         private System.Windows.Forms.Label lbl_TerritoryRadiusVariation;
         private System.Windows.Forms.Label lbl_LakeFrequencyVariation;
         private System.Windows.Forms.Label lbl_LakeRadiusVariation;
+        private System.Windows.Forms.Panel pnl_TerritorySettings;
+        private System.Windows.Forms.Panel pnl_LakeSettings;
     }
 }
 

@@ -32,14 +32,18 @@ namespace ContinentMapCreator
 
             // Add Controls
             pnl_SettingsBackground.Controls.Add(chb_FullContinent);
-            pnl_SettingsBackground.Controls.Add(trk_TerritoryFrequencyBase);
-            pnl_SettingsBackground.Controls.Add(trk_TerritoryFrequencyVariation);
-            pnl_SettingsBackground.Controls.Add(trk_TerritoryRadiusBase);
-            pnl_SettingsBackground.Controls.Add(trk_TerritoryRadiusVariation);
-            pnl_SettingsBackground.Controls.Add(trk_LakeFrequencyBase);
-            pnl_SettingsBackground.Controls.Add(trk_LakeFrequencyVariation);
-            pnl_SettingsBackground.Controls.Add(trk_LakeRadiusBase);
-            pnl_SettingsBackground.Controls.Add(trk_LakeRadiusVariation);
+
+            pnl_TerritorySettings.Controls.Add(trk_TerritoryFrequencyBase);
+            pnl_TerritorySettings.Controls.Add(trk_TerritoryFrequencyVariation);
+            pnl_TerritorySettings.Controls.Add(trk_TerritoryRadiusBase);
+            pnl_TerritorySettings.Controls.Add(trk_TerritoryRadiusVariation);
+            pnl_SettingsBackground.Controls.Add(pnl_TerritorySettings);
+
+            pnl_LakeSettings.Controls.Add(trk_LakeFrequencyBase);
+            pnl_LakeSettings.Controls.Add(trk_LakeFrequencyVariation);
+            pnl_LakeSettings.Controls.Add(trk_LakeRadiusBase);
+            pnl_LakeSettings.Controls.Add(trk_LakeRadiusVariation);
+            pnl_SettingsBackground.Controls.Add(pnl_LakeSettings);
 
             pnl_SettingsBackground.Controls.Add(trk_BorderThickness);
             pnl_SettingsBackground.Controls.Add(trk_LocationThickness);
