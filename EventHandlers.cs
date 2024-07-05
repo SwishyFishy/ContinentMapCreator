@@ -360,6 +360,7 @@ namespace ContinentMapCreator
             GenerateTerritories(); 
             GenerateLakes();
             GenerateOceans();
+            GenerateRivers();
             GenerateBorders();
 
             // Confirm that a map now exists for this runtime

@@ -315,12 +315,12 @@
             // 
             this.trk_RiverThicknessBase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trk_RiverThicknessBase.Location = new System.Drawing.Point(65, 105);
-            this.trk_RiverThicknessBase.Maximum = 100;
-            this.trk_RiverThicknessBase.Minimum = 1;
+            this.trk_RiverThicknessBase.Maximum = 500;
+            this.trk_RiverThicknessBase.Minimum = 50;
             this.trk_RiverThicknessBase.Name = "trk_RiverThicknessBase";
             this.trk_RiverThicknessBase.Size = new System.Drawing.Size(164, 45);
             this.trk_RiverThicknessBase.TabIndex = 40;
-            this.trk_RiverThicknessBase.Value = 1;
+            this.trk_RiverThicknessBase.Value = 50;
             this.trk_RiverThicknessBase.Scroll += new System.EventHandler(this.trk_RiverThicknessBase_Scroll);
             // 
             // lbl_RiverFrequencyVariationDisplay
@@ -338,12 +338,12 @@
             // 
             this.trk_RiverThicknessVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trk_RiverThicknessVariation.Location = new System.Drawing.Point(65, 156);
-            this.trk_RiverThicknessVariation.Maximum = 100;
-            this.trk_RiverThicknessVariation.Minimum = 1;
+            this.trk_RiverThicknessVariation.Maximum = 500;
+            this.trk_RiverThicknessVariation.Minimum = 50;
             this.trk_RiverThicknessVariation.Name = "trk_RiverThicknessVariation";
             this.trk_RiverThicknessVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_RiverThicknessVariation.TabIndex = 41;
-            this.trk_RiverThicknessVariation.Value = 1;
+            this.trk_RiverThicknessVariation.Value = 50;
             this.trk_RiverThicknessVariation.Scroll += new System.EventHandler(this.trk_RiverThicknessVariation_Scroll);
             // 
             // lbl_RiverFrequencyBaseDisplay
