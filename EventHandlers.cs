@@ -61,10 +61,14 @@ namespace ContinentMapCreator
             tip_SettingsDetails.SetToolTip(lbl_TerritoryFrequencyVariation, "+/- Number of Territories");
             tip_SettingsDetails.SetToolTip(lbl_TerritoryRadius, "(Static) 1/2 maximum Territory diameter");
             tip_SettingsDetails.SetToolTip(lbl_TerritoryRadiusVariation, "+/- 1/2 maximum Territory diameter");
+
             tip_SettingsDetails.SetToolTip(lbl_LakeFrequency, "Number of Lakes");
             tip_SettingsDetails.SetToolTip(lbl_LakeFrequencyVariation, "+/- Number of Lakes");
             tip_SettingsDetails.SetToolTip(lbl_LakeRadius, "(Randomized twice per instance) 1/2 maximum Lake diameter");
             tip_SettingsDetails.SetToolTip(lbl_LakeRadiusVariation, "+/- 1/2 maximum Lake diameter");
+
+            //TODO: Add Rivers Tooltips
+            //TODO: Test Rivers Values
 
             tip_SettingsDetails.SetToolTip(lbl_BorderThickness, "Border pixel thickness");
             tip_SettingsDetails.SetToolTip(lbl_LocationThickness, "Location Marker pixel thickness");
