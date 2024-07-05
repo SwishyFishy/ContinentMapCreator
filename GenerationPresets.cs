@@ -16,6 +16,12 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 5;
             trk_LakeRadiusBase.Value = 50;
             trk_LakeRadiusVariation.Value = 25;
+            trk_RiverFrequencyBase.Value = 2;
+            trk_RiverFrequencyVariation.Value = 3;
+            trk_RiverThicknessBase.Value = 100;
+            trk_RiverThicknessVariation.Value = 25;
+            trk_RiverCurvatureBase.Value = 50;
+            trk_RiverCurvatureVariation.Value = 25;
             UpdateTrackbarDisplayLabels();
         }
 
@@ -31,6 +37,12 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 12;
             trk_LakeRadiusBase.Value = 85;
             trk_LakeRadiusVariation.Value = 25;
+            trk_RiverFrequencyBase.Value = 0;
+            trk_RiverFrequencyVariation.Value = 0;
+            trk_RiverThicknessBase.Value = 50;
+            trk_RiverThicknessVariation.Value = 0;
+            trk_RiverCurvatureBase.Value = 0;
+            trk_RiverCurvatureVariation.Value = 0;
             UpdateTrackbarDisplayLabels();
         }
 
@@ -46,6 +58,12 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 3;
             trk_LakeRadiusBase.Value = 225;
             trk_LakeRadiusVariation.Value = 75;
+            trk_RiverFrequencyBase.Value = 0;
+            trk_RiverFrequencyVariation.Value = 0;
+            trk_RiverThicknessBase.Value = 50;
+            trk_RiverThicknessVariation.Value = 0;
+            trk_RiverCurvatureBase.Value = 0;
+            trk_RiverCurvatureVariation.Value = 0;
             UpdateTrackbarDisplayLabels();
         }
 
@@ -61,6 +79,12 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 6;
             trk_LakeRadiusBase.Value = 125;
             trk_LakeRadiusVariation.Value = 50;
+            trk_RiverFrequencyBase.Value = 0;
+            trk_RiverFrequencyVariation.Value = 0;
+            trk_RiverThicknessBase.Value = 50;
+            trk_RiverThicknessVariation.Value = 0;
+            trk_RiverCurvatureBase.Value = 0;
+            trk_RiverCurvatureVariation.Value = 0;
             UpdateTrackbarDisplayLabels();
         }
 
@@ -76,6 +100,12 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 2;
             trk_LakeRadiusBase.Value = 150;
             trk_LakeRadiusVariation.Value = 100;
+            trk_RiverFrequencyBase.Value = 0;
+            trk_RiverFrequencyVariation.Value = 0;
+            trk_RiverThicknessBase.Value = 50;
+            trk_RiverThicknessVariation.Value = 0;
+            trk_RiverCurvatureBase.Value = 0;
+            trk_RiverCurvatureVariation.Value = 0;
             UpdateTrackbarDisplayLabels();
         }
 
@@ -90,7 +120,13 @@ namespace ContinentMapCreator
             trk_LakeFrequencyBase.Value = 32;
             trk_LakeFrequencyVariation.Value = 8;
             trk_LakeRadiusBase.Value = 70;
-            trk_LakeRadiusVariation.Value = 10;
+            trk_LakeRadiusVariation.Value = 10; 
+            trk_RiverFrequencyBase.Value = 0;
+            trk_RiverFrequencyVariation.Value = 0;
+            trk_RiverThicknessBase.Value = 50;
+            trk_RiverThicknessVariation.Value = 0;
+            trk_RiverCurvatureBase.Value = 0;
+            trk_RiverCurvatureVariation.Value = 0;
             UpdateTrackbarDisplayLabels();
         }
 
@@ -106,6 +142,12 @@ namespace ContinentMapCreator
             trk_LakeFrequencyVariation.Value = 2;
             trk_LakeRadiusBase.Value = 75;
             trk_LakeRadiusVariation.Value = 25;
+            trk_RiverFrequencyBase.Value = 0;
+            trk_RiverFrequencyVariation.Value = 0;
+            trk_RiverThicknessBase.Value = 50;
+            trk_RiverThicknessVariation.Value = 0;
+            trk_RiverCurvatureBase.Value = 0;
+            trk_RiverCurvatureVariation.Value = 0;
             UpdateTrackbarDisplayLabels();
         }
     }

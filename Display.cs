@@ -103,12 +103,6 @@ namespace ContinentMapCreator
                 }
             }
 
-            // Draw Rivers
-            for (int i = 0; i < NUM_RIVERS; i++)
-            {
-                Rivers[i].Draw(g);
-            }
-
             // Draw Borders
             for (int i = 0; i < TerritoryBorders.Length; i++)
             {
@@ -116,6 +110,12 @@ namespace ContinentMapCreator
                 xOffset = TerritoryBorders[i].X + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0) - BORDER_OFFSET;
                 yOffset = TerritoryBorders[i].Y + (ROUGH_BORDERS ? rnd.Next(-3, 3) : 0) - BORDER_OFFSET;
                 g.DrawRectangle(borderPen, xOffset, yOffset, BORDER_THICKNESS, BORDER_THICKNESS);
+            }
+
+            // Draw Rivers
+            for (int i = 0; i < NUM_RIVERS; i++)
+            {
+                Rivers[i].Draw(g);
             }
 
             // Draw TerritoryOrigins and Territory names

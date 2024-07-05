@@ -339,11 +339,9 @@
             this.trk_RiverThicknessVariation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trk_RiverThicknessVariation.Location = new System.Drawing.Point(65, 156);
             this.trk_RiverThicknessVariation.Maximum = 500;
-            this.trk_RiverThicknessVariation.Minimum = 50;
             this.trk_RiverThicknessVariation.Name = "trk_RiverThicknessVariation";
             this.trk_RiverThicknessVariation.Size = new System.Drawing.Size(164, 45);
             this.trk_RiverThicknessVariation.TabIndex = 41;
-            this.trk_RiverThicknessVariation.Value = 50;
             this.trk_RiverThicknessVariation.Scroll += new System.EventHandler(this.trk_RiverThicknessVariation_Scroll);
             // 
             // lbl_RiverFrequencyBaseDisplay
