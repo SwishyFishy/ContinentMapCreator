@@ -128,6 +128,7 @@
             this.pnl_SettingsBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_SettingsBackground.BackColor = System.Drawing.Color.Aquamarine;
+            this.pnl_SettingsBackground.Controls.Add(this.pnl_RiverSettings);
             this.pnl_SettingsBackground.Controls.Add(this.btn_RiverSettings);
             this.pnl_SettingsBackground.Controls.Add(this.btn_LakeSettings);
             this.pnl_SettingsBackground.Controls.Add(this.btn_TerritorySettings);
@@ -813,9 +814,9 @@
             this.pnl_RiverSettings.Controls.Add(this.trk_RiverFrequencyVariation);
             this.pnl_RiverSettings.Controls.Add(this.trk_RiverFrequency);
             this.pnl_RiverSettings.Enabled = false;
-            this.pnl_RiverSettings.Location = new System.Drawing.Point(491, 251);
+            this.pnl_RiverSettings.Location = new System.Drawing.Point(0, 195);
             this.pnl_RiverSettings.Name = "pnl_RiverSettings";
-            this.pnl_RiverSettings.Size = new System.Drawing.Size(333, 384);
+            this.pnl_RiverSettings.Size = new System.Drawing.Size(333, 378);
             this.pnl_RiverSettings.TabIndex = 57;
             this.pnl_RiverSettings.Visible = false;
             // 
@@ -1029,7 +1030,6 @@
             this.AutoScrollMinSize = new System.Drawing.Size(1600, 900);
             this.BackColor = System.Drawing.Color.Sienna;
             this.ClientSize = new System.Drawing.Size(1308, 1055);
-            this.Controls.Add(this.pnl_RiverSettings);
             this.Controls.Add(this.pnl_SettingsBackground);
             this.Controls.Add(this.pnl_MapBackground);
             this.KeyPreview = true;

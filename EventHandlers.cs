@@ -108,6 +108,9 @@ namespace ContinentMapCreator
 
                 pnl_TerritorySettings.Enabled = true;
                 pnl_TerritorySettings.Visible = true;
+
+                pnl_RiverSettings.Enabled = false;
+                pnl_RiverSettings.Visible = false;
             }
             // Otherwise, disable them
             else
@@ -126,6 +129,9 @@ namespace ContinentMapCreator
 
                 pnl_LakeSettings.Enabled = true;
                 pnl_LakeSettings.Visible = true;
+
+                pnl_RiverSettings.Enabled = false;
+                pnl_RiverSettings.Visible = false;
             }
             // Otherwise, disable them
             else
@@ -136,7 +142,24 @@ namespace ContinentMapCreator
         }
         private void btn_RiverSettings_Click(object sender, EventArgs e)
         {
+            // If river settings are disabled, enable them and disable the rest
+            if (!pnl_TerritorySettings.Enabled)
+            {
+                pnl_LakeSettings.Enabled = false;
+                pnl_LakeSettings.Visible = false;
 
+                pnl_TerritorySettings.Enabled = false;
+                pnl_TerritorySettings.Visible = false;
+
+                pnl_RiverSettings.Enabled = true;
+                pnl_RiverSettings.Visible = true;
+            }
+            // Otherwise, disable them
+            else
+            {
+                pnl_TerritorySettings.Enabled = false;
+                pnl_TerritorySettings.Visible = false;
+            }
         }
 
 
