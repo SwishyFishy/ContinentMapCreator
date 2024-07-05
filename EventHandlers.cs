@@ -32,6 +32,9 @@ namespace ContinentMapCreator
 
             // Add Controls
             pnl_SettingsBackground.Controls.Add(chb_FullContinent);
+            pnl_SettingsBackground.Controls.Add(btn_TerritorySettings);
+            pnl_SettingsBackground.Controls.Add(btn_LakeSettings);
+            pnl_SettingsBackground.Controls.Add(btn_RiverSettings);
 
             pnl_TerritorySettings.Controls.Add(trk_TerritoryFrequencyBase);
             pnl_TerritorySettings.Controls.Add(trk_TerritoryFrequencyVariation);
@@ -92,6 +95,50 @@ namespace ContinentMapCreator
         {
             UpdateDisplay();
         }
+
+        // Settings panels buttons
+        // Click        -> Enable/Disable that settings panel
+        private void btn_TerritorySettings_Click(object sender, EventArgs e)
+        {
+            // If territory settings are disabled, enable them and disable the rest
+            if (!pnl_TerritorySettings.Enabled)
+            {
+                pnl_LakeSettings.Enabled = false;
+                pnl_LakeSettings.Visible = false;
+
+                pnl_TerritorySettings.Enabled = true;
+                pnl_TerritorySettings.Visible = true;
+            }
+            // Otherwise, disable them
+            else
+            {
+                pnl_TerritorySettings.Enabled = false;
+                pnl_TerritorySettings.Visible = false;
+            }
+        }
+        private void btn_LakeSettings_Click(object sender, EventArgs e)
+        {
+            // If lake settings are disabled, enable them and disable the rest
+            if (!pnl_LakeSettings.Enabled)
+            {
+                pnl_TerritorySettings.Enabled = false;
+                pnl_TerritorySettings.Visible = false;
+
+                pnl_LakeSettings.Enabled = true;
+                pnl_LakeSettings.Visible = true;
+            }
+            // Otherwise, disable them
+            else
+            {
+                pnl_LakeSettings.Enabled = false;
+                pnl_LakeSettings.Visible = false;
+            }
+        }
+        private void btn_RiverSettings_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         // Generation Settings track bars
         // Scroll       -> Update the displayed value
