@@ -48,6 +48,14 @@ namespace ContinentMapCreator
             pnl_LakeSettings.Controls.Add(trk_LakeRadiusVariation);
             pnl_SettingsBackground.Controls.Add(pnl_LakeSettings);
 
+            pnl_RiverSettings.Controls.Add(trk_RiverFrequencyBase);
+            pnl_RiverSettings.Controls.Add(trk_RiverThicknessVariation);
+            pnl_RiverSettings.Controls.Add(trk_RiverThicknessBase);
+            pnl_RiverSettings.Controls.Add(trk_RiverThicknessVariation);
+            pnl_RiverSettings.Controls.Add(trk_RiverCurvatureBase);
+            pnl_RiverSettings.Controls.Add(trk_RiverCurvatureVariation);
+            pnl_SettingsBackground.Controls.Add(pnl_RiverSettings);
+
             pnl_SettingsBackground.Controls.Add(trk_BorderThickness);
             pnl_SettingsBackground.Controls.Add(trk_LocationThickness);
             pnl_SettingsBackground.Controls.Add(cbo_LoadPreset);
