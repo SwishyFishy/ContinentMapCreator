@@ -89,5 +89,25 @@ namespace ContinentMapCreator
         {
             InitializeComponent();
         }
+
+        private void trk_LakeFrequencyBase_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trk_LakeFrequencyVariation_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trk_LakeRadiusBase_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trk_LakeRadiusVariation_Scroll(object sender, EventArgs e)
+        {
+
+        }
     }
 }
