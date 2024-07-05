@@ -213,6 +213,30 @@ namespace ContinentMapCreator
         {
             lbl_LakeRadiusVariationDisplay.Text = trk_LakeRadiusVariation.Value.ToString();
         }
+        private void trk_RiverFrequencyBase_Scroll(object sender, EventArgs e)
+        {
+            lbl_RiverFrequencyBaseDisplay.Text = trk_RiverFrequencyBase.Value.ToString();
+        }
+        private void trk_RiverFrequencyVariation_Scroll(object sender, EventArgs e)
+        {
+            lbl_RiverFrequencyVariationDisplay.Text = trk_RiverFrequencyVariation.Value.ToString();
+        }
+        private void trk_RiverThicknessBase_Scroll(object sender, EventArgs e)
+        {
+            lbl_RiverThicknessBaseDisplay.Text = trk_RiverThicknessBase.Value.ToString();
+        }
+        private void trk_RiverThicknessVariation_Scroll(object sender, EventArgs e)
+        {
+            lbl_RiverThicknessVariationDisplay.Text = trk_RiverThicknessVariation.Value.ToString();
+        }
+        private void trk_RiverCurvatureBase_Scroll(object sender, EventArgs e)
+        {
+            lbl_RiverCurvatureBaseDisplay.Text = trk_RiverCurvatureBase.Value.ToString();
+        }
+        private void trk_RiverCurvatureVariation_Scroll(object sender, EventArgs e)
+        {
+            lbl_RiverCurvatureVariationDisplay.Text = trk_RiverCurvatureVariation.Value.ToString();
+        }
 
         // trk_BorderThickness
         // Scroll       -> Update the displayed value

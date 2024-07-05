@@ -16,6 +16,13 @@ namespace ContinentMapCreator
             lbl_LakeFrequencyVariationDisplay.Text = trk_LakeFrequencyVariation.Value.ToString();
             lbl_LakeRadiusBaseDisplay.Text = trk_LakeRadiusBase.Value.ToString();
             lbl_LakeRadiusVariationDisplay.Text = trk_LakeRadiusVariation.Value.ToString();
+            lbl_RiverFrequencyBaseDisplay.Text = trk_RiverFrequencyBase.Value.ToString();
+            lbl_RiverFrequencyVariationDisplay.Text = trk_RiverFrequencyVariation.Value.ToString();
+            lbl_RiverThicknessBaseDisplay.Text = trk_RiverThicknessBase.Value.ToString();
+            lbl_RiverThicknessVariationDisplay.Text = trk_RiverThicknessVariation.Value.ToString();
+            lbl_RiverCurvatureBaseDisplay.Text = trk_RiverCurvatureBase.Value.ToString();
+            lbl_RiverCurvatureVariationDisplay.Text = trk_RiverCurvatureVariation.Value.ToString();
+
         }
 
         private void UpdateDisplay()
