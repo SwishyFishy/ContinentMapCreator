@@ -32,6 +32,10 @@ namespace ContinentMapCreator
             MIN_NUM_RIVERS = Math.Max(trk_RiverFrequencyBase.Value - trk_RiverFrequencyVariation.Value, trk_RiverFrequencyBase.Minimum);
             MAX_NUM_RIVERS = Math.Min(trk_RiverFrequencyBase.Value + trk_RiverFrequencyVariation.Value, trk_RiverFrequencyBase.Maximum);
 
+            // The rivers look terrible - don't generate them (until fixed?)
+            MIN_NUM_RIVERS = 0;
+            MAX_NUM_RIVERS = 0;
+
             // MIN_RIVER_THICKNESS & MAX_RIVER_THICKNESS
             MIN_RIVER_THICKNESS = Math.Max(trk_RiverThicknessBase.Value - trk_RiverThicknessVariation.Value, trk_RiverThicknessBase.Minimum);
             MAX_RIVER_THICKNESS = Math.Min(trk_RiverThicknessBase.Value + trk_RiverThicknessVariation.Value, trk_RiverThicknessBase.Maximum);
@@ -285,8 +289,8 @@ namespace ContinentMapCreator
                     // Apply OCEAN_SIZE_MULTIPLIER based on proximity to panel corner
                     // Weights larger oceans at corners and smaller oceans in the middle, resulting in a more rounded continent
                     // TODO: Technically, this is bad and unstable. There's no guarantee that no ocean crosses into the WorkingArea, and there's no failsafe
-                    // for if a TerritoryOrigin exists inside the space in the WorkingArea the ocean occupies. The chances are low, but not impossible.
-                    // This should be fixed so that this algorithm takes the size of the WorkingArea, or the TerritoryOrigins' locations, as an input.
+                    //      for if a TerritoryOrigin exists inside the space in the WorkingArea the ocean occupies. The chances are low, but not impossible.
+                    //      This should be fixed so that this algorithm takes the size of the WorkingArea, or the TerritoryOrigins' locations, as an input.
                     double halfHeight = MAP_HEIGHT / 2.0;
                     double distanceFromCenter = Math.Abs(halfHeight - i);
                     double normalizedDistanceFromCenter = distanceFromCenter / halfHeight;
